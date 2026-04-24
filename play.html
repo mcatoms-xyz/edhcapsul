@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000">
+<title>EDHCapsul — Phone Controller</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    min-height: 100vh;
+    background: #0a0a0a;
+    color: #fff;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+  body { padding: 16px; padding-bottom: 32px; }
+
+  h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #C9A849;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ---------- JOIN SCREEN ---------- */
+  .join-form {
+    max-width: 400px; margin: 40px auto;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,73,0.3);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .join-form label { display: block; font-size: 11px; letter-spacing: 2px; color: #888; margin-bottom: 6px; text-transform: uppercase; }
+  .join-form input {
+    width: 100%; padding: 14px; font-size: 28px;
+    background: #000; color: #C9A849;
+    border: 2px solid rgba(201,168,73,0.3);
+    border-radius: 10px; text-align: center;
+    letter-spacing: 8px; font-weight: 800;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .join-form input:focus { outline: none; border-color: #C9A849; }
+  .btn {
+    display: block; width: 100%;
+    padding: 16px; font-size: 16px; font-weight: 700;
+    background: #C9A849; color: #000;
+    border: none; border-radius: 10px;
+    cursor: pointer; letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .btn:disabled { opacity: 0.4; }
+  .btn.secondary { background: rgba(255,255,255,0.08); color: #fff; }
+
+  /* ---------- SEAT PICK SCREEN ---------- */
+  .seat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    max-width: 500px; margin: 20px auto;
+  }
+  .seat-btn {
+    padding: 20px 12px; border: 2px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04); color: #fff;
+    border-radius: 12px; font-size: 15px; font-weight: 700;
+    cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .seat-btn:active { transform: scale(0.98); }
+  .seat-btn .seat-name { font-size: 18px; text-transform: capitalize; }
+  .seat-btn .seat-meta { font-size: 10px; color: #888; letter-spacing: 1px; text-transform: uppercase; }
+  .seat-btn.claimed {
+    opacity: 0.45; cursor: not-allowed;
+    border-color: rgba(201,168,73,0.3);
+  }
+  .seat-btn.claimed .seat-meta { color: #C9A849; }
+
+  /* ---------- PLAY SCREEN ---------- */
+  .my-seat-banner {
+    text-align: center; padding: 8px 12px;
+    background: rgba(201,168,73,0.15);
+    border: 1px solid rgba(201,168,73,0.4);
+    border-radius: 10px; margin-bottom: 12px;
+    font-size: 13px; letter-spacing: 1px;
+  }
+  .my-seat-banner strong { color: #C9A849; font-size: 16px; text-transform: capitalize; }
+  .turn-indicator {
+    text-align: center; padding: 10px; margin-bottom: 12px;
+    border-radius: 10px; font-size: 13px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase;
+    background: rgba(255,255,255,0.04); color: #666;
+  }
+  .turn-indicator.active {
+    background: linear-gradient(135deg, #C9A849, #8b6a1e); color: #000;
+    box-shadow: 0 0 20px rgba(201,168,73,0.4);
+    animation: pulseTurn 2s infinite;
+  }
+  @keyframes pulseTurn {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,168,73,0.4); }
+    50% { box-shadow: 0 0 30px rgba(201,168,73,0.7); }
+  }
+
+  .life-card {
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 16px; margin-bottom: 12px;
+    text-align: center;
+  }
+  .life-card .life-label { font-size: 10px; letter-spacing: 2px; color: #888; margin-bottom: 4px; text-transform: uppercase; }
+  .life-card .life-value { font-size: 72px; font-weight: 900; color: #fff; line-height: 1; font-family: 'Cinzel', Georgia, serif; }
+  .life-card .life-value.low { color: #ff5555; }
+  .life-card .life-value.critical { color: #ff0000; animation: pulseCrit 0.8s infinite; }
+  @keyframes pulseCrit { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  .life-btns {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;
+    margin-top: 12px;
+  }
+  .life-btn {
+    padding: 14px 4px; font-size: 14px; font-weight: 800;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06); color: #fff;
+    border-radius: 8px; cursor: pointer;
+  }
+  .life-btn:active { background: rgba(201,168,73,0.3); transform: scale(0.95); }
+  .life-btn.minus { border-color: rgba(255,85,85,0.4); color: #ff9999; }
+  .life-btn.plus { border-color: rgba(85,255,85,0.3); color: #99ff99; }
+
+  .cmd-card {
+    background: rgba(255,255,255,0.04);
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 16px; margin-bottom: 12px;
+  }
+  .cmd-card .section-title { font-size: 11px; letter-spacing: 2px; color: #C9A849; margin-bottom: 10px; text-transform: uppercase; font-weight: 700; }
+  .cmd-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .cmd-row:last-child { border-bottom: none; }
+  .cmd-row .cmd-name { font-size: 14px; text-transform: capitalize; font-weight: 600; }
+  .cmd-row .cmd-dmg { font-size: 12px; color: #888; margin-left: 6px; }
+  .cmd-row .cmd-dmg.dying { color: #ff5555; font-weight: 700; }
+  .cmd-row .cmd-dmg.lethal { color: #ff0000; font-weight: 900; }
+  .cmd-btns { display: flex; gap: 4px; }
+  .cmd-btn {
+    width: 38px; height: 38px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06); color: #fff; font-size: 16px; font-weight: 800; cursor: pointer;
+  }
+  .cmd-btn:active { background: rgba(201,168,73,0.25); transform: scale(0.93); }
+
+  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .action-btn {
+    padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06); color: #fff;
+    font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    cursor: pointer;
+  }
+  .action-btn:active { background: rgba(201,168,73,0.3); }
+  .action-btn.primary { background: #C9A849; color: #000; border-color: #C9A849; }
+  .action-btn.danger { background: rgba(200,30,30,0.18); color: #ff7777; border-color: rgba(200,30,30,0.4); }
+
+  .status-bar {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 6px 12px; font-size: 10px; color: #666;
+    background: rgba(0,0,0,0.9); text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    letter-spacing: 1px;
+  }
+  .status-bar.ok { color: #6c6; }
+  .status-bar.err { color: #c66; }
+
+  .dead-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 10000; padding: 40px;
+  }
+  .dead-overlay h2 { font-family: 'Cinzel', Georgia, serif; font-size: 48px; color: #ff5555; margin-bottom: 12px; }
+  .dead-overlay p { color: #888; margin-bottom: 24px; text-align: center; }
+</style>
+</head>
+<body>
+
+<!-- JOIN -->
+<div id="joinScreen" class="screen active">
+  <h1>EDHCapsul</h1>
+  <div class="join-form">
+    <label>Room Code</label>
+    <input id="codeInput" type="text" maxlength="4" autocomplete="off" autocapitalize="characters" inputmode="text" placeholder="ABCD">
+    <button class="btn" id="joinBtn" disabled>Connect</button>
+  </div>
+</div>
+
+<!-- SEAT PICK -->
+<div id="seatScreen" class="screen">
+  <h1>Who are you?</h1>
+  <div id="seatGrid" class="seat-grid"></div>
+  <button class="btn secondary" style="margin-top:16px;max-width:400px;margin-left:auto;margin-right:auto;" onclick="leaveRoom()">← Wrong code</button>
+</div>
+
+<!-- PLAY -->
+<div id="playScreen" class="screen">
+  <div class="my-seat-banner">You are <strong id="mySeatName">...</strong></div>
+  <div class="turn-indicator" id="turnIndicator">waiting for game to start</div>
+
+  <div class="life-card">
+    <div class="life-label">LIFE</div>
+    <div class="life-value" id="lifeValue">40</div>
+    <div class="life-btns">
+      <button class="life-btn minus" onclick="emitLife(-10)">-10</button>
+      <button class="life-btn minus" onclick="emitLife(-5)">-5</button>
+      <button class="life-btn minus" onclick="emitLife(-1)">-1</button>
+      <button class="life-btn plus" onclick="emitLife(1)">+1</button>
+      <button class="life-btn plus" onclick="emitLife(5)">+5</button>
+      <button class="life-btn plus" onclick="emitLife(10)">+10</button>
+    </div>
+  </div>
+
+  <div class="cmd-card">
+    <div class="section-title">⚔ Commander damage taken</div>
+    <div id="cmdRows"></div>
+  </div>
+
+  <div class="action-grid">
+    <button class="action-btn primary" onclick="emitCastCommander()">Cast Commander</button>
+    <button class="action-btn" onclick="emitNextTurn()">End My Turn</button>
+  </div>
+
+  <div class="action-grid" style="grid-template-columns:1fr;">
+    <button class="action-btn danger" onclick="emitConcede()">Concede</button>
+  </div>
+</div>
+
+<!-- DEAD OVERLAY -->
+<div id="deadOverlay" class="dead-overlay" style="display:none;">
+  <h2>☠ Eliminated</h2>
+  <p>You're out for this game. Enjoy the show.</p>
+  <button class="btn" onclick="document.getElementById('deadOverlay').style.display='none'">Dismiss</button>
+</div>
+
+<div id="statusBar" class="status-bar">disconnected</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ============================================================================
+// EDHCapsul Phone Controller
+// ============================================================================
+
+const SUPABASE_URL = 'https://txkivthzagrkcdhnoflh.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_chxrej0Rj3girU-xf8-LCA_t2OcNw_d';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Device ID persistence
+function getDeviceId() {
+  let id = localStorage.getItem('edhmp_device_id');
+  if (!id) {
+    id = (crypto.randomUUID && crypto.randomUUID()) || ('phone-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8));
+    localStorage.setItem('edhmp_device_id', id);
+  }
+  return id;
+}
+const deviceId = getDeviceId();
+
+// ----- State -----
+let myCode = null;
+let mySeat = null;  // player ID I've claimed
+let roomState = null;
+let stateSub = null;
+let eventChannel = null;
+
+// ----- Status bar -----
+function setStatus(msg, state) {
+  const el = document.getElementById('statusBar');
+  el.textContent = msg;
+  el.className = 'status-bar' + (state ? ' ' + state : '');
+}
+
+// ----- Screen nav -----
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ----- Code input -----
+const codeInput = document.getElementById('codeInput');
+const joinBtn = document.getElementById('joinBtn');
+codeInput.addEventListener('input', () => {
+  codeInput.value = codeInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  joinBtn.disabled = codeInput.value.length !== 4;
+});
+joinBtn.addEventListener('click', () => joinRoom(codeInput.value));
+
+// Auto-populate code from ?code=XXXX
+(function () {
+  const p = new URLSearchParams(window.location.search);
+  const c = p.get('code');
+  if (c && /^[A-Z0-9]{4}$/i.test(c)) {
+    codeInput.value = c.toUpperCase();
+    joinBtn.disabled = false;
+    // Auto-join after 200ms so the user sees the code populated
+    setTimeout(() => joinRoom(c.toUpperCase()), 200);
+  }
+})();
+
+// ----- Join -----
+async function joinRoom(code) {
+  setStatus('connecting to room ' + code + '...');
+  const { data, error } = await supabase.from('rooms').select('*').eq('code', code).single();
+  if (error || !data) {
+    setStatus('room ' + code + ' not found', 'err');
+    return;
+  }
+  myCode = code;
+  roomState = data;
+  setStatus('connected to ' + code, 'ok');
+
+  // Subscribe to state updates
+  stateSub = supabase.channel('room:' + code + ':phone:' + deviceId)
+    .on('postgres_changes', {
+      event: 'UPDATE',
+      schema: 'public',
+      table: 'rooms',
+      filter: 'code=eq.' + code
+    }, (payload) => {
+      roomState = payload.new;
+      renderCurrent();
+    })
+    .subscribe();
+
+  // Event broadcast channel for sending actions to TV
+  eventChannel = supabase.channel('room:' + code + ':events');
+  await eventChannel.subscribe();
+
+  showSeatPicker();
+}
+
+// ----- Seat picker -----
+function showSeatPicker() {
+  const grid = document.getElementById('seatGrid');
+  const pod = (roomState.state && roomState.state.pod) || [];
+  const claimed = roomState.claimed_seats || {};
+  const claimedPids = Object.values(claimed);
+
+  if (!pod.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;padding:20px;text-align:center;color:#888;">The host hasn\'t selected a pod yet. Waiting...</div>';
+    // Watch for pod to appear via the existing subscription
+    setTimeout(showSeatPicker, 1500);
+  } else {
+    grid.innerHTML = pod.map(p => {
+      const isClaimed = claimedPids.includes(p.id) && claimed[deviceId] !== p.id;
+      return '<button class="seat-btn ' + (isClaimed ? 'claimed' : '') + '" ' +
+        (isClaimed ? 'disabled' : '') + ' onclick="claimSeat(\'' + p.id + '\')">' +
+        '<div class="seat-name">' + (p.name || p.id) + '</div>' +
+        '<div class="seat-meta">' + (isClaimed ? 'taken' : (p.nickname || 'tap to claim')) + '</div>' +
+      '</button>';
+    }).join('');
+  }
+  showScreen('seatScreen');
+}
+
+async function claimSeat(pid) {
+  const newClaims = Object.assign({}, roomState.claimed_seats || {}, { [deviceId]: pid });
+  const { error } = await supabase.from('rooms')
+    .update({ claimed_seats: newClaims })
+    .eq('code', myCode);
+  if (error) {
+    setStatus('claim failed: ' + error.message, 'err');
+    return;
+  }
+  mySeat = pid;
+  localStorage.setItem('edhmp_last_seat_' + myCode, pid);
+  document.getElementById('mySeatName').textContent = pid;
+  showScreen('playScreen');
+  renderCurrent();
+}
+
+function leaveRoom() {
+  if (stateSub) stateSub.unsubscribe();
+  if (eventChannel) eventChannel.unsubscribe();
+  myCode = null; mySeat = null; roomState = null;
+  codeInput.value = '';
+  joinBtn.disabled = true;
+  showScreen('joinScreen');
+  setStatus('disconnected');
+}
+
+// ----- Render current player's view -----
+function renderCurrent() {
+  if (!mySeat || !roomState) return;
+  const gs = roomState.state && roomState.state.gameState;
+  if (!gs || !gs.players || !gs.players[mySeat]) {
+    // Game hasn't started yet OR I'm not in the active pod
+    document.getElementById('lifeValue').textContent = '–';
+    document.getElementById('turnIndicator').textContent = 'waiting for game start';
+    document.getElementById('turnIndicator').classList.remove('active');
+    document.getElementById('cmdRows').innerHTML = '<div style="color:#666;text-align:center;padding:8px;">standby</div>';
+    return;
+  }
+
+  const p = gs.players[mySeat];
+
+  // Life
+  const lifeEl = document.getElementById('lifeValue');
+  lifeEl.textContent = p.life;
+  lifeEl.classList.toggle('low', p.life <= 10 && p.life > 5);
+  lifeEl.classList.toggle('critical', p.life <= 5);
+
+  // Turn indicator
+  const activePid = gs.activePlayerId || (gs.log && gs.log.length && gs.log[gs.log.length - 1].playerId);
+  const turnEl = document.getElementById('turnIndicator');
+  if (activePid === mySeat) {
+    turnEl.textContent = '★ YOUR TURN ★';
+    turnEl.classList.add('active');
+  } else {
+    turnEl.textContent = activePid ? activePid + '\'s turn' : 'game running';
+    turnEl.classList.remove('active');
+  }
+
+  // Commander damage taken (per opponent)
+  const cmdRows = document.getElementById('cmdRows');
+  const opponents = (roomState.state.activePod || []).filter(id => id !== mySeat);
+  if (!opponents.length) {
+    cmdRows.innerHTML = '<div style="color:#666;text-align:center;padding:8px;">no opponents yet</div>';
+  } else {
+    cmdRows.innerHTML = opponents.map(opp => {
+      const dmg = (p.commanderDamage && p.commanderDamage[opp]) || 0;
+      const dmgClass = dmg >= 21 ? 'lethal' : (dmg >= 14 ? 'dying' : '');
+      return '<div class="cmd-row">' +
+        '<div><span class="cmd-name">' + opp + '</span>' +
+          '<span class="cmd-dmg ' + dmgClass + '">' + dmg + '/21</span></div>' +
+        '<div class="cmd-btns">' +
+          '<button class="cmd-btn" onclick="emitCmdDmg(\'' + opp + '\', -1)">−</button>' +
+          '<button class="cmd-btn" onclick="emitCmdDmg(\'' + opp + '\', 1)">+</button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // Dead?
+  if (p.isDead) {
+    document.getElementById('deadOverlay').style.display = 'flex';
+  }
+}
+
+// ----- Emitters (send actions to TV via broadcast) -----
+async function emit(type, payload) {
+  if (!eventChannel || !mySeat) return;
+  const event = Object.assign({ type, pid: mySeat, from: deviceId, at: Date.now() }, payload || {});
+  const res = await eventChannel.send({ type: 'broadcast', event: 'action', payload: event });
+  setStatus('→ ' + type, 'ok');
+  setTimeout(() => setStatus('connected to ' + myCode, 'ok'), 800);
+  return res;
+}
+
+function emitLife(amount)       { emit('adjustLife', { amount }); }
+function emitCastCommander()    { emit('castCommander'); }
+function emitNextTurn()         { emit('nextTurn'); }
+function emitConcede()          {
+  if (!confirm('Concede this game?')) return;
+  emit('concede');
+}
+function emitCmdDmg(sourcePid, amount) {
+  // Commander damage TAKEN: I am the target, the opponent is the source
+  emit('adjustCommanderDamage', { targetPid: mySeat, sourcePid, amount });
+}
+
+// ----- Restore last seat on reconnect -----
+window.addEventListener('load', () => {
+  // If we auto-joined via ?code, and we've been in this room before, try to restore seat
+  const p = new URLSearchParams(window.location.search);
+  const c = p.get('code');
+  if (c) {
+    const lastSeat = localStorage.getItem('edhmp_last_seat_' + c.toUpperCase());
+    if (lastSeat) {
+      // Will be applied after join completes — claimSeat flow still required
+      // (skipping automatic reclaim for now; tap flow is safer)
+    }
+  }
+});
+</script>
+
+</body>
+</html>
