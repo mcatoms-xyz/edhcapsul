@@ -287,6 +287,62 @@ html, body {
   50% { box-shadow: 0 0 10px 2px rgba(27,186,1,0.35); }
 }
 
+/* Save Games button — red when unlinked, green when ready */
+.sg-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.sg-btn {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+.sg-btn:disabled { cursor: not-allowed; opacity: 0.6; }
+.sg-btn.not-set {
+  background: rgba(200,30,30,0.15);
+  color: #ff6666;
+  border-color: rgba(200,30,30,0.5);
+}
+.sg-btn.not-set:hover:not(:disabled) { background: rgba(200,30,30,0.28); }
+.sg-btn.ready {
+  background: rgba(27,186,1,0.15);
+  color: #1BBA01;
+  border-color: rgba(27,186,1,0.5);
+}
+.sg-btn.ready:hover { background: rgba(27,186,1,0.28); }
+.sg-btn.saving {
+  background: rgba(201,168,73,0.2);
+  color: #C9A849;
+  border-color: rgba(201,168,73,0.5);
+}
+.sg-btn.saved {
+  background: rgba(27,186,1,0.35);
+  color: #0a0;
+  border-color: #1BBA01;
+}
+.sg-status {
+  font-size: 9px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  min-height: 11px;
+}
+.sg-status.not-set { color: rgba(255,102,102,0.7); }
+.sg-status.ready { color: rgba(27,186,1,0.7); }
+.sg-status.saving { color: rgba(201,168,73,0.85); }
+.sg-status.saved { color: #1BBA01; }
+
 /* ---- MAIN LAYOUT: 2-column top, 2-column bottom ---- */
 .gn-layout {
   display: grid;
@@ -3247,7 +3303,10 @@ html, body {
   <a href="mtgcapsul.html" class="arsenal-link">🃏 Hub</a>
   <a href="arsenal.html" class="arsenal-link">📦 Arsenal</a>
   <a href="gamelog.html" class="arsenal-link">📊 Game Log</a>
-  <button class="arsenal-link" onclick="syncToRocky()" id="syncBtn" style="background:none;cursor:pointer;border:1px solid rgba(0,126,255,0.3);color:#007EFF;font-family:inherit">💾 Sync to Rocky</button>
+  <div class="sg-wrap" title="Save your games to data/games.js so they persist in the repo">
+    <button class="sg-btn not-set" id="saveGamesBtn" onclick="saveGamesClick()"><span id="sgLabel">⚠ SAVE NOT SET</span></button>
+    <div class="sg-status not-set" id="sgStatus">click to link file</div>
+  </div>
 </div>
 
 <!-- MAIN LAYOUT -->
@@ -3449,6 +3508,170 @@ function startMultiplayer() {
     }
   }
 })();
+
+// ---- SAVE GAMES TO FILE ----
+// File System Access API → writes localStorage games back to data/games.js.
+// Handle is persisted in IndexedDB across reloads; permission may need to
+// be re-granted on page reload (one click, no re-pick required).
+const SG = { btn: null, label: null, statusEl: null, handle: null, lastSyncedAt: null, tickTimer: null, filename: null };
+
+function _sgOpenIDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open('edhcapsul', 1);
+    req.onupgradeneeded = (e) => { e.target.result.createObjectStore('handles'); };
+    req.onsuccess = (e) => resolve(e.target.result);
+    req.onerror = (e) => reject(e.target.error);
+  });
+}
+async function _sgSaveHandle(h) {
+  const db = await _sgOpenIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('handles', 'readwrite');
+    tx.objectStore('handles').put(h, 'games-file');
+    tx.oncomplete = () => resolve();
+    tx.onerror = (e) => reject(e.target.error);
+  });
+}
+async function _sgLoadHandle() {
+  const db = await _sgOpenIDB();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('handles', 'readonly');
+    const req = tx.objectStore('handles').get('games-file');
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = (e) => reject(e.target.error);
+  });
+}
+
+function _sgBuildFileContent() {
+  const games = JSON.parse(localStorage.getItem('mtg_games') || '[]');
+  return 'var MTG_GAMES = ' + JSON.stringify({ games }, null, 2) + ';\n';
+}
+
+function _sgRelativeTime(iso) {
+  if (!iso) return 'never synced';
+  const diff = Date.now() - new Date(iso).getTime();
+  if (diff < 60_000) return 'synced just now';
+  if (diff < 3_600_000) return 'synced ' + Math.floor(diff / 60_000) + 'm ago';
+  if (diff < 86_400_000) return 'synced ' + Math.floor(diff / 3_600_000) + 'h ago';
+  return 'synced ' + Math.floor(diff / 86_400_000) + 'd ago';
+}
+
+function _sgSetState(state, overrideStatus) {
+  const { btn, label, statusEl, lastSyncedAt, filename } = SG;
+  if (!btn || !label || !statusEl) return;
+  ['not-set','ready','saving','saved'].forEach(s => {
+    btn.classList.remove(s);
+    statusEl.classList.remove(s);
+  });
+  btn.classList.add(state);
+  statusEl.classList.add(state);
+  if (overrideStatus) { statusEl.textContent = overrideStatus; return; }
+  switch (state) {
+    case 'not-set':
+      label.textContent = '⚠ SAVE NOT SET';
+      statusEl.textContent = 'click to link file';
+      break;
+    case 'ready':
+      label.textContent = '💾 Save Games';
+      statusEl.textContent = (filename ? filename + ' · ' : '') + _sgRelativeTime(lastSyncedAt);
+      break;
+    case 'saving':
+      label.textContent = '⏳ Saving...';
+      statusEl.textContent = 'writing to file';
+      break;
+    case 'saved':
+      label.textContent = '✓ Saved';
+      statusEl.textContent = 'just now';
+      setTimeout(() => _sgSetState('ready'), 1800);
+      break;
+  }
+}
+
+async function _sgInit() {
+  SG.btn = document.getElementById('saveGamesBtn');
+  SG.label = document.getElementById('sgLabel');
+  SG.statusEl = document.getElementById('sgStatus');
+  if (!SG.btn || !SG.label || !SG.statusEl) return;
+
+  if (!window.showSaveFilePicker) {
+    SG.btn.disabled = true;
+    _sgSetState('not-set', 'use Chrome or Edge');
+    return;
+  }
+
+  SG.lastSyncedAt = localStorage.getItem('mtg_gamesSaveLastAt') || null;
+
+  try {
+    const handle = await _sgLoadHandle();
+    if (handle) {
+      SG.handle = handle;
+      SG.filename = handle.name || null;
+      const perm = await handle.queryPermission({ mode: 'readwrite' });
+      if (perm === 'granted') {
+        _sgSetState('ready');
+      } else {
+        _sgSetState('not-set', 'click to reconnect ' + (handle.name || 'file'));
+      }
+    } else {
+      _sgSetState('not-set');
+    }
+  } catch (e) {
+    console.warn('[SG] init failed:', e);
+    _sgSetState('not-set');
+  }
+
+  // Tick the relative time every 30s while linked
+  if (SG.tickTimer) clearInterval(SG.tickTimer);
+  SG.tickTimer = setInterval(() => {
+    if (SG.btn && SG.btn.classList.contains('ready')) {
+      SG.statusEl.textContent = (SG.filename ? SG.filename + ' · ' : '') + _sgRelativeTime(SG.lastSyncedAt);
+    }
+  }, 30_000);
+}
+
+async function saveGamesClick() {
+  if (!SG.btn) return;
+  try {
+    // Need a handle — either pick one or re-grant permission on existing
+    if (!SG.handle) {
+      SG.handle = await window.showSaveFilePicker({
+        suggestedName: 'games.js',
+        types: [{ description: 'JavaScript', accept: { 'application/javascript': ['.js'] } }]
+      });
+      await _sgSaveHandle(SG.handle);
+      SG.filename = SG.handle.name || 'games.js';
+    } else {
+      const perm = await SG.handle.queryPermission({ mode: 'readwrite' });
+      if (perm !== 'granted') {
+        const req = await SG.handle.requestPermission({ mode: 'readwrite' });
+        if (req !== 'granted') {
+          _sgSetState('not-set', 'permission denied');
+          return;
+        }
+      }
+    }
+
+    _sgSetState('saving');
+    const content = _sgBuildFileContent();
+    const w = await SG.handle.createWritable();
+    await w.write(content);
+    await w.close();
+
+    SG.lastSyncedAt = new Date().toISOString();
+    localStorage.setItem('mtg_gamesSaveLastAt', SG.lastSyncedAt);
+    _sgSetState('saved');
+  } catch (e) {
+    if (e.name === 'AbortError') {
+      // user cancelled picker
+      _sgSetState(SG.handle ? 'ready' : 'not-set');
+      return;
+    }
+    console.error('[SG] save failed:', e);
+    _sgSetState('not-set', 'error: ' + (e.message || 'unknown').slice(0, 28));
+  }
+}
+
+_sgInit();
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -8297,71 +8520,6 @@ function showBgVideo() {
 showBgVideo();
 
 /* Blind Eternities canvas removed — using video backgrounds */
-
-// ---- SYNC TO ROCKY ----
-let _gnSyncHandle = null;
-
-async function syncToRocky() {
-  const btn = document.getElementById('syncBtn');
-
-  // Gather all mtg_ localStorage keys
-  const exportData = { _source: 'gamenight', _exportedAt: new Date().toISOString() };
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key.startsWith('mtg_')) {
-      try { exportData[key] = JSON.parse(localStorage.getItem(key)); }
-      catch(e) { exportData[key] = localStorage.getItem(key); }
-    }
-  }
-
-  // Also include live DATA state (has runtime-added players/decks not yet in files)
-  exportData._livePod = DATA.pod;
-  exportData._liveDecks = DATA.decks;
-  exportData._liveGames = DATA.games;
-  exportData._activePod = activePod;
-  exportData._gameState = gameState;
-  exportData._activeVariant = activeVariant;
-  exportData._ownerColors = OWNER_COLORS;
-
-  const json = JSON.stringify(exportData, null, 2);
-
-  const onSuccess = () => {
-    if (btn) { const orig = btn.innerHTML; btn.innerHTML = '✓ Synced!'; setTimeout(() => btn.innerHTML = '💾 Sync to Rocky', 2500); }
-    toast('Synced to Rocky!');
-  };
-
-  // Try File System Access API first, fall back to download
-  if (window.showSaveFilePicker) {
-    try {
-      if (!_gnSyncHandle) {
-        _gnSyncHandle = await window.showSaveFilePicker({
-          suggestedName: 'gamenight-sync.json',
-          types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]
-        });
-      }
-      const w = await _gnSyncHandle.createWritable();
-      await w.write(json);
-      await w.close();
-      onSuccess();
-      return;
-    } catch(e) {
-      if (e.name === 'NotAllowedError') { _gnSyncHandle = null; return syncToRocky(); }
-      if (e.name === 'AbortError') return; // user cancelled
-      console.warn('File System Access failed, falling back to download:', e);
-    }
-  }
-  // Fallback: download to Downloads folder
-  const blob = new Blob([json], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'gamenight-sync.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(a.href);
-  onSuccess();
-  toast('File saved to Downloads — move it to _-inbox/');
-}
 
 // ---- INIT ----
 renderAll();

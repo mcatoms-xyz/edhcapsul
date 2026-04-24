@@ -1755,6 +1755,45 @@ function init() {
 }
 
 init();
+
+// ---- CROSS-TAB SYNC ----
+// When a game is logged in gamenight.html (same origin), localStorage
+// changes fire a `storage` event in every OTHER tab. Re-read games and
+// re-render the whole log so this tab stays live.
+function showSyncToast(msg) {
+  let t = document.getElementById('_syncToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = '_syncToast';
+    t.style.cssText = 'position:fixed;top:20px;right:20px;background:rgba(27,186,1,0.15);color:#1BBA01;border:1px solid rgba(27,186,1,0.5);padding:10px 16px;border-radius:10px;font-size:13px;font-weight:700;z-index:10000;transition:opacity 0.3s;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);letter-spacing:0.5px';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._hideTimer);
+  t._hideTimer = setTimeout(() => { t.style.opacity = '0'; }, 2500);
+}
+
+window.addEventListener('storage', function(e) {
+  if (!e.key || !e.newValue) return;
+  if (e.key === 'mtg_games') {
+    try {
+      const updated = JSON.parse(e.newValue);
+      if (!Array.isArray(updated)) return;
+      const prevCount = DATA.games.games.length;
+      DATA.games.games = updated;
+      init();
+      const delta = updated.length - prevCount;
+      if (delta > 0) {
+        showSyncToast('+ ' + delta + ' game' + (delta === 1 ? '' : 's') + ' logged');
+      } else {
+        showSyncToast('games updated');
+      }
+    } catch (err) {
+      console.warn('[gamelog] cross-tab sync parse error:', err);
+    }
+  }
+});
 </script>
 </body>
 </html>
