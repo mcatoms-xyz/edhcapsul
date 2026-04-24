@@ -250,28 +250,54 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ============================================================================
-// EDHCapsul Phone Controller
+// EDHCapsul Phone Controller — DEFENSIVE BOOT
 // ============================================================================
+
+// Surface ANY error visibly in the status bar. Must be first — before anything
+// else that could throw.
+(function () {
+  function writeError(msg) {
+    var el = document.getElementById('statusBar');
+    if (el) { el.textContent = 'err: ' + msg; el.className = 'status-bar err'; }
+  }
+  window.onerror = function (msg, src, line) { writeError(msg + ' @L' + line); return false; };
+  window.addEventListener('unhandledrejection', function (e) {
+    writeError('promise: ' + (e.reason && e.reason.message ? e.reason.message : e.reason));
+  });
+})();
 
 const SUPABASE_URL = 'https://txkivthzagrkcdhnoflh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_chxrej0Rj3girU-xf8-LCA_t2OcNw_d';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Lazy Supabase client — created on first use. Survives CDN race conditions.
+let _sb = null;
+function sb() {
+  if (_sb) return _sb;
+  if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+    throw new Error('Supabase client not loaded yet (CDN blocked or slow). Refresh the page.');
+  }
+  _sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  return _sb;
+}
 
 // Device ID persistence
 function getDeviceId() {
-  let id = localStorage.getItem('edhmp_device_id');
-  if (!id) {
-    id = (crypto.randomUUID && crypto.randomUUID()) || ('phone-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8));
-    localStorage.setItem('edhmp_device_id', id);
+  try {
+    let id = localStorage.getItem('edhmp_device_id');
+    if (!id) {
+      id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : ('phone-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8));
+      localStorage.setItem('edhmp_device_id', id);
+    }
+    return id;
+  } catch (e) {
+    return 'phone-' + Date.now();
   }
-  return id;
 }
 const deviceId = getDeviceId();
 
 // ----- State -----
 let myCode = null;
-let mySeat = null;  // player ID I've claimed
+let mySeat = null;
 let roomState = null;
 let stateSub = null;
 let eventChannel = null;
@@ -279,6 +305,7 @@ let eventChannel = null;
 // ----- Status bar -----
 function setStatus(msg, state) {
   const el = document.getElementById('statusBar');
+  if (!el) return;
   el.textContent = msg;
   el.className = 'status-bar' + (state ? ' ' + state : '');
 }
@@ -286,60 +313,96 @@ function setStatus(msg, state) {
 // ----- Screen nav -----
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  const target = document.getElementById(id);
+  if (target) target.classList.add('active');
 }
 
-// ----- Code input -----
-const codeInput = document.getElementById('codeInput');
-const joinBtn = document.getElementById('joinBtn');
-codeInput.addEventListener('input', () => {
-  codeInput.value = codeInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-  joinBtn.disabled = codeInput.value.length !== 4;
-});
-joinBtn.addEventListener('click', () => joinRoom(codeInput.value));
+// ----- Wait for both DOM and Supabase CDN before wiring up -----
+function whenReady(cb, attempt) {
+  attempt = attempt || 0;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { whenReady(cb); });
+    return;
+  }
+  if (!window.supabase || typeof window.supabase.createClient !== 'function') {
+    if (attempt > 50) { // ~5 sec
+      setStatus('Supabase CDN failed to load. Check network.', 'err');
+      return;
+    }
+    setStatus('loading supabase client... (' + attempt + ')');
+    return setTimeout(function () { whenReady(cb, attempt + 1); }, 100);
+  }
+  try { cb(); }
+  catch (e) { setStatus('boot: ' + e.message, 'err'); }
+}
 
-// Auto-populate code from ?code=XXXX
-(function () {
-  const p = new URLSearchParams(window.location.search);
-  const c = p.get('code');
+whenReady(function boot() {
+  setStatus('ready. enter a code.');
+
+  const codeInput = document.getElementById('codeInput');
+  const joinBtn = document.getElementById('joinBtn');
+
+  if (!codeInput || !joinBtn) {
+    setStatus('form elements missing', 'err');
+    return;
+  }
+
+  codeInput.addEventListener('input', function () {
+    codeInput.value = codeInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    joinBtn.disabled = codeInput.value.length !== 4;
+  });
+
+  joinBtn.addEventListener('click', function () {
+    joinRoom(codeInput.value);
+  });
+
+  // Auto-populate from ?code=XXXX and auto-join
+  const params = new URLSearchParams(window.location.search);
+  const c = params.get('code');
   if (c && /^[A-Z0-9]{4}$/i.test(c)) {
     codeInput.value = c.toUpperCase();
     joinBtn.disabled = false;
-    // Auto-join after 200ms so the user sees the code populated
-    setTimeout(() => joinRoom(c.toUpperCase()), 200);
+    setStatus('auto-joining room ' + c.toUpperCase() + '...');
+    setTimeout(function () { joinRoom(c.toUpperCase()); }, 300);
   }
-})();
+});
 
 // ----- Join -----
 async function joinRoom(code) {
-  setStatus('connecting to room ' + code + '...');
-  const { data, error } = await supabase.from('rooms').select('*').eq('code', code).single();
-  if (error || !data) {
-    setStatus('room ' + code + ' not found', 'err');
-    return;
+  try {
+    setStatus('connecting to room ' + code + '...');
+    const client = sb();
+    const { data, error } = await client.from('rooms').select('*').eq('code', code).single();
+    if (error || !data) {
+      setStatus('room ' + code + ' not found' + (error ? ': ' + error.message : ''), 'err');
+      return;
+    }
+    myCode = code;
+    roomState = data;
+    setStatus('connected to ' + code, 'ok');
+
+    // Subscribe to state updates
+    stateSub = client.channel('room:' + code + ':phone:' + deviceId)
+      .on('postgres_changes', {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'rooms',
+        filter: 'code=eq.' + code
+      }, (payload) => {
+        roomState = payload.new;
+        renderCurrent();
+      })
+      .subscribe();
+
+    // Event broadcast channel for sending actions to TV
+    eventChannel = client.channel('room:' + code + ':events');
+    await eventChannel.subscribe();
+
+    showSeatPicker();
+  } catch (e) {
+    setStatus('join failed: ' + e.message, 'err');
+    console.error('joinRoom error', e);
   }
-  myCode = code;
-  roomState = data;
-  setStatus('connected to ' + code, 'ok');
-
-  // Subscribe to state updates
-  stateSub = supabase.channel('room:' + code + ':phone:' + deviceId)
-    .on('postgres_changes', {
-      event: 'UPDATE',
-      schema: 'public',
-      table: 'rooms',
-      filter: 'code=eq.' + code
-    }, (payload) => {
-      roomState = payload.new;
-      renderCurrent();
-    })
-    .subscribe();
-
-  // Event broadcast channel for sending actions to TV
-  eventChannel = supabase.channel('room:' + code + ':events');
-  await eventChannel.subscribe();
-
-  showSeatPicker();
 }
 
 // ----- Seat picker -----
@@ -367,27 +430,33 @@ function showSeatPicker() {
 }
 
 async function claimSeat(pid) {
-  const newClaims = Object.assign({}, roomState.claimed_seats || {}, { [deviceId]: pid });
-  const { error } = await supabase.from('rooms')
-    .update({ claimed_seats: newClaims })
-    .eq('code', myCode);
-  if (error) {
-    setStatus('claim failed: ' + error.message, 'err');
-    return;
+  try {
+    const newClaims = Object.assign({}, roomState.claimed_seats || {}, { [deviceId]: pid });
+    const { error } = await sb().from('rooms')
+      .update({ claimed_seats: newClaims })
+      .eq('code', myCode);
+    if (error) {
+      setStatus('claim failed: ' + error.message, 'err');
+      return;
+    }
+    mySeat = pid;
+    try { localStorage.setItem('edhmp_last_seat_' + myCode, pid); } catch (e) {}
+    document.getElementById('mySeatName').textContent = pid;
+    showScreen('playScreen');
+    renderCurrent();
+  } catch (e) {
+    setStatus('claim failed: ' + e.message, 'err');
   }
-  mySeat = pid;
-  localStorage.setItem('edhmp_last_seat_' + myCode, pid);
-  document.getElementById('mySeatName').textContent = pid;
-  showScreen('playScreen');
-  renderCurrent();
 }
 
 function leaveRoom() {
   if (stateSub) stateSub.unsubscribe();
   if (eventChannel) eventChannel.unsubscribe();
   myCode = null; mySeat = null; roomState = null;
-  codeInput.value = '';
-  joinBtn.disabled = true;
+  const ci = document.getElementById('codeInput');
+  const jb = document.getElementById('joinBtn');
+  if (ci) ci.value = '';
+  if (jb) jb.disabled = true;
   showScreen('joinScreen');
   setStatus('disconnected');
 }
