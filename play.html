@@ -20,7 +20,7 @@
     -webkit-tap-highlight-color: transparent;
     overscroll-behavior: none;
   }
-  body { padding: 16px; padding-bottom: 32px; }
+  body { padding: 14px; padding-bottom: 40px; }
 
   h1 {
     font-family: 'Cinzel', Georgia, serif;
@@ -85,16 +85,10 @@
   .seat-btn.claimed .seat-meta { color: #C9A849; }
 
   /* ---------- PLAY SCREEN ---------- */
-  .my-seat-banner {
-    text-align: center; padding: 8px 12px;
-    background: rgba(201,168,73,0.15);
-    border: 1px solid rgba(201,168,73,0.4);
-    border-radius: 10px; margin-bottom: 12px;
-    font-size: 13px; letter-spacing: 1px;
-  }
-  .my-seat-banner strong { color: #C9A849; font-size: 16px; text-transform: capitalize; }
+
+  /* Turn banner — stays loud so you can't miss it */
   .turn-indicator {
-    text-align: center; padding: 10px; margin-bottom: 12px;
+    text-align: center; padding: 10px; margin-bottom: 10px;
     border-radius: 10px; font-size: 13px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase;
     background: rgba(255,255,255,0.04); color: #666;
   }
@@ -108,24 +102,86 @@
     50% { box-shadow: 0 0 30px rgba(201,168,73,0.7); }
   }
 
+  /* Archenemy role badge */
+  .role-badge {
+    text-align: center; font-size: 11px; letter-spacing: 2px; padding: 4px 0;
+    margin-bottom: 6px; text-transform: uppercase; font-weight: 700;
+  }
+  .role-badge.villain { color: #E88; }
+  .role-badge.hero { color: #007EFF; }
+
+  /* Commander hero — art + name */
+  .cmdr-hero {
+    border-radius: 14px; overflow: hidden; margin-bottom: 10px;
+    border: 2px solid rgba(255,255,255,0.08);
+    background-size: cover; background-position: center;
+    position: relative; min-height: 130px;
+    display: flex; align-items: flex-end;
+  }
+  .cmdr-hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.85) 100%);
+  }
+  .cmdr-hero-info {
+    position: relative; z-index: 1; padding: 14px 16px; width: 100%;
+  }
+  .cmdr-name {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 18px; font-weight: 800; line-height: 1.1;
+    color: #fff; text-shadow: 0 1px 3px #000;
+  }
+  .deck-name {
+    font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px;
+    text-shadow: 0 1px 2px #000;
+  }
+  .mana-pips { margin-top: 5px; display: flex; gap: 3px; align-items: center; }
+  .mana-pips img { display: inline-block; }
+
+  /* Partner split */
+  .cmdr-hero.partner { display: flex; padding: 0; background: none; min-height: 130px; }
+  .cmdr-hero.partner::after { display: none; }
+  .partner-half {
+    flex: 1; position: relative; background-size: cover; background-position: center;
+    display: flex; align-items: flex-end;
+  }
+  .partner-half::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.85) 100%);
+  }
+  .partner-half-info {
+    position: relative; z-index: 1; padding: 10px 12px; width: 100%;
+  }
+  .partner-half .partner-name-text {
+    font-size: 13px; font-weight: 700; color: #fff; text-shadow: 0 1px 3px #000;
+  }
+  .partner-divider { width: 1px; background: rgba(0,0,0,0.6); }
+  .cmdr-hero-partners-label {
+    text-align: center; font-size: 10px; color: #888;
+    margin: -6px 0 8px; letter-spacing: 1px;
+  }
+
+  /* Life card */
   .life-card {
     background: rgba(255,255,255,0.04);
     border: 2px solid rgba(255,255,255,0.08);
-    border-radius: 14px; padding: 16px; margin-bottom: 12px;
+    border-radius: 14px; padding: 14px 14px 12px; margin-bottom: 10px;
     text-align: center;
   }
-  .life-card .life-label { font-size: 10px; letter-spacing: 2px; color: #888; margin-bottom: 4px; text-transform: uppercase; }
-  .life-card .life-value { font-size: 72px; font-weight: 900; color: #fff; line-height: 1; font-family: 'Cinzel', Georgia, serif; }
+  .life-card .life-label { font-size: 10px; letter-spacing: 2px; color: #888; margin-bottom: 2px; text-transform: uppercase; }
+  .life-card .life-value {
+    font-size: 64px; font-weight: 900; color: #fff; line-height: 1;
+    font-family: 'Cinzel', Georgia, serif;
+  }
   .life-card .life-value.low { color: #ff5555; }
   .life-card .life-value.critical { color: #ff0000; animation: pulseCrit 0.8s infinite; }
   @keyframes pulseCrit { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
   .life-btns {
     display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;
-    margin-top: 12px;
+    margin-top: 10px;
   }
   .life-btn {
-    padding: 14px 4px; font-size: 14px; font-weight: 800;
+    padding: 13px 4px; font-size: 13px; font-weight: 800;
     border: 1px solid rgba(255,255,255,0.15);
     background: rgba(255,255,255,0.06); color: #fff;
     border-radius: 8px; cursor: pointer;
@@ -134,20 +190,121 @@
   .life-btn.minus { border-color: rgba(255,85,85,0.4); color: #ff9999; }
   .life-btn.plus { border-color: rgba(85,255,85,0.3); color: #99ff99; }
 
-  .cmd-card {
+  /* Full card art toggle */
+  .fc-toggle {
+    width: 100%; padding: 8px; font-size: 11px; font-weight: 700;
+    background: rgba(255,255,255,0.03); color: #888;
+    border: 1px dashed rgba(255,255,255,0.1); border-radius: 8px;
+    margin-bottom: 10px; cursor: pointer; letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .fc-toggle:active { background: rgba(201,168,73,0.1); color: #C9A849; }
+  .fc-wrap { margin-bottom: 10px; display: none; }
+  .fc-wrap.shown { display: block; }
+  .fc-wrap img {
+    width: 100%; border-radius: 10px; display: block;
+  }
+  .fc-wrap.partner { display: none; gap: 4px; }
+  .fc-wrap.partner.shown { display: flex; }
+  .fc-wrap.partner img { flex: 1; max-width: 49%; }
+
+  /* Generic section card */
+  .sec-card {
     background: rgba(255,255,255,0.04);
     border: 2px solid rgba(255,255,255,0.08);
-    border-radius: 14px; padding: 16px; margin-bottom: 12px;
+    border-radius: 14px; padding: 12px 14px; margin-bottom: 10px;
   }
-  .cmd-card .section-title { font-size: 11px; letter-spacing: 2px; color: #C9A849; margin-bottom: 10px; text-transform: uppercase; font-weight: 700; }
+  .sec-title {
+    font-size: 10px; letter-spacing: 2px; color: #C9A849;
+    margin-bottom: 8px; text-transform: uppercase; font-weight: 700;
+  }
+
+  /* Commander zone row */
+  .zone-label {
+    font-size: 10px; color: #888; text-transform: uppercase;
+    letter-spacing: 1.5px; margin-right: 8px; display: inline-block;
+  }
+  .zone-row { display: flex; gap: 4px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+  .zone-btn {
+    flex: 1 1 auto; min-width: 62px;
+    padding: 8px 6px; font-size: 11px; font-weight: 700;
+    background: rgba(255,255,255,0.06); color: #aaa;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 7px;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .zone-btn:active { transform: scale(0.96); }
+  .zone-btn.active { background: rgba(201,168,73,0.25); color: #C9A849; border-color: #C9A849; }
+
+  /* Cast button */
+  .cast-btn {
+    width: 100%; padding: 12px; font-size: 13px; font-weight: 800;
+    background: rgba(201,168,73,0.1); color: #C9A849;
+    border: 1px solid rgba(201,168,73,0.4); border-radius: 10px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap; letter-spacing: 1px;
+  }
+  .cast-btn:active { background: rgba(201,168,73,0.25); }
+  .cast-btn .cast-tax { color: #D3202A; font-weight: 800; display: inline-flex; align-items: center; gap: 2px; }
+  .cast-btn img { vertical-align: middle; }
+
+  .partner-subhead {
+    font-size: 10px; color: #888; letter-spacing: 1px; margin: 8px 0 4px;
+    padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06);
+    text-transform: uppercase;
+  }
+
+  /* Status badges row */
+  .status-row {
+    display: flex; gap: 6px; margin-bottom: 10px;
+  }
+  .status-badge {
+    flex: 1; padding: 10px 6px; font-size: 12px; font-weight: 700;
+    background: rgba(255,255,255,0.04); color: #888;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    gap: 5px;
+  }
+  .status-badge:active { transform: scale(0.96); }
+  .status-badge.active { background: rgba(201,168,73,0.2); color: #C9A849; border-color: #C9A849; }
+  .status-badge .icon { font-size: 16px; }
+
+  /* Counters grid */
+  .counter-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .counter-row:last-child { border-bottom: none; }
+  .counter-label {
+    font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .counter-label .c-icon { font-size: 16px; }
+  .counter-val { font-size: 18px; font-weight: 800; min-width: 28px; text-align: center; }
+  .counter-val.danger { color: #ff5555; }
+  .counter-btns { display: flex; gap: 4px; }
+  .counter-btn {
+    width: 34px; height: 34px; border-radius: 7px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06); color: #fff;
+    font-size: 14px; font-weight: 800; cursor: pointer;
+  }
+  .counter-btn:active { background: rgba(201,168,73,0.25); transform: scale(0.92); }
+
+  /* Commander damage matrix — DEALT */
   .cmd-row {
     display: flex; align-items: center; justify-content: space-between;
     padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .cmd-row:last-child { border-bottom: none; }
+  .cmd-row .cmd-player {
+    display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;
+  }
+  .cmd-row .cmd-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
   .cmd-row .cmd-name { font-size: 14px; text-transform: capitalize; font-weight: 600; }
-  .cmd-row .cmd-dmg { font-size: 12px; color: #888; margin-left: 6px; }
-  .cmd-row .cmd-dmg.dying { color: #ff5555; font-weight: 700; }
+  .cmd-row .cmd-dmg { font-size: 12px; color: #888; margin-left: 8px; font-weight: 700; }
+  .cmd-row .cmd-dmg.dying { color: #ff5555; }
   .cmd-row .cmd-dmg.lethal { color: #ff0000; font-weight: 900; }
   .cmd-btns { display: flex; gap: 4px; }
   .cmd-btn {
@@ -156,17 +313,43 @@
   }
   .cmd-btn:active { background: rgba(201,168,73,0.25); transform: scale(0.93); }
 
-  .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-  .action-btn {
-    padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.06); color: #fff;
-    font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-    cursor: pointer;
+  /* Damage totals mini */
+  .totals-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px;
   }
-  .action-btn:active { background: rgba(201,168,73,0.3); }
-  .action-btn.primary { background: #C9A849; color: #000; border-color: #C9A849; }
-  .action-btn.danger { background: rgba(200,30,30,0.18); color: #ff7777; border-color: rgba(200,30,30,0.4); }
+  .total-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 8px 10px; text-align: center;
+  }
+  .total-label { font-size: 9px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 2px; }
+  .total-val { font-size: 20px; font-weight: 800; color: #fff; font-family: 'Cinzel', Georgia, serif; }
 
+  /* Footer controls */
+  .footer-controls {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px;
+  }
+  .action-btn {
+    padding: 13px 8px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06); color: #fff;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 4px;
+  }
+  .action-btn:active { transform: scale(0.97); background: rgba(201,168,73,0.2); }
+  .action-btn.primary { background: #C9A849; color: #000; border-color: #C9A849; grid-column: 1/-1; }
+  .action-btn.pause { background: rgba(255,255,255,0.05); color: #999; }
+  .action-btn.resume { background: rgba(27,186,1,0.15); color: #1BBA01; border-color: rgba(27,186,1,0.4); }
+  .action-btn.danger {
+    background: rgba(200,30,30,0.18); color: #ff7777; border-color: rgba(200,30,30,0.4);
+    grid-column: 1/-1;
+  }
+
+  /* Standby placeholder */
+  .standby {
+    color: #666; text-align: center; padding: 12px; font-size: 12px; font-style: italic;
+  }
+
+  /* Status bar */
   .status-bar {
     position: fixed; bottom: 0; left: 0; right: 0;
     padding: 6px 12px; font-size: 10px; color: #666;
@@ -177,6 +360,7 @@
   .status-bar.ok { color: #6c6; }
   .status-bar.err { color: #c66; }
 
+  /* Dead overlay */
   .dead-overlay {
     position: fixed; inset: 0; background: rgba(0,0,0,0.92);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -205,10 +389,12 @@
   <button class="btn secondary" style="margin-top:16px;max-width:400px;margin-left:auto;margin-right:auto;" onclick="leaveRoom()">← Wrong code</button>
 </div>
 
-<!-- PLAY -->
+<!-- PLAY — all sections dynamically populated -->
 <div id="playScreen" class="screen">
-  <div class="my-seat-banner">You are <strong id="mySeatName">...</strong></div>
+  <div id="roleBadge"></div>
   <div class="turn-indicator" id="turnIndicator">waiting for game to start</div>
+  <div id="cmdrHero"></div>
+  <div class="cmdr-hero-partners-label" id="partnerLabel" style="display:none">Partner Commanders</div>
 
   <div class="life-card">
     <div class="life-label">LIFE</div>
@@ -223,18 +409,64 @@
     </div>
   </div>
 
-  <div class="cmd-card">
-    <div class="section-title">⚔ Commander damage taken</div>
-    <div id="cmdRows"></div>
+  <button class="fc-toggle" id="fcToggle" onclick="toggleFullCard()">Show full card art ▾</button>
+  <div class="fc-wrap" id="fcWrap"></div>
+
+  <div class="sec-card" id="cmdrControl">
+    <div class="sec-title">⚔ Commander</div>
+    <div class="zone-row">
+      <span class="zone-label">Zone</span>
+      <button class="zone-btn" data-zone="commandZone" onclick="emitZone('commandZone')">Cmd</button>
+      <button class="zone-btn" data-zone="battlefield" onclick="emitZone('battlefield')">Field</button>
+      <button class="zone-btn" data-zone="graveyard" onclick="emitZone('graveyard')">Grave</button>
+      <button class="zone-btn" data-zone="exile" onclick="emitZone('exile')">Exile</button>
+    </div>
+    <button class="cast-btn" id="castBtn" onclick="emitCastCommander()">⚔ Cast Commander</button>
+
+    <div id="partnerControl" style="display:none">
+      <div class="partner-subhead" id="partnerSubhead"></div>
+      <div class="zone-row">
+        <span class="zone-label">Zone</span>
+        <button class="zone-btn" data-pzone="commandZone" onclick="emitPartnerZone('commandZone')">Cmd</button>
+        <button class="zone-btn" data-pzone="battlefield" onclick="emitPartnerZone('battlefield')">Field</button>
+        <button class="zone-btn" data-pzone="graveyard" onclick="emitPartnerZone('graveyard')">Grave</button>
+        <button class="zone-btn" data-pzone="exile" onclick="emitPartnerZone('exile')">Exile</button>
+      </div>
+      <button class="cast-btn" id="castPartnerBtn" onclick="emitCastPartner()">⚔ Cast Partner</button>
+    </div>
   </div>
 
-  <div class="action-grid">
-    <button class="action-btn primary" onclick="emitCastCommander()">Cast Commander</button>
-    <button class="action-btn" onclick="emitNextTurn()">End My Turn</button>
+  <div class="status-row">
+    <button class="status-badge" id="badgeMonarch" onclick="emitMonarch()" title="Monarch"><span class="icon">👑</span> Monarch</button>
+    <button class="status-badge" id="badgeInitiative" onclick="emitInitiative()" title="Initiative"><span class="icon">🏰</span> Initiative</button>
+    <button class="status-badge" id="badgeCity" onclick="emitCityBlessing()" title="City's Blessing"><span class="icon">🏙</span> Blessing</button>
   </div>
 
-  <div class="action-grid" style="grid-template-columns:1fr;">
-    <button class="action-btn danger" onclick="emitConcede()">Concede</button>
+  <div class="sec-card">
+    <div class="sec-title">Counters</div>
+    <div id="countersList"></div>
+  </div>
+
+  <div class="sec-card">
+    <div class="sec-title">⚔ Damage my commander has dealt</div>
+    <div id="cmdDealtRows"></div>
+  </div>
+
+  <div class="totals-row">
+    <div class="total-card">
+      <div class="total-label">Dealt</div>
+      <div class="total-val" id="totalDealt">0</div>
+    </div>
+    <div class="total-card">
+      <div class="total-label">Taken</div>
+      <div class="total-val" id="totalTaken">0</div>
+    </div>
+  </div>
+
+  <div class="footer-controls">
+    <button class="action-btn primary" onclick="emitNextTurn()">End My Turn</button>
+    <button class="action-btn pause" id="pauseBtn" onclick="emitPauseResume()">⏸ Pause</button>
+    <button class="action-btn" onclick="emitConcede()" style="background:rgba(200,30,30,0.08);color:#ff9999;border-color:rgba(200,30,30,0.3)">Concede</button>
   </div>
 </div>
 
@@ -247,14 +479,14 @@
 
 <div id="statusBar" class="status-bar">disconnected</div>
 
+<!-- Local deck data — used to render commander art, names, mana costs -->
+<script src="data/decks.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ============================================================================
 // EDHCapsul Phone Controller — DEFENSIVE BOOT
 // ============================================================================
 
-// Surface ANY error visibly in the status bar. Must be first — before anything
-// else that could throw.
 (function () {
   function writeError(msg) {
     var el = document.getElementById('statusBar');
@@ -269,7 +501,7 @@
 const SUPABASE_URL = 'https://txkivthzagrkcdhnoflh.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_chxrej0Rj3girU-xf8-LCA_t2OcNw_d';
 
-// Lazy Supabase client — created on first use. Survives CDN race conditions.
+// Lazy Supabase client
 let _sb = null;
 function sb() {
   if (_sb) return _sb;
@@ -278,6 +510,47 @@ function sb() {
   }
   _sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   return _sb;
+}
+
+// ----- Constants ported from gamenight.html for local rendering -----
+const OWNER_COLORS = {
+  adam:'#E67201', bryan:'#007EFF', shake:'#1BBA01', waid:'#C9A849',
+  jordan:'#D3202A', noah:'#9B59B6', rich:'#00CED1'
+};
+const COLOR_MAP = { White:'W', Blue:'U', Black:'B', Red:'R', Green:'G', Colorless:'C' };
+const MANA_SVG_BASE = 'https://svgs.scryfall.io/card-symbols/';
+
+function manaImg(symbol, size) {
+  const s = size || 14;
+  return `<img src="${MANA_SVG_BASE}${symbol}.svg" alt="{${symbol}}" width="${s}" height="${s}" style="vertical-align:middle;display:inline-block" onerror="this.style.display='none'">`;
+}
+function manaPips(colorsArr, size) {
+  if (!colorsArr || !colorsArr.length) return '';
+  return colorsArr.map(c => manaImg(c, size)).join('');
+}
+function renderManaCost(costStr, size) {
+  if (!costStr) return '';
+  const s = size || 16;
+  const symbols = [];
+  const regex = /\{([^}]+)\}/g;
+  let match;
+  while ((match = regex.exec(costStr)) !== null) symbols.push(match[1]);
+  if (!symbols.length) return '';
+  return symbols.map(sym => {
+    const fileName = sym.replace('/', '%2F');
+    return `<img src="${MANA_SVG_BASE}${fileName}.svg" alt="{${sym}}" width="${s}" height="${s}" style="vertical-align:middle;display:inline-block" onerror="this.style.display='none'">`;
+  }).join('');
+}
+
+function esc(s) {
+  if (s == null) return '';
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Deck lookup — MTG_DECKS loaded via data/decks.js
+function getDeck(deckId) {
+  if (!deckId || typeof MTG_DECKS === 'undefined') return null;
+  return MTG_DECKS.decks.find(d => d.id === deckId) || null;
 }
 
 // Device ID persistence
@@ -301,6 +574,7 @@ let mySeat = null;
 let roomState = null;
 let stateSub = null;
 let eventChannel = null;
+let fullCardShown = false;
 
 // ----- Status bar -----
 function setStatus(msg, state) {
@@ -317,7 +591,7 @@ function showScreen(id) {
   if (target) target.classList.add('active');
 }
 
-// ----- Wait for both DOM and Supabase CDN before wiring up -----
+// ----- Wait for both DOM and Supabase CDN -----
 function whenReady(cb, attempt) {
   attempt = attempt || 0;
   if (document.readyState === 'loading') {
@@ -325,7 +599,7 @@ function whenReady(cb, attempt) {
     return;
   }
   if (!window.supabase || typeof window.supabase.createClient !== 'function') {
-    if (attempt > 50) { // ~5 sec
+    if (attempt > 50) {
       setStatus('Supabase CDN failed to load. Check network.', 'err');
       return;
     }
@@ -341,22 +615,15 @@ whenReady(function boot() {
 
   const codeInput = document.getElementById('codeInput');
   const joinBtn = document.getElementById('joinBtn');
-
-  if (!codeInput || !joinBtn) {
-    setStatus('form elements missing', 'err');
-    return;
-  }
+  if (!codeInput || !joinBtn) { setStatus('form elements missing', 'err'); return; }
 
   codeInput.addEventListener('input', function () {
     codeInput.value = codeInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
     joinBtn.disabled = codeInput.value.length !== 4;
   });
+  joinBtn.addEventListener('click', function () { joinRoom(codeInput.value); });
 
-  joinBtn.addEventListener('click', function () {
-    joinRoom(codeInput.value);
-  });
-
-  // Auto-populate from ?code=XXXX and auto-join
+  // Auto-join via ?code=XXXX
   const params = new URLSearchParams(window.location.search);
   const c = params.get('code');
   if (c && /^[A-Z0-9]{4}$/i.test(c)) {
@@ -381,20 +648,15 @@ async function joinRoom(code) {
     roomState = data;
     setStatus('connected to ' + code, 'ok');
 
-    // Subscribe to state updates
     stateSub = client.channel('room:' + code + ':phone:' + deviceId)
       .on('postgres_changes', {
-        event: 'UPDATE',
-        schema: 'public',
-        table: 'rooms',
-        filter: 'code=eq.' + code
+        event: 'UPDATE', schema: 'public', table: 'rooms', filter: 'code=eq.' + code
       }, (payload) => {
         roomState = payload.new;
         renderCurrent();
       })
       .subscribe();
 
-    // Event broadcast channel for sending actions to TV
     eventChannel = client.channel('room:' + code + ':events');
     await eventChannel.subscribe();
 
@@ -414,7 +676,6 @@ function showSeatPicker() {
 
   if (!pod.length) {
     grid.innerHTML = '<div style="grid-column:1/-1;padding:20px;text-align:center;color:#888;">The host hasn\'t selected a pod yet. Waiting...</div>';
-    // Watch for pod to appear via the existing subscription
     setTimeout(showSeatPicker, 1500);
   } else {
     grid.innerHTML = pod.map(p => {
@@ -432,16 +693,10 @@ function showSeatPicker() {
 async function claimSeat(pid) {
   try {
     const newClaims = Object.assign({}, roomState.claimed_seats || {}, { [deviceId]: pid });
-    const { error } = await sb().from('rooms')
-      .update({ claimed_seats: newClaims })
-      .eq('code', myCode);
-    if (error) {
-      setStatus('claim failed: ' + error.message, 'err');
-      return;
-    }
+    const { error } = await sb().from('rooms').update({ claimed_seats: newClaims }).eq('code', myCode);
+    if (error) { setStatus('claim failed: ' + error.message, 'err'); return; }
     mySeat = pid;
     try { localStorage.setItem('edhmp_last_seat_' + myCode, pid); } catch (e) {}
-    document.getElementById('mySeatName').textContent = pid;
     showScreen('playScreen');
     renderCurrent();
   } catch (e) {
@@ -461,99 +716,333 @@ function leaveRoom() {
   setStatus('disconnected');
 }
 
-// ----- Render current player's view -----
+// ====== RENDER — the big one ======
 function renderCurrent() {
-  if (!mySeat || !roomState) return;
-  const gs = roomState.state && roomState.state.gameState;
+  if (!mySeat || !roomState || !roomState.state) return;
+  const st = roomState.state;
+  const gs = st.gameState;
+
+  // Dead check first — show overlay if eliminated
+  if (gs && gs.players && gs.players[mySeat] && gs.players[mySeat].isDead) {
+    document.getElementById('deadOverlay').style.display = 'flex';
+  }
+
+  // Deck lookup
+  const deckId = st.matchupSelections && st.matchupSelections[mySeat];
+  const deck = getDeck(deckId);
+  const hasPartner = deck && deck.commanderPartner && deck.commanderPartnerArt;
+
+  // --- Commander hero (art + name + deck) ---
+  renderCmdrHero(deck, hasPartner);
+
+  // --- Turn indicator ---
+  renderTurnIndicator(gs, st);
+
+  // --- Role badge (Archenemy only) ---
+  renderRoleBadge(st, gs);
+
+  // --- Waiting for game? ---
   if (!gs || !gs.players || !gs.players[mySeat]) {
-    // Game hasn't started yet OR I'm not in the active pod
     document.getElementById('lifeValue').textContent = '–';
-    document.getElementById('turnIndicator').textContent = 'waiting for game start';
-    document.getElementById('turnIndicator').classList.remove('active');
-    document.getElementById('cmdRows').innerHTML = '<div style="color:#666;text-align:center;padding:8px;">standby</div>';
+    document.getElementById('countersList').innerHTML = '<div class="standby">standby</div>';
+    document.getElementById('cmdDealtRows').innerHTML = '<div class="standby">game hasn\'t started</div>';
+    document.getElementById('totalDealt').textContent = '0';
+    document.getElementById('totalTaken').textContent = '0';
     return;
   }
 
   const p = gs.players[mySeat];
 
-  // Life
+  // --- Life ---
   const lifeEl = document.getElementById('lifeValue');
   lifeEl.textContent = p.life;
   lifeEl.classList.toggle('low', p.life <= 10 && p.life > 5);
   lifeEl.classList.toggle('critical', p.life <= 5);
 
-  // Turn indicator
-  const activePid = gs.activePlayerId || (gs.log && gs.log.length && gs.log[gs.log.length - 1].playerId);
+  // --- Full card art (toggleable) ---
+  renderFullCard(deck, hasPartner);
+
+  // --- Commander cast + zone + tax ---
+  renderCommanderControl(p, deck, hasPartner);
+
+  // --- Partner control (if applicable) ---
+  renderPartnerControl(p, deck, hasPartner);
+
+  // --- Status badges ---
+  renderStatusBadges(gs, p);
+
+  // --- Counters ---
+  renderCounters(p);
+
+  // --- Commander damage DEALT (by me to each opponent) ---
+  renderCmdDealt(gs, st);
+
+  // --- Damage totals ---
+  document.getElementById('totalDealt').textContent = p.damageDealt || 0;
+  document.getElementById('totalTaken').textContent = p.damageTaken || 0;
+
+  // --- Pause/Resume button state ---
+  renderPauseResume(st);
+}
+
+// ----- Renderers (scoped, small, pure) -----
+
+function renderTurnIndicator(gs, st) {
   const turnEl = document.getElementById('turnIndicator');
+  if (!gs) { turnEl.textContent = 'waiting for game start'; turnEl.classList.remove('active'); return; }
+  const activePid = gs.activePlayerId;
   if (activePid === mySeat) {
     turnEl.textContent = '★ YOUR TURN ★';
     turnEl.classList.add('active');
-  } else {
-    turnEl.textContent = activePid ? activePid + '\'s turn' : 'game running';
+  } else if (activePid) {
+    const pod = st.pod || [];
+    const name = (pod.find(x => x.id === activePid) || {}).name || activePid;
+    turnEl.textContent = name + '\'s turn';
     turnEl.classList.remove('active');
-  }
-
-  // Commander damage taken (per opponent)
-  const cmdRows = document.getElementById('cmdRows');
-  const opponents = (roomState.state.activePod || []).filter(id => id !== mySeat);
-  if (!opponents.length) {
-    cmdRows.innerHTML = '<div style="color:#666;text-align:center;padding:8px;">no opponents yet</div>';
   } else {
-    cmdRows.innerHTML = opponents.map(opp => {
-      const dmg = (p.commanderDamage && p.commanderDamage[opp]) || 0;
-      const dmgClass = dmg >= 21 ? 'lethal' : (dmg >= 14 ? 'dying' : '');
-      return '<div class="cmd-row">' +
-        '<div><span class="cmd-name">' + opp + '</span>' +
-          '<span class="cmd-dmg ' + dmgClass + '">' + dmg + '/21</span></div>' +
-        '<div class="cmd-btns">' +
-          '<button class="cmd-btn" onclick="emitCmdDmg(\'' + opp + '\', -1)">−</button>' +
-          '<button class="cmd-btn" onclick="emitCmdDmg(\'' + opp + '\', 1)">+</button>' +
-        '</div>' +
-      '</div>';
-    }).join('');
-  }
-
-  // Dead?
-  if (p.isDead) {
-    document.getElementById('deadOverlay').style.display = 'flex';
+    turnEl.textContent = 'game running';
+    turnEl.classList.remove('active');
   }
 }
 
-// ----- Emitters (send actions to TV via broadcast) -----
+function renderRoleBadge(st, gs) {
+  const el = document.getElementById('roleBadge');
+  el.innerHTML = '';
+  // We don't have aeVillain in state — infer from activePod size-1 hero situation too fragile.
+  // Leave empty for now unless a clear indicator gets added server-side.
+  // (Kept as a hook for future variant awareness.)
+}
+
+function renderCmdrHero(deck, hasPartner) {
+  const el = document.getElementById('cmdrHero');
+  const partnerLabel = document.getElementById('partnerLabel');
+  if (!deck) {
+    el.className = '';
+    el.innerHTML = '<div class="cmdr-hero" style="background:rgba(255,255,255,0.03);min-height:80px"><div class="cmdr-hero-info"><div class="cmdr-name">' + esc(mySeat) + '</div><div class="deck-name">No deck selected yet</div></div></div>';
+    partnerLabel.style.display = 'none';
+    return;
+  }
+  const colors = (deck.colors || []).map(c => COLOR_MAP[c] || c).filter(Boolean);
+  const pips = manaPips(colors, 14);
+
+  if (hasPartner) {
+    el.innerHTML =
+      '<div class="cmdr-hero partner">' +
+        '<div class="partner-half" style="background-image:url(\'' + deck.commanderArt + '\')">' +
+          '<div class="partner-half-info"><div class="partner-name-text">' + esc(deck.commander) + '</div></div>' +
+        '</div>' +
+        '<div class="partner-divider"></div>' +
+        '<div class="partner-half" style="background-image:url(\'' + deck.commanderPartnerArt + '\')">' +
+          '<div class="partner-half-info"><div class="partner-name-text">' + esc(deck.commanderPartner) + '</div></div>' +
+        '</div>' +
+      '</div>';
+    partnerLabel.style.display = 'block';
+  } else {
+    const artUrl = deck.commanderArt || '';
+    el.innerHTML =
+      '<div class="cmdr-hero" style="' + (artUrl ? 'background-image:url(\'' + artUrl + '\')' : 'background:rgba(255,255,255,0.03)') + '">' +
+        '<div class="cmdr-hero-info">' +
+          '<div class="cmdr-name">' + esc(deck.commander || deck.name) + '</div>' +
+          '<div class="deck-name">' + esc(deck.name) + '</div>' +
+          (pips ? '<div class="mana-pips">' + pips + '</div>' : '') +
+        '</div>' +
+      '</div>';
+    partnerLabel.style.display = 'none';
+  }
+}
+
+function renderFullCard(deck, hasPartner) {
+  const wrap = document.getElementById('fcWrap');
+  const toggle = document.getElementById('fcToggle');
+  if (!deck || (!deck.commanderArt && !deck.commanderPartnerArt)) {
+    wrap.innerHTML = '';
+    wrap.classList.remove('shown');
+    toggle.style.display = 'none';
+    return;
+  }
+  toggle.style.display = 'block';
+
+  if (hasPartner) {
+    const art1 = deck.commanderArt.replace('/art_crop/', '/normal/');
+    const art2 = deck.commanderPartnerArt.replace('/art_crop/', '/normal/');
+    wrap.innerHTML = '<img src="' + art1 + '" alt="' + esc(deck.commander) + '"><img src="' + art2 + '" alt="' + esc(deck.commanderPartner) + '">';
+    wrap.classList.add('partner');
+  } else {
+    const artUrl = (deck.commanderArt || '').replace('/art_crop/', '/normal/');
+    wrap.innerHTML = '<img src="' + artUrl + '" alt="' + esc(deck.commander || deck.name) + '">';
+    wrap.classList.remove('partner');
+  }
+  wrap.classList.toggle('shown', fullCardShown);
+  toggle.textContent = fullCardShown ? 'Hide full card art ▴' : 'Show full card art ▾';
+}
+
+function toggleFullCard() {
+  fullCardShown = !fullCardShown;
+  const wrap = document.getElementById('fcWrap');
+  const toggle = document.getElementById('fcToggle');
+  wrap.classList.toggle('shown', fullCardShown);
+  toggle.textContent = fullCardShown ? 'Hide full card art ▴' : 'Show full card art ▾';
+}
+
+function renderCommanderControl(p, deck, hasPartner) {
+  // Zone button highlighting — default to command zone pre-first-cast
+  const zone = p.commanderZone || 'commandZone';
+  document.querySelectorAll('[data-zone]').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-zone') === zone);
+  });
+
+  // Cast button content
+  const castBtn = document.getElementById('castBtn');
+  const casts = p.commanderCasts || 0;
+  const tax = casts > 0 ? casts * 2 : 0;
+  const castsLabel = casts > 0 ? ' ×' + casts : '';
+  const costStr = deck && deck.commanderManaCost;
+  const costHtml = costStr ? renderManaCost(costStr, 18) : manaPips((deck?.colors || []).map(c => COLOR_MAP[c] || c).filter(Boolean), 16);
+  const taxHtml = tax > 0 ? '<span class="cast-tax">+' + manaImg(String(tax), 16) + ' TAX</span>' : '';
+  castBtn.innerHTML = '<span>⚔ Cast' + castsLabel + '</span>' + costHtml + taxHtml;
+}
+
+function renderPartnerControl(p, deck, hasPartner) {
+  const el = document.getElementById('partnerControl');
+  if (!hasPartner) {
+    el.style.display = 'none';
+    return;
+  }
+  el.style.display = 'block';
+
+  document.getElementById('partnerSubhead').textContent = deck.commanderPartner;
+  const zone = p.partnerZone || 'commandZone';
+  document.querySelectorAll('[data-pzone]').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-pzone') === zone);
+  });
+
+  const casts = p.partnerCasts || 0;
+  const tax = casts > 0 ? casts * 2 : 0;
+  const castsLabel = casts > 0 ? ' ×' + casts : '';
+  const costStr = deck.commanderPartnerManaCost;
+  const costHtml = costStr ? renderManaCost(costStr, 18) : '';
+  const taxHtml = tax > 0 ? '<span class="cast-tax">+' + manaImg(String(tax), 16) + ' TAX</span>' : '';
+  document.getElementById('castPartnerBtn').innerHTML = '<span>⚔ Cast Partner' + castsLabel + '</span>' + costHtml + taxHtml;
+}
+
+function renderStatusBadges(gs, p) {
+  const monarchId = gs.globals && gs.globals.monarchId;
+  const initiativeId = gs.globals && gs.globals.initiativeId;
+  document.getElementById('badgeMonarch').classList.toggle('active', monarchId === mySeat);
+  document.getElementById('badgeInitiative').classList.toggle('active', initiativeId === mySeat);
+  document.getElementById('badgeCity').classList.toggle('active', !!p.hasCityBlessing);
+}
+
+function renderCounters(p) {
+  const defs = [
+    { key: 'poison',     label: 'Poison',     icon: '☣', danger: 10 },
+    { key: 'energy',     label: 'Energy',     icon: '⚡', danger: null },
+    { key: 'experience', label: 'Experience', icon: '✦', danger: null },
+    { key: 'rad',        label: 'Rad',        icon: '☢', danger: 10 }
+  ];
+  const html = defs.map(d => {
+    const v = p[d.key] || 0;
+    const danger = d.danger && v >= d.danger;
+    return '<div class="counter-row">' +
+      '<div class="counter-label"><span class="c-icon">' + d.icon + '</span>' + d.label + '</div>' +
+      '<div style="display:flex;align-items:center;gap:6px">' +
+        '<div class="counter-val' + (danger ? ' danger' : '') + '">' + v + '</div>' +
+        '<div class="counter-btns">' +
+          '<button class="counter-btn" onclick="emitCounter(\'' + d.key + '\', -1)">−</button>' +
+          '<button class="counter-btn" onclick="emitCounter(\'' + d.key + '\', 1)">+</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+  document.getElementById('countersList').innerHTML = html;
+}
+
+function renderCmdDealt(gs, st) {
+  const rows = document.getElementById('cmdDealtRows');
+  const opponents = (st.activePod || []).filter(id => id !== mySeat);
+  if (!opponents.length) {
+    rows.innerHTML = '<div class="standby">no opponents yet</div>';
+    return;
+  }
+  const pod = st.pod || [];
+  rows.innerHTML = opponents.map(oppId => {
+    const oppPlayer = gs.players && gs.players[oppId];
+    // commanderDamage[mySeat] on the opponent = damage I've dealt to them
+    const dmg = (oppPlayer && oppPlayer.commanderDamage && oppPlayer.commanderDamage[mySeat]) || 0;
+    const dmgClass = dmg >= 21 ? 'lethal' : (dmg >= 14 ? 'dying' : '');
+    const name = (pod.find(x => x.id === oppId) || {}).name || oppId;
+    const color = OWNER_COLORS[oppId] || '#888';
+    const isDead = oppPlayer && oppPlayer.isDead;
+    return '<div class="cmd-row"' + (isDead ? ' style="opacity:0.5"' : '') + '>' +
+      '<div class="cmd-player">' +
+        '<div class="cmd-dot" style="background:' + color + '"></div>' +
+        '<span class="cmd-name">' + esc(name) + '</span>' +
+        '<span class="cmd-dmg ' + dmgClass + '">' + dmg + '/21</span>' +
+      '</div>' +
+      '<div class="cmd-btns">' +
+        '<button class="cmd-btn" onclick="emitCmdDmgDealt(\'' + oppId + '\', -1)">−</button>' +
+        '<button class="cmd-btn" onclick="emitCmdDmgDealt(\'' + oppId + '\', 1)">+</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderPauseResume(st) {
+  const btn = document.getElementById('pauseBtn');
+  if (st.gamePaused) {
+    btn.textContent = '▶ Resume';
+    btn.classList.remove('pause');
+    btn.classList.add('resume');
+  } else {
+    btn.textContent = '⏸ Pause';
+    btn.classList.remove('resume');
+    btn.classList.add('pause');
+  }
+}
+
+// ====== Emitters — send actions to TV via broadcast ======
 async function emit(type, payload) {
   if (!eventChannel || !mySeat) return;
   const event = Object.assign({ type, pid: mySeat, from: deviceId, at: Date.now() }, payload || {});
   const res = await eventChannel.send({ type: 'broadcast', event: 'action', payload: event });
   setStatus('→ ' + type, 'ok');
-  setTimeout(() => setStatus('connected to ' + myCode, 'ok'), 800);
+  setTimeout(() => setStatus('connected to ' + myCode, 'ok'), 700);
   return res;
 }
 
-function emitLife(amount)       { emit('adjustLife', { amount }); }
-function emitCastCommander()    { emit('castCommander'); }
-function emitNextTurn()         { emit('nextTurn'); }
-function emitConcede()          {
+function emitLife(amount)              { emit('adjustLife', { amount }); }
+function emitCastCommander()           { emit('castCommander'); }
+function emitCastPartner()             { emit('castPartner'); }
+function emitNextTurn()                { emit('nextTurn'); }
+function emitZone(zone)                { emit('moveCommanderZone', { zone }); }
+function emitPartnerZone(zone)         { emit('movePartnerZone', { zone }); }
+function emitMonarch()                 { emit('setMonarch'); }
+function emitInitiative()              { emit('setInitiative'); }
+function emitCityBlessing()            { emit('toggleCityBlessing'); }
+function emitCounter(type, amount) {
+  const map = {
+    poison: 'adjustPoison', energy: 'adjustEnergy',
+    experience: 'adjustExperience', rad: 'adjustRad'
+  };
+  const actionType = map[type];
+  if (actionType) emit(actionType, { amount });
+}
+function emitCmdDmgDealt(targetPid, amount) {
+  // I'm the SOURCE (my commander). The target is the opponent.
+  emit('adjustCommanderDamage', { targetPid, sourcePid: mySeat, amount });
+}
+function emitConcede() {
   if (!confirm('Concede this game?')) return;
   emit('concede');
 }
-function emitCmdDmg(sourcePid, amount) {
-  // Commander damage TAKEN: I am the target, the opponent is the source
-  emit('adjustCommanderDamage', { targetPid: mySeat, sourcePid, amount });
-}
-
-// ----- Restore last seat on reconnect -----
-window.addEventListener('load', () => {
-  // If we auto-joined via ?code, and we've been in this room before, try to restore seat
-  const p = new URLSearchParams(window.location.search);
-  const c = p.get('code');
-  if (c) {
-    const lastSeat = localStorage.getItem('edhmp_last_seat_' + c.toUpperCase());
-    if (lastSeat) {
-      // Will be applied after join completes — claimSeat flow still required
-      // (skipping automatic reclaim for now; tap flow is safer)
-    }
+function emitPauseResume() {
+  if (!roomState || !roomState.state) return;
+  if (roomState.state.gamePaused) {
+    emit('resumeGame');
+  } else {
+    emit('pauseGame');
   }
-});
+}
 </script>
 
 </body>

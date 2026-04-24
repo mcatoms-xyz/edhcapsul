@@ -83,7 +83,11 @@
     adjustCommanderDamage:  (p) => window.adjustCommanderDamage && window.adjustCommanderDamage(p.targetPid, p.sourcePid, p.amount),
     castCommander:          (p) => window.castCommander && window.castCommander(p.pid),
     castPartner:            (p) => window.castPartner && window.castPartner(p.pid),
+    moveCommanderZone:      (p) => window.moveCommanderZone && window.moveCommanderZone(p.pid, p.zone),
+    movePartnerZone:        (p) => window.movePartnerZone && window.movePartnerZone(p.pid, p.zone),
     nextTurn:               ()  => window.nextTurn && window.nextTurn(),
+    pauseGame:              ()  => window.pauseGame && window.pauseGame(),
+    resumeGame:             ()  => window.resumeGame && window.resumeGame(),
     setMonarch:             (p) => window.setMonarch && window.setMonarch(p.pid),
     setInitiative:          (p) => window.setInitiative && window.setInitiative(p.pid),
     toggleCityBlessing:     (p) => window.toggleCityBlessing && window.toggleCityBlessing(p.pid),
@@ -135,6 +139,11 @@
     var tn = (typeof turnNumber !== 'undefined') ? turnNumber : 0;
     var activePid = (so && so.length) ? so[cti] : null;
 
+    // Timer / pause state — phone needs these to toggle Pause vs Resume
+    // button and gate actions appropriately.
+    var paused = (typeof gamePaused !== 'undefined') ? gamePaused : false;
+    var running = (typeof timerRunning !== 'undefined') ? timerRunning : false;
+
     // Shallow-copy gameState to inject activePlayerId + turnNumber without
     // mutating TV-side authoritative state. players/log/etc references are
     // shared — fine for JSON serialization and diff-based push.
@@ -150,6 +159,8 @@
       matchupSelections: ms,
       slotAssignments: sa,
       variant: av,
+      gamePaused: paused,
+      timerRunning: running,
       ts: Date.now()
     };
   }

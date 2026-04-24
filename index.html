@@ -328,13 +328,11 @@ const OWNER_COLORS = {
 
 // Stats
 const totalDecks = DATA.decks.decks.length;
-const totalValue = DATA.decks.decks.reduce((s,d) => s + (d.estimatedValue||0), 0);
 const totalGames = DATA.games.games.length;
 const players = DATA.pod.players.length;
 
 document.getElementById('hubStats').innerHTML = `
   <div class="stat"><div class="stat-val">${totalDecks}</div><div class="stat-label">Decks</div></div>
-  <div class="stat"><div class="stat-val">$${Math.round(totalValue).toLocaleString()}</div><div class="stat-label">Collection</div></div>
   <div class="stat"><div class="stat-val">${totalGames}</div><div class="stat-label">Games</div></div>
   <div class="stat"><div class="stat-val">${players}</div><div class="stat-label">Players</div></div>
 `;
