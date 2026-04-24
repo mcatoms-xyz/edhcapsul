@@ -3542,9 +3542,62 @@ async function _sgLoadHandle() {
   });
 }
 
-function _sgBuildFileContent() {
-  const games = JSON.parse(localStorage.getItem('mtg_games') || '[]');
-  return 'var MTG_GAMES = ' + JSON.stringify({ games }, null, 2) + ';\n';
+// Read the target file and parse out the existing games array. Returns []
+// if the file can't be read or parsed (first-time write, etc.) — caller
+// treats that as "no existing games to merge."
+async function _sgReadExistingGames() {
+  if (!SG.handle) return [];
+  try {
+    const file = await SG.handle.getFile();
+    const text = await file.text();
+    if (!text || !text.trim()) return [];
+    // Match: var MTG_GAMES = { ... };  (with tolerance for whitespace/newlines)
+    const match = text.match(/var\s+MTG_GAMES\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
+    if (!match) {
+      console.warn('[SG] existing file did not match MTG_GAMES pattern; treating as empty');
+      return [];
+    }
+    const parsed = JSON.parse(match[1]);
+    return (parsed && Array.isArray(parsed.games)) ? parsed.games : [];
+  } catch (e) {
+    console.warn('[SG] could not read existing file:', e);
+    return [];
+  }
+}
+
+// Safe merge: localStorage wins on duplicate IDs (it reflects the latest
+// in-browser state — any edits to notes/outcomes are there). File-only
+// games are preserved — they don't vanish because someone's localStorage
+// happened to be stale or empty.
+async function _sgBuildFileContent() {
+  const localGames = JSON.parse(localStorage.getItem('mtg_games') || '[]');
+  const existingGames = await _sgReadExistingGames();
+
+  const byId = new Map();
+  // Seed with existing (file) games first
+  for (const g of existingGames) {
+    if (g && g.id) byId.set(g.id, g);
+  }
+  // Overlay localStorage games — takes precedence on duplicate ID
+  for (const g of localGames) {
+    if (g && g.id) byId.set(g.id, g);
+  }
+  const merged = Array.from(byId.values());
+  // Sort by date (fallback to id, which is timestamp-based for auto-generated)
+  merged.sort((a, b) => (a.date || a.id || '').localeCompare(b.date || b.id || ''));
+
+  const stats = {
+    existingCount: existingGames.length,
+    localCount: localGames.length,
+    mergedCount: merged.length,
+    addedFromLocal: merged.length - existingGames.length // games only in localStorage
+  };
+
+  return {
+    content: 'var MTG_GAMES = ' + JSON.stringify({ games: merged }, null, 2) + ';\n',
+    merged,
+    stats
+  };
 }
 
 function _sgRelativeTime(iso) {
@@ -3652,14 +3705,31 @@ async function saveGamesClick() {
     }
 
     _sgSetState('saving');
-    const content = _sgBuildFileContent();
+    const { content, merged, stats } = await _sgBuildFileContent();
+
+    // Defensive: if merge would reduce game count and localStorage looks
+    // empty, something is off — abort rather than silently destroy data.
+    if (stats.mergedCount < stats.existingCount) {
+      _sgSetState('not-set', 'aborted: would lose ' + (stats.existingCount - stats.mergedCount) + ' games');
+      console.error('[SG] aborted save — merge count < existing count', stats);
+      return;
+    }
+
     const w = await SG.handle.createWritable();
     await w.write(content);
     await w.close();
 
+    // Sync localStorage to the merged result — next page load sees the
+    // full game list (important if file had games localStorage didn't).
+    localStorage.setItem('mtg_games', JSON.stringify(merged));
+
     SG.lastSyncedAt = new Date().toISOString();
     localStorage.setItem('mtg_gamesSaveLastAt', SG.lastSyncedAt);
     _sgSetState('saved');
+    const added = stats.mergedCount - stats.existingCount;
+    if (added > 0) {
+      setTimeout(() => { if (SG.statusEl) SG.statusEl.textContent = '+' + added + ' new · just now'; }, 50);
+    }
   } catch (e) {
     if (e.name === 'AbortError') {
       // user cancelled picker
