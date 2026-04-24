@@ -645,7 +645,7 @@ var MTG_DECKS = {
       "cardCount": 100,
       "estimatedValue": 352.4,
       "tags": [],
-      "retired": false,
+      "retired": true,
       "photoPath": null,
       "lastPlayed": null,
       "archidektUrl": "https://archidekt.com/decks/11450776",
@@ -705,7 +705,7 @@ var MTG_DECKS = {
       "cardCount": 100,
       "estimatedValue": 475.4,
       "tags": [],
-      "retired": false,
+      "retired": true,
       "photoPath": null,
       "lastPlayed": null,
       "archidektUrl": "https://archidekt.com/decks/11451029",
@@ -791,7 +791,7 @@ var MTG_DECKS = {
       "cardCount": 100,
       "estimatedValue": 456.36,
       "tags": [],
-      "retired": false,
+      "retired": true,
       "photoPath": null,
       "lastPlayed": null,
       "archidektUrl": "https://archidekt.com/decks/12635696",
@@ -1001,6 +1001,34 @@ var MTG_DECKS = {
         "winRate": 0
       },
       "commanderManaCost": "{2}{B}{G}"
+    },
+    {
+      "id": "bryan-commander:-elminster",
+      "archidektId": 21643300,
+      "owner": "bryan",
+      "name": "Commander: Elminster",
+      "commander": "Elminster",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/0/6/06700514-b19c-4fc8-beb1-2c801f320b25.jpg",
+      "commanderScryfallId": "06700514-b19c-4fc8-beb1-2c801f320b25",
+      "colors": [
+        "Blue",
+        "White"
+      ],
+      "bracket": 2,
+      "cardCount": 100,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/21643300",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{W}{U}"
     },
     {
       "id": "shake-niv-top",
