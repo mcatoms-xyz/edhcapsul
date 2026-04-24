@@ -88,13 +88,10 @@
     setInitiative:          (p) => window.setInitiative && window.setInitiative(p.pid),
     toggleCityBlessing:     (p) => window.toggleCityBlessing && window.toggleCityBlessing(p.pid),
     concede: (p) => {
-      const gs = window.gameState;
-      if (gs && gs.players && gs.players[p.pid]) {
-        gs.players[p.pid].isDead = true;
-        gs.players[p.pid].deathCause = 'concede';
-        gs.players[p.pid].deathTurn = gs.turn || 0;
-        if (window.confirmDeath) window.confirmDeath(p.pid);
-      }
+      // confirmDeath(pid, cause) handles everything: sets isDead, deathCause,
+      // deathTurn (using TV's turnNumber), dismisses modal, grays seat, auto-
+      // advances turn if current, runs variant win checks.
+      if (window.confirmDeath) window.confirmDeath(p.pid, 'concede');
     }
   };
 
@@ -128,8 +125,26 @@
     var av = (typeof activeVariant !== 'undefined') ? activeVariant : 'standard';
     // pod.js exposes MTG_POD as a var so it IS on window
     var pod = (window.MTG_POD && window.MTG_POD.players) ? window.MTG_POD.players : [];
+
+    // Derive current turn state from TV globals so the phone can read
+    // gameState.activePlayerId directly (gamenight.html uses
+    // seatOrder[currentTurnIdx] as the source of truth — there is no
+    // activePlayerId field natively).
+    var so = (typeof seatOrder !== 'undefined') ? seatOrder : null;
+    var cti = (typeof currentTurnIdx !== 'undefined') ? currentTurnIdx : 0;
+    var tn = (typeof turnNumber !== 'undefined') ? turnNumber : 0;
+    var activePid = (so && so.length) ? so[cti] : null;
+
+    // Shallow-copy gameState to inject activePlayerId + turnNumber without
+    // mutating TV-side authoritative state. players/log/etc references are
+    // shared — fine for JSON serialization and diff-based push.
+    var gsSnapshot = gs ? Object.assign({}, gs, {
+      activePlayerId: activePid,
+      turnNumber: tn
+    }) : null;
+
     return {
-      gameState: gs,
+      gameState: gsSnapshot,
       activePod: ap,
       pod: pod,
       matchupSelections: ms,
