@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MTGCapsul — Commander Game Night Log</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: 'Museo Slab'; src: url('fonts/museo_slab_500-webfont.woff') format('woff'); font-weight: 500; }
+@font-face { font-family: 'Museo Sans'; src: url('fonts/museosans_500-webfont.woff') format('woff'); font-weight: 500; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: rgba(10,10,14,0.85);
+  --surface-hover: rgba(20,20,28,0.9);
+  --border: rgba(255,255,255,0.12);
+  --border-bright: rgba(255,255,255,0.2);
+  --text: #f0f0f0;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-mid: rgba(255,255,255,0.7);
+  --orange: #E67201;
+  --blue: #007EFF;
+  --green: #1BBA01;
+  --red: #D3202A;
+  --mtg-gold: #C9A849;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-family: 'Museo Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body { min-height: 100vh; background: var(--bg); }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+/* ---- HEADER ---- */
+.site-header {
+  position: relative;
+  padding: 48px 32px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(230,114,1,0.12) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(230,114,1,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.site-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 2px;
+  text-shadow: 0 0 40px rgba(230,114,1,0.25);
+  margin-bottom: 8px;
+}
+.site-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ---- NAV ---- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 16px;
+  background: rgba(10,10,14,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.site-nav a {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-dim);
+  padding: 6px 12px;
+  border-radius: 16px;
+  transition: all 0.2s;
+}
+.site-nav a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.site-nav a.active { color: var(--orange); background: rgba(230,114,1,0.12); }
+
+/* ---- CONTENT ---- */
+.content { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- SECTION TITLES ---- */
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: var(--orange);
+  letter-spacing: 1px;
+  margin: 40px 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon { font-size: 20px; }
+
+/* ---- STATS OVERVIEW ---- */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 32px 0 40px;
+}
+.stat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 20px;
+}
+.stat-chip .val { color: var(--text); font-weight: 600; font-size: 18px; }
+
+/* ---- LEADERBOARD ---- */
+.leaderboard { margin: 40px 0 48px; }
+.lb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.lb-table th {
+  font-family: 'Museo Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-bright);
+}
+.lb-table th.center { text-align: center; }
+.lb-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.lb-table td.center { text-align: center; }
+.lb-table tr:hover td { background: rgba(255,255,255,0.02); }
+.lb-rank {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--orange);
+  width: 40px;
+  text-align: center;
+}
+.lb-player-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lb-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.lb-name {
+  font-weight: 600;
+  color: var(--text);
+}
+.lb-wins { color: var(--green); font-weight: 600; }
+.lb-losses { color: var(--red); }
+.lb-bar-cell { width: 150px; }
+.lb-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.lb-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--green));
+  transition: width 0.6s ease;
+}
+.lb-elo { font-size: 13px; color: var(--text-dim); }
+
+/* ---- HEAD-TO-HEAD GRID ---- */
+.h2h-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+/* Leaderboard scroll wrapper for narrow screens */
+.lb-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.h2h-grid {
+  display: grid;
+  gap: 0;
+  min-width: min-content;
+}
+.h2h-cell {
+  border: 1px solid var(--border);
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+.h2h-cell.header {
+  background: rgba(255,255,255,0.04);
+  font-weight: 600;
+  color: var(--orange);
+  padding: 10px 8px;
+}
+.h2h-cell.player-label {
+  background: rgba(255,255,255,0.04);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 12px;
+  color: var(--orange);
+}
+.h2h-cell.win { background: rgba(27,186,1,0.1); color: var(--green); font-weight: 600; }
+.h2h-cell.loss { background: rgba(211,32,42,0.1); color: var(--red); font-weight: 600; }
+.h2h-cell.tie { color: var(--text-dim); }
+.h2h-cell.empty { background: transparent; border: none; }
+
+/* ---- DECK ARSENAL ---- */
+#arsenalBody {
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+#arsenalToggle { transition: transform 0.25s; }
+.deck-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+}
+.filter-btn:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--border-bright);
+}
+.filter-btn.active {
+  background: rgba(230,114,1,0.2);
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.deck-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: default;
+}
+.deck-card:hover {
+  border-color: var(--border-bright);
+  box-shadow: 0 8px 32px rgba(230,114,1,0.15);
+}
+
+.deck-art {
+  width: 100%;
+  height: 140px;
+  background: rgba(255,255,255,0.05);
+  overflow: hidden;
+  position: relative;
+}
+.deck-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.deck-art.no-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.deck-body {
+  padding: 16px;
+}
+
+.deck-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.deck-commander {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.mana-cost {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.mana-pip {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.color-identity {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+.color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.color-dot.white { background: #F9FAF4; }
+.color-dot.blue { background: #0E68AB; }
+.color-dot.black { background: #4A3728; }
+.color-dot.red { background: #D3202A; }
+.color-dot.green { background: #00733E; }
+
+.deck-stats {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.deck-stat-row {
+  display: flex;
+  justify-content: space-between;
+}
+.deck-stat-label { }
+.deck-stat-value { color: var(--text); font-weight: 600; }
+
+.deck-bracket {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 8px;
+  background: rgba(201,168,73,0.15);
+  border: 1px solid rgba(201,168,73,0.3);
+  color: var(--mtg-gold);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.deck-links {
+  display: flex;
+  gap: 6px;
+  font-size: 11px;
+}
+.deck-link {
+  flex: 1;
+  padding: 6px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--blue);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.deck-link:hover {
+  background: rgba(0,126,255,0.15);
+  border-color: var(--blue);
+}
+
+/* ---- GAME NIGHTS ---- */
+.nights-section { margin: 48px 0 60px; }
+
+.night-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.night-card:hover { border-color: var(--border-bright); }
+
+.night-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.night-header:hover { background: rgba(255,255,255,0.04); }
+
+.night-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.night-number {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 20px;
+  color: var(--orange);
+}
+.night-date {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.night-meta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.night-chip {
+  font-size: 12px;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+.night-chip .val { color: var(--text); font-weight: 600; }
+
+.night-toggle {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.night-games {
+  padding: 16px 24px;
+  display: block;
+}
+.night-games.collapsed { display: none; }
+
+.night-game-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 6px;
+}
+.night-game-row:last-child { border-bottom: none; }
+.night-game-row:hover { background: rgba(255,255,255,0.04); }
+
+.ngr-num {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  color: var(--orange);
+  width: 50px;
+  flex-shrink: 0;
+}
+.ngr-winner {
+  color: var(--text);
+  font-weight: 600;
+  flex: 1;
+}
+.ngr-winner .deck { color: var(--text-dim); font-weight: 400; font-size: 11px; margin-left: 6px; }
+.ngr-variant {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+  padding: 2px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.ngr-variant.planechase { color: var(--mtg-gold); background: rgba(201,168,73,0.1); }
+.ngr-variant.star { color: var(--blue); background: rgba(0,126,255,0.1); }
+.ngr-variant.twoheadedgiant { color: var(--green); background: rgba(27,186,1,0.1); }
+.ngr-salt {
+  font-size: 12px;
+  flex-shrink: 0;
+  width: 70px;
+  text-align: center;
+}
+.ngr-duration {
+  font-size: 11px;
+  color: var(--text-dim);
+  width: 65px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.night-detail {
+  display: none;
+  padding: 24px;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.01);
+}
+.night-detail.expanded { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.detail-roster {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.detail-roster-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  color: var(--orange);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.roster-player {
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+  margin-bottom: 0;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.roster-player:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+.roster-player:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+.roster-player:hover { background: rgba(255,255,255,0.06); }
+.roster-player.winner { background: rgba(27,186,1,0.1); }
+.roster-crown { color: var(--green); font-size: 14px; }
+.roster-name { font-weight: 600; flex: 1; }
+.roster-result { color: var(--text-dim); font-size: 11px; }
+
+.detail-spotlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.spotlight-art {
+  width: 100%;
+  height: 180px;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 12px;
+  position: relative;
+}
+.spotlight-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.spotlight-art::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, transparent 0%, rgba(10,10,14,0.8) 100%);
+}
+.spotlight-title { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.spotlight-deck { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
+.spotlight-commander { font-size: 12px; color: var(--text-dim); font-style: italic; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.spotlight-stats {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.spotlight-stat { display: flex; justify-content: space-between; }
+.spotlight-stat-value { color: var(--text); font-weight: 600; }
+.spotlight-recent {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: var(--orange);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 12px 0 8px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.spotlight-games {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.spotlight-game { margin-bottom: 6px; }
+.spotlight-game .result { font-weight: 600; }
+.spotlight-game .result.win { color: var(--green); }
+.spotlight-game .result.loss { color: var(--red); }
+
+/* Game notes in detail drawer */
+.game-notes {
+  grid-column: 1 / -1;
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-style: italic;
+  margin-top: 4px;
+}
+.game-notes::before {
+  content: '📝 ';
+  font-style: normal;
+}
+
+.night-footer {
+  padding: 12px 24px;
+  border-top: 1px solid var(--border);
+  text-align: right;
+}
+.night-footer.hide { display: none; }
+.recap-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--orange);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(230,114,1,0.25);
+  background: rgba(230,114,1,0.06);
+  transition: all 0.2s;
+}
+.recap-link:hover { background: rgba(230,114,1,0.15); border-color: rgba(230,114,1,0.4); }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+.site-footer .brand {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 14px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+.site-footer .brand a { color: var(--orange); text-decoration: none; }
+.site-footer .brand a:hover { text-decoration: underline; }
+.site-footer .home-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+}
+.site-footer .home-link a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-footer .home-link a:hover { color: var(--orange); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 800px) {
+  .site-title { font-size: 32px; }
+  .site-header { padding: 32px 16px; }
+  .content { padding: 0 16px; }
+  .stats-bar { gap: 10px; }
+  .stat-chip { padding: 6px 12px; font-size: 12px; }
+  .stat-chip .val { font-size: 15px; }
+  .lb-bar-cell { display: none; }
+  .lb-elo { display: none; }
+  .deck-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .night-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .night-meta { flex-wrap: wrap; }
+  .ngr-duration { display: none; }
+  .ngr-salt { width: auto; }
+  .night-detail.expanded { grid-template-columns: 1fr; }
+  .h2h-cell { padding: 6px 4px; font-size: 11px; }
+  .night-games { padding: 16px 16px; }
+}
+
+@media (max-width: 600px) {
+  .section-title { font-size: 18px; }
+  .night-chip { display: none; }
+  .ngr-variant { display: none; }
+  .ngr-num { width: 40px; font-size: 12px; }
+  .site-nav { padding: 8px 8px; gap: 2px; }
+  .site-nav a { padding: 6px 12px; font-size: 10px; min-height: 36px; display: flex; align-items: center; }
+  .deck-grid { grid-template-columns: 1fr; }
+  .ngr-salt { font-size: 10px; }
+  .stats-bar { gap: 6px; }
+  .stat-chip { padding: 5px 10px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="site-header">
+  <h1 class="site-title">MTGCapsul</h1>
+  <p class="site-subtitle">Commander Game Night Log</p>
+</header>
+
+<!-- ========== NAV ========== -->
+<nav class="site-nav">
+  <a href="#stats" class="nav-link active" data-section="stats">Stats</a>
+  <a href="#leaderboard" class="nav-link" data-section="leaderboard">Leaderboard</a>
+  <a href="#h2h" class="nav-link" data-section="h2h">Head-to-Head</a>
+  <a href="#nights" class="nav-link" data-section="nights">Game Nights</a>
+  <a href="#arsenal" class="nav-link" data-section="arsenal">Deck Arsenal</a>
+</nav>
+
+<!-- ========== CONTENT ========== -->
+<div class="content">
+
+  <!-- ====== STATS OVERVIEW ====== -->
+  <section id="stats">
+    <div class="stats-bar">
+      <div class="stat-chip">🎮 <span class="val" id="totalGames">0</span> Games</div>
+      <div class="stat-chip">🌙 <span class="val" id="totalNights">0</span> Nights</div>
+      <div class="stat-chip">👥 <span class="val" id="totalPlayers">0</span> Players</div>
+      <div class="stat-chip">⏱ <span class="val" id="totalTime">0h</span> Played</div>
+      <div class="stat-chip">🧂 <span class="val" id="avgSalt">0</span> Avg Salt</div>
+    </div>
+  </section>
+
+  <!-- ====== LEADERBOARD ====== -->
+  <section id="leaderboard" class="leaderboard">
+    <h2 class="section-title"><span class="icon">🏆</span> All-Time Leaderboard</h2>
+    <div class="lb-scroll">
+    <table class="lb-table">
+      <thead>
+        <tr>
+          <th class="center">#</th>
+          <th>Player</th>
+          <th class="center">W</th>
+          <th class="center">L</th>
+          <th class="center">Win %</th>
+          <th class="lb-bar-cell">Record</th>
+          <th class="lb-elo">ELO</th>
+        </tr>
+      </thead>
+      <tbody id="lbBody"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ====== HEAD-TO-HEAD ====== -->
+  <section id="h2h">
+    <h2 class="section-title"><span class="icon">⚔</span> Head-to-Head</h2>
+    <div class="h2h-container">
+      <div class="h2h-grid" id="h2hGrid"></div>
+    </div>
+  </section>
+
+  <!-- ====== GAME NIGHTS ====== -->
+  <section id="nights" class="nights-section">
+    <h2 class="section-title"><span class="icon">📜</span> Game Nights</h2>
+    <div id="nightsList"></div>
+  </section>
+
+  <!-- ====== DECK ARSENAL ====== -->
+  <section id="arsenal">
+    <h2 class="section-title" style="cursor:pointer;user-select:none" onclick="toggleArsenal()">
+      <span class="icon">🏛</span> Deck Arsenal
+      <span id="arsenalCount" style="font-size:13px;color:var(--text-dim);font-family:'Museo Sans',sans-serif;text-transform:none;letter-spacing:0"></span>
+      <span id="arsenalToggle" style="font-size:14px;color:var(--text-dim);margin-left:8px;transition:transform 0.25s">▼</span>
+    </h2>
+    <div id="arsenalBody">
+      <div class="deck-filters" id="deckFilters"></div>
+      <div class="deck-grid" id="deckGrid"></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="site-footer">
+  <div class="brand">MTGCapsul · mcatoms.com/mtg</div>
+  <div class="home-link"><a href="https://mcatoms.com">← Back to McAtoms.com</a></div>
+</footer>
+
+<script>
+// ========== EMBEDDED DATA ==========
+const GAMES_DATA = {
+  "games": [
+    {
+      "id": "g1774661381776",
+      "date": "2026-03-28",
+      "players": [
+        {"playerId": "adam", "deckId": "adam-ziatora--the-incinerator"},
+        {"playerId": "bryan", "deckId": "bryan-commander:-szarel-genesis-shep"},
+        {"playerId": "jordan", "deckId": "jordan-eriette-auras"},
+        {"playerId": "rich", "deckId": "rich-the-scarab-god"}
+      ],
+      "winningDeck": "bryan-commander:-szarel-genesis-shep",
+      "variant": "standard",
+      "salt": 2,
+      "duration": "58:24",
+      "notes": "ALWAYS EXILE FABLED PASSAGE IMMEDIATELY. kthxbai"
+    },
+    {
+      "id": "g1774667570489",
+      "date": "2026-03-28",
+      "players": [
+        {"playerId": "adam", "deckId": "adam-trostani's-glory"},
+        {"playerId": "bryan", "deckId": "bryan-commander:-betor-kin-to-all"},
+        {"playerId": "jordan", "deckId": "jordan-braids-aristocrats"},
+        {"playerId": "rich", "deckId": "rich-kiki-jiki"}
+      ],
+      "winningDeck": "rich-kiki-jiki",
+      "variant": "standard",
+      "salt": 3,
+      "duration": "1:08:45",
+      "notes": "Rich wins via infinite combo w/ Kiki Jiki (But I asked permission!)\nTurn 4 Marit Lage did nothing. (adam)"
+    },
+    {
+      "id": "g1774672502130",
+      "date": "2026-03-28",
+      "players": [
+        {"playerId": "bryan", "deckId": "bryan-commander:-jetmir-nexus-of-rev"},
+        {"playerId": "jordan", "deckId": "jordan-atraxa-plus-counters"},
+        {"playerId": "rich", "deckId": "rich-kaalia"},
+        {"playerId": "shake", "deckId": "shake-leonardo--the-balance"},
+        {"playerId": "waid", "deckId": "waid-squirrels"},
+        {"playerId": "adam", "deckId": "adam-mighty-myrs"}
+      ],
+      "winningDeck": null,
+      "variant": "2hg",
+      "salt": 0,
+      "duration": "10:42",
+      "notes": "3-team 2HG. Bryan+Adam (T1) vs Jordan+Rich (T2) vs Waid+Shake (T3). Team 1 wins.",
+      "teams": [
+        {"name": "Team 1", "players": ["bryan", "adam"]},
+        {"name": "Team 2", "players": ["jordan", "rich"]},
+        {"name": "Team 3", "players": ["waid", "shake"]}
+      ],
+      "winningTeam": 0
+    },
+    {
+      "id": "g1774676688524",
+      "date": "2026-03-28",
+      "players": [
+        {"playerId": "bryan", "deckId": "bryan-commander:-muldrotha-the-grave"},
+        {"playerId": "jordan", "deckId": "jordan-marchesa-the-black-rose"},
+        {"playerId": "shake", "deckId": "shake-tmnt-precon"},
+        {"playerId": "waid", "deckId": "waid-krenko-mob-boss"},
+        {"playerId": "adam", "deckId": "adam-kambal's-allocation"}
+      ],
+      "winningDeck": "bryan-commander:-muldrotha-the-grave",
+      "variant": "star",
+      "salt": 0,
+      "duration": "42:30",
+      "notes": "Bryan's Hermit Druid failed to find, causing bryan to perform miracles to somehow avoid death by casting from the now whole deck graveyard. Jarad and lord of extinction. Doing 90+ damage to all of us at once. wtf. holy shit. *"
+    },
+    {
+      "id": "g1774680161108",
+      "date": "2026-03-28",
+      "players": [
+        {"playerId": "bryan", "deckId": "bryan-commander:-kardur-doomscourge"},
+        {"playerId": "jordan", "deckId": "jordan-xenagos-god-of-revels"},
+        {"playerId": "shake", "deckId": "shake-tmnt-precon"},
+        {"playerId": "waid", "deckId": "waid-the-wise-mothman"},
+        {"playerId": "adam", "deckId": "adam-gilanra--caller-of-wirewood"}
+      ],
+      "winningDeck": "adam-gilanra--caller-of-wirewood",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "40:17",
+      "notes": "Bryan fucked up. He played Kratos and superpowereed Adam into having a turn with where he got 4 combats and he was able to double damage."
+    },
+    {
+      "id": "g1775869234536",
+      "date": "2026-04-11",
+      "players": [
+        {"playerId": "adam", "deckId": "adam-general-tazri"},
+        {"playerId": "bryan", "deckId": "bryan-commander:-ishai-and-ikra"},
+        {"playerId": "jordan", "deckId": "jordan-eriette-auras"}
+      ],
+      "winningDeck": "adam-general-tazri",
+      "variant": "standard",
+      "salt": 0,
+      "duration": null,
+      "notes": "Tazri the ALLY Land nebie did nothing till it won."
+    },
+    {
+      "id": "g1775878146811",
+      "date": "2026-04-11",
+      "players": [
+        {"playerId": "noah", "deckId": "noah-ghyrson-starn--kelermorph"},
+        {"playerId": "jordan", "deckId": "jordan-braids-aristocrats"},
+        {"playerId": "bryan", "deckId": "bryan-commander:-szarel-genesis-shep"},
+        {"playerId": "adam", "deckId": "adam-amy-rose"}
+      ],
+      "winningDeck": "bryan-commander:-szarel-genesis-shep",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "1:53:44",
+      "notes": "Chaos warp ended the game."
+    },
+    {
+      "id": "g1775883984725",
+      "date": "2026-04-11",
+      "players": [
+        {"playerId": "noah", "deckId": "noah-ghyrson-starn--kelermorph"},
+        {"playerId": "jordan", "deckId": "jordan-marchesa-the-black-rose"},
+        {"playerId": "bryan", "deckId": "bryan-commander:-kardur-doomscourge"},
+        {"playerId": "adam", "deckId": "adam-12th-doctor"},
+        {"playerId": "waid", "deckId": "waid-avatar-aang----aang--master-of"}
+      ],
+      "winningDeck": "bryan-commander:-kardur-doomscourge",
+      "variant": "standard",
+      "salt": 3,
+      "duration": "1:22:00",
+      "notes": "This game ended with Bryan casting Rakdos Charm, Adam copied it with Tempt with Mayhem with then we ended up killing everyone with the subsequent copies of Rakdos Charm made."
+    },
+    {
+      "id": "g1775890997405",
+      "date": "2026-04-11",
+      "players": [
+        {"playerId": "jordan", "deckId": "jordan-rakdos-brings-the-beats"},
+        {"playerId": "bryan", "deckId": "bryan-commander:-betor-kin-to-all"},
+        {"playerId": "adam", "deckId": "adam-jodah--the-unifier"},
+        {"playerId": "waid", "deckId": "waid-avatar-aang----aang--master-of"}
+      ],
+      "winningDeck": "bryan-commander:-betor-kin-to-all",
+      "variant": "planechase",
+      "salt": 5,
+      "duration": "1:27:15",
+      "notes": null,
+      "travelLog": [
+        {"plane": "Shiv", "type": "Plane", "walker": "Jordan", "turn": 1, "cause": "start", "time": "12:34 AM"},
+        {"plane": "Cliffside Market", "type": "Plane", "walker": "Jordan", "turn": 4, "cause": "walk", "time": "12:42 AM"},
+        {"plane": "Bloodhill Bastion", "type": "Plane", "walker": "Waid", "turn": 4, "cause": "walk", "time": "12:43 AM"},
+        {"plane": "Asmoranomardicadaistinaculdacar's Kitchen", "type": "Plane", "walker": "McAtoms", "turn": 5, "cause": "walk", "time": "12:52 AM"},
+        {"plane": "Bant", "type": "Plane", "walker": "Jordan", "turn": 7, "cause": "walk", "time": "1:04 AM"},
+        {"plane": "Norn's Seedcore", "type": "Plane", "walker": "McAtoms", "turn": 7, "cause": "walk", "time": "1:07 AM"},
+        {"plane": "The Great Aerie", "type": "Plane", "walker": "McAtoms", "turn": 7, "cause": "walk", "time": "1:07 AM"},
+        {"plane": "Unleash the Flux", "type": "Phenomenon", "walker": "Jordan", "turn": 9, "cause": "walk", "time": "1:20 AM"},
+        {"plane": "New Argive", "type": "Plane", "walker": "Jordan", "turn": 9, "cause": "walk", "time": "1:22 AM"},
+        {"plane": "Bicycle Rack", "type": "Plane", "walker": "Bryan", "turn": 9, "cause": "walk", "time": "1:26 AM"},
+        {"plane": "New New York", "type": "Plane", "walker": "Waid", "turn": 10, "cause": "walk", "time": "1:40 AM"}
+      ]
+    }
+  ]
+};
+
+const RECAPS = {
+  "2026-03-28": "recaps/2026-03-28.html",
+  "2026-04-11": "recaps/2026-04-11.html"
+};
+
+const NIGHT_NAMES = {
+  "2026-03-28": { num: 1, name: "The Inaugural Shuffle" },
+  "2026-04-11": { num: 2, name: "The BP Wyndfall" }
+};
+
+const OWNER_COLORS = {
+  adam: '#069b03',
+  bryan: '#ffffff',
+  jordan: '#c785ea',
+  rich: '#e401a8',
+  shake: '#db5800',
+  waid: '#01529d',
+  noah: '#e401d1'
+};
+
+const PLAYER_DISPLAY = {
+  adam: "McAtoms",
+  bryan: "Bryan",
+  jordan: "Jordan",
+  rich: "Rich",
+  shake: "Shake",
+  waid: "Waid",
+  noah: "Noah"
+};
+
+// ========== DECKS DATA (embedded) ==========
+const DECKS_DATA = [{"id":"adam-12th-doctor","owner":"adam","name":"12th Doctor","commander":"The Twelfth Doctor","art":"https://cards.scryfall.io/art_crop/front/2/4/2400d681-05ef-43b1-b720-c15ca4226c27.jpg?1696636777","colors":["Blue","Red"],"bracket":null,"manaCost":"{3}{U}{R}","archidektUrl":"https://archidekt.com/decks/12978554","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-mighty-myrs","owner":"adam","name":"Mighty Myrs","commander":"Urtet, Remnant of Memnarch","art":"https://cards.scryfall.io/art_crop/front/7/a/7aa01ab4-26b0-49dc-8514-b3850d355a21.jpg?1675905609","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{3}","archidektUrl":"https://archidekt.com/decks/13018574","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-scabs","owner":"adam","name":"Scabs","commander":"The Scarab God","art":"https://cards.scryfall.io/art_crop/front/f/4/f4f414ef-84a2-4694-9e98-51bee4576c84.jpg?1689999233","colors":["Black","Blue"],"bracket":null,"manaCost":"{3}{U}{B}","archidektUrl":"https://archidekt.com/decks/13018638","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-trostani's-glory","owner":"adam","name":"Trostani's Glory","commander":"Trostani, Selesnya's Voice","art":"https://cards.scryfall.io/art_crop/front/3/4/34ea44f2-cb2f-4b86-83fc-fe507f05bb9d.jpg?1568004834","colors":["Green","White"],"bracket":null,"manaCost":"{G}{G}{W}{W}","archidektUrl":"https://archidekt.com/decks/13018656","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-leo's-thopters","owner":"adam","name":"Leo's Thopters","commander":"Leonardo da Vinci","art":"https://cards.scryfall.io/art_crop/front/2/8/283d04a5-3639-42de-b940-ffa7e609e527.jpg?1721423712","colors":["Blue"],"bracket":null,"manaCost":"{2}{U}","archidektUrl":"https://archidekt.com/decks/13018680","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-attack-of-the-plants","owner":"adam","name":"Attack of the Plants","commander":"The Necrobloom","art":"https://cards.scryfall.io/art_crop/front/8/f/8fcf68cf-0dac-4b29-90d5-c18c685182e6.jpg?1717012767","colors":["Black","Green","White"],"bracket":null,"manaCost":"{1}{W}{B}{G}","archidektUrl":"https://archidekt.com/decks/13018710","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-frogs!","owner":"adam","name":"Frogs!","commander":"Glarb, Calamity's Augur","art":"https://cards.scryfall.io/art_crop/front/f/f/ffc70b2d-5a3a-49ea-97db-175a62248302.jpg?1721427068","colors":["Black","Blue","Green"],"bracket":null,"manaCost":"{B}{G}{U}","archidektUrl":"https://archidekt.com/decks/13018747","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-hydrafoil","owner":"adam","name":"Hydrafoil","commander":"Zaxara, the Exemplary","art":"https://cards.scryfall.io/art_crop/front/6/d/6dc390da-75f8-490a-a724-c12d21cfe578.jpg?1701636845","colors":["Black","Blue","Green"],"bracket":null,"manaCost":"{1}{B}{G}{U}","archidektUrl":"https://archidekt.com/decks/13018834","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-daxos-of-nyx","owner":"adam","name":"Daxos of Nyx","commander":"Daxos the Returned","art":"https://cards.scryfall.io/art_crop/front/4/a/4abe142e-7e87-464b-be2a-ad2fc7aebd51.jpg?1562703959","colors":["Black","White"],"bracket":null,"manaCost":"{1}{W}{B}","archidektUrl":"https://archidekt.com/decks/13081907","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-kambal's-allocation","owner":"adam","name":"Kambal's Allocation","commander":"Kambal, Consul of Allocation","art":"https://cards.scryfall.io/art_crop/front/b/3/b3e47d49-e5b5-487b-a1ec-373dbf89b2ec.jpg?1673148829","colors":["Black","White"],"bracket":null,"manaCost":"{1}{W}{B}","archidektUrl":"https://archidekt.com/decks/13081945","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-kozi-&-friends","owner":"adam","name":"Kozi & Friends","commander":"Kozilek, the Great Distortion","art":"https://cards.scryfall.io/art_crop/front/c/4/c41554e7-2a07-4cc7-b01b-44deed08e588.jpg?1689995398","colors":["Colorless"],"bracket":null,"manaCost":"{8}{C}{C}","archidektUrl":"https://archidekt.com/decks/13089995","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-ghooooooosts!","owner":"adam","name":"Ghooooooosts!","commander":"Millicent, Restless Revenant","art":"https://cards.scryfall.io/art_crop/front/2/b/2b86b538-0766-440d-a2cd-f5d5bfcfb010.jpg?1641600129","colors":["Blue","White"],"bracket":null,"manaCost":"{5}{W}{U}","archidektUrl":"https://archidekt.com/decks/13090578","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-gitrog","owner":"adam","name":"Gitrog","commander":"The Gitrog Monster","art":"https://cards.scryfall.io/art_crop/front/4/0/40489e28-878d-44a2-847f-07beef1aa0f8.jpg?1752944964","colors":["Black","Green"],"bracket":null,"manaCost":"{3}{B}{G}","archidektUrl":"https://archidekt.com/decks/13090656","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-ooooooooze","owner":"adam","name":"OOOOOOOOZE","commander":"Aeve, Progenitor Ooze","art":"https://cards.scryfall.io/art_crop/front/d/f/dfe9b1b8-dffe-427d-be1e-2c6b8395bd54.jpg?1626097164","colors":["Green"],"bracket":null,"manaCost":"{2}{G}{G}{G}","archidektUrl":"https://archidekt.com/decks/13090876","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-general-tazri","owner":"adam","name":"General Tazri","commander":"General Tazri","art":"https://cards.scryfall.io/art_crop/front/3/4/34e9aa86-1a31-4c0f-928d-923f066286b6.jpg?1562905706","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{4}{W}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-amy-rose","owner":"adam","name":"Amy Rose","commander":"Amy Rose","art":"https://cards.scryfall.io/art_crop/front/6/a/6ac0c02f-6428-4ed0-bd1a-bf9f4af9c3c1.jpg?1752535687","colors":["Red","White"],"bracket":null,"manaCost":"{2}{R}{W}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-jodah--the-unifier","owner":"adam","name":"Dungeon Crawler Carl","commander":"Jodah, the Unifier","art":"https://cards.scryfall.io/art_crop/front/e/4/e4b1aa1e-b4e3-4346-8937-76b312501c70.jpg?1673307974","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{W}{U}{B}{R}{G}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-gilanra--caller-of-wirewood","owner":"adam","name":"Gilanra & Alena","commander":"Gilanra, Caller of Wirewood","art":"https://cards.scryfall.io/art_crop/front/7/4/745d297d-4bb4-40cf-bb9c-99dac04e5069.jpg?1608910679","colors":["Green","Red"],"bracket":null,"manaCost":"{2}{G}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"adam-ziatora--the-incinerator","owner":"adam","name":"Trogdor, the Burninator","commander":"Ziatora, the Incinerator","art":"https://cards.scryfall.io/art_crop/front/b/a/ba4fa4c8-f09f-4d97-a7d1-1b93caf7d4f9.jpg?1664413989","colors":["Black","Green","Red"],"bracket":null,"manaCost":"{3}{B}{R}{G}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-sengir-the-dark-bar","owner":"bryan","name":"Commander: Sengir, the Dark Baron","commander":"Sengir, the Dark Baron","art":"https://cards.scryfall.io/art_crop/front/4/d/4d51a22e-74fc-442e-945a-56d02ca12713.jpg?1608909947","colors":["Black","Blue","Red"],"bracket":null,"manaCost":"{4}{B}{B}","archidektUrl":"https://archidekt.com/decks/11450004","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-abomination-of-llan","owner":"bryan","name":"Commander: Abomination of Llanowar","commander":"Abomination of Llanowar","art":"https://cards.scryfall.io/art_crop/front/4/b/4b68bc46-5591-44dd-becc-eca154066925.jpg?1631235320","colors":["Black","Green"],"bracket":null,"manaCost":"{1}{B}{G}","archidektUrl":"https://archidekt.com/decks/11450530","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-myrel-shield-of-arg","owner":"bryan","name":"Commander: Myrel, Shield of Argive","commander":"Myrel, Shield of Argive","art":"https://cards.scryfall.io/art_crop/front/e/6/e632ed57-bb00-4493-adef-7b4805edd7ea.jpg?1674420256","colors":["White"],"bracket":null,"manaCost":"{3}{W}","archidektUrl":"https://archidekt.com/decks/11450776","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-jetmir-nexus-of-rev","owner":"bryan","name":"Commander: Jetmir, Nexus of Revels","commander":"Jetmir, Nexus of Revels","art":"https://cards.scryfall.io/art_crop/front/f/9/f9c69d75-651f-4b75-b65d-79999d2069f6.jpg?1664413153","colors":["Green","Red","White"],"bracket":null,"manaCost":"{1}{R}{G}{W}","archidektUrl":"https://archidekt.com/decks/11450958","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-jodah-archmage-eter","owner":"bryan","name":"Commander: Jodah, Archmage Eternal","commander":"Jodah, Archmage Eternal","art":"https://cards.scryfall.io/art_crop/front/7/3/73c18cb4-96b1-4af2-912e-974e22877ede.jpg?1673148799","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{1}{U}{R}{W}","archidektUrl":"https://archidekt.com/decks/11451029","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-kardur-doomscourge","owner":"bryan","name":"Commander: Chucky","commander":"Kardur, Doomscourge","art":"https://cards.scryfall.io/art_crop/front/9/d/9d943cf2-0462-4f31-9a92-d76fe4971b17.jpg?1759412736","colors":["Black","Red"],"bracket":null,"manaCost":"{2}{B}{R}","archidektUrl":"https://archidekt.com/decks/11451139","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-muldrotha-the-grave","owner":"bryan","name":"Commander: Muldrotha, the Gravetide","commander":"Muldrotha, the Gravetide","art":"https://cards.scryfall.io/art_crop/front/7/0/705b4d97-2f50-47f7-9053-d748f4337553.jpg?1769685324","colors":["Black","Blue","Green"],"bracket":null,"manaCost":"{3}{B}{G}{U}","archidektUrl":"https://archidekt.com/decks/11451227","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-kresh-the-bloodbrai","owner":"bryan","name":"Commander: Kresh the Bloodbraided","commander":"Kresh the Bloodbraided","art":"https://cards.scryfall.io/art_crop/front/8/b/8b4b3c5f-32ea-4208-86d4-bb86e3b8d7d5.jpg?1673485121","colors":["Black","Green","Red"],"bracket":null,"manaCost":"{2}{B}{R}{G}","archidektUrl":"https://archidekt.com/decks/12635696","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-myrkul-lord-of-bone","owner":"bryan","name":"Commander: Myrkul, Lord of Bones","commander":"Myrkul, Lord of Bones","art":"https://cards.scryfall.io/art_crop/front/8/2/82824d05-5215-459a-aa73-3c5a6be3d464.jpg?1674137617","colors":["Black","Green","White"],"bracket":null,"manaCost":"{4}{W}{B}{G}","archidektUrl":"https://archidekt.com/decks/12916360","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-aveline-de-grandpre","owner":"bryan","name":"Commander: Aveline de Grandpre","commander":"Aveline de Grandpre","art":"https://cards.scryfall.io/art_crop/front/d/b/db3b4f73-e241-4d60-a877-25327092c291.jpg?1721423869","colors":["Black","Green"],"bracket":null,"manaCost":"{2}{G}{G}","archidektUrl":"https://archidekt.com/decks/14274824","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-betor-kin-to-all","owner":"bryan","name":"Commander: Betor, Kin to All","commander":"Betor, Kin to All","art":"https://cards.scryfall.io/art_crop/front/b/4/b475b071-5545-483e-a397-89451f258602.jpg?1743204665","colors":["Black","Green","White"],"bracket":null,"manaCost":"{2}{W}{B}{G}","archidektUrl":"https://archidekt.com/decks/15064684","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-szarel-genesis-shep","owner":"bryan","name":"Commander: Szarel, Genesis Shepherd","commander":"Szarel, Genesis Shepherd","art":"https://cards.scryfall.io/art_crop/front/8/9/89b61123-b10f-4bcf-b5f9-1f302f9b22d1.jpg?1754673465","colors":["Black","Green","Red"],"bracket":null,"manaCost":"{2}{B}{R}{G}","archidektUrl":"https://archidekt.com/decks/17494527","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-ishai-and-ikra","owner":"bryan","name":"Commander: Ikra Shidiqi, the Usurper","commander":"Ikra Shidiqi, the Usurper","art":"https://cards.scryfall.io/art_crop/front/2/e/2e89ce6a-6bc9-427f-a8b2-c07a9fc3218f.jpg?1562272963","colors":["Black","Blue","Green","White"],"bracket":null,"manaCost":"{2}{W}{U}","archidektUrl":"https://archidekt.com/decks/17947350","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-commander:-the-earth-king","owner":"bryan","name":"Commander: The Earth King","commander":"The Earth King","art":"https://cards.scryfall.io/art_crop/front/a/8/a8d5dca6-381a-4361-b265-27de8d04335c.jpg?1764121171","colors":["Green"],"bracket":null,"manaCost":"{3}{G}","archidektUrl":"https://archidekt.com/decks/19347963","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"bryan-pauper-commander:-kagha-shadow","owner":"bryan","name":"Pauper Commander: Kagha, Shadow Archdruid","commander":"Kagha, Shadow Archdruid","art":"https://cards.scryfall.io/art_crop/front/6/3/6351adc8-2e44-4e5c-ae58-975b7332155e.jpg?1674137545","colors":["Black","Green"],"bracket":null,"manaCost":"{2}{B}{G}","archidektUrl":"https://archidekt.com/decks/19655938","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-niv-top","owner":"shake","name":"Niv Top","commander":"Niv-Mizzet, Visionary","art":"https://cards.scryfall.io/art_crop/front/7/a/7a69a618-d588-4745-8ede-0ff0a9f356f1.jpg?1730489058","colors":["Blue","Red"],"bracket":null,"manaCost":"{4}{U}{R}","archidektUrl":"https://archidekt.com/decks/10874173","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-avacyn","owner":"shake","name":"Avacyn","commander":"Avacyn, Angel of Hope","art":"https://cards.scryfall.io/art_crop/front/3/1/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1726285245","colors":["White"],"bracket":null,"manaCost":"{5}{W}{W}{W}","archidektUrl":"https://archidekt.com/decks/11038757","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-hugry-hugry-hippos","owner":"shake","name":"Hugry Hugry Hippos","commander":"Phelddagrif","art":"https://cards.scryfall.io/art_crop/front/4/9/493a72f0-2e35-4e06-a1b2-d42d432b9b2c.jpg?1559592591","colors":["Blue","Green","White"],"bracket":null,"manaCost":"{1}{G}{W}{U}","archidektUrl":"https://archidekt.com/decks/11039358","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-oloro-graveyard","owner":"shake","name":"Oloro Graveyard","commander":"Oloro, Ageless Ascetic","art":"https://cards.scryfall.io/art_crop/front/a/b/abf8df47-405c-42d8-be9e-0f0d0a49589b.jpg?1562931285","colors":["Black","Blue","White"],"bracket":null,"manaCost":"{3}{W}{U}{B}","archidektUrl":"https://archidekt.com/decks/11040318","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-ghalta-dinos","owner":"shake","name":"Ghalta Dinos","commander":"Ghalta, Primal Hunger","art":"https://cards.scryfall.io/art_crop/front/6/a/6a9c39e4-a8cf-42dd-8d0e-45634b335546.jpg?1730489423","colors":["Green"],"bracket":null,"manaCost":"{10}{G}{G}","archidektUrl":"https://archidekt.com/decks/11040618","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-geist-of-saint-trafty-pants","owner":"shake","name":"Geist of Saint Trafty Pants","commander":"Geist of Saint Traft","art":"https://cards.scryfall.io/art_crop/front/5/4/541b9d55-f237-4ff2-9e47-c58a381f0633.jpg?1641603441","colors":["Blue","White"],"bracket":null,"manaCost":"{1}{W}{U}","archidektUrl":"https://archidekt.com/decks/11040988","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-yoshi's-maze","owner":"shake","name":"Yoshi's Maze","commander":"Child of Alara","art":"https://cards.scryfall.io/art_crop/front/b/2/b2373625-af3c-4c2a-a1d1-5288c446955d.jpg?1673148447","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{W}{U}{B}{R}{G}","archidektUrl":"https://archidekt.com/decks/11041312","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-shirei-apostles","owner":"shake","name":"Shirei apostles","commander":"Shirei, Shizo's Caretaker","art":"https://cards.scryfall.io/art_crop/front/6/9/69848ec1-dba7-419f-a5f9-f934bebeeaa6.jpg?1689997454","colors":["Black"],"bracket":null,"manaCost":"{4}{B}","archidektUrl":"https://archidekt.com/decks/11689449","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-tmnt-precon","owner":"shake","name":"TMNT Precon","commander":"Leonardo, the Balance","art":"https://cards.scryfall.io/art_crop/front/7/2/72e637db-7112-406f-809b-0eda248488b5.jpg?1773509673","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{3}{W}","archidektUrl":"https://archidekt.com/decks/21089514","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"shake-leonardo--the-balance","owner":"shake","name":"Leonardo, the Balance","commander":"Leonardo, the Balance","art":"https://cards.scryfall.io/art_crop/front/7/2/72e637db-7112-406f-809b-0eda248488b5.jpg?1773509673","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{3}{W}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-xenagos-god-of-revels","owner":"jordan","name":"Xenagos, God of Revels","commander":"Xenagos, God of Revels","art":"https://cards.scryfall.io/art_crop/front/6/f/6f1bc3bb-46da-492a-850c-f1f588ad8d18.jpg?1732546037","colors":["Green","Red"],"bracket":null,"manaCost":"{3}{R}{G}","archidektUrl":"https://archidekt.com/decks/9934396","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-rakdos-brings-the-beats","owner":"jordan","name":"Rakdos Brings the Beats","commander":"Rakdos, Lord of Riots","art":"https://cards.scryfall.io/art_crop/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1726285245","colors":["Black","Red"],"bracket":null,"manaCost":"{B}{B}{R}{R}","archidektUrl":"https://archidekt.com/decks/13591475","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-braids-aristocrats","owner":"jordan","name":"Braids Aristocrats","commander":"Braids","art":"https://cards.scryfall.io/art_crop/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1752944690","colors":["Black"],"bracket":null,"manaCost":"{1}{B}{B}","archidektUrl":"https://archidekt.com/decks/13289184","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-tetsuo-voltron","owner":"jordan","name":"Tetsuo, Voltron","commander":"Tetsuo","art":"https://cards.scryfall.io/art_crop/front/5/1/51c523cd-78b0-438f-bba5-19160f648d5f.jpg?1673305006","colors":["Black","Blue","Red"],"bracket":null,"manaCost":"{U}{B}{R}","archidektUrl":"https://archidekt.com/decks/13610210","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-marchesa-the-black-rose","owner":"jordan","name":"Marchesa, the Black Rose","commander":"Marchesa, the Black Rose","art":"https://cards.scryfall.io/art_crop/front/3/2/3242a9f0-2ba3-4852-ac8f-366772ac1c62.jpg?1673148917","colors":["Black","Blue","Red"],"bracket":null,"manaCost":"{1}{U}{B}{R}","archidektUrl":"https://archidekt.com/decks/20569261","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-locust-god-wheels","owner":"jordan","name":"Locust God Wheels","commander":"The Locust God","art":"https://cards.scryfall.io/art_crop/front/7/e/7e599847-8ab0-4fd6-b2c0-cb44a7669aa5.jpg?1682209825","colors":["Blue","Red"],"bracket":null,"manaCost":"{4}{U}{R}","archidektUrl":"https://archidekt.com/decks/12006339","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-eriette-auras","owner":"jordan","name":"Eriette Auras","commander":"Eriette of the Charmed Garden","art":"https://cards.scryfall.io/art_crop/front/e/c/ecead4cd-47ae-4c42-b15c-1b29b5caba18.jpg?1692939281","colors":["Black","White"],"bracket":null,"manaCost":"{1}{W}{B}","archidektUrl":"https://archidekt.com/decks/13306838","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-atraxa-plus-counters","owner":"jordan","name":"Atraxa +1/+1","commander":"Atraxa, Grand Unifier","art":"https://cards.scryfall.io/art_crop/front/d/0/d0d33d52-3d28-4635-b985-51e126289259.jpg?1599707796","colors":["Black","Blue","Green","White"],"bracket":null,"manaCost":"{G}{W}{U}{B}","archidektUrl":"https://archidekt.com/decks/3721049","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"jordan-arcades-walls","owner":"jordan","name":"Arcades Walls","commander":"Arcades, the Strategist","art":"https://cards.scryfall.io/art_crop/front/1/e/1e90c638-d4b2-4243-bbc4-1cc10516c40f.jpg?1666961830","colors":["Blue","Green","White"],"bracket":null,"manaCost":"{1}{G}{W}{U}","archidektUrl":"https://archidekt.com/decks/3586092","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"waid-the-wise-mothman","owner":"waid","name":"The Wise Mothman","commander":"The Wise Mothman","art":"https://cards.scryfall.io/art_crop/front/c/f/cfb80c75-4b1b-4f25-923a-933855e7345c.jpg?1769163701","colors":["Black","Blue","Green"],"bracket":null,"manaCost":"{1}{B}{G}{U}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"waid-squirrels","owner":"waid","name":"Squirrels","commander":"Chatterfang, Squirrel General","art":"https://cards.scryfall.io/art_crop/front/1/7/1785cf85-1ac0-4246-9b89-1a8221a8e1b2.jpg?1626097239","colors":["Black","Green"],"bracket":null,"manaCost":"{2}{G}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"waid-krenko-mob-boss","owner":"waid","name":"Krenko, Mob Boss","commander":"Krenko, Mob Boss","art":"https://cards.scryfall.io/art_crop/front/8/2/824b2d73-2151-4e5e-9f05-8f63e2bdcaa9.jpg?1730632010","colors":["Red"],"bracket":null,"manaCost":"{2}{R}{R}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"waid-avatar-aang----aang--master-of","owner":"waid","name":"Avatar Aang","commander":"Avatar Aang // Aang, Master of Elements","art":"https://cards.scryfall.io/art_crop/front/f/e/fe29e909-50e9-4f04-b1a3-2cc5d7e3efe8.jpg?1765629010","colors":["Black","Blue","Green","Red","White"],"bracket":null,"manaCost":"{R}{G}{W}{U}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"rich-the-scarab-god","owner":"rich","name":"The Scarab God","commander":"The Scarab God","art":"https://cards.scryfall.io/art_crop/front/f/4/f4f414ef-84a2-4694-9e98-51bee4576c84.jpg?1689999233","colors":["Black","Blue"],"bracket":null,"manaCost":"{3}{U}{B}","archidektUrl":"https://archidekt.com/decks/21182748","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"rich-kiki-jiki","owner":"rich","name":"Kiki-Jiki","commander":"Kiki-Jiki, Mirror Breaker","art":"https://cards.scryfall.io/art_crop/front/a/2/a2ff0ee3-9600-4c7d-acec-6ec90595384e.jpg?1562852476","colors":["Red"],"bracket":null,"manaCost":"{2}{R}{R}{R}","archidektUrl":"https://archidekt.com/decks/21182880","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"rich-kaalia","owner":"rich","name":"Kaalia","commander":"Kaalia of the Vast","art":"https://cards.scryfall.io/art_crop/front/e/7/e71c8c39-3fbb-4a42-9cf6-b3224f5a56fc.jpg?1717013745","colors":["Black","Red","White"],"bracket":null,"manaCost":"{1}{R}{W}{B}","archidektUrl":"https://archidekt.com/decks/16455672","stats":{"gamesPlayed":0,"wins":0,"winRate":0}},{"id":"noah-ghyrson-starn--kelermorph","owner":"noah","name":"Ghyrson Starn, Kelermorph","commander":"Ghyrson Starn, Kelermorph","art":"https://cards.scryfall.io/art_crop/front/f/a/fa7349d9-c82f-4cf8-a852-92168d1f4966.jpg?1673309394","colors":["Blue","Red"],"bracket":null,"manaCost":"{1}{U}{R}","archidektUrl":null,"stats":{"gamesPlayed":0,"wins":0,"winRate":0}}];
+
+// ========== UTILITY FUNCTIONS ==========
+function getColorClass(color) {
+  const map = { 'White': 'white', 'Blue': 'blue', 'Black': 'black', 'Red': 'red', 'Green': 'green', 'Colorless': 'generic' };
+  return map[color] || 'generic';
+}
+
+// Contrast text color for light/dark backgrounds
+function contrastText(hex) {
+  if (!hex) return '#fff';
+  const c = hex.replace('#','');
+  const r = parseInt(c.substr(0,2),16), g = parseInt(c.substr(2,2),16), b = parseInt(c.substr(4,2),16);
+  return (r*0.299 + g*0.587 + b*0.114) > 160 ? '#111' : '#fff';
+}
+
+const MANA_SVG_BASE = 'https://svgs.scryfall.io/card-symbols/';
+function manaImg(symbol, size) {
+  const s = size || 18;
+  return `<img src="${MANA_SVG_BASE}${symbol}.svg" alt="{${symbol}}" width="${s}" height="${s}" class="mana-pip" onerror="this.style.display='none'">`;
+}
+function renderManaCost(costStr, size) {
+  if (!costStr) return '';
+  const s = size || 18;
+  const symbols = [];
+  const regex = /\{([^}]+)\}/g;
+  let match;
+  while ((match = regex.exec(costStr)) !== null) symbols.push(match[1]);
+  if (!symbols.length) return '';
+  return symbols.map(sym => {
+    const fileName = sym.replace('/', '%2F');
+    return `<img src="${MANA_SVG_BASE}${fileName}.svg" alt="{${sym}}" width="${s}" height="${s}" class="mana-pip" onerror="this.style.display='none'">`;
+  }).join('');
+}
+function manaPips(colorsArr, size) {
+  if (!colorsArr || !colorsArr.length) return '';
+  const COLOR_MAP = { White:'W', Blue:'U', Black:'B', Red:'R', Green:'G', Colorless:'C' };
+  return colorsArr.map(c => manaImg(COLOR_MAP[c] || c, size)).join('');
+}
+
+function computeStats() {
+  const players = {};
+  const nightDates = [...new Set(GAMES_DATA.games.map(g => g.date))].sort();
+  let totalMinutes = 0, totalSalt = 0, saltCount = 0;
+
+  GAMES_DATA.games.forEach(g => {
+    if (g.duration) {
+      const parts = g.duration.split(':');
+      if (parts.length === 3) totalMinutes += parseInt(parts[0]) * 60 + parseInt(parts[1]) + parseInt(parts[2]) / 60;
+      else if (parts.length === 2) totalMinutes += parseInt(parts[0]) + parseInt(parts[1]) / 60;
+    }
+    if (g.salt !== undefined) { totalSalt += g.salt; saltCount++; }
+    
+    if (g.variant === '2hg') {
+      g.players.forEach(p => {
+        if (!players[p.playerId]) players[p.playerId] = { wins: 0, losses: 0, games: 0 };
+        players[p.playerId].games++;
+      });
+      return;
+    }
+
+    g.players.forEach(p => {
+      if (!players[p.playerId]) players[p.playerId] = { wins: 0, losses: 0, games: 0, elo: 1200 };
+      players[p.playerId].games++;
+      const isWinner = g.winningDeck === p.deckId;
+      if (isWinner) players[p.playerId].wins++;
+      else players[p.playerId].losses++;
+    });
+  });
+
+  return { players, nightDates, totalMinutes, totalSalt, saltCount, allPlayers: Object.keys(players) };
+}
+
+function computeELO(stats) {
+  const elo = {};
+  Object.keys(stats.players).forEach(p => { elo[p] = 1200; });
+  
+  GAMES_DATA.games.forEach(g => {
+    if (g.variant === '2hg') return;
+    const contestants = g.players.map(p => p.playerId);
+    if (contestants.length < 2) return;
+
+    contestants.forEach(p1 => {
+      const others = contestants.filter(p => p !== p1);
+      others.forEach(p2 => {
+        const isP1Win = g.winningDeck && g.players.find(p => p.playerId === p1 && p.deckId === g.winningDeck);
+        const ratingDiff = elo[p2] - elo[p1];
+        const expectedP1 = 1 / (1 + Math.pow(10, ratingDiff / 400));
+        const K = 32;
+        elo[p1] += K * ((isP1Win ? 1 : 0) - expectedP1);
+      });
+    });
+  });
+
+  return elo;
+}
+
+function getDeckById(deckId) {
+  return DECKS_DATA.find(d => d.id === deckId);
+}
+
+function getDecksByOwner(owner) {
+  return DECKS_DATA.filter(d => d.owner === owner);
+}
+
+function getGameStats(deckId) {
+  let wins = 0, losses = 0, totalDuration = 0, gameCount = 0;
+  GAMES_DATA.games.forEach(g => {
+    const inGame = g.players.find(p => p.deckId === deckId);
+    if (inGame) {
+      gameCount++;
+      if (g.winningDeck === deckId) wins++;
+      else if (g.winningDeck) losses++;
+      if (g.duration) {
+        const parts = g.duration.split(':');
+        if (parts.length === 3) totalDuration += parseInt(parts[0]) * 60 + parseInt(parts[1]) + parseInt(parts[2]) / 60;
+        else if (parts.length === 2) totalDuration += parseInt(parts[0]) + parseInt(parts[1]) / 60;
+      }
+    }
+  });
+  const avgDuration = gameCount ? Math.round(totalDuration / gameCount) : 0;
+  const winPct = gameCount ? Math.round(wins / gameCount * 100) : 0;
+  return { wins, losses, gameCount, winPct, avgDuration };
+}
+
+function slugify(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+// ========== ARSENAL TOGGLE ==========
+let arsenalOpen = true; // starts expanded
+function toggleArsenal() {
+  arsenalOpen = !arsenalOpen;
+  const body = document.getElementById('arsenalBody');
+  const toggle = document.getElementById('arsenalToggle');
+  if (arsenalOpen) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    body.style.opacity = '1';
+    toggle.style.transform = 'rotate(0deg)';
+    setTimeout(() => { body.style.maxHeight = 'none'; }, 350);
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    requestAnimationFrame(() => {
+      body.style.maxHeight = '0';
+      body.style.opacity = '0';
+    });
+    toggle.style.transform = 'rotate(-90deg)';
+  }
+}
+
+// ========== RENDER FUNCTIONS ==========
+function renderStats() {
+  const stats = computeStats();
+  document.getElementById('totalGames').textContent = GAMES_DATA.games.length;
+  document.getElementById('totalNights').textContent = stats.nightDates.length;
+  document.getElementById('totalPlayers').textContent = stats.allPlayers.length;
+  const hours = Math.floor(stats.totalMinutes / 60);
+  const mins = Math.round(stats.totalMinutes % 60);
+  document.getElementById('totalTime').textContent = hours + 'h ' + (mins < 10 ? '0' : '') + mins + 'm';
+  document.getElementById('avgSalt').textContent = stats.saltCount ? (stats.totalSalt / stats.saltCount).toFixed(1) : '0';
+}
+
+function renderLeaderboard() {
+  const stats = computeStats();
+  const elo = computeELO(stats);
+  const sorted = Object.entries(stats.players)
+    .map(([id, s]) => ({ id, ...s, pct: s.games > 0 && s.wins + s.losses > 0 ? (s.wins / (s.wins + s.losses) * 100) : 0, elo: elo[id] }))
+    .filter(p => p.wins + p.losses > 0)
+    .sort((a, b) => b.wins - a.wins || a.losses - b.losses || b.pct - a.pct);
+
+  const lbBody = document.getElementById('lbBody');
+  sorted.forEach((p, i) => {
+    const pct = Math.round(p.pct);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="lb-rank">${i + 1}</td>
+      <td><div class="lb-player-cell"><div class="lb-avatar" style="background:${OWNER_COLORS[p.id] || '#999'};color:${contrastText(OWNER_COLORS[p.id])}">${PLAYER_DISPLAY[p.id][0]}</div><span class="lb-name" style="color:${OWNER_COLORS[p.id] || '#999'}">${PLAYER_DISPLAY[p.id]}</span></div></td>
+      <td class="center lb-wins">${p.wins}</td>
+      <td class="center lb-losses">${p.losses}</td>
+      <td class="center">${pct}%</td>
+      <td class="lb-bar-cell"><div class="lb-bar"><div class="lb-bar-fill" style="width:${pct}%"></div></div></td>
+      <td class="lb-elo">${Math.round(p.elo)}</td>
+    `;
+    lbBody.appendChild(tr);
+  });
+}
+
+function renderHeadToHead() {
+  const stats = computeStats();
+  const activePlayers = Object.keys(stats.players).filter(p => stats.players[p].wins + stats.players[p].losses > 0).sort();
+  
+  const h2hGrid = document.getElementById('h2hGrid');
+  
+  // Set dynamic grid columns based on active player count
+  h2hGrid.style.gridTemplateColumns = `auto repeat(${activePlayers.length}, 1fr)`;
+
+  // Header row
+  let html = '<div class="h2h-cell header empty"></div>';
+  activePlayers.forEach(p => {
+    html += `<div class="h2h-cell header">${PLAYER_DISPLAY[p][0]}</div>`;
+  });
+  
+  activePlayers.forEach(p1 => {
+    html += `<div class="h2h-cell player-label">${PLAYER_DISPLAY[p1]}</div>`;
+    activePlayers.forEach(p2 => {
+      if (p1 === p2) {
+        html += '<div class="h2h-cell empty"></div>';
+      } else {
+        let w = 0, l = 0;
+        GAMES_DATA.games.forEach(g => {
+          if (g.variant === '2hg' || g.variant === 'star') return;
+          const p1InGame = g.players.find(pp => pp.playerId === p1);
+          const p2InGame = g.players.find(pp => pp.playerId === p2);
+          if (p1InGame && p2InGame) {
+            if (g.winningDeck === p1InGame.deckId) w++;
+            else if (g.winningDeck === p2InGame.deckId) l++;
+          }
+        });
+        const result = w + l === 0 ? '—' : `${w}-${l}`;
+        let cellClass = 'h2h-cell';
+        if (w > l) cellClass += ' win';
+        else if (l > w) cellClass += ' loss';
+        else if (w + l > 0) cellClass += ' tie';
+        html += `<div class="${cellClass}">${result}</div>`;
+      }
+    });
+  });
+
+  h2hGrid.innerHTML = html;
+}
+
+function renderDeckArsenal() {
+  const stats = computeStats();
+  const activeOwners = Object.keys(stats.players).sort();
+  const filtersHTML = `<button class="filter-btn active" data-owner="all">All</button>` + activeOwners.map(owner => `<button class="filter-btn" data-owner="${owner}" style="border-color:${OWNER_COLORS[owner]||'var(--border)'}44">${PLAYER_DISPLAY[owner]}</button>`).join('');
+  document.getElementById('deckFilters').innerHTML = filtersHTML;
+
+  let currentFilter = null;
+  function renderDecks(filter = null) {
+    const grid = document.getElementById('deckGrid');
+    let decks = [...DECKS_DATA];
+    if (filter) decks = decks.filter(d => d.owner === filter);
+    // Sort: played decks first (by games desc, then win%), then unplayed alphabetically
+    decks.sort((a, b) => {
+      const sa = getGameStats(a.id), sb = getGameStats(b.id);
+      if (sa.gameCount > 0 && sb.gameCount === 0) return -1;
+      if (sa.gameCount === 0 && sb.gameCount > 0) return 1;
+      if (sa.gameCount > 0 && sb.gameCount > 0) return sb.gameCount - sa.gameCount || sb.winPct - sa.winPct;
+      return a.name.localeCompare(b.name);
+    });
+
+    grid.innerHTML = decks.map(deck => {
+      const stats = getGameStats(deck.id);
+      const costPips = renderManaCost(deck.manaCost, 18);
+      const colorPips = manaPips(deck.colors, 14);
+      const ownerColor = OWNER_COLORS[deck.owner] || '#888';
+      const ownerName = PLAYER_DISPLAY[deck.owner] || deck.owner;
+      const archidektLink = deck.archidektUrl ? `<a href="${deck.archidektUrl}" target="_blank" class="deck-link">Archidekt</a>` : '';
+      const edhrUrl = `https://edhrec.com/commanders/${slugify(deck.commander.split('//')[0].trim())}`;
+      const bracketLabel = deck.bracket ? `Bracket ${deck.bracket}` : 'Bracket TBD';
+      const played = stats.gameCount > 0;
+
+      return `
+        <div class="deck-card" style="border-color:${played ? ownerColor + '55' : 'var(--border)'}">
+          <div class="deck-art ${deck.art ? '' : 'no-art'}">
+            ${deck.art ? `<img src="${deck.art}" alt="${deck.name}">` : '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-dim);font-size:13px">No Art</div>'}
+          </div>
+          <div class="deck-body">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+              <div class="deck-name">${deck.name}</div>
+              <span style="font-size:10px;color:${ownerColor};font-weight:600;text-transform:uppercase;letter-spacing:0.5px">${ownerName}</span>
+            </div>
+            <div class="deck-commander">${deck.commander}</div>
+            <div class="mana-cost" style="margin:6px 0 4px;display:flex;align-items:center;gap:2px">${costPips}</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+              <div style="display:flex;gap:2px">${colorPips}</div>
+              <span style="font-size:11px;color:var(--text-dim);border:1px solid var(--border);padding:1px 8px;border-radius:10px">${bracketLabel}</span>
+            </div>
+            <div class="deck-stats">
+              ${played ? `
+                <div class="deck-stat-row">
+                  <span class="deck-stat-label">Record:</span>
+                  <span class="deck-stat-value" style="color:var(--mtg-gold)">${stats.wins}W–${stats.losses}L (${stats.winPct}%)</span>
+                </div>
+                <div class="deck-stat-row">
+                  <span class="deck-stat-label">Games:</span>
+                  <span class="deck-stat-value">${stats.gameCount}</span>
+                </div>
+                <div class="deck-stat-row">
+                  <span class="deck-stat-label">Avg Length:</span>
+                  <span class="deck-stat-value">${stats.avgDuration}m</span>
+                </div>
+              ` : `
+                <div class="deck-stat-row">
+                  <span class="deck-stat-label" style="color:var(--text-dim);font-style:italic">Not yet played</span>
+                </div>
+              `}
+            </div>
+            <div class="deck-links">
+              <a href="${edhrUrl}" target="_blank" class="deck-link">EDHREC</a>
+              ${archidektLink}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  const playedCount = DECKS_DATA.filter(d => getGameStats(d.id).gameCount > 0).length;
+  document.getElementById('arsenalCount').textContent = `— ${DECKS_DATA.length} decks (${playedCount} played)`;
+  renderDecks();
+  document.getElementById('deckFilters').addEventListener('click', e => {
+    if (e.target.classList.contains('filter-btn')) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      const owner = e.target.dataset.owner;
+      currentFilter = owner === 'all' ? null : owner;
+      renderDecks(currentFilter);
+    }
+  });
+}
+
+function renderGameNights() {
+  const stats = computeStats();
+  const nightsList = document.getElementById('nightsList');
+  const reversedDates = [...stats.nightDates].reverse();
+
+  reversedDates.forEach(date => {
+    const nightGames = GAMES_DATA.games.filter(g => g.date === date);
+    const info = NIGHT_NAMES[date] || { num: '?', name: '' };
+    const dateObj = new Date(date + 'T12:00:00');
+    const dateStr = dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    const nightPlayers = [...new Set(nightGames.flatMap(g => g.players.map(p => p.playerId)))];
+
+    const card = document.createElement('div');
+    card.className = 'night-card';
+    
+    let gamesHTML = '';
+    nightGames.forEach((g, gi) => {
+      const gameNum = `${info.num}.${gi + 1}`;
+      let winnerStr = '';
+      
+      if (g.variant === '2hg' && g.teams && g.winningTeam !== null) {
+        const team = g.teams[g.winningTeam];
+        const teamPlayers = team.players.map(p => PLAYER_DISPLAY[p]).join(' + ');
+        winnerStr = `<span style="color:var(--green)">👑</span> ${teamPlayers}`;
+      } else if (g.winningDeck) {
+        const winningPlayer = g.players.find(p => p.deckId === g.winningDeck);
+        const winnerName = PLAYER_DISPLAY[winningPlayer.playerId];
+        const winnerDeck = getDeckById(g.winningDeck);
+        winnerStr = `<span style="color:var(--green)">👑</span> ${winnerName}<span class="deck">— ${winnerDeck.name}</span>`;
+      } else {
+        winnerStr = '<span style="color:var(--text-dim)">No winner</span>';
+      }
+
+      let variantClass = g.variant === 'planechase' ? 'planechase' : g.variant === 'star' ? 'star' : g.variant === '2hg' ? 'twoheadedgiant' : '';
+      let variantLabel = g.variant === 'planechase' ? '✨ Planechase' : g.variant === 'star' ? '⭐ Star' : g.variant === '2hg' ? '🤝 2HG' : 'Standard';
+
+      let saltStr = '';
+      for (let s = 0; s < 5; s++) saltStr += s < g.salt ? '🧂' : '<span style="opacity:0.15">🧂</span>';
+
+      gamesHTML += `
+        <div class="night-game-row" onclick="toggleGameDetail(this)">
+          <span class="ngr-num">${gameNum}</span>
+          <span class="ngr-winner">${winnerStr}</span>
+          <span class="ngr-variant ${variantClass}">${variantLabel}</span>
+          <span class="ngr-salt">${saltStr}</span>
+          <span class="ngr-duration">${g.duration || '—'}</span>
+        </div>
+        <div class="night-detail">
+          <div class="detail-roster">
+            <div class="detail-roster-title">Players</div>
+            ${g.players.map(p => {
+              const player = PLAYER_DISPLAY[p.playerId];
+              const deck = getDeckById(p.deckId);
+              const isWinner = g.winningDeck === p.deckId;
+              const crown = isWinner ? '<span class="roster-crown">👑</span>' : '';
+              return `<div class="roster-player ${isWinner ? 'winner' : ''}">${crown}<span class="roster-name" style="color:${OWNER_COLORS[p.playerId]}">${player}</span><span class="roster-result">${deck.name}</span></div>`;
+            }).join('')}
+          </div>
+          <div class="detail-spotlight">
+            ${g.winningDeck ? (() => {
+              const winningPlayer = g.players.find(p => p.deckId === g.winningDeck);
+              const winDeck = getDeckById(g.winningDeck);
+              const playerName = PLAYER_DISPLAY[winningPlayer.playerId];
+              const playerColor = OWNER_COLORS[winningPlayer.playerId];
+              return `
+                <div class="spotlight-art" ${winDeck.art ? `style="background-image:url('${winDeck.art}'); background-size:cover; background-position:center;"` : ''}></div>
+                <div class="spotlight-title" style="color:${playerColor}">${playerName}</div>
+                <div class="spotlight-deck">${winDeck.name}</div>
+                <div class="spotlight-commander">${winDeck.commander}</div>
+              `;
+            })() : '<div style="color:var(--text-dim)">No winner recorded</div>'}
+          </div>
+          ${g.notes ? `<div class="game-notes">${g.notes.replace(/\n/g, '<br>')}</div>` : ''}
+        </div>
+      `;
+    });
+
+    let recapHTML = '';
+    if (RECAPS[date]) {
+      recapHTML = `<div class="night-footer"><a href="${RECAPS[date]}" class="recap-link">📖 Read the Recap →</a></div>`;
+    }
+
+    card.innerHTML = `
+      <div class="night-header" onclick="toggleNightGames(this)">
+        <div class="night-title-row">
+          <span class="night-number">Night ${info.num}</span>
+          <span class="night-date">${dateStr}</span>
+        </div>
+        <div class="night-meta">
+          <span class="night-chip">🎮 <span class="val">${nightGames.length}</span> games</span>
+          <span class="night-chip">👥 <span class="val">${nightPlayers.length}</span> players</span>
+          ${info.name ? `<span class="night-chip" style="color:var(--orange);border-color:rgba(230,114,1,0.2)">${info.name}</span>` : ''}
+        </div>
+        <div class="night-toggle">▼</div>
+      </div>
+      <div class="night-games">${gamesHTML}</div>
+      ${recapHTML}
+    `;
+
+    nightsList.appendChild(card);
+  });
+}
+
+function toggleNightGames(header) {
+  const games = header.nextElementSibling;
+  const footer = games.nextElementSibling;
+  games.classList.toggle('collapsed');
+  if (footer && footer.classList.contains('night-footer')) footer.classList.toggle('hide');
+}
+
+function toggleGameDetail(row) {
+  const detail = row.nextElementSibling;
+  if (detail && detail.classList.contains('night-detail')) {
+    detail.classList.toggle('expanded');
+  }
+}
+
+// ========== INIT ==========
+document.addEventListener('DOMContentLoaded', () => {
+  renderStats();
+  renderLeaderboard();
+  renderHeadToHead();
+  renderDeckArsenal();
+  renderGameNights();
+
+  // Nav
+  document.querySelectorAll('.site-nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      document.querySelectorAll('.site-nav a').forEach(a => a.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+});
+</script>
+
+</body>
+</html>

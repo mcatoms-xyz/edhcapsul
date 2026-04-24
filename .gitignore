@@ -1,0 +1,32 @@
+# Large video backgrounds — ship via CDN next session
+assets/*.mov
+assets/*.mp4
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Env / secrets (never commit)
+.env
+.env.local
+.env.*.local
+_-inbox/supabase-creds.txt
+
+# Node (if we add it later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Netlify
+.netlify/
+
+# Scryfall cache (regenerable)
+data/cache/*.json
+!data/cache/.gitkeep

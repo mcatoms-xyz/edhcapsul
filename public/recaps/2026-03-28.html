@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Game Night Recap — March 28, 2026 | MTGCapsul</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: 'Museo Slab'; src: url('../fonts/museo_slab_500-webfont.woff') format('woff'); font-weight: 500; }
+@font-face { font-family: 'Museo Sans'; src: url('../fonts/museosans_500-webfont.woff') format('woff'); font-weight: 500; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: rgba(10,10,14,0.85);
+  --surface-hover: rgba(10,10,14,0.9);
+  --border: rgba(255,255,255,0.12);
+  --border-bright: rgba(255,255,255,0.2);
+  --text: #f0f0f0;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-mid: rgba(255,255,255,0.7);
+  --orange: #E67201;
+  --blue: #007EFF;
+  --green: #1BBA01;
+  --red: #D3202A;
+  --mtg-w: #F9FAF4; --mtg-u: #0E68AB; --mtg-b: #4A3728;
+  --mtg-r: #D3202A; --mtg-g: #00733E; --mtg-c: #CAC5C0;
+  --mtg-gold: #C9A849;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-family: 'Museo Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  padding-bottom: 80px;
+}
+
+/* ---- HEADER ---- */
+.recap-header {
+  position: relative;
+  padding: 48px 32px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(230,114,1,0.15) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.recap-header::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(230,114,1,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.recap-badge {
+  display: inline-block;
+  font-family: 'Museo Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(230,114,1,0.12);
+  border: 1px solid rgba(230,114,1,0.25);
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.recap-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  text-shadow: 0 0 40px rgba(230,114,1,0.3);
+}
+.recap-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--text-mid);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.recap-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 16px;
+}
+.meta-chip .val { color: var(--text); font-weight: 600; }
+
+/* ---- NAV ---- */
+.recap-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 16px;
+  background: rgba(10,10,14,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.recap-nav a {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-dim);
+  padding: 6px 14px;
+  border-radius: 16px;
+  transition: all 0.2s;
+}
+.recap-nav a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.recap-nav a.active { color: var(--orange); background: rgba(230,114,1,0.12); }
+
+/* ---- CONTENT ---- */
+.content { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- NIGHT SUMMARY ---- */
+.night-summary {
+  margin: 40px 0;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+.night-summary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--blue), var(--green));
+}
+.narrator-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+.narrator-tag .icon { font-size: 16px; }
+.narrator-text {
+  font-family: 'Museo Sans', -apple-system, sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--text);
+}
+.narrator-text em { color: var(--orange); font-style: normal; font-weight: 600; }
+.narrator-text strong { color: #fff; }
+
+/* ---- SCOREBOARD ---- */
+.scoreboard { margin: 40px 0; }
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: var(--orange);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon { font-size: 20px; }
+
+.standings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.standing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.standing-card:hover { border-color: var(--border-bright); }
+.standing-card.winner { border-color: rgba(230,114,1,0.4); }
+.standing-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.standing-record { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+.standing-record .wins { color: var(--green); font-weight: 600; }
+.standing-record .losses { color: var(--red); font-weight: 600; }
+.standing-decks { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+
+/* ---- GAME CARDS ---- */
+.game-section { margin: 48px 0; }
+
+.game-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.game-card:hover { border-color: var(--border-bright); }
+
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--border);
+}
+.game-number {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.game-variant {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.05);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+.game-variant.star { color: var(--blue); background: rgba(0,126,255,0.12); }
+.game-variant.twoheadedgiant { color: var(--green); background: rgba(27,186,1,0.12); }
+.game-meta-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.game-duration { font-size: 12px; color: var(--text-dim); }
+.salt-meter { display: inline-flex; align-items: center; gap: 2px; font-size: 14px; }
+.salt-active { opacity: 1; }
+.salt-inactive { opacity: 0.15; }
+
+.game-matchup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  padding: 16px 20px;
+}
+.matchup-player {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+.matchup-player.winner {
+  background: rgba(230,114,1,0.08);
+  border-color: rgba(230,114,1,0.25);
+}
+.cmd-art {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+.matchup-player.winner .cmd-art {
+  border-color: var(--orange);
+  box-shadow: 0 0 8px rgba(230,114,1,0.3);
+}
+.mp-info { min-width: 0; }
+.mp-name { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mp-deck { font-size: 11px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.crown { font-size: 14px; margin-left: auto; flex-shrink: 0; }
+
+.game-narrative { padding: 16px 20px; border-top: 1px solid var(--border); }
+.game-narrative .narrator-text { font-size: 17px; line-height: 1.7; }
+.game-notes {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--border-bright);
+  font-size: 15px;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* ---- TEAM BADGE ---- */
+.team-badge {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: 4px;
+}
+.team-1 { color: var(--orange); background: rgba(230,114,1,0.12); }
+.team-2 { color: var(--blue); background: rgba(0,126,255,0.12); }
+.team-3 { color: var(--green); background: rgba(27,186,1,0.12); }
+
+/* ---- ACHIEVEMENTS ---- */
+.achievements-section { margin: 48px 0; }
+.achievement-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid rgba(230,114,1,0.25);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: var(--orange);
+}
+.ach-icon { font-size: 36px; flex-shrink: 0; filter: drop-shadow(0 0 6px rgba(230,114,1,0.4)); }
+.ach-info { flex: 1; }
+.ach-name { font-family: 'Cinzel', serif; font-size: 16px; color: var(--orange); margin-bottom: 2px; }
+.ach-desc { font-size: 15px; color: var(--text-dim); margin-bottom: 4px; }
+.ach-player { font-size: 14px; color: var(--text-mid); }
+.ach-player strong { color: var(--text); }
+
+/* ---- FOOTER ---- */
+.recap-footer {
+  margin-top: 60px;
+  padding: 24px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.recap-footer a {
+  color: var(--orange);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.recap-footer a:hover { text-decoration: underline; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 640px) {
+  .recap-title { font-size: 28px; }
+  .recap-header { padding: 32px 16px; }
+  .game-matchup { grid-template-columns: 1fr 1fr; }
+  .standings-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="recap-header">
+  <div class="recap-badge">Game Night Recap</div>
+  <h1 class="recap-title">March 28, 2026</h1>
+  <p class="recap-subtitle">Game Night 1 — The Inaugural Shuffle</p>
+  <div class="recap-meta">
+    <span class="meta-chip">🎮 <span class="val">5 Games</span></span>
+    <span class="meta-chip">👥 <span class="val">6 Players</span></span>
+    <span class="meta-chip">⏱ <span class="val">~3h 20min</span></span>
+    <span class="meta-chip">🧂 <span class="val">Avg Salt: 1.0</span></span>
+    <span class="meta-chip">🏆 <span class="val">Bryan: 2 Wins</span></span>
+  </div>
+</header>
+
+<!-- ========== NAV ========== -->
+<nav class="recap-nav">
+  <a href="#summary" class="active">Summary</a>
+  <a href="#standings">Standings</a>
+  <a href="#games">Games</a>
+  <a href="#achievements">Achievements</a>
+</nav>
+
+<!-- ========== CONTENT ========== -->
+<div class="content">
+
+  <!-- ====== NIGHT SUMMARY ====== -->
+  <section id="summary" class="night-summary">
+    <div class="narrator-tag"><span class="icon">🎙️</span> EDH BROADCAST — GAME NIGHT DISPATCH</div>
+    <div class="narrator-text">
+      <p>WELCOME, PLANESWALKERS, TO THE <em>INAUGURAL SHUFFLE</em> — the very first game night in the official MTGCapsul record books!</p>
+      <br>
+      <p>Six players shuffled into the pod tonight: <strong>Adam, Bryan, Jordan, Rich, Shake, and Waid</strong>. The crew brought everything from tribal synergy engines to infinite combo packages to a literal <em>Teenage Mutant Ninja Turtles precon</em>. Five games. Three different formats. One <strong>absolutely unhinged</strong> Hermit Druid milling an entire library into a graveyard kill shot.</p>
+      <br>
+      <p>The night opened with <em>Bryan's Szarel</em> taking Game 1 and <em>Rich's Kiki-Jiki</em> going infinite in Game 2 — "But I asked permission!" has already become the pod's first catchphrase. The middle games saw a chaotic <strong>3-team Two-Headed Giant</strong> and a <strong>Star</strong> variant where Bryan's Muldrotha performed actual necromancy, milling 90+ cards and using <em>Jarad + Lord of Extinction</em> to nuke the entire table from the graveyard.</p>
+      <br>
+      <p>Adam closed the night with a comeback win piloting <strong>Gilanra</strong> — ironic, given that <em>Bryan's Kardur accidentally superpowered Adam</em> into four combat phases with double damage. When your goad commander accidentally creates a Timmy's dream scenario for the opponent, you've earned that L.</p>
+      <br>
+      <p>Five games. Six players. Two formats we'd never tried before. The meta is wide open and the salt is flowing. Game night is officially a thing.</p>
+    </div>
+  </section>
+
+  <!-- ====== STANDINGS ====== -->
+  <section id="standings" class="scoreboard">
+    <h2 class="section-title"><span class="icon">📊</span> Night Standings</h2>
+    <div class="standings-grid">
+      <div class="standing-card winner">
+        <div class="standing-name">👑 Bryan</div>
+        <div class="standing-record"><span class="wins">2W</span> – <span class="losses">3L</span></div>
+        <div class="standing-decks">Szarel · Betor · Jetmir · Muldrotha · Kardur</div>
+      </div>
+      <div class="standing-card">
+        <div class="standing-name">Adam</div>
+        <div class="standing-record"><span class="wins">1W</span> – <span class="losses">4L</span></div>
+        <div class="standing-decks">Ziatora · Trostani · Mighty Myrs · Kambal · Gilanra</div>
+      </div>
+      <div class="standing-card">
+        <div class="standing-name">Rich</div>
+        <div class="standing-record"><span class="wins">1W</span> – <span class="losses">2L</span></div>
+        <div class="standing-decks">Scarab God · Kiki-Jiki · Kaalia</div>
+      </div>
+      <div class="standing-card">
+        <div class="standing-name">Jordan</div>
+        <div class="standing-record"><span class="wins">0W</span> – <span class="losses">5L</span></div>
+        <div class="standing-decks">Eriette · Braids · Atraxa · Marchesa · Xenagos</div>
+      </div>
+      <div class="standing-card">
+        <div class="standing-name">Shake</div>
+        <div class="standing-record"><span class="wins">0W</span> – <span class="losses">2L</span></div>
+        <div class="standing-decks">Leonardo · TMNT Precon</div>
+      </div>
+      <div class="standing-card">
+        <div class="standing-name">Waid</div>
+        <div class="standing-record"><span class="wins">0W</span> – <span class="losses">2L</span></div>
+        <div class="standing-decks">Squirrels · Krenko · Mothman</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== GAME-BY-GAME ====== -->
+  <section id="games" class="game-section">
+    <h2 class="section-title"><span class="icon">⚔️</span> Game-by-Game</h2>
+
+    <!-- GAME 1.1 -->
+    <div class="game-card" id="game1-1">
+      <div class="game-header">
+        <span class="game-number">⚔️ Game 1.1</span>
+        <div class="game-meta-row">
+          <span class="game-duration">58m 24s</span>
+          <span class="game-variant">Standard</span>
+          <span class="salt-meter">
+            <span class="salt-active">🧂</span><span class="salt-active">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span>
+          </span>
+        </div>
+      </div>
+      <div class="game-matchup">
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/b/a/ba4fa4c8-f09f-4d97-a7d1-1571571f0571.jpg?1660842207" alt="Ziatora">
+          <div class="mp-info">
+            <div class="mp-name">Adam</div>
+            <div class="mp-deck">Ziatora, the Incinerator</div>
+          </div>
+        </div>
+        <div class="matchup-player winner">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/8/9/89b61123-b10f-4bcf-b5f9-1f302f9b22d1.jpg?1754673465" alt="Szarel">
+          <div class="mp-info">
+            <div class="mp-name">Bryan</div>
+            <div class="mp-deck">Szarel, Genesis Shepherd</div>
+          </div>
+          <span class="crown">👑</span>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/e/c/ecead4cd-47ae-4c42-b15c-1b29b5caba18.jpg?1692939281" alt="Eriette">
+          <div class="mp-info">
+            <div class="mp-name">Jordan</div>
+            <div class="mp-deck">Eriette Auras</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/3/e/3e2fe87b-9c04-4afa-a539-1fb0f42a1f63.jpg?1685368711" alt="Scarab God">
+          <div class="mp-info">
+            <div class="mp-name">Rich</div>
+            <div class="mp-deck">The Scarab God</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-narrative">
+        <div class="narrator-text">
+          <p>The very first game in the official record books — and <em>Bryan's Szarel</em> wastes no time establishing dominance. The Jund value engine started generating tokens, pumping them, and swinging in while the rest of the table was still figuring out their mana bases. Adam's Ziatora got a few sacrifice triggers in, Rich's Scarab God started reanimating threats, and Jordan's Eriette was locking down creatures with enchantments — but none of it was fast enough to outpace Szarel's relentless board presence.</p>
+          <p style="margin-top:8px">The lesson from Game 1? <strong>Fabled Passage is a kill-on-sight target.</strong> The table learned this the hard way.</p>
+        </div>
+        <div class="game-notes">📝 "ALWAYS EXILE FABLED PASSAGE IMMEDIATELY. kthxbai"</div>
+      </div>
+    </div>
+
+    <!-- GAME 1.2 -->
+    <div class="game-card" id="game1-2">
+      <div class="game-header">
+        <span class="game-number">⚔️ Game 1.2</span>
+        <div class="game-meta-row">
+          <span class="game-duration">1h 8m 45s</span>
+          <span class="game-variant">Standard</span>
+          <span class="salt-meter">
+            <span class="salt-active">🧂</span><span class="salt-active">🧂</span><span class="salt-active">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span>
+          </span>
+        </div>
+      </div>
+      <div class="game-matchup">
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/c/1/c1e27fb3-6ce5-41d0-8a2f-7378ec78493d.jpg?1673309497" alt="Trostani's Glory">
+          <div class="mp-info">
+            <div class="mp-name">Adam</div>
+            <div class="mp-deck">Trostani's Glory</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/b/4/b475b071-5545-483e-a397-89451f258602.jpg?1743204665" alt="Betor">
+          <div class="mp-info">
+            <div class="mp-name">Bryan</div>
+            <div class="mp-deck">Betor, Kin to All</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1752944690" alt="Braids">
+          <div class="mp-info">
+            <div class="mp-name">Jordan</div>
+            <div class="mp-deck">Braids Aristocrats</div>
+          </div>
+        </div>
+        <div class="matchup-player winner">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/e/b/eb153181-1c49-49a1-ae77-3045e7b1a6fe.jpg?1673308117" alt="Kiki-Jiki">
+          <div class="mp-info">
+            <div class="mp-name">Rich</div>
+            <div class="mp-deck">Kiki-Jiki, Mirror Breaker</div>
+          </div>
+          <span class="crown">👑</span>
+        </div>
+      </div>
+      <div class="game-narrative">
+        <div class="narrator-text">
+          <p>An hour and eight minutes of incremental board development, careful threat assessment, and political maneuvering — all rendered completely irrelevant by one card and one ETB trigger.</p>
+          <p style="margin-top:8px"><em>Rich went infinite with Kiki-Jiki.</em> The mono-red combo legend found his untap piece, started copying it, and created approximately one billion hasty token copies to swing lethal at the entire table simultaneously. Adam had a Turn 4 <strong>Marit Lage</strong> — a 20/20 flying indestructible black token — and it <em>did absolutely nothing</em> because infinite combat damage doesn't care about your legendary 20/20.</p>
+          <p style="margin-top:8px">The salt hit 3 on this one. Not because of the combo itself — it's a clean kill. But because Rich looked the whole table in the eye and said <strong>"But I asked permission!"</strong> before going off. The first catchphrase of the pod is born.</p>
+        </div>
+        <div class="game-notes">📝 "Rich wins via infinite combo w/ Kiki-Jiki (But I asked permission!) Turn 4 Marit Lage did nothing. (adam)"</div>
+      </div>
+    </div>
+
+    <!-- GAME 1.3 — 2HG -->
+    <div class="game-card" id="game1-3">
+      <div class="game-header">
+        <span class="game-number">⚔️ Game 1.3</span>
+        <div class="game-meta-row">
+          <span class="game-duration">10m 42s</span>
+          <span class="game-variant twoheadedgiant">🤝 Two-Headed Giant</span>
+          <span class="salt-meter">
+            <span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span>
+          </span>
+        </div>
+      </div>
+      <div class="game-matchup">
+        <div class="matchup-player winner">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/7/c/7c6a05de-6b0e-4886-befc-2da65e58b738.jpg?1694305098" alt="Jetmir">
+          <div class="mp-info">
+            <div class="mp-name">Bryan <span class="team-badge team-1">T1</span></div>
+            <div class="mp-deck">Jetmir, Nexus of Revels</div>
+          </div>
+          <span class="crown">👑</span>
+        </div>
+        <div class="matchup-player winner">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/5/a/5a656b0f-8f44-42ec-808a-8fbe99f28367.jpg?1673309400" alt="Mighty Myrs">
+          <div class="mp-info">
+            <div class="mp-name">Adam <span class="team-badge team-1">T1</span></div>
+            <div class="mp-deck">Mighty Myrs</div>
+          </div>
+          <span class="crown">👑</span>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/5/d/5d3e2403-1291-4e86-9684-ad7bc1049523.jpg?1673307459" alt="Atraxa">
+          <div class="mp-info">
+            <div class="mp-name">Jordan <span class="team-badge team-2">T2</span></div>
+            <div class="mp-deck">Atraxa +Counters</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/b/6/b6514ce5-6362-4547-a42a-8dc210f0e26c.jpg?1673308213" alt="Kaalia">
+          <div class="mp-info">
+            <div class="mp-name">Rich <span class="team-badge team-2">T2</span></div>
+            <div class="mp-deck">Kaalia of the Vast</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/0/8/08fcf1ff-6025-4c36-b7b1-5765ee7ff89f.jpg?1740523614" alt="Squirrels">
+          <div class="mp-info">
+            <div class="mp-name">Waid <span class="team-badge team-3">T3</span></div>
+            <div class="mp-deck">Squirrels</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/a/c/ac1e5a2f-eb3f-4e85-8a6a-cfafdcbaab96.jpg?1752954040" alt="Leonardo">
+          <div class="mp-info">
+            <div class="mp-name">Shake <span class="team-badge team-3">T3</span></div>
+            <div class="mp-deck">Leonardo, the Balance</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-narrative">
+        <div class="narrator-text">
+          <p><em>Ten minutes and forty-two seconds.</em> That's how long three-team Two-Headed Giant lasted. Six players, three teams, and the game was over before most Commander pods finish their third land drop.</p>
+          <p style="margin-top:8px"><strong>Team 1</strong> (Bryan's Jetmir + Adam's Mighty Myrs) combined wide board presence with Jetmir's "creatures you control get +1/+0 and trample" anthem stacking and just... ran over the other two teams before they could stabilize. Team 2 (Jordan's Atraxa + Rich's Kaalia) and Team 3 (Waid's Squirrels + Shake's Leonardo TMNT) barely got to develop their boards.</p>
+          <p style="margin-top:8px">Zero salt. Hard to be salty about a game that was over before you finished your first beer.</p>
+        </div>
+        <div class="game-notes">📝 "3-team 2HG. Bryan+Adam (T1) vs Jordan+Rich (T2) vs Waid+Shake (T3). Team 1 wins."</div>
+      </div>
+    </div>
+
+    <!-- GAME 1.4 — STAR -->
+    <div class="game-card" id="game1-4">
+      <div class="game-header">
+        <span class="game-number">⚔️ Game 1.4</span>
+        <div class="game-meta-row">
+          <span class="game-duration">42m 30s</span>
+          <span class="game-variant star">⭐ Star</span>
+          <span class="salt-meter">
+            <span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span>
+          </span>
+        </div>
+      </div>
+      <div class="game-matchup">
+        <div class="matchup-player winner">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/c/6/c654737d-34ac-42ff-ae27-3a3bbb930fc1.jpg?1591196281" alt="Muldrotha">
+          <div class="mp-info">
+            <div class="mp-name">Bryan</div>
+            <div class="mp-deck">Muldrotha, the Gravetide</div>
+          </div>
+          <span class="crown">👑</span>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/3/2/3242a9f0-2ba3-4852-ac8f-366772ac1c62.jpg?1673148917" alt="Marchesa">
+          <div class="mp-info">
+            <div class="mp-name">Jordan</div>
+            <div class="mp-deck">Marchesa, the Black Rose</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/1/c/1ceae569-536a-4684-84b0-6b640addbfc1.jpg?1706239828" alt="TMNT">
+          <div class="mp-info">
+            <div class="mp-name">Shake</div>
+            <div class="mp-deck">TMNT Precon</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/4/1/41edde2e-977e-4f1c-b30a-203b74d9070a.jpg?1625977963" alt="Krenko">
+          <div class="mp-info">
+            <div class="mp-name">Waid</div>
+            <div class="mp-deck">Krenko, Mob Boss</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/5/0/50a0e881-fe32-44fa-b1ea-e0b45c6e2b88.jpg?1726285152" alt="Kambal">
+          <div class="mp-info">
+            <div class="mp-name">Adam</div>
+            <div class="mp-deck">Kambal's Allocation</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-narrative">
+        <div class="narrator-text">
+          <p>First-ever <em>Star variant</em> in the pod. Five players, you can only attack (and can only be attacked by) the two players across from you. Kill both your enemies to win. Political alliances. Hidden agendas. And then <strong>Bryan's Muldrotha happened</strong>.</p>
+          <p style="margin-top:8px">Here's what went down: Bryan activated <strong>Hermit Druid</strong> — the classic "reveal cards until you hit a basic land" self-mill engine. Problem: Bryan's deck had <em>no basic lands</em>. So the Druid just... milled his <em>entire library</em> into the graveyard. The whole thing. Every card.</p>
+          <p style="margin-top:8px">And from that 90+ card graveyard, Bryan assembled <strong>Jarad, Golgari Lich Lord</strong> plus <strong>Lord of Extinction</strong> — a creature whose power and toughness equal the number of cards in all graveyards. With 90+ cards in the yard, Lord of Extinction was a 90/90. Jarad sacrificed it, dealing <em>90+ damage to every opponent simultaneously</em>.</p>
+          <p style="margin-top:8px">The whole table just sat there. Five players eliminated in one activation. Star variant over. Bryan's Muldrotha didn't just win the game — it performed <em>actual necromancy</em> by turning an empty library into a kill shot that would make a Yu-Gi-Oh protagonist blush.</p>
+        </div>
+        <div class="game-notes">📝 "Bryan's Hermit Druid failed to find, causing bryan to perform miracles to somehow avoid death by casting from the now whole deck graveyard. Jarad and Lord of Extinction. Doing 90+ damage to all of us at once. wtf. holy shit. *"</div>
+      </div>
+    </div>
+
+    <!-- GAME 1.5 -->
+    <div class="game-card" id="game1-5">
+      <div class="game-header">
+        <span class="game-number">⚔️ Game 1.5 — The Closer</span>
+        <div class="game-meta-row">
+          <span class="game-duration">40m 17s</span>
+          <span class="game-variant">Standard</span>
+          <span class="salt-meter">
+            <span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span><span class="salt-inactive">🧂</span>
+          </span>
+        </div>
+      </div>
+      <div class="game-matchup">
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/9/d/9d943cf2-0462-4f31-9a92-d76fe4971b17.jpg?1759412736" alt="Kardur">
+          <div class="mp-info">
+            <div class="mp-name">Bryan</div>
+            <div class="mp-deck">Kardur Doomscourge</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/e/b/eb4f3a59-2588-45db-8484-4aa3d3147d73.jpg?1673307574" alt="Xenagos">
+          <div class="mp-info">
+            <div class="mp-name">Jordan</div>
+            <div class="mp-deck">Xenagos, God of Revels</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/1/c/1ceae569-536a-4684-84b0-6b640addbfc1.jpg?1706239828" alt="TMNT">
+          <div class="mp-info">
+            <div class="mp-name">Shake</div>
+            <div class="mp-deck">TMNT Precon</div>
+          </div>
+        </div>
+        <div class="matchup-player">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/5/3/5308baa5-da0c-430e-b22e-ee0e02789556.jpg?1696638610" alt="Wise Mothman">
+          <div class="mp-info">
+            <div class="mp-name">Waid</div>
+            <div class="mp-deck">The Wise Mothman</div>
+          </div>
+        </div>
+        <div class="matchup-player winner">
+          <img class="cmd-art" src="https://cards.scryfall.io/art_crop/front/3/e/3ec68c3b-2d81-4b15-8f3e-78c34f96b1a1.jpg?1608910752" alt="Gilanra">
+          <div class="mp-info">
+            <div class="mp-name">Adam</div>
+            <div class="mp-deck">Gilanra, Caller of Wirewood</div>
+          </div>
+          <span class="crown">👑</span>
+        </div>
+      </div>
+      <div class="game-narrative">
+        <div class="narrator-text">
+          <p>The night closer — and the best comedy of errors in Game Night 1.</p>
+          <p style="margin-top:8px">Bryan brought out <strong>Kardur Doomscourge</strong> (the goad commander) for its debut, forcing the table to swing at each other while he played political puppeteer. Jordan's <strong>Xenagos</strong> was doubling creature power and slamming face. Shake ran back the TMNT precon. Waid deployed <strong>The Wise Mothman</strong> for some Rad counter shenanigans. And Adam? Adam was quietly ramping with <em>Gilanra</em>, building mana, waiting.</p>
+          <p style="margin-top:8px">Then Bryan played <strong>Kratos</strong> — yes, the God of War Secret Lair card — targeting Adam. Instead of weakening a threat, it <em>gave Adam's creatures a massive combat boost</em>. Suddenly Adam had <strong>four combat phases in one turn with double damage</strong>. Gilanra's big green board went absolutely nuclear. Four swings. Double damage each time. Table eliminated.</p>
+          <p style="margin-top:8px">Bryan accidentally created a monster. The pod's first own-goal. Adam takes the W and closes out Game Night 1 with style — even if the style was "my opponent accidentally gave me god mode."</p>
+        </div>
+        <div class="game-notes">📝 "Bryan fucked up. He played Kratos and superpowered Adam into having a turn where he got 4 combats and double damage."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ACHIEVEMENTS ====== -->
+  <section id="achievements" class="achievements-section">
+    <h2 class="section-title"><span class="icon">🏆</span> Achievements Unlocked</h2>
+
+    <div class="achievement-card">
+      <div class="ach-icon">🗡️</div>
+      <div class="ach-info">
+        <div class="ach-name">First Blood</div>
+        <div class="ach-desc">Win your first game</div>
+        <div class="ach-player"><strong>Bryan "BPWyndon"</strong> — Szarel, Genesis Shepherd takes the very first W in the record books. Game 1.1. The Jund value engine couldn't be stopped.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card">
+      <div class="ach-icon">🗡️</div>
+      <div class="ach-info">
+        <div class="ach-name">First Blood</div>
+        <div class="ach-desc">Win your first game</div>
+        <div class="ach-player"><strong>Rich</strong> — Kiki-Jiki infinite combo in Game 1.2. "But I asked permission!" — the first catchphrase is born.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card">
+      <div class="ach-icon">🗡️</div>
+      <div class="ach-info">
+        <div class="ach-name">First Blood</div>
+        <div class="ach-desc">Win your first game</div>
+        <div class="ach-player"><strong>Adam "McAtoms"</strong> — Gilanra closes out the night in Game 1.5. Technically Bryan's fault.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card">
+      <div class="ach-icon">💀</div>
+      <div class="ach-info">
+        <div class="ach-name">Graveyard Shift</div>
+        <div class="ach-desc">Win a game primarily through graveyard interaction</div>
+        <div class="ach-player"><strong>Bryan "BPWyndon"</strong> — Hermit Druid milled the entire library. Jarad + Lord of Extinction = 90+ damage from the graveyard. Actual necromancy.</div>
+      </div>
+    </div>
+
+    <div class="achievement-card">
+      <div class="ach-icon">♾️</div>
+      <div class="ach-info">
+        <div class="ach-name">Infinite Loop</div>
+        <div class="ach-desc">Win via an infinite combo</div>
+        <div class="ach-player"><strong>Rich</strong> — Kiki-Jiki found the untap piece. Infinite hasty tokens. "But I asked permission!"</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="recap-footer">
+  <a href="../">← Back to Game Log</a>
+  <a href="2026-04-11.html">Next: Game Night 2 →</a>
+</footer>
+
+</body>
+</html>

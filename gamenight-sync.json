@@ -1,0 +1,5733 @@
+{
+  "_source": "gamenight",
+  "_exportedAt": "2026-04-11T17:43:44.640Z",
+  "mtg__2hgMerge40": true,
+  "mtg__achRetroCheck1": true,
+  "mtg_slotAssignments": [
+    "jordan",
+    null,
+    "waid",
+    null,
+    "bryan",
+    "adam"
+  ],
+  "mtg_matchupSelections": {
+    "jordan": "jordan-rakdos-brings-the-beats",
+    "bryan": "bryan-commander:-betor-kin-to-all",
+    "adam": "adam-jodah--the-unifier",
+    "waid": "waid-avatar-aang----aang--master-of"
+  },
+  "mtg_activeVariant": "planechase",
+  "mtg_colSplit": 25,
+  "mtg__gamesPurge1": true,
+  "mtg_activePod": [
+    "jordan",
+    "bryan",
+    "adam",
+    "waid"
+  ],
+  "mtg_playerColors": {
+    "adam": "#069b03",
+    "bryan": "#ffffff",
+    "shake": "#db5800",
+    "waid": "#01529d",
+    "jordan": "#c785ea",
+    "noah": "#e401d1",
+    "rich": "#e401a8"
+  },
+  "mtg_seatOrder": [
+    "jordan",
+    "waid",
+    "bryan",
+    "adam"
+  ],
+  "mtg_games": [
+    {
+      "id": "g1774661381776",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-ziatora--the-incinerator"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-szarel-genesis-shep"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-eriette-auras"
+        },
+        {
+          "playerId": "rich",
+          "deckId": "rich-the-scarab-god"
+        }
+      ],
+      "winningDeck": "bryan-commander:-szarel-genesis-shep",
+      "variant": "standard",
+      "salt": 2,
+      "duration": "58:24",
+      "notes": "ALWAYS EXILE FABLED PASSAGE IMMEDIATELY. kthxbai"
+    },
+    {
+      "id": "g1774667570489",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-trostani's-glory"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-betor-kin-to-all"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-braids-aristocrats"
+        },
+        {
+          "playerId": "rich",
+          "deckId": "rich-kiki-jiki"
+        }
+      ],
+      "winningDeck": "rich-kiki-jiki",
+      "variant": "standard",
+      "salt": 3,
+      "duration": "1:08:45",
+      "notes": "Rich wins via infinite combo w/ Kiki Jiki (But I asked permission!) \nTurn 4 Marit Lage did nothing. (adam)"
+    },
+    {
+      "id": "g1774672502130",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-jetmir-nexus-of-rev"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-atraxa-plus-counters"
+        },
+        {
+          "playerId": "rich",
+          "deckId": "rich-kaalia"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-leonardo--the-balance"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-squirrels"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-mighty-myrs"
+        }
+      ],
+      "winningDeck": null,
+      "variant": "2hg",
+      "salt": 0,
+      "duration": "10:42",
+      "notes": "3-team 2HG. Bryan+Adam (T1) vs Jordan+Rich (T2) vs Waid+Shake (T3). Team 1 wins.",
+      "teams": [
+        {
+          "name": "Team 1",
+          "players": [
+            "bryan",
+            "adam"
+          ]
+        },
+        {
+          "name": "Team 2",
+          "players": [
+            "jordan",
+            "rich"
+          ]
+        },
+        {
+          "name": "Team 3",
+          "players": [
+            "waid",
+            "shake"
+          ]
+        }
+      ],
+      "winningTeam": 0
+    },
+    {
+      "id": "g1774676688524",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-muldrotha-the-grave"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-marchesa-the-black-rose"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-tmnt-precon"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-krenko-mob-boss"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-kambal's-allocation"
+        }
+      ],
+      "winningDeck": "bryan-commander:-muldrotha-the-grave",
+      "variant": "star",
+      "salt": 0,
+      "duration": "42:30",
+      "notes": "Bryan's Hermit Druid failed to find, causing bryan to perform miracles to somehow avoid death by casting from the now whole deck graveyard. Jarad and lord of extinction. Doing 90+ damage to all of us at once. wtf. holy shit. *"
+    },
+    {
+      "id": "g1774680161108",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-kardur-doomscourge"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-xenagos-god-of-revels"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-tmnt-precon"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-the-wise-mothman"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-gilanra--caller-of-wirewood"
+        }
+      ],
+      "winningDeck": "adam-gilanra--caller-of-wirewood",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "40:17",
+      "notes": "Bryan fucked up. He played Kratos and superpowereed Adam into having a turn with where he got 4 combats and he was able to double damage."
+    },
+    {
+      "id": "g1775869234536",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-general-tazri"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-ishai-and-ikra"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-eriette-auras"
+        }
+      ],
+      "winningDeck": "adam-general-tazri",
+      "variant": "standard",
+      "salt": 0,
+      "duration": null,
+      "notes": "Tazri the ALLY Land nebie did nothing till it won."
+    },
+    {
+      "id": "g1775878146811",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "noah",
+          "deckId": "noah-ghyrson-starn--kelermorph"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-braids-aristocrats"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-szarel-genesis-shep"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-amy-rose"
+        }
+      ],
+      "winningDeck": "bryan-commander:-szarel-genesis-shep",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "1:53:44",
+      "notes": "Chaos warp ended the game."
+    },
+    {
+      "id": "g1775883984725",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "noah",
+          "deckId": "noah-ghyrson-starn--kelermorph"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-marchesa-the-black-rose"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-kardur-doomscourge"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-12th-doctor"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-avatar-aang----aang--master-of"
+        }
+      ],
+      "winningDeck": "bryan-commander:-kardur-doomscourge",
+      "variant": "standard",
+      "salt": 3,
+      "duration": "1:22:00",
+      "notes": "This game ended with Bryan casting Rakdos Charm, Adam copied it with Tempt with Mayhem with then we ended up killing everyone with the subsequent copies of Rakdos Charm made."
+    },
+    {
+      "id": "g1775890997405",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-rakdos-brings-the-beats"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-betor-kin-to-all"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-jodah--the-unifier"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-avatar-aang----aang--master-of"
+        }
+      ],
+      "winningDeck": "bryan-commander:-betor-kin-to-all",
+      "variant": "planechase",
+      "salt": 5,
+      "duration": "1:27:15",
+      "notes": null,
+      "travelLog": [
+        {
+          "plane": "Shiv",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 1,
+          "cause": "start",
+          "time": "12:34 AM"
+        },
+        {
+          "plane": "Cliffside Market",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 4,
+          "cause": "walk",
+          "time": "12:42 AM"
+        },
+        {
+          "plane": "Bloodhill Bastion",
+          "type": "Plane",
+          "walker": "Waid",
+          "turn": 4,
+          "cause": "walk",
+          "time": "12:43 AM"
+        },
+        {
+          "plane": "Asmoranomardicadaistinaculdacar's Kitchen",
+          "type": "Plane",
+          "walker": "McAtoms",
+          "turn": 5,
+          "cause": "walk",
+          "time": "12:52 AM"
+        },
+        {
+          "plane": "Bant",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 7,
+          "cause": "walk",
+          "time": "1:04 AM"
+        },
+        {
+          "plane": "Norn's Seedcore",
+          "type": "Plane",
+          "walker": "McAtoms",
+          "turn": 7,
+          "cause": "walk",
+          "time": "1:07 AM"
+        },
+        {
+          "plane": "The Great Aerie",
+          "type": "Plane",
+          "walker": "McAtoms",
+          "turn": 7,
+          "cause": "walk",
+          "time": "1:07 AM"
+        },
+        {
+          "plane": "Unleash the Flux",
+          "type": "Phenomenon",
+          "walker": "Jordan",
+          "turn": 9,
+          "cause": "walk",
+          "time": "1:20 AM"
+        },
+        {
+          "plane": "New Argive",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 9,
+          "cause": "walk",
+          "time": "1:22 AM"
+        },
+        {
+          "plane": "Bicycle Rack",
+          "type": "Plane",
+          "walker": "Bryan",
+          "turn": 9,
+          "cause": "walk",
+          "time": "1:26 AM"
+        },
+        {
+          "plane": "New New York",
+          "type": "Plane",
+          "walker": "Waid",
+          "turn": 10,
+          "cause": "walk",
+          "time": "1:40 AM"
+        }
+      ]
+    }
+  ],
+  "mtg_playerNames": {
+    "adam": "McAtoms",
+    "bryan": "Bryan",
+    "shake": "Shake",
+    "waid": "Waid",
+    "jordan": "Jordan",
+    "noah": "Noah"
+  },
+  "mtg_achievementNotifyQueue": [
+    {
+      "playerId": "adam",
+      "achievementId": "first-blood",
+      "achievementName": "First Blood",
+      "flavorText": "The crawler has drawn first blood. The dungeon acknowledges your existence. Barely.",
+      "timestamp": "2026-03-29T03:21:57.232Z",
+      "sent": false
+    },
+    {
+      "playerId": "adam",
+      "achievementId": "variety-hour",
+      "achievementName": "Variety Hour",
+      "flavorText": "Standard was not enough. Two-Headed Giant was not enough. The crawler demanded MORE formats. The dungeon is impressed by your restlessness, if not your attention span.",
+      "timestamp": "2026-03-29T03:21:57.232Z",
+      "sent": false
+    },
+    {
+      "playerId": "bryan",
+      "achievementId": "first-blood",
+      "achievementName": "First Blood",
+      "flavorText": "The crawler has drawn first blood. The dungeon acknowledges your existence. Barely.",
+      "timestamp": "2026-03-29T03:21:57.232Z",
+      "sent": false
+    },
+    {
+      "playerId": "bryan",
+      "achievementId": "variety-hour",
+      "achievementName": "Variety Hour",
+      "flavorText": "Standard was not enough. Two-Headed Giant was not enough. The crawler demanded MORE formats. The dungeon is impressed by your restlessness, if not your attention span.",
+      "timestamp": "2026-03-29T03:21:57.232Z",
+      "sent": false
+    },
+    {
+      "playerId": "shake",
+      "achievementId": "variety-hour",
+      "achievementName": "Variety Hour",
+      "flavorText": "Standard was not enough. Two-Headed Giant was not enough. The crawler demanded MORE formats. The dungeon is impressed by your restlessness, if not your attention span.",
+      "timestamp": "2026-03-29T03:21:57.232Z",
+      "sent": false
+    },
+    {
+      "playerId": "waid",
+      "achievementId": "variety-hour",
+      "achievementName": "Variety Hour",
+      "flavorText": "Standard was not enough. Two-Headed Giant was not enough. The crawler demanded MORE formats. The dungeon is impressed by your restlessness, if not your attention span.",
+      "timestamp": "2026-03-29T03:21:57.232Z",
+      "sent": false
+    },
+    {
+      "playerId": "jordan",
+      "achievementId": "variety-hour",
+      "achievementName": "Variety Hour",
+      "flavorText": "Standard was not enough. Two-Headed Giant was not enough. The crawler demanded MORE formats. The dungeon is impressed by your restlessness, if not your attention span.",
+      "timestamp": "2026-03-29T03:21:57.233Z",
+      "sent": false
+    },
+    {
+      "playerId": "rich",
+      "achievementId": "first-blood",
+      "achievementName": "First Blood",
+      "flavorText": "The crawler has drawn first blood. The dungeon acknowledges your existence. Barely.",
+      "timestamp": "2026-03-29T03:21:57.233Z",
+      "sent": false
+    },
+    {
+      "playerId": "rich",
+      "achievementId": "speed-run",
+      "achievementName": "Speed Run",
+      "flavorText": "The game started. The game ended. Some crawlers hadn't finished shuffling their hands. The dungeon blinked, and it was over. Efficient. Ruthless. Absolutely disgusting.",
+      "timestamp": "2026-03-29T03:21:57.233Z",
+      "sent": false
+    },
+    {
+      "playerId": "noah",
+      "achievementId": "marathon",
+      "achievementName": "Marathon",
+      "flavorText": "Ninety minutes. One game. The crawler has demonstrated either remarkable endurance or a fundamental misunderstanding of how combat phases work.",
+      "timestamp": "2026-04-11T03:29:07.618Z",
+      "sent": false
+    },
+    {
+      "playerId": "jordan",
+      "achievementId": "marathon",
+      "achievementName": "Marathon",
+      "flavorText": "Ninety minutes. One game. The crawler has demonstrated either remarkable endurance or a fundamental misunderstanding of how combat phases work.",
+      "timestamp": "2026-04-11T03:29:07.618Z",
+      "sent": false
+    },
+    {
+      "playerId": "bryan",
+      "achievementId": "marathon",
+      "achievementName": "Marathon",
+      "flavorText": "Ninety minutes. One game. The crawler has demonstrated either remarkable endurance or a fundamental misunderstanding of how combat phases work.",
+      "timestamp": "2026-04-11T03:29:07.618Z",
+      "sent": false
+    },
+    {
+      "playerId": "bryan",
+      "achievementId": "speed-run",
+      "achievementName": "Speed Run",
+      "flavorText": "The game started. The game ended. Some crawlers hadn't finished shuffling their hands. The dungeon blinked, and it was over. Efficient. Ruthless. Absolutely disgusting.",
+      "timestamp": "2026-04-11T03:29:07.618Z",
+      "sent": false
+    },
+    {
+      "playerId": "adam",
+      "achievementId": "marathon",
+      "achievementName": "Marathon",
+      "flavorText": "Ninety minutes. One game. The crawler has demonstrated either remarkable endurance or a fundamental misunderstanding of how combat phases work.",
+      "timestamp": "2026-04-11T03:29:07.618Z",
+      "sent": false
+    },
+    {
+      "playerId": "bryan",
+      "achievementId": "iron-throne",
+      "achievementName": "Iron Throne",
+      "flavorText": "Three consecutive victories. The other crawlers are advised to reconsider their life choices. This one has momentum, and momentum in the dungeon is a dangerous thing.",
+      "timestamp": "2026-04-11T07:03:18.208Z",
+      "sent": false
+    }
+  ],
+  "mtg_aeVillain": "waid",
+  "mtg_achievements": {
+    "adam:first-blood": {
+      "date": "2026-03-29T03:21:57.231Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "adam:variety-hour": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "bryan:first-blood": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "bryan:variety-hour": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "shake:variety-hour": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "waid:variety-hour": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "jordan:variety-hour": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "rich:first-blood": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "rich:speed-run": {
+      "date": "2026-03-29T03:21:57.232Z",
+      "gameId": null,
+      "context": "Retroactive"
+    },
+    "noah:marathon": {
+      "date": "2026-04-11T03:29:07.616Z",
+      "gameId": "g1775878146811",
+      "context": "Game 7 on 2026-04-11"
+    },
+    "jordan:marathon": {
+      "date": "2026-04-11T03:29:07.616Z",
+      "gameId": "g1775878146811",
+      "context": "Game 7 on 2026-04-11"
+    },
+    "bryan:marathon": {
+      "date": "2026-04-11T03:29:07.617Z",
+      "gameId": "g1775878146811",
+      "context": "Game 7 on 2026-04-11"
+    },
+    "bryan:speed-run": {
+      "date": "2026-04-11T03:29:07.617Z",
+      "gameId": "g1775878146811",
+      "context": "Game 7 on 2026-04-11"
+    },
+    "adam:marathon": {
+      "date": "2026-04-11T03:29:07.617Z",
+      "gameId": "g1775878146811",
+      "context": "Game 7 on 2026-04-11"
+    },
+    "bryan:iron-throne": {
+      "date": "2026-04-11T07:03:18.207Z",
+      "gameId": "g1775890997405",
+      "context": "Game 9 on 2026-04-11"
+    }
+  },
+  "mtg__gamesClean40": true,
+  "mtg__deckPartnerSync40": true,
+  "mtg_decks": {
+    "decks": [
+      {
+        "id": "adam-12th-doctor",
+        "archidektId": 12978554,
+        "owner": "adam",
+        "name": "12th Doctor",
+        "commander": "The Twelfth Doctor",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/4/2400d681-05ef-43b1-b720-c15ca4226c27.jpg?1696636777",
+        "commanderScryfallId": "2400d681-05ef-43b1-b720-c15ca4226c27",
+        "colors": [
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 85,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/12th Doctor/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12978554",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-core-collab",
+        "archidektId": 12978600,
+        "owner": "adam",
+        "name": "Core Collab",
+        "commander": "Unknown Commander",
+        "commanderPartner": null,
+        "commanderArt": null,
+        "commanderScryfallId": null,
+        "colors": [],
+        "bracket": null,
+        "cardCount": 2,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12978600",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-mighty-myrs",
+        "archidektId": 13018574,
+        "owner": "adam",
+        "name": "Mighty Myrs",
+        "commander": "Urtet, Remnant of Memnarch",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/a/7aa01ab4-26b0-49dc-8514-b3850d355a21.jpg?1675905609",
+        "commanderScryfallId": "7aa01ab4-26b0-49dc-8514-b3850d355a21",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018574",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-scabs",
+        "archidektId": 13018638,
+        "owner": "adam",
+        "name": "Scabs",
+        "commander": "The Scarab God",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/4/f4f414ef-84a2-4694-9e98-51bee4576c84.jpg?1689999233",
+        "commanderScryfallId": "f4f414ef-84a2-4694-9e98-51bee4576c84",
+        "colors": [
+          "Black",
+          "Blue"
+        ],
+        "bracket": null,
+        "cardCount": 87,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018638",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-trostani's-glory",
+        "archidektId": 13018656,
+        "owner": "adam",
+        "name": "Trostani's Glory",
+        "commander": "Trostani, Selesnya's Voice",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/3/4/34ea44f2-cb2f-4b86-83fc-fe507f05bb9d.jpg?1568004834",
+        "commanderScryfallId": "34ea44f2-cb2f-4b86-83fc-fe507f05bb9d",
+        "colors": [
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 77,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Trostani-Selesnya Tokens/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018656",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-leo's-thopters",
+        "archidektId": 13018680,
+        "owner": "adam",
+        "name": "Leo's Thopters",
+        "commander": "Leonardo da Vinci",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/8/283d04a5-3639-42de-b940-ffa7e609e527.jpg?1721423712",
+        "commanderScryfallId": "283d04a5-3639-42de-b940-ffa7e609e527",
+        "colors": [
+          "Blue"
+        ],
+        "bracket": null,
+        "cardCount": 1,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018680",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-attack-of-the-plants",
+        "archidektId": 13018710,
+        "owner": "adam",
+        "name": "Attack of the Plants",
+        "commander": "The Necrobloom",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/f/8fcf68cf-0dac-4b29-90d5-c18c685182e6.jpg?1717012767",
+        "commanderScryfallId": "8fcf68cf-0dac-4b29-90d5-c18c685182e6",
+        "colors": [
+          "Black",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 68,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Plants-Abzan/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018710",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-frogs!",
+        "archidektId": 13018747,
+        "owner": "adam",
+        "name": "Frogs!",
+        "commander": "Glarb, Calamity's Augur",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/f/ffc70b2d-5a3a-49ea-97db-175a62248302.jpg?1721427068",
+        "commanderScryfallId": "ffc70b2d-5a3a-49ea-97db-175a62248302",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 93,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Frogs-Sultai/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018747",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-hydrafoil",
+        "archidektId": 13018834,
+        "owner": "adam",
+        "name": "Hydrafoil",
+        "commander": "Zaxara, the Exemplary",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/d/6dc390da-75f8-490a-a724-c12d21cfe578.jpg?1701636845",
+        "commanderScryfallId": "6dc390da-75f8-490a-a724-c12d21cfe578",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 97,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Hydras-BUG/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018834",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-daxos-of-nyx",
+        "archidektId": 13081907,
+        "owner": "adam",
+        "name": "Daxos of Nyx",
+        "commander": "Daxos the Returned",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/a/4abe142e-7e87-464b-be2a-ad2fc7aebd51.jpg?1562703959",
+        "commanderScryfallId": "4abe142e-7e87-464b-be2a-ad2fc7aebd51",
+        "colors": [
+          "Black",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 82,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Daxos-Orzhov Enchantments/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13081907",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-kambal's-allocation",
+        "archidektId": 13081945,
+        "owner": "adam",
+        "name": "Kambal's Allocation",
+        "commander": "Kambal, Consul of Allocation",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/b/3/b3e47d49-e5b5-487b-a1ec-373dbf89b2ec.jpg?1673148829",
+        "commanderScryfallId": "b3e47d49-e5b5-487b-a1ec-373dbf89b2ec",
+        "colors": [
+          "Black",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 93,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Kambal-Orzhov/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13081945",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-kozi-&-friends",
+        "archidektId": 13089995,
+        "owner": "adam",
+        "name": "Kozi & Friends",
+        "commander": "Kozilek, the Great Distortion",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/c/4/c41554e7-2a07-4cc7-b01b-44deed08e588.jpg?1689995398",
+        "commanderScryfallId": "c41554e7-2a07-4cc7-b01b-44deed08e588",
+        "colors": [],
+        "bracket": null,
+        "cardCount": 97,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13089995",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-ghooooooosts!",
+        "archidektId": 13090578,
+        "owner": "adam",
+        "name": "Ghooooooosts!",
+        "commander": "Millicent, Restless Revenant",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/b/2b86b538-0766-440d-a2cd-f5d5bfcfb010.jpg?1641600129",
+        "commanderScryfallId": "2b86b538-0766-440d-a2cd-f5d5bfcfb010",
+        "colors": [
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 87,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13090578",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-gitrog",
+        "archidektId": 13090656,
+        "owner": "adam",
+        "name": "Gitrog",
+        "commander": "The Gitrog Monster",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/0/40489e28-878d-44a2-847f-07beef1aa0f8.jpg?1752944964",
+        "commanderScryfallId": "40489e28-878d-44a2-847f-07beef1aa0f8",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 82,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Gitrog-Golgari/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13090656",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-ooooooooze",
+        "archidektId": 13090876,
+        "owner": "adam",
+        "name": "OOOOOOOOZE",
+        "commander": "Aeve, Progenitor Ooze",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/d/f/dfe9b1b8-dffe-427d-be1e-2c6b8395bd54.jpg?1626097164",
+        "commanderScryfallId": "dfe9b1b8-dffe-427d-be1e-2c6b8395bd54",
+        "colors": [
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 70,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Ooze-MonoGreen/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13090876",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-sengir-the-dark-bar",
+        "archidektId": 11450004,
+        "owner": "bryan",
+        "name": "Commander: Sengir, the Dark Baron",
+        "commander": "Sengir, the Dark Baron",
+        "commanderPartner": "Ludevic, Necro-Alchemist",
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/d/4d51a22e-74fc-442e-945a-56d02ca12713.jpg?1608909947",
+        "commanderScryfallId": "4d51a22e-74fc-442e-945a-56d02ca12713",
+        "colors": [
+          "Black",
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 103,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450004",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-abomination-of-llan",
+        "archidektId": 11450530,
+        "owner": "bryan",
+        "name": "Commander: Abomination of Llanowar",
+        "commander": "Abomination of Llanowar",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/b/4b68bc46-5591-44dd-becc-eca154066925.jpg?1631235320",
+        "commanderScryfallId": "4b68bc46-5591-44dd-becc-eca154066925",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 93,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450530",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-myrel-shield-of-arg",
+        "archidektId": 11450776,
+        "owner": "bryan",
+        "name": "Commander: Myrel, Shield of Argive",
+        "commander": "Myrel, Shield of Argive",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/e/6/e632ed57-bb00-4493-adef-7b4805edd7ea.jpg?1674420256",
+        "commanderScryfallId": "e632ed57-bb00-4493-adef-7b4805edd7ea",
+        "colors": [
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 80,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450776",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-jetmir-nexus-of-rev",
+        "archidektId": 11450958,
+        "owner": "bryan",
+        "name": "Commander: Jetmir, Nexus of Revels",
+        "commander": "Jetmir, Nexus of Revels",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/9/f9c69d75-651f-4b75-b65d-79999d2069f6.jpg?1664413153",
+        "commanderScryfallId": "f9c69d75-651f-4b75-b65d-79999d2069f6",
+        "colors": [
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 106,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450958",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-jodah-archmage-eter",
+        "archidektId": 11451029,
+        "owner": "bryan",
+        "name": "Commander: Jodah, Archmage Eternal",
+        "commander": "Jodah, Archmage Eternal",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/3/73c18cb4-96b1-4af2-912e-974e22877ede.jpg?1673148799",
+        "commanderScryfallId": "73c18cb4-96b1-4af2-912e-974e22877ede",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 92,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11451029",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-kardur-doomscourge",
+        "archidektId": 11451139,
+        "owner": "bryan",
+        "name": "Commander: Kardur, Doomscourge",
+        "commander": "Kardur, Doomscourge",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.jpg?1726285218",
+        "commanderScryfallId": "7c0f7712-7bbf-471b-8107-3a49cf922ad9",
+        "colors": [
+          "Black",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 86,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11451139",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-muldrotha-the-grave",
+        "archidektId": 11451227,
+        "owner": "bryan",
+        "name": "Commander: Muldrotha, the Gravetide",
+        "commander": "Muldrotha, the Gravetide",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/0/705b4d97-2f50-47f7-9053-d748f4337553.jpg?1769685324",
+        "commanderScryfallId": "705b4d97-2f50-47f7-9053-d748f4337553",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 95,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11451227",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-kresh-the-bloodbrai",
+        "archidektId": 12635696,
+        "owner": "bryan",
+        "name": "Commander: Kresh the Bloodbraided",
+        "commander": "Kresh the Bloodbraided",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/b/8b4b3c5f-32ea-4208-86d4-bb86e3b8d7d5.jpg?1673485121",
+        "commanderScryfallId": "8b4b3c5f-32ea-4208-86d4-bb86e3b8d7d5",
+        "colors": [
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 89,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12635696",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-myrkul-lord-of-bone",
+        "archidektId": 12916360,
+        "owner": "bryan",
+        "name": "Commander: Myrkul, Lord of Bones",
+        "commander": "Myrkul, Lord of Bones",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/2/82824d05-5215-459a-aa73-3c5a6be3d464.jpg?1674137617",
+        "commanderScryfallId": "82824d05-5215-459a-aa73-3c5a6be3d464",
+        "colors": [
+          "Black",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 105,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12916360",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-aveline-de-grandpré",
+        "archidektId": 14274824,
+        "owner": "bryan",
+        "name": "Commander: Aveline de Grandpré",
+        "commander": "Aveline de Grandpré",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/d/b/db3b4f73-e241-4d60-a877-25327092c291.jpg?1721423869",
+        "commanderScryfallId": "db3b4f73-e241-4d60-a877-25327092c291",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 77,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/14274824",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-betor-kin-to-all",
+        "archidektId": 15064684,
+        "owner": "bryan",
+        "name": "Commander: Betor, Kin to All",
+        "commander": "Betor, Kin to All",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/b/4/b475b071-5545-483e-a397-89451f258602.jpg?1743204665",
+        "commanderScryfallId": "b475b071-5545-483e-a397-89451f258602",
+        "colors": [
+          "Black",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 101,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/15064684",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-szarel-genesis-shep",
+        "archidektId": 17494527,
+        "owner": "bryan",
+        "name": "Commander: Szarel, Genesis Shepherd",
+        "commander": "Szarel, Genesis Shepherd",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/9/89b61123-b10f-4bcf-b5f9-1f302f9b22d1.jpg?1754673465",
+        "commanderScryfallId": "89b61123-b10f-4bcf-b5f9-1f302f9b22d1",
+        "colors": [
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 76,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/17494527",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-ishai-and-ikra",
+        "archidektId": 17947350,
+        "owner": "bryan",
+        "name": "Commander: Ishai and Ikra",
+        "commander": "Ishai, Ojutai Dragonspeaker",
+        "commanderPartner": "Ikra Shidiqi, the Usurper",
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/e/2e89ce6a-6bc9-427f-a8b2-c07a9fc3218f.jpg?1562272963",
+        "commanderScryfallId": "2e89ce6a-6bc9-427f-a8b2-c07a9fc3218f",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 97,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/17947350",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-commander:-the-earth-king",
+        "archidektId": 19347963,
+        "owner": "bryan",
+        "name": "Commander: The Earth King",
+        "commander": "The Earth King",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/a/8/a8d5dca6-381a-4361-b265-27de8d04335c.jpg?1764121171",
+        "commanderScryfallId": "a8d5dca6-381a-4361-b265-27de8d04335c",
+        "colors": [
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 66,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/19347963",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "bryan-pauper-commander:-kagha-shadow",
+        "archidektId": 19655938,
+        "owner": "bryan",
+        "name": "Pauper Commander: Kagha, Shadow Archdruid",
+        "commander": "Kagha, Shadow Archdruid",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/3/6351adc8-2e44-4e5c-ae58-975b7332155e.jpg?1674137545",
+        "commanderScryfallId": "6351adc8-2e44-4e5c-ae58-975b7332155e",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 74,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/19655938",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-niv-top",
+        "archidektId": 10874173,
+        "owner": "shake",
+        "name": "Niv Top",
+        "commander": "Niv-Mizzet, Visionary",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/a/7a69a618-d588-4745-8ede-0ff0a9f356f1.jpg?1730489058",
+        "commanderScryfallId": "7a69a618-d588-4745-8ede-0ff0a9f356f1",
+        "colors": [
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 82,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/10874173",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-avacyn",
+        "archidektId": 11038757,
+        "owner": "shake",
+        "name": "Avacyn",
+        "commander": "Avacyn, Angel of Hope",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/3/1/317f1133-7cf8-4b7a-919e-88c45f8c2c3a.jpg?1689995555",
+        "commanderScryfallId": "317f1133-7cf8-4b7a-919e-88c45f8c2c3a",
+        "colors": [
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 75,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11038757",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-hugry-hugry-hippos",
+        "archidektId": 11039358,
+        "owner": "shake",
+        "name": "Hugry Hugry Hippos",
+        "commander": "Phelddagrif",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/9/493a72f0-2e35-4e06-a1b2-d42d432b9b2c.jpg?1559592591",
+        "commanderScryfallId": "493a72f0-2e35-4e06-a1b2-d42d432b9b2c",
+        "colors": [
+          "Blue",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 85,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11039358",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-oloro-graveyard",
+        "archidektId": 11040318,
+        "owner": "shake",
+        "name": "Oloro Graveyard",
+        "commander": "Oloro, Ageless Ascetic",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/a/b/abf8df47-405c-42d8-be9e-0f0d0a49589b.jpg?1562931285",
+        "commanderScryfallId": "abf8df47-405c-42d8-be9e-0f0d0a49589b",
+        "colors": [
+          "Black",
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 92,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11040318",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-ghalta-dinos",
+        "archidektId": 11040618,
+        "owner": "shake",
+        "name": "Ghalta Dinos",
+        "commander": "Ghalta, Primal Hunger",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/a/6a9c39e4-a8cf-42dd-8d0e-45634b335546.jpg?1730489423",
+        "commanderScryfallId": "6a9c39e4-a8cf-42dd-8d0e-45634b335546",
+        "colors": [
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 79,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11040618",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-geist-of-saint-trafty-pants",
+        "archidektId": 11040988,
+        "owner": "shake",
+        "name": "Geist of Saint Trafty Pants",
+        "commander": "Geist of Saint Traft",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/5/4/541b9d55-f237-4ff2-9e47-c58a381f0633.jpg?1641603441",
+        "commanderScryfallId": "541b9d55-f237-4ff2-9e47-c58a381f0633",
+        "colors": [
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 98,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11040988",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-yoshi's-maze",
+        "archidektId": 11041312,
+        "owner": "shake",
+        "name": "Yoshi's Maze",
+        "commander": "Child of Alara",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/b/2/b2373625-af3c-4c2a-a1d1-5288c446955d.jpg?1673148447",
+        "commanderScryfallId": "b2373625-af3c-4c2a-a1d1-5288c446955d",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11041312",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "shake-shirei-apostles",
+        "archidektId": 11689449,
+        "owner": "shake",
+        "name": "Shirei apostles",
+        "commander": "Shirei, Shizo's Caretaker",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/9/69848ec1-dba7-419f-a5f9-f934bebeeaa6.jpg?1689997454",
+        "commanderScryfallId": "69848ec1-dba7-419f-a5f9-f934bebeeaa6",
+        "colors": [
+          "Black"
+        ],
+        "bracket": null,
+        "cardCount": 38,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11689449",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      }
+    ],
+    "lastSync": "2026-03-25T01:59:48.980Z"
+  },
+  "mtg__gamesSync40b": true,
+  "_livePod": {
+    "players": [
+      {
+        "id": "adam",
+        "name": "McAtoms",
+        "nickname": "McAtoms",
+        "archidekt": "McAtoms",
+        "archidektUrl": "https://archidekt.com/u/McAtoms",
+        "avatar": null,
+        "elo": 1200,
+        "joinedDate": "2026-03-27",
+        "deckCount": 15,
+        "stats": {
+          "totalGames": 0,
+          "totalWins": 0,
+          "winRate": 0,
+          "currentStreak": 0,
+          "bestStreak": 0,
+          "uniqueDeckWins": 0,
+          "avgSaltGiven": 0,
+          "avgSaltReceived": 0
+        }
+      },
+      {
+        "id": "bryan",
+        "name": "Bryan",
+        "nickname": "BPWyndon",
+        "archidekt": "BPWyndon",
+        "archidektUrl": "https://archidekt.com/u/BPWyndon",
+        "avatar": null,
+        "elo": 1200,
+        "joinedDate": "2026-03-27",
+        "deckCount": 11,
+        "stats": {
+          "totalGames": 0,
+          "totalWins": 0,
+          "winRate": 0,
+          "currentStreak": 0,
+          "bestStreak": 0,
+          "uniqueDeckWins": 0,
+          "avgSaltGiven": 0,
+          "avgSaltReceived": 0
+        }
+      },
+      {
+        "id": "shake",
+        "name": "Shake",
+        "nickname": "shakenbake1738",
+        "archidekt": "shakenbake1738",
+        "archidektUrl": "https://archidekt.com/u/shakenbake1738",
+        "avatar": null,
+        "elo": 1200,
+        "joinedDate": "2026-03-27",
+        "deckCount": 8,
+        "stats": {
+          "totalGames": 0,
+          "totalWins": 0,
+          "winRate": 0,
+          "currentStreak": 0,
+          "bestStreak": 0,
+          "uniqueDeckWins": 0,
+          "avgSaltGiven": 0,
+          "avgSaltReceived": 0
+        }
+      },
+      {
+        "id": "waid",
+        "name": "Waid",
+        "nickname": "TheToasterCzar",
+        "archidekt": "TheToasterCzar",
+        "archidektUrl": "https://archidekt.com/u/TheToasterCzar",
+        "avatar": null,
+        "elo": 1200,
+        "joinedDate": "2026-03-27",
+        "deckCount": 0,
+        "stats": {
+          "totalGames": 0,
+          "totalWins": 0,
+          "winRate": 0,
+          "currentStreak": 0,
+          "bestStreak": 0,
+          "uniqueDeckWins": 0,
+          "avgSaltGiven": 0,
+          "avgSaltReceived": 0
+        }
+      },
+      {
+        "id": "jordan",
+        "name": "Jordan",
+        "nickname": "cptexplodeypants",
+        "archidekt": "cptexplodeypants",
+        "archidektUrl": "https://archidekt.com/u/cptexplodeypants",
+        "avatar": null,
+        "elo": 1200,
+        "joinedDate": "2026-03-26",
+        "deckCount": 9,
+        "stats": {
+          "totalGames": 0,
+          "totalWins": 0,
+          "winRate": 0,
+          "currentStreak": 0,
+          "bestStreak": 0,
+          "uniqueDeckWins": 0,
+          "avgSaltGiven": 0,
+          "avgSaltReceived": 0
+        }
+      },
+      {
+        "id": "noah",
+        "name": "Noah",
+        "nickname": "Noah",
+        "archidekt": null,
+        "archidektUrl": null,
+        "avatar": null,
+        "elo": 1200,
+        "joinedDate": "2026-04-11",
+        "deckCount": 0,
+        "stats": {
+          "totalGames": 0,
+          "totalWins": 0,
+          "winRate": 0,
+          "currentStreak": 0,
+          "bestStreak": 0,
+          "uniqueDeckWins": 0,
+          "avgSaltGiven": 0,
+          "avgSaltReceived": 0
+        }
+      }
+    ]
+  },
+  "_liveDecks": {
+    "decks": [
+      {
+        "id": "adam-12th-doctor",
+        "archidektId": 12978554,
+        "owner": "adam",
+        "name": "12th Doctor",
+        "commander": "The Twelfth Doctor",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/4/2400d681-05ef-43b1-b720-c15ca4226c27.jpg?1696636777",
+        "commanderScryfallId": "2400d681-05ef-43b1-b720-c15ca4226c27",
+        "colors": [
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 101,
+        "estimatedValue": 233.91,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/12th Doctor/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12978554",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{U}{R}"
+      },
+      {
+        "id": "adam-core-collab",
+        "archidektId": 12978600,
+        "owner": "adam",
+        "name": "Core Collab",
+        "commander": "Unknown Commander",
+        "commanderPartner": null,
+        "commanderArt": null,
+        "commanderScryfallId": null,
+        "colors": [],
+        "bracket": null,
+        "cardCount": 2,
+        "estimatedValue": 300.15,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12978600",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": null
+      },
+      {
+        "id": "adam-mighty-myrs",
+        "archidektId": 13018574,
+        "owner": "adam",
+        "name": "Mighty Myrs",
+        "commander": "Urtet, Remnant of Memnarch",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/a/7aa01ab4-26b0-49dc-8514-b3850d355a21.jpg?1675905609",
+        "commanderScryfallId": "7aa01ab4-26b0-49dc-8514-b3850d355a21",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 789.45,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018574",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}"
+      },
+      {
+        "id": "adam-scabs",
+        "archidektId": 13018638,
+        "owner": "adam",
+        "name": "Scabs",
+        "commander": "The Scarab God",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/4/f4f414ef-84a2-4694-9e98-51bee4576c84.jpg?1689999233",
+        "commanderScryfallId": "f4f414ef-84a2-4694-9e98-51bee4576c84",
+        "colors": [
+          "Black",
+          "Blue"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 1604.04,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018638",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{U}{B}"
+      },
+      {
+        "id": "adam-trostani's-glory",
+        "archidektId": 13018656,
+        "owner": "adam",
+        "name": "Trostani's Glory",
+        "commander": "Trostani, Selesnya's Voice",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/3/4/34ea44f2-cb2f-4b86-83fc-fe507f05bb9d.jpg?1568004834",
+        "commanderScryfallId": "34ea44f2-cb2f-4b86-83fc-fe507f05bb9d",
+        "colors": [
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 89,
+        "estimatedValue": 927.64,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Trostani-Selesnya Tokens/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018656",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{G}{G}{W}{W}"
+      },
+      {
+        "id": "adam-leo's-thopters",
+        "archidektId": 13018680,
+        "owner": "adam",
+        "name": "Leo's Thopters",
+        "commander": "Leonardo da Vinci",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/8/283d04a5-3639-42de-b940-ffa7e609e527.jpg?1721423712",
+        "commanderScryfallId": "283d04a5-3639-42de-b940-ffa7e609e527",
+        "colors": [
+          "Blue"
+        ],
+        "bracket": null,
+        "cardCount": 1,
+        "estimatedValue": 0.5,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018680",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{U}"
+      },
+      {
+        "id": "adam-attack-of-the-plants",
+        "archidektId": 13018710,
+        "owner": "adam",
+        "name": "Attack of the Plants",
+        "commander": "The Necrobloom",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/f/8fcf68cf-0dac-4b29-90d5-c18c685182e6.jpg?1717012767",
+        "commanderScryfallId": "8fcf68cf-0dac-4b29-90d5-c18c685182e6",
+        "colors": [
+          "Black",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 83,
+        "estimatedValue": 233.58,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Plants-Abzan/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018710",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{W}{B}{G}"
+      },
+      {
+        "id": "adam-frogs!",
+        "archidektId": 13018747,
+        "owner": "adam",
+        "name": "Frogs!",
+        "commander": "Glarb, Calamity's Augur",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/f/ffc70b2d-5a3a-49ea-97db-175a62248302.jpg?1721427068",
+        "commanderScryfallId": "ffc70b2d-5a3a-49ea-97db-175a62248302",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 95,
+        "estimatedValue": 339.76,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Frogs-Sultai/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018747",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{B}{G}{U}"
+      },
+      {
+        "id": "adam-hydrafoil",
+        "archidektId": 13018834,
+        "owner": "adam",
+        "name": "Hydrafoil",
+        "commander": "Zaxara, the Exemplary",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/d/6dc390da-75f8-490a-a724-c12d21cfe578.jpg?1701636845",
+        "commanderScryfallId": "6dc390da-75f8-490a-a724-c12d21cfe578",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 2435.87,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Hydras-BUG/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13018834",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{B}{G}{U}"
+      },
+      {
+        "id": "adam-daxos-of-nyx",
+        "archidektId": 13081907,
+        "owner": "adam",
+        "name": "Daxos of Nyx",
+        "commander": "Daxos the Returned",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/a/4abe142e-7e87-464b-be2a-ad2fc7aebd51.jpg?1562703959",
+        "commanderScryfallId": "4abe142e-7e87-464b-be2a-ad2fc7aebd51",
+        "colors": [
+          "Black",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 93,
+        "estimatedValue": 320.06,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Daxos-Orzhov Enchantments/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13081907",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{W}{B}"
+      },
+      {
+        "id": "adam-kambal's-allocation",
+        "archidektId": 13081945,
+        "owner": "adam",
+        "name": "Kambal's Allocation",
+        "commander": "Kambal, Consul of Allocation",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/b/3/b3e47d49-e5b5-487b-a1ec-373dbf89b2ec.jpg?1673148829",
+        "commanderScryfallId": "b3e47d49-e5b5-487b-a1ec-373dbf89b2ec",
+        "colors": [
+          "Black",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 1134.48,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Kambal-Orzhov/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13081945",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{W}{B}"
+      },
+      {
+        "id": "adam-kozi-&-friends",
+        "archidektId": 13089995,
+        "owner": "adam",
+        "name": "Kozi & Friends",
+        "commander": "Kozilek, the Great Distortion",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/c/4/c41554e7-2a07-4cc7-b01b-44deed08e588.jpg?1689995398",
+        "commanderScryfallId": "c41554e7-2a07-4cc7-b01b-44deed08e588",
+        "colors": [
+          "Colorless"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 1016.63,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13089995",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{8}{C}{C}"
+      },
+      {
+        "id": "adam-ghooooooosts!",
+        "archidektId": 13090578,
+        "owner": "adam",
+        "name": "Ghooooooosts!",
+        "commander": "Millicent, Restless Revenant",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/b/2b86b538-0766-440d-a2cd-f5d5bfcfb010.jpg?1641600129",
+        "commanderScryfallId": "2b86b538-0766-440d-a2cd-f5d5bfcfb010",
+        "colors": [
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 96,
+        "estimatedValue": 403.45,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13090578",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{5}{W}{U}"
+      },
+      {
+        "id": "adam-gitrog",
+        "archidektId": 13090656,
+        "owner": "adam",
+        "name": "Gitrog",
+        "commander": "The Gitrog Monster",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/0/40489e28-878d-44a2-847f-07beef1aa0f8.jpg?1752944964",
+        "commanderScryfallId": "40489e28-878d-44a2-847f-07beef1aa0f8",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 403.46,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Gitrog-Golgari/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13090656",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{B}{G}"
+      },
+      {
+        "id": "adam-ooooooooze",
+        "archidektId": 13090876,
+        "owner": "adam",
+        "name": "OOOOOOOOZE",
+        "commander": "Aeve, Progenitor Ooze",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/d/f/dfe9b1b8-dffe-427d-be1e-2c6b8395bd54.jpg?1626097164",
+        "commanderScryfallId": "dfe9b1b8-dffe-427d-be1e-2c6b8395bd54",
+        "colors": [
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 289.5,
+        "tags": [],
+        "retired": false,
+        "photoPath": "Personal/MTG/Ooze-MonoGreen/",
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13090876",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{G}{G}{G}"
+      },
+      {
+        "id": "bryan-commander:-sengir-the-dark-bar",
+        "archidektId": 11450004,
+        "owner": "bryan",
+        "name": "Commander: Sengir, the Dark Baron",
+        "commander": "Sengir, the Dark Baron",
+        "commanderPartner": "Ludevic, Necro-Alchemist",
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/d/4d51a22e-74fc-442e-945a-56d02ca12713.jpg?1608909947",
+        "commanderScryfallId": "4d51a22e-74fc-442e-945a-56d02ca12713",
+        "colors": [
+          "Black",
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 2034.78,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450004",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{4}{B}{B}"
+      },
+      {
+        "id": "bryan-commander:-abomination-of-llan",
+        "archidektId": 11450530,
+        "owner": "bryan",
+        "name": "Commander: Abomination of Llanowar",
+        "commander": "Abomination of Llanowar",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/b/4b68bc46-5591-44dd-becc-eca154066925.jpg?1631235320",
+        "commanderScryfallId": "4b68bc46-5591-44dd-becc-eca154066925",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 814.44,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450530",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{B}{G}"
+      },
+      {
+        "id": "bryan-commander:-myrel-shield-of-arg",
+        "archidektId": 11450776,
+        "owner": "bryan",
+        "name": "Commander: Myrel, Shield of Argive",
+        "commander": "Myrel, Shield of Argive",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/e/6/e632ed57-bb00-4493-adef-7b4805edd7ea.jpg?1674420256",
+        "commanderScryfallId": "e632ed57-bb00-4493-adef-7b4805edd7ea",
+        "colors": [
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 352.4,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450776",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{W}"
+      },
+      {
+        "id": "bryan-commander:-jetmir-nexus-of-rev",
+        "archidektId": 11450958,
+        "owner": "bryan",
+        "name": "Commander: Jetmir, Nexus of Revels",
+        "commander": "Jetmir, Nexus of Revels",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/9/f9c69d75-651f-4b75-b65d-79999d2069f6.jpg?1664413153",
+        "commanderScryfallId": "f9c69d75-651f-4b75-b65d-79999d2069f6",
+        "colors": [
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 684.02,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11450958",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{R}{G}{W}"
+      },
+      {
+        "id": "bryan-commander:-jodah-archmage-eter",
+        "archidektId": 11451029,
+        "owner": "bryan",
+        "name": "Commander: Jodah, Archmage Eternal",
+        "commander": "Jodah, Archmage Eternal",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/3/73c18cb4-96b1-4af2-912e-974e22877ede.jpg?1673148799",
+        "commanderScryfallId": "73c18cb4-96b1-4af2-912e-974e22877ede",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 475.4,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11451029",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{U}{R}{W}"
+      },
+      {
+        "id": "bryan-commander:-kardur-doomscourge",
+        "archidektId": 11451139,
+        "owner": "bryan",
+        "name": "Commander: Chucky",
+        "commander": "Kardur, Doomscourge",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/c/7c0f7712-7bbf-471b-8107-3a49cf922ad9.jpg?1726285218",
+        "commanderScryfallId": "7c0f7712-7bbf-471b-8107-3a49cf922ad9",
+        "colors": [
+          "Black",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 469.66,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11451139",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{B}{R}"
+      },
+      {
+        "id": "bryan-commander:-muldrotha-the-grave",
+        "archidektId": 11451227,
+        "owner": "bryan",
+        "name": "Commander: Muldrotha, the Gravetide",
+        "commander": "Muldrotha, the Gravetide",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/0/705b4d97-2f50-47f7-9053-d748f4337553.jpg?1769685324",
+        "commanderScryfallId": "705b4d97-2f50-47f7-9053-d748f4337553",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 1391.68,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11451227",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{B}{G}{U}"
+      },
+      {
+        "id": "bryan-commander:-kresh-the-bloodbrai",
+        "archidektId": 12635696,
+        "owner": "bryan",
+        "name": "Commander: Kresh the Bloodbraided",
+        "commander": "Kresh the Bloodbraided",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/b/8b4b3c5f-32ea-4208-86d4-bb86e3b8d7d5.jpg?1673485121",
+        "commanderScryfallId": "8b4b3c5f-32ea-4208-86d4-bb86e3b8d7d5",
+        "colors": [
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 456.36,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12635696",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{B}{R}{G}"
+      },
+      {
+        "id": "bryan-commander:-myrkul-lord-of-bone",
+        "archidektId": 12916360,
+        "owner": "bryan",
+        "name": "Commander: Myrkul, Lord of Bones",
+        "commander": "Myrkul, Lord of Bones",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/2/82824d05-5215-459a-aa73-3c5a6be3d464.jpg?1674137617",
+        "commanderScryfallId": "82824d05-5215-459a-aa73-3c5a6be3d464",
+        "colors": [
+          "Black",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 106,
+        "estimatedValue": 532.48,
+        "tags": [],
+        "retired": true,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12916360",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{4}{W}{B}{G}"
+      },
+      {
+        "id": "bryan-commander:-aveline-de-grandpré",
+        "archidektId": 14274824,
+        "owner": "bryan",
+        "name": "Commander: Aveline de Grandpré",
+        "commander": "Aveline de Grandpré",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/d/b/db3b4f73-e241-4d60-a877-25327092c291.jpg?1721423869",
+        "commanderScryfallId": "db3b4f73-e241-4d60-a877-25327092c291",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 117.18,
+        "tags": [],
+        "retired": true,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/14274824",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{G}{G}"
+      },
+      {
+        "id": "bryan-commander:-betor-kin-to-all",
+        "archidektId": 15064684,
+        "owner": "bryan",
+        "name": "Commander: Betor, Kin to All",
+        "commander": "Betor, Kin to All",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/b/4/b475b071-5545-483e-a397-89451f258602.jpg?1743204665",
+        "commanderScryfallId": "b475b071-5545-483e-a397-89451f258602",
+        "colors": [
+          "Black",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 455.92,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/15064684",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{W}{B}{G}"
+      },
+      {
+        "id": "bryan-commander:-szarel-genesis-shep",
+        "archidektId": 17494527,
+        "owner": "bryan",
+        "name": "Commander: Szarel, Genesis Shepherd",
+        "commander": "Szarel, Genesis Shepherd",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/8/9/89b61123-b10f-4bcf-b5f9-1f302f9b22d1.jpg?1754673465",
+        "commanderScryfallId": "89b61123-b10f-4bcf-b5f9-1f302f9b22d1",
+        "colors": [
+          "Black",
+          "Green",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 323.04,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/17494527",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{B}{R}{G}"
+      },
+      {
+        "id": "bryan-commander:-ishai-and-ikra",
+        "archidektId": 17947350,
+        "owner": "bryan",
+        "name": "Commander: Ikra Shidiqi, the Usurper",
+        "commander": "Ikra Shidiqi, the Usurper",
+        "commanderPartner": "Ishai, Ojutai Dragonspeaker",
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/e/2e89ce6a-6bc9-427f-a8b2-c07a9fc3218f.jpg?1562272963",
+        "commanderScryfallId": "2e89ce6a-6bc9-427f-a8b2-c07a9fc3218f",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 160.23,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/17947350",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{W}{U}"
+      },
+      {
+        "id": "bryan-commander:-the-earth-king",
+        "archidektId": 19347963,
+        "owner": "bryan",
+        "name": "Commander: The Earth King",
+        "commander": "The Earth King",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/a/8/a8d5dca6-381a-4361-b265-27de8d04335c.jpg?1764121171",
+        "commanderScryfallId": "a8d5dca6-381a-4361-b265-27de8d04335c",
+        "colors": [
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 224.21,
+        "tags": [],
+        "retired": true,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/19347963",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{G}"
+      },
+      {
+        "id": "bryan-pauper-commander:-kagha-shadow",
+        "archidektId": 19655938,
+        "owner": "bryan",
+        "name": "Pauper Commander: Kagha, Shadow Archdruid",
+        "commander": "Kagha, Shadow Archdruid",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/3/6351adc8-2e44-4e5c-ae58-975b7332155e.jpg?1674137545",
+        "commanderScryfallId": "6351adc8-2e44-4e5c-ae58-975b7332155e",
+        "colors": [
+          "Black",
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 106,
+        "estimatedValue": 45.36,
+        "tags": [],
+        "retired": true,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/19655938",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{2}{B}{G}"
+      },
+      {
+        "id": "shake-niv-top",
+        "archidektId": 10874173,
+        "owner": "shake",
+        "name": "Niv Top",
+        "commander": "Niv-Mizzet, Visionary",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/a/7a69a618-d588-4745-8ede-0ff0a9f356f1.jpg?1730489058",
+        "commanderScryfallId": "7a69a618-d588-4745-8ede-0ff0a9f356f1",
+        "colors": [
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 611.92,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/10874173",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{4}{U}{R}"
+      },
+      {
+        "id": "shake-avacyn",
+        "archidektId": 11038757,
+        "owner": "shake",
+        "name": "Avacyn",
+        "commander": "Avacyn, Angel of Hope",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/3/1/317f1133-7cf8-4b7a-919e-88c45f8c2c3a.jpg?1689995555",
+        "commanderScryfallId": "317f1133-7cf8-4b7a-919e-88c45f8c2c3a",
+        "colors": [
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 350.92,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11038757",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{5}{W}{W}{W}"
+      },
+      {
+        "id": "shake-hugry-hugry-hippos",
+        "archidektId": 11039358,
+        "owner": "shake",
+        "name": "Hugry Hugry Hippos",
+        "commander": "Phelddagrif",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/4/9/493a72f0-2e35-4e06-a1b2-d42d432b9b2c.jpg?1559592591",
+        "commanderScryfallId": "493a72f0-2e35-4e06-a1b2-d42d432b9b2c",
+        "colors": [
+          "Blue",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 193.49,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11039358",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{G}{W}{U}"
+      },
+      {
+        "id": "shake-oloro-graveyard",
+        "archidektId": 11040318,
+        "owner": "shake",
+        "name": "Oloro Graveyard",
+        "commander": "Oloro, Ageless Ascetic",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/a/b/abf8df47-405c-42d8-be9e-0f0d0a49589b.jpg?1562931285",
+        "commanderScryfallId": "abf8df47-405c-42d8-be9e-0f0d0a49589b",
+        "colors": [
+          "Black",
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 672.19,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11040318",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{W}{U}{B}"
+      },
+      {
+        "id": "shake-ghalta-dinos",
+        "archidektId": 11040618,
+        "owner": "shake",
+        "name": "Ghalta Dinos",
+        "commander": "Ghalta, Primal Hunger",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/a/6a9c39e4-a8cf-42dd-8d0e-45634b335546.jpg?1730489423",
+        "commanderScryfallId": "6a9c39e4-a8cf-42dd-8d0e-45634b335546",
+        "colors": [
+          "Green"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 194.27,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11040618",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{10}{G}{G}"
+      },
+      {
+        "id": "shake-geist-of-saint-trafty-pants",
+        "archidektId": 11040988,
+        "owner": "shake",
+        "name": "Geist of Saint Trafty Pants",
+        "commander": "Geist of Saint Traft",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/5/4/541b9d55-f237-4ff2-9e47-c58a381f0633.jpg?1641603441",
+        "commanderScryfallId": "541b9d55-f237-4ff2-9e47-c58a381f0633",
+        "colors": [
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 98,
+        "estimatedValue": 517.25,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11040988",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{W}{U}"
+      },
+      {
+        "id": "shake-yoshi's-maze",
+        "archidektId": 11041312,
+        "owner": "shake",
+        "name": "Yoshi's Maze",
+        "commander": "Child of Alara",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/b/2/b2373625-af3c-4c2a-a1d1-5288c446955d.jpg?1673148447",
+        "commanderScryfallId": "b2373625-af3c-4c2a-a1d1-5288c446955d",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 801.44,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11041312",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{W}{U}{B}{R}{G}"
+      },
+      {
+        "id": "shake-shirei-apostles",
+        "archidektId": 11689449,
+        "owner": "shake",
+        "name": "Shirei apostles",
+        "commander": "Shirei, Shizo's Caretaker",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/9/69848ec1-dba7-419f-a5f9-f934bebeeaa6.jpg?1689997454",
+        "commanderScryfallId": "69848ec1-dba7-419f-a5f9-f934bebeeaa6",
+        "colors": [
+          "Black"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": 471.05,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/11689449",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{4}{B}"
+      },
+      {
+        "id": "jordan-xenagos-god-of-revels",
+        "archidektId": 9934396,
+        "owner": "jordan",
+        "name": "Xenagos, God of Revels",
+        "commander": "Xenagos, God of Revels",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/f/6f1bc3bb-46da-492a-850c-f1f588ad8d18.jpg?1732546037",
+        "commanderScryfallId": "6f1bc3bb-46da-492a-850c-f1f588ad8d18",
+        "colors": [
+          "Green",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/9934396",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{3}{R}{G}"
+      },
+      {
+        "id": "jordan-rakdos-brings-the-beats",
+        "archidektId": 13591475,
+        "owner": "jordan",
+        "name": "Rakdos Brings the Beats",
+        "commander": "Rakdos, the Showstopper",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/2/1/210d07ab-7608-4fda-adb6-562cf194192f.jpg?1706240163",
+        "commanderScryfallId": "210d07ab-7608-4fda-adb6-562cf194192f",
+        "colors": [
+          "Black",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13591475",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{4}{B}{R}"
+      },
+      {
+        "id": "jordan-braids-aristocrats",
+        "archidektId": 13289184,
+        "owner": "jordan",
+        "name": "Braids Aristocrats",
+        "commander": "Braids, Arisen Nightmare",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1752944690",
+        "commanderScryfallId": "f96223d0-04c4-40c2-87a9-0c6bc74adddb",
+        "colors": [
+          "Black"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13289184",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{B}{B}"
+      },
+      {
+        "id": "jordan-tetsuo-voltron",
+        "archidektId": 13610210,
+        "owner": "jordan",
+        "name": "Tetsuo, Voltron",
+        "commander": "Tetsuo, Imperial Champion",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/5/1/51c523cd-78b0-438f-bba5-19160f648d5f.jpg?1673305006",
+        "commanderScryfallId": "51c523cd-78b0-438f-bba5-19160f648d5f",
+        "colors": [
+          "Black",
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13610210",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{U}{B}{R}"
+      },
+      {
+        "id": "jordan-marchesa-the-black-rose",
+        "archidektId": 20569261,
+        "owner": "jordan",
+        "name": "Marchesa, the Black Rose",
+        "commander": "Marchesa, the Black Rose",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/3/2/3242a9f0-2ba3-4852-ac8f-366772ac1c62.jpg?1673148917",
+        "commanderScryfallId": "3242a9f0-2ba3-4852-ac8f-366772ac1c62",
+        "colors": [
+          "Black",
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/20569261",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{U}{B}{R}"
+      },
+      {
+        "id": "jordan-locust-god-wheels",
+        "archidektId": 12006339,
+        "owner": "jordan",
+        "name": "Locust God Wheels",
+        "commander": "The Locust God",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/7/e/7e599847-8ab0-4fd6-b2c0-cb44a7669aa5.jpg?1682209825",
+        "commanderScryfallId": "7e599847-8ab0-4fd6-b2c0-cb44a7669aa5",
+        "colors": [
+          "Blue",
+          "Red"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/12006339",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{4}{U}{R}"
+      },
+      {
+        "id": "jordan-eriette-auras",
+        "archidektId": 13306838,
+        "owner": "jordan",
+        "name": "Eriette Auras",
+        "commander": "Eriette of the Charmed Apple",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/e/c/ecead4cd-47ae-4c42-b15c-1b29b5caba18.jpg?1692939281",
+        "commanderScryfallId": "ecead4cd-47ae-4c42-b15c-1b29b5caba18",
+        "colors": [
+          "Black",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/13306838",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{W}{B}"
+      },
+      {
+        "id": "jordan-atraxa-plus-counters",
+        "archidektId": 3721049,
+        "owner": "jordan",
+        "name": "Atraxa +1/+1",
+        "commander": "Atraxa, Praetors' Voice",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/d/0/d0d33d52-3d28-4635-b985-51e126289259.jpg?1599707796",
+        "commanderScryfallId": "d0d33d52-3d28-4635-b985-51e126289259",
+        "colors": [
+          "Black",
+          "Blue",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/3721049",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{G}{W}{U}{B}"
+      },
+      {
+        "id": "jordan-arcades-walls",
+        "archidektId": 3586092,
+        "owner": "jordan",
+        "name": "Arcades Walls",
+        "commander": "Arcades, the Strategist",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/1/e/1e90c638-d4b2-4243-bbc4-1cc10516c40f.jpg?1666961830",
+        "commanderScryfallId": "1e90c638-d4b2-4243-bbc4-1cc10516c40f",
+        "colors": [
+          "Blue",
+          "Green",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": "https://archidekt.com/decks/3586092",
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        },
+        "commanderManaCost": "{1}{G}{W}{U}"
+      },
+      {
+        "id": "noah-ghyrson-starn--kelermorph",
+        "archidektId": null,
+        "owner": "noah",
+        "name": "Ghyrson Starn, Kelermorph",
+        "commander": "Ghyrson Starn, Kelermorph",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/a/fa7349d9-c82f-4cf8-a852-92168d1f4966.jpg?1673309394",
+        "commanderScryfallId": "fa7349d9-c82f-4cf8-a852-92168d1f4966",
+        "colors": [
+          "Red",
+          "Blue"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": null,
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-amy-rose",
+        "archidektId": null,
+        "owner": "adam",
+        "name": "Amy Rose",
+        "commander": "Amy Rose",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/6/a/6ac0c02f-6428-4ed0-bd1a-bf9f4af9c3c1.jpg?1752535687",
+        "commanderScryfallId": "6ac0c02f-6428-4ed0-bd1a-bf9f4af9c3c1",
+        "colors": [
+          "Red",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": null,
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "waid-avatar-aang----aang--master-of",
+        "archidektId": null,
+        "owner": "waid",
+        "name": "Avatar Aang // Aang, Master of Elements",
+        "commander": "Avatar Aang // Aang, Master of Elements",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/f/e/fe29e909-50e9-4f04-b1a3-2cc5d7e3efe8.jpg?1765629010",
+        "commanderScryfallId": "fe29e909-50e9-4f04-b1a3-2cc5d7e3efe8",
+        "colors": [
+          "Black",
+          "Green",
+          "Red",
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": null,
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      },
+      {
+        "id": "adam-jodah--the-unifier",
+        "archidektId": null,
+        "owner": "adam",
+        "name": "Jodah, the Unifier",
+        "commander": "Jodah, the Unifier",
+        "commanderPartner": null,
+        "commanderArt": "https://cards.scryfall.io/art_crop/front/e/4/e4b1aa1e-b4e3-4346-8937-76b312501c70.jpg?1673307974",
+        "commanderScryfallId": "e4b1aa1e-b4e3-4346-8937-76b312501c70",
+        "colors": [
+          "Black",
+          "Green",
+          "Red",
+          "Blue",
+          "White"
+        ],
+        "bracket": null,
+        "cardCount": 100,
+        "estimatedValue": null,
+        "tags": [],
+        "retired": false,
+        "photoPath": null,
+        "lastPlayed": null,
+        "archidektUrl": null,
+        "stats": {
+          "gamesPlayed": 0,
+          "wins": 0,
+          "winRate": 0
+        }
+      }
+    ],
+    "lastSync": "2026-03-26T22:00:00"
+  },
+  "_liveGames": {
+    "games": [
+      {
+        "id": "g1774661381776",
+        "date": "2026-03-28",
+        "players": [
+          {
+            "playerId": "adam",
+            "deckId": "adam-ziatora--the-incinerator"
+          },
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-szarel-genesis-shep"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-eriette-auras"
+          },
+          {
+            "playerId": "rich",
+            "deckId": "rich-the-scarab-god"
+          }
+        ],
+        "winningDeck": "bryan-commander:-szarel-genesis-shep",
+        "variant": "standard",
+        "salt": 2,
+        "duration": "58:24",
+        "notes": "ALWAYS EXILE FABLED PASSAGE IMMEDIATELY. kthxbai"
+      },
+      {
+        "id": "g1774667570489",
+        "date": "2026-03-28",
+        "players": [
+          {
+            "playerId": "adam",
+            "deckId": "adam-trostani's-glory"
+          },
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-betor-kin-to-all"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-braids-aristocrats"
+          },
+          {
+            "playerId": "rich",
+            "deckId": "rich-kiki-jiki"
+          }
+        ],
+        "winningDeck": "rich-kiki-jiki",
+        "variant": "standard",
+        "salt": 3,
+        "duration": "1:08:45",
+        "notes": "Rich wins via infinite combo w/ Kiki Jiki (But I asked permission!) \nTurn 4 Marit Lage did nothing. (adam)"
+      },
+      {
+        "id": "g1774672502130",
+        "date": "2026-03-28",
+        "players": [
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-jetmir-nexus-of-rev"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-atraxa-plus-counters"
+          },
+          {
+            "playerId": "rich",
+            "deckId": "rich-kaalia"
+          },
+          {
+            "playerId": "shake",
+            "deckId": "shake-leonardo--the-balance"
+          },
+          {
+            "playerId": "waid",
+            "deckId": "waid-squirrels"
+          },
+          {
+            "playerId": "adam",
+            "deckId": "adam-mighty-myrs"
+          }
+        ],
+        "winningDeck": null,
+        "variant": "2hg",
+        "salt": 0,
+        "duration": "10:42",
+        "notes": "3-team 2HG. Bryan+Adam (T1) vs Jordan+Rich (T2) vs Waid+Shake (T3). Team 1 wins.",
+        "teams": [
+          {
+            "name": "Team 1",
+            "players": [
+              "bryan",
+              "adam"
+            ]
+          },
+          {
+            "name": "Team 2",
+            "players": [
+              "jordan",
+              "rich"
+            ]
+          },
+          {
+            "name": "Team 3",
+            "players": [
+              "waid",
+              "shake"
+            ]
+          }
+        ],
+        "winningTeam": 0
+      },
+      {
+        "id": "g1774676688524",
+        "date": "2026-03-28",
+        "players": [
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-muldrotha-the-grave"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-marchesa-the-black-rose"
+          },
+          {
+            "playerId": "shake",
+            "deckId": "shake-tmnt-precon"
+          },
+          {
+            "playerId": "waid",
+            "deckId": "waid-krenko-mob-boss"
+          },
+          {
+            "playerId": "adam",
+            "deckId": "adam-kambal's-allocation"
+          }
+        ],
+        "winningDeck": "bryan-commander:-muldrotha-the-grave",
+        "variant": "star",
+        "salt": 0,
+        "duration": "42:30",
+        "notes": "Bryan's Hermit Druid failed to find, causing bryan to perform miracles to somehow avoid death by casting from the now whole deck graveyard. Jarad and lord of extinction. Doing 90+ damage to all of us at once. wtf. holy shit. *"
+      },
+      {
+        "id": "g1774680161108",
+        "date": "2026-03-28",
+        "players": [
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-kardur-doomscourge"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-xenagos-god-of-revels"
+          },
+          {
+            "playerId": "shake",
+            "deckId": "shake-tmnt-precon"
+          },
+          {
+            "playerId": "waid",
+            "deckId": "waid-the-wise-mothman"
+          },
+          {
+            "playerId": "adam",
+            "deckId": "adam-gilanra--caller-of-wirewood"
+          }
+        ],
+        "winningDeck": "adam-gilanra--caller-of-wirewood",
+        "variant": "standard",
+        "salt": 0,
+        "duration": "40:17",
+        "notes": "Bryan fucked up. He played Kratos and superpowereed Adam into having a turn with where he got 4 combats and he was able to double damage."
+      },
+      {
+        "id": "g1775869234536",
+        "date": "2026-04-11",
+        "players": [
+          {
+            "playerId": "adam",
+            "deckId": "adam-general-tazri"
+          },
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-ishai-and-ikra"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-eriette-auras"
+          }
+        ],
+        "winningDeck": "adam-general-tazri",
+        "variant": "standard",
+        "salt": 0,
+        "duration": null,
+        "notes": "Tazri the ALLY Land nebie did nothing till it won."
+      },
+      {
+        "id": "g1775878146811",
+        "date": "2026-04-11",
+        "players": [
+          {
+            "playerId": "noah",
+            "deckId": "noah-ghyrson-starn--kelermorph"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-braids-aristocrats"
+          },
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-szarel-genesis-shep"
+          },
+          {
+            "playerId": "adam",
+            "deckId": "adam-amy-rose"
+          }
+        ],
+        "winningDeck": "bryan-commander:-szarel-genesis-shep",
+        "variant": "standard",
+        "salt": 0,
+        "duration": "1:53:44",
+        "notes": "Chaos warp ended the game."
+      },
+      {
+        "id": "g1775883984725",
+        "date": "2026-04-11",
+        "players": [
+          {
+            "playerId": "noah",
+            "deckId": "noah-ghyrson-starn--kelermorph"
+          },
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-marchesa-the-black-rose"
+          },
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-kardur-doomscourge"
+          },
+          {
+            "playerId": "adam",
+            "deckId": "adam-12th-doctor"
+          },
+          {
+            "playerId": "waid",
+            "deckId": "waid-avatar-aang----aang--master-of"
+          }
+        ],
+        "winningDeck": "bryan-commander:-kardur-doomscourge",
+        "variant": "standard",
+        "salt": 3,
+        "duration": "1:22:00",
+        "notes": "This game ended with Bryan casting Rakdos Charm, Adam copied it with Tempt with Mayhem with then we ended up killing everyone with the subsequent copies of Rakdos Charm made."
+      },
+      {
+        "id": "g1775890997405",
+        "date": "2026-04-11",
+        "players": [
+          {
+            "playerId": "jordan",
+            "deckId": "jordan-rakdos-brings-the-beats"
+          },
+          {
+            "playerId": "bryan",
+            "deckId": "bryan-commander:-betor-kin-to-all"
+          },
+          {
+            "playerId": "adam",
+            "deckId": "adam-jodah--the-unifier"
+          },
+          {
+            "playerId": "waid",
+            "deckId": "waid-avatar-aang----aang--master-of"
+          }
+        ],
+        "winningDeck": "bryan-commander:-betor-kin-to-all",
+        "variant": "planechase",
+        "salt": 5,
+        "duration": "1:27:15",
+        "notes": null,
+        "travelLog": [
+          {
+            "plane": "Shiv",
+            "type": "Plane",
+            "walker": "Jordan",
+            "turn": 1,
+            "cause": "start",
+            "time": "12:34 AM"
+          },
+          {
+            "plane": "Cliffside Market",
+            "type": "Plane",
+            "walker": "Jordan",
+            "turn": 4,
+            "cause": "walk",
+            "time": "12:42 AM"
+          },
+          {
+            "plane": "Bloodhill Bastion",
+            "type": "Plane",
+            "walker": "Waid",
+            "turn": 4,
+            "cause": "walk",
+            "time": "12:43 AM"
+          },
+          {
+            "plane": "Asmoranomardicadaistinaculdacar's Kitchen",
+            "type": "Plane",
+            "walker": "McAtoms",
+            "turn": 5,
+            "cause": "walk",
+            "time": "12:52 AM"
+          },
+          {
+            "plane": "Bant",
+            "type": "Plane",
+            "walker": "Jordan",
+            "turn": 7,
+            "cause": "walk",
+            "time": "1:04 AM"
+          },
+          {
+            "plane": "Norn's Seedcore",
+            "type": "Plane",
+            "walker": "McAtoms",
+            "turn": 7,
+            "cause": "walk",
+            "time": "1:07 AM"
+          },
+          {
+            "plane": "The Great Aerie",
+            "type": "Plane",
+            "walker": "McAtoms",
+            "turn": 7,
+            "cause": "walk",
+            "time": "1:07 AM"
+          },
+          {
+            "plane": "Unleash the Flux",
+            "type": "Phenomenon",
+            "walker": "Jordan",
+            "turn": 9,
+            "cause": "walk",
+            "time": "1:20 AM"
+          },
+          {
+            "plane": "New Argive",
+            "type": "Plane",
+            "walker": "Jordan",
+            "turn": 9,
+            "cause": "walk",
+            "time": "1:22 AM"
+          },
+          {
+            "plane": "Bicycle Rack",
+            "type": "Plane",
+            "walker": "Bryan",
+            "turn": 9,
+            "cause": "walk",
+            "time": "1:26 AM"
+          },
+          {
+            "plane": "New New York",
+            "type": "Plane",
+            "walker": "Waid",
+            "turn": 10,
+            "cause": "walk",
+            "time": "1:40 AM"
+          }
+        ]
+      }
+    ],
+    "lastUpdated": "2026-03-28"
+  },
+  "_activePod": [
+    "jordan",
+    "bryan",
+    "adam",
+    "waid"
+  ],
+  "_gameState": {
+    "variant": "planechase",
+    "startingLife": 40,
+    "players": {
+      "jordan": {
+        "life": 0,
+        "poison": 0,
+        "energy": 0,
+        "experience": 0,
+        "rad": 0,
+        "commanderCasts": 1,
+        "commanderZone": "battlefield",
+        "partnerCasts": 0,
+        "partnerZone": "commandZone",
+        "hasCityBlessing": false,
+        "commanderDamage": {
+          "bryan": 7,
+          "adam": 0,
+          "waid": 0
+        },
+        "damageDealt": 61,
+        "damageTaken": 40,
+        "isDead": true,
+        "deathCause": "life",
+        "deathTurn": 12
+      },
+      "bryan": {
+        "life": 31,
+        "poison": 0,
+        "energy": 0,
+        "experience": 0,
+        "rad": 0,
+        "commanderCasts": 0,
+        "commanderZone": "commandZone",
+        "partnerCasts": 0,
+        "partnerZone": "commandZone",
+        "hasCityBlessing": false,
+        "commanderDamage": {
+          "jordan": 12,
+          "adam": 0,
+          "waid": 0
+        },
+        "damageDealt": 122,
+        "damageTaken": 21,
+        "isDead": false,
+        "deathCause": null,
+        "deathTurn": null
+      },
+      "adam": {
+        "life": 0,
+        "poison": 0,
+        "energy": 0,
+        "experience": 0,
+        "rad": 0,
+        "commanderCasts": 1,
+        "commanderZone": "battlefield",
+        "partnerCasts": 0,
+        "partnerZone": "commandZone",
+        "hasCityBlessing": false,
+        "commanderDamage": {
+          "jordan": 12,
+          "bryan": 5,
+          "waid": 0
+        },
+        "damageDealt": 14,
+        "damageTaken": 154,
+        "isDead": true,
+        "deathCause": "life",
+        "deathTurn": 11
+      },
+      "waid": {
+        "life": 3,
+        "poison": 0,
+        "energy": 0,
+        "experience": 0,
+        "rad": 0,
+        "commanderCasts": 0,
+        "commanderZone": "commandZone",
+        "partnerCasts": 0,
+        "partnerZone": "commandZone",
+        "hasCityBlessing": false,
+        "commanderDamage": {
+          "jordan": 12,
+          "bryan": 0,
+          "adam": 0
+        },
+        "damageDealt": 15,
+        "damageTaken": 37,
+        "isDead": false,
+        "deathCause": null,
+        "deathTurn": null
+      }
+    },
+    "globals": {
+      "monarchId": null,
+      "initiativeId": null,
+      "dayNight": null
+    },
+    "log": [
+      {
+        "ts": 1775885685100,
+        "turn": 0,
+        "playerId": null,
+        "durationMs": 0,
+        "events": [
+          {
+            "type": "game_start",
+            "ts": 1775885685100,
+            "players": [
+              "jordan",
+              "bryan",
+              "adam",
+              "waid"
+            ]
+          }
+        ]
+      },
+      {
+        "ts": 1775885802796,
+        "turn": 1,
+        "playerId": "jordan",
+        "durationMs": 50314,
+        "events": []
+      },
+      {
+        "ts": 1775885829681,
+        "turn": 1,
+        "playerId": "waid",
+        "durationMs": 26885,
+        "events": []
+      },
+      {
+        "ts": 1775885844702,
+        "turn": 1,
+        "playerId": "bryan",
+        "durationMs": 15021,
+        "events": []
+      },
+      {
+        "ts": 1775885860137,
+        "turn": 1,
+        "playerId": "adam",
+        "durationMs": 15435,
+        "events": []
+      },
+      {
+        "ts": 1775885885563,
+        "turn": 2,
+        "playerId": "jordan",
+        "durationMs": 25426,
+        "events": []
+      },
+      {
+        "ts": 1775885932168,
+        "turn": 2,
+        "playerId": "waid",
+        "durationMs": 46605,
+        "events": [
+          {
+            "ts": 1775885924529,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 35
+          }
+        ]
+      },
+      {
+        "ts": 1775885967090,
+        "turn": 2,
+        "playerId": "bryan",
+        "durationMs": 34922,
+        "events": []
+      },
+      {
+        "ts": 1775885978953,
+        "turn": 2,
+        "playerId": "adam",
+        "durationMs": 11863,
+        "events": []
+      },
+      {
+        "ts": 1775886004439,
+        "turn": 3,
+        "playerId": "jordan",
+        "durationMs": 25486,
+        "events": []
+      },
+      {
+        "ts": 1775886060211,
+        "turn": 3,
+        "playerId": "waid",
+        "durationMs": 55772,
+        "events": [
+          {
+            "ts": 1775886053929,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -5,
+            "newLife": 35
+          }
+        ]
+      },
+      {
+        "ts": 1775886094111,
+        "turn": 3,
+        "playerId": "bryan",
+        "durationMs": 33900,
+        "events": []
+      },
+      {
+        "ts": 1775886115379,
+        "turn": 3,
+        "playerId": "adam",
+        "durationMs": 21268,
+        "events": []
+      },
+      {
+        "ts": 1775886192965,
+        "turn": 4,
+        "playerId": "jordan",
+        "durationMs": 77586,
+        "events": []
+      },
+      {
+        "ts": 1775886291485,
+        "turn": 4,
+        "playerId": "waid",
+        "durationMs": 98520,
+        "events": [
+          {
+            "ts": 1775886286351,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 30
+          }
+        ]
+      },
+      {
+        "ts": 1775886349820,
+        "turn": 4,
+        "playerId": "bryan",
+        "durationMs": 58335,
+        "events": []
+      },
+      {
+        "ts": 1775886450491,
+        "turn": 4,
+        "playerId": "adam",
+        "durationMs": 100671,
+        "events": [
+          {
+            "ts": 1775886429074,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -5,
+            "newLife": 35
+          },
+          {
+            "ts": 1775886429891,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 34
+          },
+          {
+            "ts": 1775886430164,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 33
+          },
+          {
+            "ts": 1775886430433,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 32
+          }
+        ]
+      },
+      {
+        "ts": 1775886570967,
+        "turn": 5,
+        "playerId": "jordan",
+        "durationMs": 120476,
+        "events": [
+          {
+            "ts": 1775886493563,
+            "type": "commander_cast",
+            "playerId": "jordan",
+            "casts": 1,
+            "tax": 2
+          },
+          {
+            "ts": 1775886531037,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 39
+          },
+          {
+            "ts": 1775886531037,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 1
+          },
+          {
+            "ts": 1775886531430,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 38
+          },
+          {
+            "ts": 1775886531430,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 2
+          },
+          {
+            "ts": 1775886531620,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 37
+          },
+          {
+            "ts": 1775886531620,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 3
+          },
+          {
+            "ts": 1775886531785,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 36
+          },
+          {
+            "ts": 1775886531785,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 4
+          },
+          {
+            "ts": 1775886531966,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 35
+          },
+          {
+            "ts": 1775886531966,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 5
+          },
+          {
+            "ts": 1775886532131,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 34
+          },
+          {
+            "ts": 1775886532131,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 6
+          },
+          {
+            "ts": 1775886532298,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 33
+          },
+          {
+            "ts": 1775886532298,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 7
+          },
+          {
+            "ts": 1775886532464,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 32
+          },
+          {
+            "ts": 1775886532464,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 8
+          },
+          {
+            "ts": 1775886532631,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 31
+          },
+          {
+            "ts": 1775886532631,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 9
+          },
+          {
+            "ts": 1775886532807,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 30
+          },
+          {
+            "ts": 1775886532807,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 10
+          },
+          {
+            "ts": 1775886532977,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 29
+          },
+          {
+            "ts": 1775886532977,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 11
+          },
+          {
+            "ts": 1775886533601,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 28
+          },
+          {
+            "ts": 1775886533601,
+            "type": "commander_damage",
+            "targetPid": "bryan",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 12
+          }
+        ]
+      },
+      {
+        "ts": 1775886699899,
+        "turn": 5,
+        "playerId": "waid",
+        "durationMs": 128932,
+        "events": []
+      },
+      {
+        "ts": 1775886748224,
+        "turn": 5,
+        "playerId": "bryan",
+        "durationMs": 48325,
+        "events": [
+          {
+            "ts": 1775886724378,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -5,
+            "newLife": 30
+          }
+        ]
+      },
+      {
+        "ts": 1775886802449,
+        "turn": 5,
+        "playerId": "adam",
+        "durationMs": 54225,
+        "events": []
+      },
+      {
+        "ts": 1775887021790,
+        "turn": 6,
+        "playerId": "jordan",
+        "durationMs": 219341,
+        "events": [
+          {
+            "ts": 1775886874083,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 29
+          },
+          {
+            "ts": 1775886875863,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 27
+          },
+          {
+            "ts": 1775886877542,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 31
+          },
+          {
+            "ts": 1775886879356,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 29
+          },
+          {
+            "ts": 1775886914279,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 28
+          },
+          {
+            "ts": 1775886914279,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 1
+          },
+          {
+            "ts": 1775886914946,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 27
+          },
+          {
+            "ts": 1775886914946,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 2
+          },
+          {
+            "ts": 1775886915746,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 26
+          },
+          {
+            "ts": 1775886915746,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 3
+          },
+          {
+            "ts": 1775886916840,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 25
+          },
+          {
+            "ts": 1775886916840,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 4
+          },
+          {
+            "ts": 1775886917878,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 24
+          },
+          {
+            "ts": 1775886917878,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 5
+          },
+          {
+            "ts": 1775886918878,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 23
+          },
+          {
+            "ts": 1775886918878,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 6
+          }
+        ]
+      },
+      {
+        "ts": 1775887049757,
+        "turn": 6,
+        "playerId": "waid",
+        "durationMs": 27967,
+        "events": []
+      },
+      {
+        "ts": 1775887204014,
+        "turn": 6,
+        "playerId": "bryan",
+        "durationMs": 154257,
+        "events": []
+      },
+      {
+        "ts": 1775887250466,
+        "turn": 6,
+        "playerId": "adam",
+        "durationMs": 46451,
+        "events": [
+          {
+            "ts": 1775887224557,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 24
+          },
+          {
+            "ts": 1775887224767,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 25
+          },
+          {
+            "ts": 1775887225157,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 26
+          },
+          {
+            "ts": 1775887229883,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 28
+          },
+          {
+            "ts": 1775887230219,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 27
+          },
+          {
+            "ts": 1775887230623,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 26
+          }
+        ]
+      },
+      {
+        "ts": 1775887464048,
+        "turn": 7,
+        "playerId": "jordan",
+        "durationMs": 213582,
+        "events": [
+          {
+            "ts": 1775887273123,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 25
+          },
+          {
+            "ts": 1775887274821,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 26
+          },
+          {
+            "ts": 1775887277026,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 30
+          },
+          {
+            "ts": 1775887287080,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 25
+          },
+          {
+            "ts": 1775887363576,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 20
+          },
+          {
+            "ts": 1775887363809,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 15
+          },
+          {
+            "ts": 1775887385456,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 29
+          },
+          {
+            "ts": 1775887385456,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 1
+          },
+          {
+            "ts": 1775887386047,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 28
+          },
+          {
+            "ts": 1775887386047,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 2
+          },
+          {
+            "ts": 1775887386576,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 27
+          },
+          {
+            "ts": 1775887386576,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 3
+          },
+          {
+            "ts": 1775887387216,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 26
+          },
+          {
+            "ts": 1775887387216,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 4
+          },
+          {
+            "ts": 1775887387798,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 25
+          },
+          {
+            "ts": 1775887387798,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 5
+          },
+          {
+            "ts": 1775887388432,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 24
+          },
+          {
+            "ts": 1775887388432,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 6
+          }
+        ]
+      },
+      {
+        "ts": 1775887536839,
+        "turn": 7,
+        "playerId": "waid",
+        "durationMs": 72791,
+        "events": []
+      },
+      {
+        "ts": 1775887621821,
+        "turn": 7,
+        "playerId": "bryan",
+        "durationMs": 84981,
+        "events": [
+          {
+            "ts": 1775887586680,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 5,
+            "newLife": 31
+          },
+          {
+            "ts": 1775887588804,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 1,
+            "newLife": 32
+          }
+        ]
+      },
+      {
+        "ts": 1775887703598,
+        "turn": 7,
+        "playerId": "adam",
+        "durationMs": 81777,
+        "events": []
+      },
+      {
+        "ts": 1775887866059,
+        "turn": 8,
+        "playerId": "jordan",
+        "durationMs": 162461,
+        "events": [
+          {
+            "ts": 1775887726535,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 24
+          },
+          {
+            "ts": 1775887728323,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 23
+          },
+          {
+            "ts": 1775887730147,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 31
+          },
+          {
+            "ts": 1775887731678,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 14
+          },
+          {
+            "ts": 1775887757006,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 13
+          },
+          {
+            "ts": 1775887757006,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 7
+          },
+          {
+            "ts": 1775887757436,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 12
+          },
+          {
+            "ts": 1775887757436,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 8
+          },
+          {
+            "ts": 1775887759687,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 11
+          },
+          {
+            "ts": 1775887759687,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 9
+          },
+          {
+            "ts": 1775887760890,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 10
+          },
+          {
+            "ts": 1775887760890,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 10
+          },
+          {
+            "ts": 1775887761862,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 9
+          },
+          {
+            "ts": 1775887761862,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 11
+          },
+          {
+            "ts": 1775887762856,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 8
+          },
+          {
+            "ts": 1775887762856,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 12
+          }
+        ]
+      },
+      {
+        "ts": 1775887984480,
+        "turn": 8,
+        "playerId": "waid",
+        "durationMs": 118421,
+        "events": []
+      },
+      {
+        "ts": 1775888094020,
+        "turn": 8,
+        "playerId": "bryan",
+        "durationMs": 109540,
+        "events": [
+          {
+            "ts": 1775888063655,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 30
+          }
+        ]
+      },
+      {
+        "ts": 1775888217252,
+        "turn": 8,
+        "playerId": "adam",
+        "durationMs": 123232,
+        "events": [
+          {
+            "ts": 1775888166215,
+            "type": "commander_cast",
+            "playerId": "adam",
+            "casts": 1,
+            "tax": 2
+          }
+        ]
+      },
+      {
+        "ts": 1775888539036,
+        "turn": 9,
+        "playerId": "jordan",
+        "durationMs": 321784,
+        "events": [
+          {
+            "ts": 1775888223659,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 7
+          },
+          {
+            "ts": 1775888225175,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 23
+          },
+          {
+            "ts": 1775888226972,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 22
+          },
+          {
+            "ts": 1775888228727,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 29
+          },
+          {
+            "ts": 1775888231514,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 8
+          },
+          {
+            "ts": 1775888331002,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 28
+          },
+          {
+            "ts": 1775888331178,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 27
+          },
+          {
+            "ts": 1775888331359,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 26
+          }
+        ]
+      },
+      {
+        "ts": 1775888654697,
+        "turn": 9,
+        "playerId": "waid",
+        "durationMs": 115661,
+        "events": []
+      },
+      {
+        "ts": 1775888844801,
+        "turn": 9,
+        "playerId": "bryan",
+        "durationMs": 190104,
+        "events": [
+          {
+            "ts": 1775888779504,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 22
+          },
+          {
+            "ts": 1775888779504,
+            "type": "commander_damage",
+            "targetPid": "jordan",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 1
+          },
+          {
+            "ts": 1775888781921,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 21
+          },
+          {
+            "ts": 1775888781921,
+            "type": "commander_damage",
+            "targetPid": "jordan",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 2
+          },
+          {
+            "ts": 1775888782847,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 20
+          },
+          {
+            "ts": 1775888782847,
+            "type": "commander_damage",
+            "targetPid": "jordan",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 3
+          },
+          {
+            "ts": 1775888783761,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 19
+          },
+          {
+            "ts": 1775888783761,
+            "type": "commander_damage",
+            "targetPid": "jordan",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 4
+          },
+          {
+            "ts": 1775888784658,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 18
+          },
+          {
+            "ts": 1775888784658,
+            "type": "commander_damage",
+            "targetPid": "jordan",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 5
+          },
+          {
+            "ts": 1775888792037,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 17
+          },
+          {
+            "ts": 1775888792037,
+            "type": "commander_damage",
+            "targetPid": "jordan",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 6
+          },
+          {
+            "ts": 1775888792874,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 16
+          },
+          {
+            "ts": 1775888792874,
+            "type": "commander_damage",
+            "targetPid": "jordan",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 7
+          },
+          {
+            "ts": 1775888837435,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": -1,
+            "newLife": 25
+          }
+        ]
+      },
+      {
+        "ts": 1775889360971,
+        "turn": 9,
+        "playerId": "adam",
+        "durationMs": 516170,
+        "events": [
+          {
+            "ts": 1775888848251,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 1,
+            "newLife": 26
+          },
+          {
+            "ts": 1775888848445,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 1,
+            "newLife": 27
+          },
+          {
+            "ts": 1775888848778,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 1,
+            "newLife": 28
+          },
+          {
+            "ts": 1775888848973,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 1,
+            "newLife": 29
+          },
+          {
+            "ts": 1775888857225,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 7
+          },
+          {
+            "ts": 1775888857642,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 6
+          },
+          {
+            "ts": 1775889291025,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 11
+          },
+          {
+            "ts": 1775889291583,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 16
+          },
+          {
+            "ts": 1775889292091,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 21
+          },
+          {
+            "ts": 1775889293292,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 26
+          },
+          {
+            "ts": 1775889293910,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 31
+          },
+          {
+            "ts": 1775889294674,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 32
+          },
+          {
+            "ts": 1775889315213,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 15
+          },
+          {
+            "ts": 1775889319738,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 21
+          },
+          {
+            "ts": 1775889321782,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 31
+          },
+          {
+            "ts": 1775889327200,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 14
+          }
+        ]
+      },
+      {
+        "ts": 1775889581023,
+        "turn": 10,
+        "playerId": "jordan",
+        "durationMs": 220052,
+        "events": [
+          {
+            "ts": 1775889365217,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 1,
+            "newLife": 30
+          },
+          {
+            "ts": 1775889365397,
+            "type": "life",
+            "playerId": "bryan",
+            "amount": 1,
+            "newLife": 31
+          },
+          {
+            "ts": 1775889573884,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 20
+          },
+          {
+            "ts": 1775889573884,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 7
+          },
+          {
+            "ts": 1775889574215,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 19
+          },
+          {
+            "ts": 1775889574215,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 8
+          },
+          {
+            "ts": 1775889574573,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 18
+          },
+          {
+            "ts": 1775889574573,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 9
+          },
+          {
+            "ts": 1775889574757,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 17
+          },
+          {
+            "ts": 1775889574757,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 10
+          },
+          {
+            "ts": 1775889575773,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 16
+          },
+          {
+            "ts": 1775889575773,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 11
+          },
+          {
+            "ts": 1775889576630,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 15
+          },
+          {
+            "ts": 1775889576630,
+            "type": "commander_damage",
+            "targetPid": "waid",
+            "sourcePid": "jordan",
+            "amount": 1,
+            "newTotal": 12
+          }
+        ]
+      },
+      {
+        "ts": 1775889713214,
+        "turn": 10,
+        "playerId": "waid",
+        "durationMs": 132191,
+        "events": []
+      },
+      {
+        "ts": 1775889865840,
+        "turn": 10,
+        "playerId": "bryan",
+        "durationMs": 152626,
+        "events": [
+          {
+            "ts": 1775889804676,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 30
+          },
+          {
+            "ts": 1775889804676,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 1
+          },
+          {
+            "ts": 1775889804857,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 29
+          },
+          {
+            "ts": 1775889804857,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 2
+          },
+          {
+            "ts": 1775889805025,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 28
+          },
+          {
+            "ts": 1775889805025,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 3
+          },
+          {
+            "ts": 1775889806162,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 27
+          },
+          {
+            "ts": 1775889806162,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 4
+          },
+          {
+            "ts": 1775889807421,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 26
+          },
+          {
+            "ts": 1775889807421,
+            "type": "commander_damage",
+            "targetPid": "adam",
+            "sourcePid": "bryan",
+            "amount": 1,
+            "newTotal": 5
+          },
+          {
+            "ts": 1775889820191,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 21
+          },
+          {
+            "ts": 1775889821006,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 16
+          },
+          {
+            "ts": 1775889821886,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 15
+          },
+          {
+            "ts": 1775889822075,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 14
+          },
+          {
+            "ts": 1775889822256,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 13
+          },
+          {
+            "ts": 1775889825590,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -5,
+            "newLife": 9
+          },
+          {
+            "ts": 1775889826292,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 8
+          },
+          {
+            "ts": 1775889826462,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -1,
+            "newLife": 7
+          },
+          {
+            "ts": 1775889829608,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -5,
+            "newLife": 10
+          },
+          {
+            "ts": 1775889830582,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 9
+          },
+          {
+            "ts": 1775889830751,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 8
+          },
+          {
+            "ts": 1775889831361,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 7
+          }
+        ]
+      },
+      {
+        "ts": 1775890429218,
+        "turn": 10,
+        "playerId": "adam",
+        "durationMs": 563378,
+        "events": [
+          {
+            "ts": 1775889876062,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 12
+          },
+          {
+            "ts": 1775889876257,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 11
+          },
+          {
+            "ts": 1775889876479,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 10
+          },
+          {
+            "ts": 1775890377158,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 15
+          },
+          {
+            "ts": 1775890377489,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 20
+          },
+          {
+            "ts": 1775890377656,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 25
+          },
+          {
+            "ts": 1775890377804,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 30
+          },
+          {
+            "ts": 1775890377968,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 35
+          },
+          {
+            "ts": 1775890378151,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 40
+          },
+          {
+            "ts": 1775890378930,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 45
+          },
+          {
+            "ts": 1775890379094,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 50
+          },
+          {
+            "ts": 1775890379274,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 55
+          },
+          {
+            "ts": 1775890380158,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 60
+          },
+          {
+            "ts": 1775890380517,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 65
+          },
+          {
+            "ts": 1775890404131,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 66
+          },
+          {
+            "ts": 1775890404293,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 67
+          },
+          {
+            "ts": 1775890404472,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 68
+          },
+          {
+            "ts": 1775890407416,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 73
+          },
+          {
+            "ts": 1775890408268,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 78
+          }
+        ]
+      },
+      {
+        "ts": 1775890431056,
+        "turn": 11,
+        "playerId": "jordan",
+        "durationMs": 1838,
+        "events": []
+      },
+      {
+        "ts": 1775890432586,
+        "turn": 11,
+        "playerId": "waid",
+        "durationMs": 1530,
+        "events": []
+      },
+      {
+        "ts": 1775890874139,
+        "turn": 11,
+        "playerId": "bryan",
+        "durationMs": 441553,
+        "events": [
+          {
+            "ts": 1775890434595,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 6
+          },
+          {
+            "ts": 1775890434743,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 5
+          },
+          {
+            "ts": 1775890434940,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 4
+          },
+          {
+            "ts": 1775890435490,
+            "type": "life",
+            "playerId": "waid",
+            "amount": -1,
+            "newLife": 3
+          },
+          {
+            "ts": 1775890440204,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 73
+          },
+          {
+            "ts": 1775890440370,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 68
+          },
+          {
+            "ts": 1775890440556,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 63
+          },
+          {
+            "ts": 1775890440728,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 58
+          },
+          {
+            "ts": 1775890440878,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 53
+          },
+          {
+            "ts": 1775890441043,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 48
+          },
+          {
+            "ts": 1775890441434,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 43
+          },
+          {
+            "ts": 1775890442218,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 38
+          },
+          {
+            "ts": 1775890444239,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 37
+          },
+          {
+            "ts": 1775890444386,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 36
+          },
+          {
+            "ts": 1775890454724,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 35
+          },
+          {
+            "ts": 1775890455224,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 34
+          },
+          {
+            "ts": 1775890455639,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 33
+          },
+          {
+            "ts": 1775890456141,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 32
+          },
+          {
+            "ts": 1775890827358,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 37
+          },
+          {
+            "ts": 1775890827824,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 42
+          },
+          {
+            "ts": 1775890828472,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 1,
+            "newLife": 43
+          },
+          {
+            "ts": 1775890835459,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 38
+          },
+          {
+            "ts": 1775890835623,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 33
+          },
+          {
+            "ts": 1775890835819,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 28
+          },
+          {
+            "ts": 1775890836122,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 23
+          },
+          {
+            "ts": 1775890836779,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 18
+          },
+          {
+            "ts": 1775890838882,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 17
+          },
+          {
+            "ts": 1775890841571,
+            "type": "life",
+            "playerId": "adam",
+            "amount": 5,
+            "newLife": 22
+          },
+          {
+            "ts": 1775890843769,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -1,
+            "newLife": 21
+          }
+        ]
+      },
+      {
+        "ts": 1775890978395,
+        "turn": 11,
+        "playerId": "adam",
+        "durationMs": 104256,
+        "events": [
+          {
+            "ts": 1775890880572,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 16
+          },
+          {
+            "ts": 1775890974960,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 11
+          },
+          {
+            "ts": 1775890975137,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 6
+          },
+          {
+            "ts": 1775890975847,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 1
+          },
+          {
+            "ts": 1775890976135,
+            "type": "life",
+            "playerId": "adam",
+            "amount": -5,
+            "newLife": 0
+          },
+          {
+            "ts": 1775890978395,
+            "type": "death",
+            "playerId": "adam",
+            "cause": "life",
+            "turn": 11
+          }
+        ]
+      },
+      {
+        "ts": 1775890985174,
+        "turn": 12,
+        "playerId": "jordan",
+        "durationMs": 6779,
+        "events": [
+          {
+            "ts": 1775890983438,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -5,
+            "newLife": 2
+          },
+          {
+            "ts": 1775890983605,
+            "type": "life",
+            "playerId": "jordan",
+            "amount": -5,
+            "newLife": 0
+          },
+          {
+            "ts": 1775890985174,
+            "type": "death",
+            "playerId": "jordan",
+            "cause": "life",
+            "turn": 12
+          }
+        ]
+      },
+      {
+        "ts": 1775890988009,
+        "turn": 12,
+        "playerId": "waid",
+        "durationMs": 2834,
+        "events": []
+      }
+    ],
+    "currentTurnEvents": []
+  },
+  "_activeVariant": "planechase",
+  "_ownerColors": {
+    "adam": "#069b03",
+    "bryan": "#ffffff",
+    "shake": "#db5800",
+    "waid": "#01529d",
+    "jordan": "#c785ea",
+    "noah": "#e401d1",
+    "rich": "#e401a8"
+  }
+}

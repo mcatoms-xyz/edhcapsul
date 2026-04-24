@@ -1,0 +1,151 @@
+var MTG_POD = {
+  "players": [
+    {
+      "id": "adam",
+      "name": "Adam",
+      "nickname": "McAtoms",
+      "archidekt": "McAtoms",
+      "archidektUrl": "https://archidekt.com/u/McAtoms",
+      "avatar": null,
+      "elo": 1200,
+      "joinedDate": "2026-03-27",
+      "deckCount": 15,
+      "stats": {
+        "totalGames": 0,
+        "totalWins": 0,
+        "winRate": 0,
+        "currentStreak": 0,
+        "bestStreak": 0,
+        "uniqueDeckWins": 0,
+        "avgSaltGiven": 0,
+        "avgSaltReceived": 0
+      }
+    },
+    {
+      "id": "bryan",
+      "name": "Bryan",
+      "nickname": "BPWyndon",
+      "archidekt": "BPWyndon",
+      "archidektUrl": "https://archidekt.com/u/BPWyndon",
+      "avatar": null,
+      "elo": 1200,
+      "joinedDate": "2026-03-27",
+      "deckCount": 11,
+      "stats": {
+        "totalGames": 0,
+        "totalWins": 0,
+        "winRate": 0,
+        "currentStreak": 0,
+        "bestStreak": 0,
+        "uniqueDeckWins": 0,
+        "avgSaltGiven": 0,
+        "avgSaltReceived": 0
+      }
+    },
+    {
+      "id": "shake",
+      "name": "Shake",
+      "nickname": "shakenbake1738",
+      "archidekt": "shakenbake1738",
+      "archidektUrl": "https://archidekt.com/u/shakenbake1738",
+      "avatar": null,
+      "elo": 1200,
+      "joinedDate": "2026-03-27",
+      "deckCount": 8,
+      "stats": {
+        "totalGames": 0,
+        "totalWins": 0,
+        "winRate": 0,
+        "currentStreak": 0,
+        "bestStreak": 0,
+        "uniqueDeckWins": 0,
+        "avgSaltGiven": 0,
+        "avgSaltReceived": 0
+      }
+    },
+    {
+      "id": "waid",
+      "name": "Waid",
+      "nickname": "TheToasterCzar",
+      "archidekt": "TheToasterCzar",
+      "archidektUrl": "https://archidekt.com/u/TheToasterCzar",
+      "avatar": null,
+      "elo": 1200,
+      "joinedDate": "2026-03-27",
+      "deckCount": 0,
+      "stats": {
+        "totalGames": 0,
+        "totalWins": 0,
+        "winRate": 0,
+        "currentStreak": 0,
+        "bestStreak": 0,
+        "uniqueDeckWins": 0,
+        "avgSaltGiven": 0,
+        "avgSaltReceived": 0
+      }
+    },
+    {
+      "id": "jordan",
+      "name": "Jordan",
+      "nickname": "cptexplodeypants",
+      "archidekt": "cptexplodeypants",
+      "archidektUrl": "https://archidekt.com/u/cptexplodeypants",
+      "avatar": null,
+      "elo": 1200,
+      "joinedDate": "2026-03-26",
+      "deckCount": 9,
+      "stats": {
+        "totalGames": 0,
+        "totalWins": 0,
+        "winRate": 0,
+        "currentStreak": 0,
+        "bestStreak": 0,
+        "uniqueDeckWins": 0,
+        "avgSaltGiven": 0,
+        "avgSaltReceived": 0
+      }
+    },
+    {
+      "id": "rich",
+      "name": "Rich",
+      "nickname": "Rich",
+      "archidekt": "GUTS11B",
+      "archidektUrl": "https://archidekt.com/u/GUTS11B",
+      "avatar": null,
+      "elo": 1200,
+      "joinedDate": "2026-03-27",
+      "deckCount": 3,
+      "stats": {
+        "totalGames": 0,
+        "totalWins": 0,
+        "winRate": 0,
+        "currentStreak": 0,
+        "bestStreak": 0,
+        "uniqueDeckWins": 0,
+        "avgSaltGiven": 0,
+        "avgSaltReceived": 0
+      }
+    },
+    {
+      "id": "noah",
+      "name": "Noah",
+      "nickname": "Noah",
+      "archidekt": null,
+      "archidektUrl": null,
+      "avatar": null,
+      "elo": 1200,
+      "joinedDate": "2026-04-11",
+      "deckCount": 1,
+      "stats": {
+        "totalGames": 0,
+        "totalWins": 0,
+        "winRate": 0,
+        "currentStreak": 0,
+        "bestStreak": 0,
+        "uniqueDeckWins": 0,
+        "avgSaltGiven": 0,
+        "avgSaltReceived": 0
+      }
+    }
+  ]
+};

@@ -1,0 +1,1778 @@
+{
+  "decks": [
+    {
+      "id": "adam-12th-doctor",
+      "archidektId": 12978554,
+      "owner": "adam",
+      "name": "12th Doctor",
+      "commander": "The Twelfth Doctor",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/2/4/2400d681-05ef-43b1-b720-c15ca4226c27.jpg?1696636777",
+      "commanderScryfallId": "2400d681-05ef-43b1-b720-c15ca4226c27",
+      "colors": [
+        "Blue",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 101,
+      "estimatedValue": 325.64,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/12th Doctor/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/12978554",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{U}{R}"
+    },
+    {
+      "id": "adam-core-collab",
+      "archidektId": 12978600,
+      "owner": "adam",
+      "name": "Core Collab",
+      "commander": "Unknown Commander",
+      "commanderPartner": null,
+      "commanderArt": null,
+      "commanderScryfallId": null,
+      "colors": [],
+      "bracket": null,
+      "cardCount": 2,
+      "estimatedValue": 380.34,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/12978600",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": null
+    },
+    {
+      "id": "adam-mighty-myrs",
+      "archidektId": 13018574,
+      "owner": "adam",
+      "name": "Mighty Myrs",
+      "commander": "Urtet, Remnant of Memnarch",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/a/7aa01ab4-26b0-49dc-8514-b3850d355a21.jpg?1675905609",
+      "commanderScryfallId": "7aa01ab4-26b0-49dc-8514-b3850d355a21",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 1053.51,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13018574",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}"
+    },
+    {
+      "id": "adam-scabs",
+      "archidektId": 13018638,
+      "owner": "adam",
+      "name": "Scabs",
+      "commander": "The Scarab God",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/f/4/f4f414ef-84a2-4694-9e98-51bee4576c84.jpg?1689999233",
+      "commanderScryfallId": "f4f414ef-84a2-4694-9e98-51bee4576c84",
+      "colors": [
+        "Black",
+        "Blue"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 2552.63,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13018638",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{U}{B}"
+    },
+    {
+      "id": "adam-trostani's-glory",
+      "archidektId": 13018656,
+      "owner": "adam",
+      "name": "Trostani's Glory",
+      "commander": "Trostani, Selesnya's Voice",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/3/4/34ea44f2-cb2f-4b86-83fc-fe507f05bb9d.jpg?1568004834",
+      "commanderScryfallId": "34ea44f2-cb2f-4b86-83fc-fe507f05bb9d",
+      "colors": [
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 89,
+      "estimatedValue": 1175.64,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Trostani-Selesnya Tokens/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13018656",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{G}{G}{W}{W}"
+    },
+    {
+      "id": "adam-leo's-thopters",
+      "archidektId": 13018680,
+      "owner": "adam",
+      "name": "Leo's Thopters",
+      "commander": "Leonardo da Vinci",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/2/8/283d04a5-3639-42de-b940-ffa7e609e527.jpg?1721423712",
+      "commanderScryfallId": "283d04a5-3639-42de-b940-ffa7e609e527",
+      "colors": [
+        "Blue"
+      ],
+      "bracket": null,
+      "cardCount": 1,
+      "estimatedValue": 1.99,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13018680",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{U}"
+    },
+    {
+      "id": "adam-attack-of-the-plants",
+      "archidektId": 13018710,
+      "owner": "adam",
+      "name": "Attack of the Plants",
+      "commander": "The Necrobloom",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/8/f/8fcf68cf-0dac-4b29-90d5-c18c685182e6.jpg?1717012767",
+      "commanderScryfallId": "8fcf68cf-0dac-4b29-90d5-c18c685182e6",
+      "colors": [
+        "Black",
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 83,
+      "estimatedValue": 347.01,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Plants-Abzan/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13018710",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{W}{B}{G}"
+    },
+    {
+      "id": "adam-frogs!",
+      "archidektId": 13018747,
+      "owner": "adam",
+      "name": "Frogs!",
+      "commander": "Glarb, Calamity's Augur",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/f/f/ffc70b2d-5a3a-49ea-97db-175a62248302.jpg?1721427068",
+      "commanderScryfallId": "ffc70b2d-5a3a-49ea-97db-175a62248302",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 95,
+      "estimatedValue": 497.38,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Frogs-Sultai/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13018747",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{B}{G}{U}"
+    },
+    {
+      "id": "adam-hydrafoil",
+      "archidektId": 13018834,
+      "owner": "adam",
+      "name": "Hydrafoil",
+      "commander": "Zaxara, the Exemplary",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/6/d/6dc390da-75f8-490a-a724-c12d21cfe578.jpg?1701636845",
+      "commanderScryfallId": "6dc390da-75f8-490a-a724-c12d21cfe578",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 3483.06,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Hydras-BUG/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13018834",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{B}{G}{U}"
+    },
+    {
+      "id": "adam-daxos-of-nyx",
+      "archidektId": 13081907,
+      "owner": "adam",
+      "name": "Daxos of Nyx",
+      "commander": "Daxos the Returned",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/4/a/4abe142e-7e87-464b-be2a-ad2fc7aebd51.jpg?1562703959",
+      "commanderScryfallId": "4abe142e-7e87-464b-be2a-ad2fc7aebd51",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 93,
+      "estimatedValue": 426.75,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Daxos-Orzhov Enchantments/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13081907",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{W}{B}"
+    },
+    {
+      "id": "adam-kambal's-allocation",
+      "archidektId": 13081945,
+      "owner": "adam",
+      "name": "Kambal's Allocation",
+      "commander": "Kambal, Consul of Allocation",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/b/3/b3e47d49-e5b5-487b-a1ec-373dbf89b2ec.jpg?1673148829",
+      "commanderScryfallId": "b3e47d49-e5b5-487b-a1ec-373dbf89b2ec",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 1433.04,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Kambal-Orzhov/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13081945",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{W}{B}"
+    },
+    {
+      "id": "adam-kozi-&-friends",
+      "archidektId": 13089995,
+      "owner": "adam",
+      "name": "Kozi & Friends",
+      "commander": "Kozilek, the Great Distortion",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/c/4/c41554e7-2a07-4cc7-b01b-44deed08e588.jpg?1689995398",
+      "commanderScryfallId": "c41554e7-2a07-4cc7-b01b-44deed08e588",
+      "colors": [
+        "Colorless"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 1405.34,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13089995",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{8}{C}{C}"
+    },
+    {
+      "id": "adam-ghooooooosts!",
+      "archidektId": 13090578,
+      "owner": "adam",
+      "name": "Ghooooooosts!",
+      "commander": "Millicent, Restless Revenant",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/2/b/2b86b538-0766-440d-a2cd-f5d5bfcfb010.jpg?1641600129",
+      "commanderScryfallId": "2b86b538-0766-440d-a2cd-f5d5bfcfb010",
+      "colors": [
+        "Blue",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 96,
+      "estimatedValue": 516.34,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13090578",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{5}{W}{U}"
+    },
+    {
+      "id": "adam-gitrog",
+      "archidektId": 13090656,
+      "owner": "adam",
+      "name": "Gitrog",
+      "commander": "The Gitrog Monster",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/4/0/40489e28-878d-44a2-847f-07beef1aa0f8.jpg?1752944964",
+      "commanderScryfallId": "40489e28-878d-44a2-847f-07beef1aa0f8",
+      "colors": [
+        "Black",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 546.86,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Gitrog-Golgari/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13090656",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{B}{G}"
+    },
+    {
+      "id": "adam-ooooooooze",
+      "archidektId": 13090876,
+      "owner": "adam",
+      "name": "OOOOOOOOZE",
+      "commander": "Aeve, Progenitor Ooze",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/d/f/dfe9b1b8-dffe-427d-be1e-2c6b8395bd54.jpg?1626097164",
+      "commanderScryfallId": "dfe9b1b8-dffe-427d-be1e-2c6b8395bd54",
+      "colors": [
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 376.98,
+      "tags": [],
+      "retired": false,
+      "photoPath": "Personal/MTG/Ooze-MonoGreen/",
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13090876",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{G}{G}{G}"
+    },
+    {
+      "id": "adam-general-tazri",
+      "archidektId": null,
+      "owner": "adam",
+      "name": "General Tazri",
+      "commander": "General Tazri",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/3/4/34e9aa86-1a31-4c0f-928d-923f066286b6.jpg?1562905706",
+      "commanderScryfallId": "34e9aa86-1a31-4c0f-928d-923f066286b6",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-04-11",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{4}{W}"
+    },
+    {
+      "id": "adam-amy-rose",
+      "archidektId": null,
+      "owner": "adam",
+      "name": "Amy Rose",
+      "commander": "Amy Rose",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/6/a/6ac0c02f-6428-4ed0-bd1a-bf9f4af9c3c1.jpg?1752535687",
+      "commanderScryfallId": "6ac0c02f-6428-4ed0-bd1a-bf9f4af9c3c1",
+      "colors": [
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [
+        "Equipment",
+        "Voltron"
+      ],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-04-11",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{R}{W}"
+    },
+    {
+      "id": "adam-jodah--the-unifier",
+      "archidektId": null,
+      "owner": "adam",
+      "name": "Dungeon Crawler Carl",
+      "commander": "Jodah, the Unifier",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/e/4/e4b1aa1e-b4e3-4346-8937-76b312501c70.jpg?1673307974",
+      "commanderScryfallId": "e4b1aa1e-b4e3-4346-8937-76b312501c70",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [
+        "Legends"
+      ],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-04-11",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{W}{U}{B}{R}{G}"
+    },
+    {
+      "id": "adam-gilanra--caller-of-wirewood",
+      "archidektId": null,
+      "owner": "adam",
+      "name": "Gilanra & Alena",
+      "commander": "Gilanra, Caller of Wirewood",
+      "commanderPartner": "Alena, Kessig Trapper",
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/4/745d297d-4bb4-40cf-bb9c-99dac04e5069.jpg?1608910679",
+      "commanderScryfallId": "745d297d-4bb4-40cf-bb9c-99dac04e5069",
+      "colors": [
+        "Green",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{G}"
+    },
+    {
+      "id": "adam-ziatora--the-incinerator",
+      "archidektId": null,
+      "owner": "adam",
+      "name": "Trogdor, the Burninator",
+      "commander": "Ziatora, the Incinerator",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/b/a/ba4fa4c8-f09f-4d97-a7d1-1b93caf7d4f9.jpg?1664413989",
+      "commanderScryfallId": "ba4fa4c8-f09f-4d97-a7d1-1b93caf7d4f9",
+      "colors": [
+        "Black",
+        "Green",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{B}{R}{G}"
+    },
+    {
+      "id": "bryan-commander:-sengir-the-dark-bar",
+      "archidektId": 11450004,
+      "owner": "bryan",
+      "name": "Commander: Sengir, the Dark Baron",
+      "commander": "Sengir, the Dark Baron",
+      "commanderPartner": "Ludevic, Necro-Alchemist",
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/4/d/4d51a22e-74fc-442e-945a-56d02ca12713.jpg?1608909947",
+      "commanderScryfallId": "4d51a22e-74fc-442e-945a-56d02ca12713",
+      "colors": [
+        "Black",
+        "Blue",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 2034.78,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11450004",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{4}{B}{B}"
+    },
+    {
+      "id": "bryan-commander:-abomination-of-llan",
+      "archidektId": 11450530,
+      "owner": "bryan",
+      "name": "Commander: Abomination of Llanowar",
+      "commander": "Abomination of Llanowar",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/4/b/4b68bc46-5591-44dd-becc-eca154066925.jpg?1631235320",
+      "commanderScryfallId": "4b68bc46-5591-44dd-becc-eca154066925",
+      "colors": [
+        "Black",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 814.44,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11450530",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{B}{G}"
+    },
+    {
+      "id": "bryan-commander:-myrel-shield-of-arg",
+      "archidektId": 11450776,
+      "owner": "bryan",
+      "name": "Commander: Myrel, Shield of Argive",
+      "commander": "Myrel, Shield of Argive",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/e/6/e632ed57-bb00-4493-adef-7b4805edd7ea.jpg?1674420256",
+      "commanderScryfallId": "e632ed57-bb00-4493-adef-7b4805edd7ea",
+      "colors": [
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 352.4,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11450776",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{W}"
+    },
+    {
+      "id": "bryan-commander:-jetmir-nexus-of-rev",
+      "archidektId": 11450958,
+      "owner": "bryan",
+      "name": "Commander: Jetmir, Nexus of Revels",
+      "commander": "Jetmir, Nexus of Revels",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/f/9/f9c69d75-651f-4b75-b65d-79999d2069f6.jpg?1664413153",
+      "commanderScryfallId": "f9c69d75-651f-4b75-b65d-79999d2069f6",
+      "colors": [
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 684.02,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11450958",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{R}{G}{W}"
+    },
+    {
+      "id": "bryan-commander:-jodah-archmage-eter",
+      "archidektId": 11451029,
+      "owner": "bryan",
+      "name": "Commander: Jodah, Archmage Eternal",
+      "commander": "Jodah, Archmage Eternal",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/3/73c18cb4-96b1-4af2-912e-974e22877ede.jpg?1673148799",
+      "commanderScryfallId": "73c18cb4-96b1-4af2-912e-974e22877ede",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 475.4,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11451029",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{U}{R}{W}"
+    },
+    {
+      "id": "bryan-commander:-kardur-doomscourge",
+      "archidektId": 11451139,
+      "owner": "bryan",
+      "name": "Commander: Chucky",
+      "commander": "Kardur, Doomscourge",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/9/d/9d943cf2-0462-4f31-9a92-d76fe4971b17.jpg?1759412736",
+      "commanderScryfallId": "9d943cf2-0462-4f31-9a92-d76fe4971b17",
+      "colors": [
+        "Black",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 469.66,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11451139",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{B}{R}"
+    },
+    {
+      "id": "bryan-commander:-muldrotha-the-grave",
+      "archidektId": 11451227,
+      "owner": "bryan",
+      "name": "Commander: Muldrotha, the Gravetide",
+      "commander": "Muldrotha, the Gravetide",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/0/705b4d97-2f50-47f7-9053-d748f4337553.jpg?1769685324",
+      "commanderScryfallId": "705b4d97-2f50-47f7-9053-d748f4337553",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 1391.68,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11451227",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{B}{G}{U}"
+    },
+    {
+      "id": "bryan-commander:-kresh-the-bloodbrai",
+      "archidektId": 12635696,
+      "owner": "bryan",
+      "name": "Commander: Kresh the Bloodbraided",
+      "commander": "Kresh the Bloodbraided",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/8/b/8b4b3c5f-32ea-4208-86d4-bb86e3b8d7d5.jpg?1673485121",
+      "commanderScryfallId": "8b4b3c5f-32ea-4208-86d4-bb86e3b8d7d5",
+      "colors": [
+        "Black",
+        "Green",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 456.36,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/12635696",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{B}{R}{G}"
+    },
+    {
+      "id": "bryan-commander:-myrkul-lord-of-bone",
+      "archidektId": 12916360,
+      "owner": "bryan",
+      "name": "Commander: Myrkul, Lord of Bones",
+      "commander": "Myrkul, Lord of Bones",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/8/2/82824d05-5215-459a-aa73-3c5a6be3d464.jpg?1674137617",
+      "commanderScryfallId": "82824d05-5215-459a-aa73-3c5a6be3d464",
+      "colors": [
+        "Black",
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 106,
+      "estimatedValue": 532.48,
+      "tags": [],
+      "retired": true,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/12916360",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{4}{W}{B}{G}"
+    },
+    {
+      "id": "bryan-commander:-aveline-de-grandpr\u00e9",
+      "archidektId": 14274824,
+      "owner": "bryan",
+      "name": "Commander: Aveline de Grandpr\u00e9",
+      "commander": "Aveline de Grandpr\u00e9",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/d/b/db3b4f73-e241-4d60-a877-25327092c291.jpg?1721423869",
+      "commanderScryfallId": "db3b4f73-e241-4d60-a877-25327092c291",
+      "colors": [
+        "Black",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 117.18,
+      "tags": [],
+      "retired": true,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/14274824",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{G}{G}"
+    },
+    {
+      "id": "bryan-commander:-betor-kin-to-all",
+      "archidektId": 15064684,
+      "owner": "bryan",
+      "name": "Commander: Betor, Kin to All",
+      "commander": "Betor, Kin to All",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/b/4/b475b071-5545-483e-a397-89451f258602.jpg?1743204665",
+      "commanderScryfallId": "b475b071-5545-483e-a397-89451f258602",
+      "colors": [
+        "Black",
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 455.92,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/15064684",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{W}{B}{G}"
+    },
+    {
+      "id": "bryan-commander:-szarel-genesis-shep",
+      "archidektId": 17494527,
+      "owner": "bryan",
+      "name": "Commander: Szarel, Genesis Shepherd",
+      "commander": "Szarel, Genesis Shepherd",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/8/9/89b61123-b10f-4bcf-b5f9-1f302f9b22d1.jpg?1754673465",
+      "commanderScryfallId": "89b61123-b10f-4bcf-b5f9-1f302f9b22d1",
+      "colors": [
+        "Black",
+        "Green",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 323.04,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/17494527",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{B}{R}{G}"
+    },
+    {
+      "id": "bryan-commander:-ishai-and-ikra",
+      "archidektId": 17947350,
+      "owner": "bryan",
+      "name": "Commander: Ikra Shidiqi, the Usurper",
+      "commander": "Ikra Shidiqi, the Usurper",
+      "commanderPartner": "Ishai, Ojutai Dragonspeaker",
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/2/e/2e89ce6a-6bc9-427f-a8b2-c07a9fc3218f.jpg?1562272963",
+      "commanderScryfallId": "2e89ce6a-6bc9-427f-a8b2-c07a9fc3218f",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 160.23,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/17947350",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{W}{U}"
+    },
+    {
+      "id": "bryan-commander:-the-earth-king",
+      "archidektId": 19347963,
+      "owner": "bryan",
+      "name": "Commander: The Earth King",
+      "commander": "The Earth King",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/a/8/a8d5dca6-381a-4361-b265-27de8d04335c.jpg?1764121171",
+      "commanderScryfallId": "a8d5dca6-381a-4361-b265-27de8d04335c",
+      "colors": [
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 224.21,
+      "tags": [],
+      "retired": true,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/19347963",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{G}"
+    },
+    {
+      "id": "bryan-pauper-commander:-kagha-shadow",
+      "archidektId": 19655938,
+      "owner": "bryan",
+      "name": "Pauper Commander: Kagha, Shadow Archdruid",
+      "commander": "Kagha, Shadow Archdruid",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/6/3/6351adc8-2e44-4e5c-ae58-975b7332155e.jpg?1674137545",
+      "commanderScryfallId": "6351adc8-2e44-4e5c-ae58-975b7332155e",
+      "colors": [
+        "Black",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 106,
+      "estimatedValue": 45.36,
+      "tags": [],
+      "retired": true,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/19655938",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{B}{G}"
+    },
+    {
+      "id": "shake-niv-top",
+      "archidektId": 10874173,
+      "owner": "shake",
+      "name": "Niv Top",
+      "commander": "Niv-Mizzet, Visionary",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/a/7a69a618-d588-4745-8ede-0ff0a9f356f1.jpg?1730489058",
+      "commanderScryfallId": "7a69a618-d588-4745-8ede-0ff0a9f356f1",
+      "colors": [
+        "Blue",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 835.02,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/10874173",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{4}{U}{R}"
+    },
+    {
+      "id": "shake-avacyn",
+      "archidektId": 11038757,
+      "owner": "shake",
+      "name": "Avacyn",
+      "commander": "Avacyn, Angel of Hope",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/3/1/317f1133-7cf8-4b7a-919e-88c45f8c2c3a.jpg?1689995555",
+      "commanderScryfallId": "317f1133-7cf8-4b7a-919e-88c45f8c2c3a",
+      "colors": [
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 475.96,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11038757",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{5}{W}{W}{W}"
+    },
+    {
+      "id": "shake-hugry-hugry-hippos",
+      "archidektId": 11039358,
+      "owner": "shake",
+      "name": "Hugry Hugry Hippos",
+      "commander": "Phelddagrif",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/4/9/493a72f0-2e35-4e06-a1b2-d42d432b9b2c.jpg?1559592591",
+      "commanderScryfallId": "493a72f0-2e35-4e06-a1b2-d42d432b9b2c",
+      "colors": [
+        "Blue",
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 308.6,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11039358",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{G}{W}{U}"
+    },
+    {
+      "id": "shake-oloro-graveyard",
+      "archidektId": 11040318,
+      "owner": "shake",
+      "name": "Oloro Graveyard",
+      "commander": "Oloro, Ageless Ascetic",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/a/b/abf8df47-405c-42d8-be9e-0f0d0a49589b.jpg?1562931285",
+      "commanderScryfallId": "abf8df47-405c-42d8-be9e-0f0d0a49589b",
+      "colors": [
+        "Black",
+        "Blue",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 876.92,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11040318",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{W}{U}{B}"
+    },
+    {
+      "id": "shake-ghalta-dinos",
+      "archidektId": 11040618,
+      "owner": "shake",
+      "name": "Ghalta Dinos",
+      "commander": "Ghalta, Primal Hunger",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/6/a/6a9c39e4-a8cf-42dd-8d0e-45634b335546.jpg?1730489423",
+      "commanderScryfallId": "6a9c39e4-a8cf-42dd-8d0e-45634b335546",
+      "colors": [
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 255.6,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11040618",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{10}{G}{G}"
+    },
+    {
+      "id": "shake-geist-of-saint-trafty-pants",
+      "archidektId": 11040988,
+      "owner": "shake",
+      "name": "Geist of Saint Trafty Pants",
+      "commander": "Geist of Saint Traft",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/5/4/541b9d55-f237-4ff2-9e47-c58a381f0633.jpg?1641603441",
+      "commanderScryfallId": "541b9d55-f237-4ff2-9e47-c58a381f0633",
+      "colors": [
+        "Blue",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 672.88,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11040988",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{W}{U}"
+    },
+    {
+      "id": "shake-yoshi's-maze",
+      "archidektId": 11041312,
+      "owner": "shake",
+      "name": "Yoshi's Maze",
+      "commander": "Child of Alara",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/b/2/b2373625-af3c-4c2a-a1d1-5288c446955d.jpg?1673148447",
+      "commanderScryfallId": "b2373625-af3c-4c2a-a1d1-5288c446955d",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 984.88,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11041312",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{W}{U}{B}{R}{G}"
+    },
+    {
+      "id": "shake-shirei-apostles",
+      "archidektId": 11689449,
+      "owner": "shake",
+      "name": "Shirei apostles",
+      "commander": "Shirei, Shizo's Caretaker",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/6/9/69848ec1-dba7-419f-a5f9-f934bebeeaa6.jpg?1689997454",
+      "commanderScryfallId": "69848ec1-dba7-419f-a5f9-f934bebeeaa6",
+      "colors": [
+        "Black"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 634.96,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/11689449",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{4}{B}"
+    },
+    {
+      "id": "shake-tmnt-precon",
+      "archidektId": 21089514,
+      "owner": "shake",
+      "name": "TMNT Precon",
+      "commander": "Leonardo, the Balance",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/2/72e637db-7112-406f-809b-0eda248488b5.jpg?1773509673",
+      "commanderScryfallId": "72e637db-7112-406f-809b-0eda248488b5",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 149.64,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": "https://archidekt.com/decks/21089514",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{W}"
+    },
+    {
+      "id": "shake-leonardo--the-balance",
+      "archidektId": null,
+      "owner": "shake",
+      "name": "Leonardo, the Balance",
+      "commander": "Leonardo, the Balance",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/2/72e637db-7112-406f-809b-0eda248488b5.jpg?1773509673",
+      "commanderScryfallId": "72e637db-7112-406f-809b-0eda248488b5",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{W}"
+    },
+    {
+      "id": "jordan-xenagos-god-of-revels",
+      "archidektId": 9934396,
+      "owner": "jordan",
+      "name": "Xenagos, God of Revels",
+      "commander": "Xenagos, God of Revels",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/6/f/6f1bc3bb-46da-492a-850c-f1f588ad8d18.jpg?1732546037",
+      "commanderScryfallId": "6f1bc3bb-46da-492a-850c-f1f588ad8d18",
+      "colors": [
+        "Green",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 410.26,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/9934396",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{R}{G}"
+    },
+    {
+      "id": "jordan-rakdos-brings-the-beats",
+      "archidektId": 13591475,
+      "owner": "jordan",
+      "name": "Rakdos Brings the Beats",
+      "commander": "Rakdos, Lord of Riots",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/3/d/3d0d5a41-8251-437c-a4a0-3b712281ebb0.jpg?1726285245",
+      "commanderScryfallId": "3d0d5a41-8251-437c-a4a0-3b712281ebb0",
+      "colors": [
+        "Black",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 522.72,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13591475",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{B}{B}{R}{R}"
+    },
+    {
+      "id": "jordan-braids-aristocrats",
+      "archidektId": 13289184,
+      "owner": "jordan",
+      "name": "Braids Aristocrats",
+      "commander": "Braids",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/f/9/f96223d0-04c4-40c2-87a9-0c6bc74adddb.jpg?1752944690",
+      "commanderScryfallId": "f96223d0-04c4-40c2-87a9-0c6bc74adddb",
+      "colors": [
+        "Black"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 1071.18,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13289184",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{B}{B}"
+    },
+    {
+      "id": "jordan-tetsuo-voltron",
+      "archidektId": 13610210,
+      "owner": "jordan",
+      "name": "Tetsuo, Voltron",
+      "commander": "Tetsuo",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/5/1/51c523cd-78b0-438f-bba5-19160f648d5f.jpg?1673305006",
+      "commanderScryfallId": "51c523cd-78b0-438f-bba5-19160f648d5f",
+      "colors": [
+        "Black",
+        "Blue",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 690.02,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13610210",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{U}{B}{R}"
+    },
+    {
+      "id": "jordan-marchesa-the-black-rose",
+      "archidektId": 20569261,
+      "owner": "jordan",
+      "name": "Marchesa, the Black Rose",
+      "commander": "Marchesa, the Black Rose",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/3/2/3242a9f0-2ba3-4852-ac8f-366772ac1c62.jpg?1673148917",
+      "commanderScryfallId": "3242a9f0-2ba3-4852-ac8f-366772ac1c62",
+      "colors": [
+        "Black",
+        "Blue",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 560.34,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/20569261",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{U}{B}{R}"
+    },
+    {
+      "id": "jordan-locust-god-wheels",
+      "archidektId": 12006339,
+      "owner": "jordan",
+      "name": "Locust God Wheels",
+      "commander": "The Locust God",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/7/e/7e599847-8ab0-4fd6-b2c0-cb44a7669aa5.jpg?1682209825",
+      "commanderScryfallId": "7e599847-8ab0-4fd6-b2c0-cb44a7669aa5",
+      "colors": [
+        "Blue",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 1094.2,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/12006339",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{4}{U}{R}"
+    },
+    {
+      "id": "jordan-eriette-auras",
+      "archidektId": 13306838,
+      "owner": "jordan",
+      "name": "Eriette Auras",
+      "commander": "Eriette of the Charmed Garden",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/e/c/ecead4cd-47ae-4c42-b15c-1b29b5caba18.jpg?1692939281",
+      "commanderScryfallId": "ecead4cd-47ae-4c42-b15c-1b29b5caba18",
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 353.18,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/13306838",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{W}{B}"
+    },
+    {
+      "id": "jordan-atraxa-plus-counters",
+      "archidektId": 3721049,
+      "owner": "jordan",
+      "name": "Atraxa +1/+1",
+      "commander": "Atraxa, Grand Unifier",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/d/0/d0d33d52-3d28-4635-b985-51e126289259.jpg?1599707796",
+      "commanderScryfallId": "d0d33d52-3d28-4635-b985-51e126289259",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 971.51,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/3721049",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{G}{W}{U}{B}"
+    },
+    {
+      "id": "jordan-arcades-walls",
+      "archidektId": 3586092,
+      "owner": "jordan",
+      "name": "Arcades Walls",
+      "commander": "Arcades, the Strategist",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/1/e/1e90c638-d4b2-4243-bbc4-1cc10516c40f.jpg?1666961830",
+      "commanderScryfallId": "1e90c638-d4b2-4243-bbc4-1cc10516c40f",
+      "colors": [
+        "Blue",
+        "Green",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 321.72,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": null,
+      "archidektUrl": "https://archidekt.com/decks/3586092",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{G}{W}{U}"
+    },
+    {
+      "id": "waid-the-wise-mothman",
+      "archidektId": null,
+      "owner": "waid",
+      "name": "The Wise Mothman",
+      "commander": "The Wise Mothman",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/c/f/cfb80c75-4b1b-4f25-923a-933855e7345c.jpg?1769163701",
+      "commanderScryfallId": "cfb80c75-4b1b-4f25-923a-933855e7345c",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-04-11",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{B}{G}{U}"
+    },
+    {
+      "id": "waid-squirrels",
+      "archidektId": null,
+      "owner": "waid",
+      "name": "Squirrels",
+      "commander": "Chatterfang, Squirrel General",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/1/7/1785cf85-1ac0-4246-9b89-1a8221a8e1b2.jpg?1626097239",
+      "commanderScryfallId": "1785cf85-1ac0-4246-9b89-1a8221a8e1b2",
+      "colors": [
+        "Black",
+        "Green"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{G}"
+    },
+    {
+      "id": "waid-krenko-mob-boss",
+      "archidektId": null,
+      "owner": "waid",
+      "name": "Krenko, Mob Boss",
+      "commander": "Krenko, Mob Boss",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/8/2/824b2d73-2151-4e5e-9f05-8f63e2bdcaa9.jpg?1730632010",
+      "commanderScryfallId": "824b2d73-2151-4e5e-9f05-8f63e2bdcaa9",
+      "colors": [
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{R}{R}"
+    },
+    {
+      "id": "waid-avatar-aang----aang--master-of",
+      "archidektId": null,
+      "owner": "waid",
+      "name": "Avatar Aang",
+      "commander": "Avatar Aang // Aang, Master of Elements",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/f/e/fe29e909-50e9-4f04-b1a3-2cc5d7e3efe8.jpg?1765629010",
+      "commanderScryfallId": "fe29e909-50e9-4f04-b1a3-2cc5d7e3efe8",
+      "colors": [
+        "Black",
+        "Blue",
+        "Green",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-04-11",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{R}{G}{W}{U}"
+    },
+    {
+      "id": "rich-the-scarab-god",
+      "archidektId": 21182748,
+      "owner": "rich",
+      "name": "The Scarab God",
+      "commander": "The Scarab God",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/f/4/f4f414ef-84a2-4694-9e98-51bee4576c84.jpg?1689999233",
+      "commanderScryfallId": "f4f414ef-84a2-4694-9e98-51bee4576c84",
+      "colors": [
+        "Black",
+        "Blue"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 562.54,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": "https://archidekt.com/decks/21182748",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{3}{U}{B}"
+    },
+    {
+      "id": "rich-kiki-jiki",
+      "archidektId": 21182880,
+      "owner": "rich",
+      "name": "Kiki-Jiki",
+      "commander": "Kiki-Jiki, Mirror Breaker",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/a/2/a2ff0ee3-9600-4c7d-acec-6ec90595384e.jpg?1562852476",
+      "commanderScryfallId": "a2ff0ee3-9600-4c7d-acec-6ec90595384e",
+      "colors": [
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 371.5,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": "https://archidekt.com/decks/21182880",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{2}{R}{R}{R}"
+    },
+    {
+      "id": "rich-kaalia",
+      "archidektId": 16455672,
+      "owner": "rich",
+      "name": "Kaalia",
+      "commander": "Kaalia of the Vast",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/e/7/e71c8c39-3fbb-4a42-9cf6-b3224f5a56fc.jpg?1717013745",
+      "commanderScryfallId": "e71c8c39-3fbb-4a42-9cf6-b3224f5a56fc",
+      "colors": [
+        "Black",
+        "Red",
+        "White"
+      ],
+      "bracket": null,
+      "cardCount": 100,
+      "estimatedValue": 531.83,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-03-28",
+      "archidektUrl": "https://archidekt.com/decks/16455672",
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{R}{W}{B}"
+    },
+    {
+      "id": "noah-ghyrson-starn--kelermorph",
+      "archidektId": null,
+      "owner": "noah",
+      "name": "Ghyrson Starn, Kelermorph",
+      "commander": "Ghyrson Starn, Kelermorph",
+      "commanderPartner": null,
+      "commanderArt": "https://cards.scryfall.io/art_crop/front/f/a/fa7349d9-c82f-4cf8-a852-92168d1f4966.jpg?1673309394",
+      "commanderScryfallId": "fa7349d9-c82f-4cf8-a852-92168d1f4966",
+      "colors": [
+        "Blue",
+        "Red"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-04-11",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{U}{R}"
+    }
+  ],
+  "lastSync": "2026-04-11T17:43:00"
+}

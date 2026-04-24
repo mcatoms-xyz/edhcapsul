@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsenal — MTGCapsul</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   Arsenal — Deck Browser & Collection v2
+   ============================================ */
+
+@font-face { font-family: 'Museo Slab'; src: url('../../assets/fonts/MuseoSlab-500.woff2') format('woff2'); font-weight: 500; }
+@font-face { font-family: 'Museo Sans'; src: url('../../assets/fonts/MuseoSans-500.woff2') format('woff2'); font-weight: 500; }
+
+:root {
+  --bg: #000;
+  --surface: rgba(255,255,255,0.04);
+  --surface-hover: rgba(255,255,255,0.08);
+  --surface-active: rgba(255,255,255,0.12);
+  --border: rgba(255,255,255,0.08);
+  --border-bright: rgba(255,255,255,0.15);
+  --text: #f0f0f0;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-mid: rgba(255,255,255,0.7);
+  --orange: #E67201;
+  --blue: #007EFF;
+  --green: #1BBA01;
+  --mtg-w: #F9FAF4; --mtg-u: #0E68AB; --mtg-b: #4A3728;
+  --mtg-r: #D3202A; --mtg-g: #00733E; --mtg-c: #CAC5C0;
+  --mtg-gold: #C9A849;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --glass: blur(20px);
+  /* Bracket colors */
+  --bracket-1: #4CAF50;
+  --bracket-2: #2196F3;
+  --bracket-3: #FF9800;
+  --bracket-4: #F44336;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Museo Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ---- NAV ---- */
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 14px 24px;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 22px;
+  color: var(--orange);
+  letter-spacing: 1px;
+}
+.nav-link {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  margin-left: auto;
+}
+.nav-link:hover { color: var(--text); border-color: var(--border-bright); }
+.nav-link + .nav-link { margin-left: 0; }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+}
+.tab {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: 'Museo Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.tab:hover { color: var(--text-mid); }
+.tab.active { color: var(--text); border-bottom-color: var(--orange); }
+
+/* Main */
+.main { padding: 20px 24px; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ---- FILTERS ---- */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-input {
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 13px;
+  width: 200px;
+}
+.filter-chip {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+}
+.filter-chip.active { background: var(--surface-active); color: var(--text); border-color: var(--orange); }
+
+/* Sort controls */
+.sort-controls {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+  align-items: center;
+}
+.sort-btn {
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Museo Sans', sans-serif;
+}
+.sort-btn.active { color: var(--text); border-color: var(--orange); background: rgba(230,114,1,0.1); }
+.sort-btn:hover { color: var(--text-mid); border-color: var(--border-bright); }
+
+/* ---- BRACKET SYSTEM ---- */
+.bracket-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.bracket-badge.b1 { background: rgba(76,175,80,0.15); color: var(--bracket-1); border: 1px solid rgba(76,175,80,0.3); }
+.bracket-badge.b2 { background: rgba(33,150,243,0.15); color: var(--bracket-2); border: 1px solid rgba(33,150,243,0.3); }
+.bracket-badge.b3 { background: rgba(255,152,0,0.15); color: var(--bracket-3); border: 1px solid rgba(255,152,0,0.3); }
+.bracket-badge.b4 { background: rgba(244,67,54,0.15); color: var(--bracket-4); border: 1px solid rgba(244,67,54,0.3); }
+
+/* Bracket detail panel */
+.bracket-detail {
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.bracket-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.bracket-tier-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.bracket-tier-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+.bracket-tier-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.bracket-reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+.bracket-reason {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-mid);
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.02);
+}
+.bracket-reason-icon {
+  font-size: 14px;
+  min-width: 20px;
+  text-align: center;
+}
+.bracket-reason-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  min-width: 40px;
+  max-width: 80px;
+}
+.bracket-reason-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+/* ---- DECK GRID ---- */
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.deck-card {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.deck-card:hover { border-color: var(--border-bright); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.deck-art {
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+}
+.deck-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 40%, rgba(0,0,0,0.85));
+}
+.deck-info {
+  padding: 10px 12px;
+}
+.deck-name {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deck-commander {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.deck-colors {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 6px;
+}
+.deck-colors .cpip {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.deck-meta {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.deck-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.deck-strategy {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-top: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.deck-owner-pip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  z-index: 2;
+}
+/* Card count overlay on art */
+.deck-card-count {
+  position: absolute;
+  bottom: 6px;
+  left: 8px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  z-index: 2;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+/* Mana cost on art */
+.deck-mana-cost {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  display: flex;
+  gap: 1px;
+  z-index: 2;
+}
+.deck-mana-cost .mana-pip {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+/* ---- COLLECTION STATS ---- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.stat-card {
+  text-align: center;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.stat-value {
+  font-family: 'Museo Slab', serif;
+  font-size: 24px;
+  color: var(--orange);
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* ---- DECK DETAIL MODAL ---- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #1a1a1a;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-bright);
+  max-width: 600px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Deck viewer */
+.dv-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 13px;
+  margin-bottom: 16px;
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+.dv-back:hover { color: var(--text); }
+.dv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+/* Mana curve chart */
+.mana-curve {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 60px;
+  padding: 0 4px;
+  margin: 12px 0;
+}
+.mana-curve-bar {
+  flex: 1;
+  min-width: 20px;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  transition: height 0.3s ease;
+}
+.mana-curve-bar::after {
+  content: attr(data-count);
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--text-dim);
+}
+.mana-curve-label {
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+.mana-curve-row {
+  display: flex;
+  gap: 4px;
+}
+
+/* Deck stats row */
+.dv-stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+.dv-stat {
+  text-align: center;
+  padding: 8px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.dv-stat-value {
+  font-family: 'Museo Slab', serif;
+  font-size: 16px;
+}
+.dv-stat-label {
+  font-size: 9px;
+  color: var(--text-dim);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Deck actions */
+.dv-actions {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+.dv-action-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-mid);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Museo Sans', sans-serif;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.dv-action-btn:hover { color: var(--text); border-color: var(--border-bright); background: var(--surface-hover); }
+.dv-action-btn.primary { border-color: var(--orange); color: var(--orange); background: rgba(230,114,1,0.08); }
+.dv-action-btn.primary:hover { background: rgba(230,114,1,0.15); }
+
+/* Category groups */
+.dv-category-group { margin-top: 14px; }
+.dv-category-header {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+  font-size: 15px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-bright);
+  font-family: 'Cinzel', serif;
+}
+.dv-category-header .dv-cat-chevron { transition: transform 0.2s; }
+.dv-category-group.collapsed .dv-cat-chevron { transform: rotate(-90deg); }
+.dv-category-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+.dv-category-group.collapsed .dv-category-cards {
+  max-height: 0 !important;
+  opacity: 0;
+  pointer-events: none;
+}
+.dv-card-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  gap: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background 0.15s;
+  position: relative;
+}
+.dv-card-row:hover { background: var(--surface-hover); }
+.dv-card-qty {
+  font-size: 12px;
+  color: var(--text-dim);
+  min-width: 22px;
+  font-weight: 600;
+}
+.dv-card-name { flex: 1; font-size: 14px; }
+.dv-card-mana { font-size: 12px; color: var(--text-mid); letter-spacing: 0.3px; }
+.dv-card-price { font-size: 12px; color: var(--green); min-width: 50px; text-align: right; }
+.dv-card-rarity {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+/* Game Changer badge */
+.gc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: rgba(255,152,0,0.15);
+  border: 1px solid rgba(255,152,0,0.3);
+  font-size: 10px;
+  flex-shrink: 0;
+  cursor: help;
+  position: relative;
+}
+.gc-badge::after {
+  content: 'Game Changer — WotC flagged card that warps games at lower brackets';
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: var(--text);
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-bright);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 20;
+}
+.gc-badge:hover::after { opacity: 1; }
+
+/* Hover card preview */
+.card-preview {
+  position: fixed;
+  z-index: 500;
+  pointer-events: none;
+  width: 240px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.card-preview.visible { opacity: 1; }
+.card-preview img {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Color distribution bar */
+.color-dist-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+.color-dist-segment {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #1a1a1a;
+  border: 1px solid var(--border-bright);
+  padding: 10px 24px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  z-index: 200;
+  transition: transform 0.3s;
+  pointer-events: none;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* Type distribution mini bars */
+.type-dist {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 8px 0;
+}
+.type-dist-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+}
+.type-dist-label {
+  width: 65px;
+  color: var(--text-dim);
+  text-align: right;
+}
+.type-dist-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.type-dist-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s;
+}
+.type-dist-count {
+  width: 20px;
+  color: var(--text-dim);
+  font-size: 10px;
+}
+
+@media (max-width: 768px) {
+  .deck-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .main { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-title">Arsenal</div>
+  <a href="mtgcapsul.html" class="nav-link">MTGCapsul</a>
+  <a href="gamenight.html" class="nav-link">Game Night</a>
+  <a href="gamelog.html" class="nav-link">Game Log</a>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" data-tab="decks" onclick="switchTab('decks')">Decks</button>
+  <button class="tab" data-tab="collection" onclick="switchTab('collection')">Collection</button>
+</div>
+
+<div class="main">
+  <!-- DECKS -->
+  <div class="tab-panel active" id="panel-decks">
+    <div class="filters" id="filters"></div>
+    <div class="deck-grid" id="deckGrid"></div>
+  </div>
+
+  <!-- COLLECTION -->
+  <div class="tab-panel" id="panel-collection">
+    <div class="stats-grid" id="collectionStats"></div>
+    <div class="deck-grid" id="collectionGrid"></div>
+  </div>
+</div>
+
+<!-- DECK DETAIL MODAL -->
+<div class="modal-overlay" id="deckModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeDeckDetail()">&times;</button>
+    <div id="deckDetailContent"></div>
+  </div>
+</div>
+
+<!-- DECK VIEWER (full page overlay) -->
+<div id="deckViewer" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:50;overflow-y:auto;padding:20px 24px">
+  <div id="deckViewerContent"></div>
+</div>
+
+<!-- PLAYER PROFILE MODAL -->
+<div class="modal-overlay" id="playerModal">
+  <div class="modal" style="max-width:560px">
+    <button class="modal-close" onclick="closePlayerModal()">&times;</button>
+    <div id="playerModalContent" style="padding:24px"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- CARD HOVER PREVIEW -->
+<div class="card-preview" id="cardPreview"><img id="cardPreviewImg" src="" alt=""></div>
+
+<!-- DATA -->
+<script src="data/pod.js"></script>
+<script src="data/decks.js"></script>
+<script src="data/games.js"></script>
+<script src="data/achievements.js"></script>
+<script src="data/seasons.js"></script>
+<script src="data/adam-cards.js"></script>
+<script src="data/friends-cards.js"></script>
+
+<script>
+/* ============================================
+   Arsenal Engine v2 — Enhanced Deck Browser
+   ============================================ */
+
+const COLOR_MAP = { White:'W', Blue:'U', Black:'B', Red:'R', Green:'G', Colorless:'C' };
+const COLOR_HEX = { W:'#F9FAF4', U:'#0E68AB', B:'#4A3728', R:'#D3202A', G:'#00733E', C:'#CAC5C0' };
+const OWNER_COLORS = {
+  adam:'#E67201', bryan:'#007EFF', shake:'#1BBA01', waid:'#C9A849',
+  jordan:'#D3202A', noah:'#9B59B6', rich:'#00CED1'
+};
+const RARITY_COLORS = { common:'#9E9E9E', uncommon:'#C0C0C0', rare:'#C9A849', mythic:'#D3202A' };
+
+/* ---- GAME CHANGERS LIST (WotC Commander Feb 2026) ---- */
+const GAME_CHANGERS = new Set([
+  'Drannith Magistrate','Humility',"Serra's Sanctum",'Smothering Tithe','Enlightened Tutor',
+  "Teferi's Protection",'Consecrated Sphinx','Cyclonic Rift','Force of Will','Fierce Guardianship',
+  'Gifts Ungiven','Intuition','Mystical Tutor','Narset, Parter of Veils','Rhystic Study',
+  "Thassa's Oracle",'Ad Nauseam',"Bolas's Citadel",'Braids, Cabal Minion','Demonic Tutor',
+  'Imperial Seal','Necropotence','Opposition Agent','Orcish Bowmasters',
+  'Tergrid, God of Fright','Vampiric Tutor','Gamble',"Jeska's Will",'Underworld Breach',
+  'Crop Rotation',"Gaea's Cradle",'Natural Order','Seedborn Muse','Survival of the Fittest',
+  'Worldly Tutor','Aura Shards','Coalition Victory','Grand Arbiter Augustin IV','Notion Thief',
+  'Ancient Tomb','Chrome Mox','Field of the Dead','Glacial Chasm','Grim Monolith',
+  "Lion's Eye Diamond",'Mana Vault',"Mishra's Workshop",'Mox Diamond','Panoptic Mirror',
+  'The One Ring','The Tabernacle at Pendrell Vale','Farewell','Biorhythm'
+]);
+
+function isGameChanger(cardName) {
+  return GAME_CHANGERS.has(cardName);
+}
+
+/* Count game changers in a deck's card source */
+function countGameChangers(cardSrc) {
+  if (!cardSrc || !cardSrc.cards) return 0;
+  return cardSrc.cards.filter(c => isGameChanger(c.name)).length;
+}
+
+/* ---- CARD HOVER PREVIEW ---- */
+const previewEl = document.getElementById('cardPreview');
+const previewImg = document.getElementById('cardPreviewImg');
+let previewCache = {};
+
+function showCardPreview(e, scryfallId, cardName) {
+  if (!scryfallId && !cardName) return;
+  let imgUrl;
+  if (scryfallId) {
+    imgUrl = `https://cards.scryfall.io/normal/front/${scryfallId[0]}/${scryfallId[1]}/${scryfallId}.jpg`;
+  } else {
+    // Fallback: use Scryfall named API image redirect
+    imgUrl = `https://api.scryfall.com/cards/named?format=image&version=normal&fuzzy=${encodeURIComponent(cardName)}`;
+  }
+
+  previewImg.src = imgUrl;
+  previewEl.classList.add('visible');
+  positionPreview(e);
+}
+
+function positionPreview(e) {
+  const pad = 16;
+  let x = e.clientX + pad;
+  let y = e.clientY - 120;
+  // Keep on screen
+  if (x + 256 > window.innerWidth) x = e.clientX - 256;
+  if (y < 8) y = 8;
+  if (y + 340 > window.innerHeight) y = window.innerHeight - 348;
+  previewEl.style.left = x + 'px';
+  previewEl.style.top = y + 'px';
+}
+
+function moveCardPreview(e) {
+  if (previewEl.classList.contains('visible')) positionPreview(e);
+}
+
+function hideCardPreview() {
+  previewEl.classList.remove('visible');
+  previewImg.src = '';
+}
+
+/* ---- BRACKET SYSTEM ---- */
+const BRACKET_TIERS = {
+  1: { name: 'Casual', icon: '🌱', color: 'var(--bracket-1)', desc: 'Precon-level or below. No fast mana, no combos, just vibes.', floor: 'Precon power' },
+  2: { name: 'Focused', icon: '🎯', color: 'var(--bracket-2)', desc: 'Has a clear strategy and synergies. Upgraded precon territory.', floor: 'Upgraded precon' },
+  3: { name: 'Optimized', icon: '⚡', color: 'var(--bracket-3)', desc: 'Tuned for consistency. Strong synergies, good mana, clear win conditions.', floor: 'Tuned & consistent' },
+  4: { name: 'High Power', icon: '🔥', color: 'var(--bracket-4)', desc: 'Efficient combos, fast mana, high-value staples. Built to win.', floor: 'Competitive edge' }
+};
+
+/* Bracket analysis: analyzes card data to explain WHY a deck is at its bracket */
+function analyzeBracket(deck, cardSrc) {
+  const b = deck.bracket || 2;
+  const tier = BRACKET_TIERS[b];
+  const reasons = [];
+
+  if (!cardSrc || !cardSrc.cards || cardSrc.cards.length === 0) {
+    // No card data — give generic reasons based on bracket
+    if (b >= 3) reasons.push({ icon: '📊', text: 'Bracket assigned by Archidekt community rating', pct: 50 });
+    if (b === 4) reasons.push({ icon: '🔥', text: 'Likely contains efficient combos or fast mana', pct: 75 });
+    if (b <= 2) reasons.push({ icon: '🌱', text: 'Lower power level — good for casual tables', pct: 30 });
+    return { tier, reasons, stats: null };
+  }
+
+  const cards = cardSrc.cards;
+  const totalCards = cards.reduce((s,c) => s + (c.quantity||1), 0);
+
+  // ---- Analyze card data ----
+  // Rarity density
+  let mythicRare = 0, totalNonLand = 0;
+  cards.forEach(c => {
+    const type = (c.typeLine||'').toLowerCase();
+    if (!type.includes('land')) {
+      totalNonLand += (c.quantity||1);
+      if (c.rarity === 'mythic' || c.rarity === 'rare') mythicRare += (c.quantity||1);
+    }
+  });
+  const rarityDensity = totalNonLand > 0 ? mythicRare / totalNonLand : 0;
+
+  // Average CMC (non-land)
+  let totalCmc = 0, cmcCount = 0;
+  cards.forEach(c => {
+    const type = (c.typeLine||'').toLowerCase();
+    if (!type.includes('land') && c.cmc !== undefined) {
+      const qty = c.quantity || 1;
+      totalCmc += c.cmc * qty;
+      cmcCount += qty;
+    }
+  });
+  const avgCmc = cmcCount > 0 ? totalCmc / cmcCount : 0;
+
+  // Value density (price per card)
+  const totalValue = cards.reduce((s,c) => s + (parseFloat(c.price)||0)*(c.quantity||1), 0);
+  const valuePer = totalCards > 0 ? totalValue / totalCards : 0;
+
+  // Interaction density (instants + cards with relevant keywords)
+  let interactionCount = 0;
+  cards.forEach(c => {
+    const type = (c.typeLine||'').toLowerCase();
+    const text = (c.oracleText||'').toLowerCase();
+    if (type.includes('instant')) interactionCount += (c.quantity||1);
+    else if (text.includes('counter target') || text.includes('destroy target') || text.includes('exile target')) interactionCount += (c.quantity||1);
+  });
+  const interactionPct = totalCards > 0 ? interactionCount / totalCards : 0;
+
+  // Tutor density
+  let tutorCount = 0;
+  cards.forEach(c => {
+    const text = (c.oracleText||'').toLowerCase();
+    if (text.includes('search your library')) tutorCount += (c.quantity||1);
+  });
+
+  // Low-curve threats (CMC 0-2 non-land)
+  let lowCurve = 0;
+  cards.forEach(c => {
+    const type = (c.typeLine||'').toLowerCase();
+    if (!type.includes('land') && c.cmc !== undefined && c.cmc <= 2) lowCurve += (c.quantity||1);
+  });
+  const lowCurvePct = totalNonLand > 0 ? lowCurve / totalNonLand : 0;
+
+  // Draw / card advantage
+  let drawCount = 0;
+  cards.forEach(c => {
+    const text = (c.oracleText||'').toLowerCase();
+    if (text.includes('draw a card') || text.includes('draw cards') || text.includes('draw two') || text.includes('draw three')) {
+      drawCount += (c.quantity||1);
+    }
+  });
+
+  // Build reason list based on what's notable
+  // Mana curve
+  if (avgCmc < 2.5) {
+    reasons.push({ icon: '⚡', text: `Low mana curve (avg ${avgCmc.toFixed(1)} CMC) — fast starts`, pct: Math.min(95, Math.round((3 - avgCmc) / 3 * 100)) });
+  } else if (avgCmc < 3.2) {
+    reasons.push({ icon: '📐', text: `Efficient curve (avg ${avgCmc.toFixed(1)} CMC)`, pct: Math.round(60 - (avgCmc - 2.5) * 30) });
+  } else {
+    reasons.push({ icon: '🐢', text: `Higher curve (avg ${avgCmc.toFixed(1)} CMC) — slower gameplan`, pct: Math.max(15, Math.round(40 - (avgCmc - 3.2) * 20)) });
+  }
+
+  // Rarity density
+  if (rarityDensity > 0.5) {
+    reasons.push({ icon: '💎', text: `High rare/mythic density (${Math.round(rarityDensity*100)}% of spells)`, pct: Math.round(rarityDensity * 100) });
+  } else if (rarityDensity > 0.3) {
+    reasons.push({ icon: '📦', text: `Moderate rare density (${Math.round(rarityDensity*100)}%)`, pct: Math.round(rarityDensity * 80) });
+  }
+
+  // Value
+  if (valuePer > 5) {
+    reasons.push({ icon: '💰', text: `High-value staples ($${valuePer.toFixed(0)}/card avg)`, pct: Math.min(90, Math.round(valuePer * 5)) });
+  } else if (totalValue > 200) {
+    reasons.push({ icon: '💵', text: `Solid investment ($${Math.round(totalValue)} total)`, pct: Math.round(Math.min(60, totalValue / 10)) });
+  }
+
+  // Interaction
+  if (interactionPct > 0.15) {
+    reasons.push({ icon: '🛡', text: `Heavy interaction (${interactionCount} removal/counters)`, pct: Math.round(interactionPct * 300) });
+  } else if (interactionPct > 0.08) {
+    reasons.push({ icon: '🛡', text: `Moderate interaction (${interactionCount} answers)`, pct: Math.round(interactionPct * 250) });
+  }
+
+  // Tutors
+  if (tutorCount >= 4) {
+    reasons.push({ icon: '🔍', text: `Tutor-heavy (${tutorCount} search effects) — high consistency`, pct: Math.min(90, tutorCount * 15) });
+  } else if (tutorCount >= 2) {
+    reasons.push({ icon: '🔍', text: `${tutorCount} tutors for consistency`, pct: Math.min(60, tutorCount * 15) });
+  }
+
+  // Card advantage
+  if (drawCount >= 10) {
+    reasons.push({ icon: '🃏', text: `Card advantage engine (${drawCount} draw effects)`, pct: Math.min(85, drawCount * 6) });
+  } else if (drawCount >= 5) {
+    reasons.push({ icon: '🃏', text: `Solid draw package (${drawCount} effects)`, pct: Math.min(60, drawCount * 8) });
+  }
+
+  // Low curve aggression
+  if (lowCurvePct > 0.4) {
+    reasons.push({ icon: '🏃', text: `${Math.round(lowCurvePct*100)}% of spells cost 2 or less — aggressive`, pct: Math.round(lowCurvePct * 100) });
+  }
+
+  // Game Changers
+  const gcCount = countGameChangers(cardSrc);
+  if (gcCount > 0) {
+    reasons.push({ icon: '⚠️', text: `${gcCount} Game Changer${gcCount>1?'s':''} — WotC-flagged cards`, pct: Math.min(95, gcCount * 25) });
+  }
+
+  // Cap at 6 reasons, sorted by impact
+  reasons.sort((a,b) => b.pct - a.pct);
+  if (reasons.length > 6) reasons.length = 6;
+
+  // Ensure at least one reason
+  if (reasons.length === 0) {
+    reasons.push({ icon: '📊', text: `Bracket ${b} — ${tier.desc}`, pct: 50 });
+  }
+
+  return {
+    tier,
+    reasons,
+    stats: { avgCmc, rarityDensity, totalValue, interactionCount, tutorCount, drawCount, lowCurvePct, totalCards }
+  };
+}
+
+/* Build mana curve data from card source */
+function buildManaCurve(cardSrc) {
+  if (!cardSrc || !cardSrc.cards) return null;
+  const buckets = { 0:0, 1:0, 2:0, 3:0, 4:0, 5:0, '6+':0 };
+  cardSrc.cards.forEach(c => {
+    const type = (c.typeLine||'').toLowerCase();
+    if (type.includes('land')) return;
+    const cmc = c.cmc || 0;
+    const qty = c.quantity || 1;
+    if (cmc >= 6) buckets['6+'] += qty;
+    else buckets[cmc] += qty;
+  });
+  return buckets;
+}
+
+/* Build type distribution */
+function buildTypeDistribution(cardSrc) {
+  if (!cardSrc || !cardSrc.cards) return null;
+  const types = { Creatures:0, Instants:0, Sorceries:0, Enchantments:0, Artifacts:0, Planeswalkers:0, Lands:0 };
+  cardSrc.cards.forEach(c => {
+    const type = (c.typeLine||'').toLowerCase();
+    const qty = c.quantity || 1;
+    if (type.includes('creature')) types.Creatures += qty;
+    else if (type.includes('instant')) types.Instants += qty;
+    else if (type.includes('sorcery')) types.Sorceries += qty;
+    else if (type.includes('enchantment')) types.Enchantments += qty;
+    else if (type.includes('artifact')) types.Artifacts += qty;
+    else if (type.includes('planeswalker')) types.Planeswalkers += qty;
+    else if (type.includes('land')) types.Lands += qty;
+  });
+  return types;
+}
+
+/* Build color distribution from card source */
+function buildColorDist(cardSrc) {
+  if (!cardSrc || !cardSrc.cards) return null;
+  const dist = { W:0, U:0, B:0, R:0, G:0, C:0 };
+  cardSrc.cards.forEach(c => {
+    const ci = c.colorIdentity || [];
+    const qty = c.quantity || 1;
+    if (ci.length === 0) { dist.C += qty; return; }
+    ci.forEach(color => {
+      const key = COLOR_MAP[color] || color;
+      if (dist[key] !== undefined) dist[key] += qty;
+    });
+  });
+  return dist;
+}
+
+/* Render mana curve HTML */
+function renderManaCurve(curve) {
+  if (!curve) return '';
+  const keys = [0, 1, 2, 3, 4, 5, '6+'];
+  const max = Math.max(...keys.map(k => curve[k] || 0), 1);
+  return `<div style="margin:12px 0">
+    <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Mana Curve</div>
+    <div class="mana-curve">
+      ${keys.map(k => {
+        const v = curve[k] || 0;
+        const h = Math.max(4, (v / max) * 100);
+        const color = k <= 2 ? 'var(--bracket-1)' : k <= 4 ? 'var(--bracket-2)' : 'var(--bracket-3)';
+        return `<div style="flex:1;display:flex;flex-direction:column;align-items:center">
+          <div style="font-size:9px;color:var(--text-dim);margin-bottom:2px">${v || ''}</div>
+          <div style="width:100%;height:${h}%;min-height:4px;background:${color};border-radius:3px 3px 0 0;opacity:${v?0.8:0.15}"></div>
+          <div style="font-size:9px;color:var(--text-dim);margin-top:3px">${k}</div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+/* Render type distribution */
+function renderTypeDist(types) {
+  if (!types) return '';
+  const max = Math.max(...Object.values(types), 1);
+  const typeColors = { Creatures:'var(--bracket-1)', Instants:'var(--bracket-2)', Sorceries:'var(--bracket-4)', Enchantments:'var(--mtg-gold)', Artifacts:'var(--mtg-c)', Planeswalkers:'#9B59B6', Lands:'#8D6E63' };
+  return `<div style="margin:12px 0">
+    <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Type Breakdown</div>
+    <div class="type-dist">
+      ${Object.entries(types).filter(([,v]) => v > 0).map(([t,v]) => `
+        <div class="type-dist-row">
+          <div class="type-dist-label">${t}</div>
+          <div class="type-dist-bar"><div class="type-dist-fill" style="width:${(v/max)*100}%;background:${typeColors[t]||'var(--text-dim)'}"></div></div>
+          <div class="type-dist-count">${v}</div>
+        </div>
+      `).join('')}
+    </div>
+  </div>`;
+}
+
+/* Render color distribution bar */
+function renderColorDistBar(colorDist) {
+  if (!colorDist) return '';
+  const total = Object.values(colorDist).reduce((s,v) => s+v, 0);
+  if (total === 0) return '';
+  const order = ['W','U','B','R','G','C'];
+  return `<div class="color-dist-bar">
+    ${order.filter(c => colorDist[c] > 0).map(c =>
+      `<div class="color-dist-segment" style="width:${(colorDist[c]/total)*100}%;background:${COLOR_HEX[c]}"></div>`
+    ).join('')}
+  </div>`;
+}
+
+/* Render bracket detail panel */
+function renderBracketDetail(analysis) {
+  const t = analysis.tier;
+  const b = Object.entries(BRACKET_TIERS).find(([,v]) => v === t)?.[0] || '2';
+  return `<div class="bracket-detail" style="border-color:${t.color}33">
+    <div class="bracket-detail-header">
+      <div class="bracket-tier-icon" style="background:${t.color}22;color:${t.color}">${t.icon}</div>
+      <div>
+        <div class="bracket-tier-name" style="color:${t.color}">Bracket ${b} — ${t.name}</div>
+        <div class="bracket-tier-desc">${t.desc}</div>
+      </div>
+    </div>
+    ${analysis.reasons.length > 0 ? `<div class="bracket-reasons">
+      ${analysis.reasons.map(r => `<div class="bracket-reason">
+        <span class="bracket-reason-icon">${r.icon}</span>
+        <span style="flex:1">${r.text}</span>
+        <div class="bracket-reason-bar"><div class="bracket-reason-bar-fill" style="width:${Math.min(100,r.pct)}%;background:${t.color}"></div></div>
+      </div>`).join('')}
+    </div>` : ''}
+  </div>`;
+}
+
+function save(k,v) { try { localStorage.setItem('mtg_'+k, JSON.stringify(v)); } catch(e){} }
+function load(k,def) { try { const v = localStorage.getItem('mtg_'+k); return v !== null ? JSON.parse(v) : def; } catch(e) { return def; } }
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+const DATA = {
+  pod: (typeof MTG_POD !== 'undefined') ? MTG_POD : { players: [] },
+  decks: (typeof MTG_DECKS !== 'undefined') ? MTG_DECKS : { decks: [] },
+  games: (typeof MTG_GAMES !== 'undefined') ? MTG_GAMES : { games: [] },
+};
+const adamCards = (typeof MTG_ADAM_CARDS !== 'undefined') ? MTG_ADAM_CARDS : null;
+const friendsCards = (typeof MTG_FRIENDS_CARDS !== 'undefined') ? MTG_FRIENDS_CARDS : null;
+
+const storedGames = load('games', null);
+if (storedGames) DATA.games.games = storedGames;
+
+// One-time migration: purge test games
+if (!load('_gamesPurge1', false)) {
+  DATA.games.games = DATA.games.games.filter(g =>
+    g.players && g.players.some(p => p.playerId === 'rich')
+  );
+  save('games', DATA.games.games);
+  save('_gamesPurge1', true);
+}
+
+// ---- TABS ----
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-'+tab));
+}
+
+// ---- CARD SOURCE ----
+function getCardSource(deckIdOrArchId) {
+  const aid = String(deckIdOrArchId);
+  if (adamCards && adamCards.decks[aid]) return adamCards.decks[aid];
+  if (friendsCards && friendsCards.decks[aid]) return friendsCards.decks[aid];
+  const deck = DATA.decks.decks.find(d => String(d.archidektId) === aid || d.id === aid);
+  if (deck) {
+    if (deck.id && friendsCards && friendsCards.decks[deck.id]) return friendsCards.decks[deck.id];
+    if (deck.archidektId && adamCards && adamCards.decks[String(deck.archidektId)]) return adamCards.decks[String(deck.archidektId)];
+  }
+  return null;
+}
+
+// ---- FILTERS & SORT ----
+let activeOwnerFilter = null;
+let activeBracketFilter = null;
+let searchQuery = '';
+let sortBy = 'name'; // name, bracket, value, cards
+
+function renderFilters() {
+  const owners = [...new Set(DATA.decks.decks.map(d => d.owner))];
+  const brackets = [...new Set(DATA.decks.decks.map(d => d.bracket).filter(Boolean))].sort();
+  document.getElementById('filters').innerHTML = `
+    <input class="filter-input" placeholder="Search decks..." value="${esc(searchQuery)}" oninput="searchQuery=this.value;renderDeckGrid()">
+    <div class="filter-chip ${!activeOwnerFilter?'active':''}" onclick="setOwnerFilter(null)">All (${DATA.decks.decks.length})</div>
+    ${owners.map(o => {
+      const player = DATA.pod.players.find(p => p.id === o);
+      const count = DATA.decks.decks.filter(d => d.owner === o).length;
+      const color = OWNER_COLORS[o] || '#888';
+      return `<div class="filter-chip ${activeOwnerFilter===o?'active':''}" style="${activeOwnerFilter===o?'border-color:'+color:''}" onclick="setOwnerFilter('${o}')" oncontextmenu="event.preventDefault();openPlayerProfile('${o}')">${player?esc(player.name):o} (${count})</div>`;
+    }).join('')}
+    <span style="color:var(--text-dim);font-size:10px;margin-left:4px">|</span>
+    ${brackets.map(b => {
+      const t = BRACKET_TIERS[b];
+      const count = DATA.decks.decks.filter(d => d.bracket === b).length;
+      return `<div class="filter-chip ${activeBracketFilter===b?'active':''}" style="${activeBracketFilter===b?'border-color:'+t.color:''};${activeBracketFilter===b?'color:'+t.color:''}" onclick="setBracketFilter(${activeBracketFilter===b?'null':b})">${t.icon} B${b} (${count})</div>`;
+    }).join('')}
+    <div class="sort-controls">
+      <span style="font-size:10px;color:var(--text-dim)">Sort:</span>
+      <button class="sort-btn ${sortBy==='name'?'active':''}" onclick="setSort('name')">Name</button>
+      <button class="sort-btn ${sortBy==='bracket'?'active':''}" onclick="setSort('bracket')">Bracket</button>
+      <button class="sort-btn ${sortBy==='value'?'active':''}" onclick="setSort('value')">Value</button>
+      <button class="sort-btn ${sortBy==='cards'?'active':''}" onclick="setSort('cards')">Cards</button>
+    </div>
+  `;
+}
+
+function setOwnerFilter(owner) {
+  activeOwnerFilter = owner;
+  renderFilters();
+  renderDeckGrid();
+}
+
+function setBracketFilter(bracket) {
+  activeBracketFilter = bracket;
+  renderFilters();
+  renderDeckGrid();
+}
+
+function setSort(s) {
+  sortBy = s;
+  renderFilters();
+  renderDeckGrid();
+}
+
+// ---- DECK GRID ----
+function renderDeckGrid() {
+  let decks = [...DATA.decks.decks];
+  if (activeOwnerFilter) decks = decks.filter(d => d.owner === activeOwnerFilter);
+  if (activeBracketFilter) decks = decks.filter(d => d.bracket === activeBracketFilter);
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    decks = decks.filter(d => d.name.toLowerCase().includes(q) || d.commander.toLowerCase().includes(q) || (d.strategy||'').toLowerCase().includes(q));
+  }
+
+  // Sort
+  switch(sortBy) {
+    case 'bracket': decks.sort((a,b) => (b.bracket||0) - (a.bracket||0)); break;
+    case 'value': decks.sort((a,b) => (b.estimatedValue||0) - (a.estimatedValue||0)); break;
+    case 'cards': decks.sort((a,b) => (b.cardCount||0) - (a.cardCount||0)); break;
+    default: decks.sort((a,b) => a.name.localeCompare(b.name));
+  }
+
+  document.getElementById('deckGrid').innerHTML = decks.map(d => {
+    const colors = (d.colors||[]).map(c => COLOR_MAP[c]||c).filter(Boolean);
+    const ownerColor = OWNER_COLORS[d.owner] || '#888';
+    const player = DATA.pod.players.find(p => p.id === d.owner);
+    const clickId = d.archidektId || d.id;
+    const b = d.bracket;
+    const tier = BRACKET_TIERS[b];
+    const bracketClass = b ? `b${b}` : '';
+
+    return `<div class="deck-card" onclick="openDeckDetail('${clickId}')">
+      <div class="deck-art" style="background-image:url('${d.commanderArt||''}')">
+        <div class="deck-owner-pip" style="background:${ownerColor}22;color:${ownerColor};border:1px solid ${ownerColor}44">${player?esc(player.name):d.owner}</div>
+        <div class="deck-card-count">${d.cardCount||'?'} cards</div>
+        ${d.commanderManaCost ? `<div class="deck-mana-cost">${renderManaPips(d.commanderManaCost)}</div>` : ''}
+      </div>
+      <div class="deck-info">
+        <div class="deck-name">${esc(d.name)}</div>
+        <div class="deck-commander">${esc(d.commander)}</div>
+        <div class="deck-colors">${colors.map(c => `<div class="cpip" style="background:${COLOR_HEX[c]||'#888'}"></div>`).join('')}</div>
+        <div class="deck-meta">
+          ${b && tier ? `<span class="bracket-badge ${bracketClass}">${tier.icon} ${tier.name}</span>` : ''}
+          ${d.estimatedValue ? `<span class="deck-badge" style="background:rgba(27,186,1,0.1);color:var(--green)">$${Math.round(d.estimatedValue)}</span>` : ''}
+        </div>
+        ${d.strategy ? `<div class="deck-strategy">${esc(d.strategy)}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* Render mana pips from mana cost string like {3}{U}{R} */
+function renderManaPips(manaCost) {
+  if (!manaCost) return '';
+  const pips = manaCost.match(/\{[^}]+\}/g) || [];
+  return pips.map(p => {
+    const v = p.replace(/[{}]/g, '');
+    let bg, fg;
+    switch(v) {
+      case 'W': bg='#F9FAF4'; fg='#000'; break;
+      case 'U': bg='#0E68AB'; fg='#fff'; break;
+      case 'B': bg='#4A3728'; fg='#fff'; break;
+      case 'R': bg='#D3202A'; fg='#fff'; break;
+      case 'G': bg='#00733E'; fg='#fff'; break;
+      case 'C': bg='#CAC5C0'; fg='#000'; break;
+      default: bg='rgba(255,255,255,0.15)'; fg='#fff';
+    }
+    return `<div class="mana-pip" style="background:${bg};color:${fg}">${v}</div>`;
+  }).join('');
+}
+
+// ---- DECK DETAIL ----
+function openDeckDetail(deckIdOrArchId) {
+  let d = DATA.decks.decks.find(x => x.id === deckIdOrArchId);
+  if (!d) d = DATA.decks.decks.find(x => String(x.archidektId) === String(deckIdOrArchId));
+  if (!d) return;
+
+  const cardSrc = getCardSource(d.archidektId || d.id);
+  if (cardSrc && cardSrc.cards && cardSrc.cards.length > 0) {
+    openDeckViewer(d, cardSrc);
+    return;
+  }
+
+  // Fallback: simple modal
+  const colors = (d.colors||[]).map(c => COLOR_MAP[c]||c).filter(Boolean);
+  const ownerColor = OWNER_COLORS[d.owner] || '#888';
+  const player = DATA.pod.players.find(p => p.id === d.owner);
+  const deckGames = DATA.games.games.filter(g => g.players.some(p => p.deckId === d.id));
+  const wins = deckGames.filter(g => g.winningDeck === d.id).length;
+  const analysis = analyzeBracket(d, null);
+
+  document.getElementById('deckDetailContent').innerHTML = `
+    ${d.commanderArt ? `<div style="width:100%;aspect-ratio:626/457;background:url('${d.commanderArt}') center/cover;border-radius:var(--radius) var(--radius) 0 0;position:relative">
+      <div style="position:absolute;inset:0;background:linear-gradient(transparent 50%,#111)"></div>
+    </div>` : ''}
+    <div style="padding:20px">
+      <div style="display:flex;gap:4px;margin-bottom:6px">${colors.map(c => `<div style="width:18px;height:18px;border-radius:50%;background:${COLOR_HEX[c]||'#888'};border:1px solid rgba(255,255,255,0.2)"></div>`).join('')}</div>
+      <h2 style="font-family:'Museo Slab',serif;font-size:20px;margin:6px 0 4px">${esc(d.name)}</h2>
+      <div style="color:var(--text-dim);font-size:13px">${esc(d.commander)}</div>
+      ${d.commanderManaCost ? `<div style="display:flex;gap:2px;margin-top:6px">${renderManaPips(d.commanderManaCost)}</div>` : ''}
+      ${d.strategy ? `<div style="font-size:12px;color:var(--text-dim);margin-top:6px;font-style:italic">${esc(d.strategy)}</div>` : ''}
+      ${d.bracket ? renderBracketDetail(analysis) : ''}
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0">
+        <div class="stat-card"><div class="stat-value" style="font-size:18px">${d.cardCount||'?'}</div><div class="stat-label">Cards</div></div>
+        <div class="stat-card"><div class="stat-value" style="font-size:18px">${deckGames.length}</div><div class="stat-label">Games</div></div>
+        <div class="stat-card"><div class="stat-value" style="font-size:18px">${deckGames.length ? Math.round(wins/deckGames.length*100)+'%' : '—'}</div><div class="stat-label">Win Rate</div></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="padding:4px 12px;border-radius:20px;background:${ownerColor}22;color:${ownerColor};border:1px solid ${ownerColor}44;font-size:12px">${player?esc(player.name):d.owner}</span>
+        ${d.archidektUrl ? `<a href="${d.archidektUrl}" target="_blank" style="padding:4px 12px;border-radius:20px;background:var(--surface);border:1px solid var(--border);color:var(--text-dim);font-size:12px;text-decoration:none">Archidekt →</a>` : ''}
+      </div>
+    </div>
+  `;
+  document.getElementById('deckModal').classList.add('open');
+}
+
+function closeDeckDetail() { document.getElementById('deckModal').classList.remove('open'); }
+
+// ---- DECK VIEWER (full card list + analysis) ----
+function openDeckViewer(deck, cardSrc) {
+  const cards = cardSrc.cards;
+  // Categorize
+  const cats = {};
+  cards.forEach(c => {
+    let cat = 'Other';
+    const type = (c.typeLine||'').toLowerCase();
+    if (type.includes('creature')) cat = 'Creatures';
+    else if (type.includes('instant')) cat = 'Instants';
+    else if (type.includes('sorcery')) cat = 'Sorceries';
+    else if (type.includes('enchantment')) cat = 'Enchantments';
+    else if (type.includes('artifact')) cat = 'Artifacts';
+    else if (type.includes('planeswalker')) cat = 'Planeswalkers';
+    else if (type.includes('land')) cat = 'Lands';
+    if (!cats[cat]) cats[cat] = [];
+    cats[cat].push(c);
+  });
+
+  const catOrder = ['Creatures','Instants','Sorceries','Enchantments','Artifacts','Planeswalkers','Lands','Other'];
+  const totalValue = cards.reduce((s,c) => s + (parseFloat(c.price)||0)*(c.quantity||1), 0);
+  const totalCards = cards.reduce((s,c) => s + (c.quantity||1), 0);
+  const ownerColor = OWNER_COLORS[deck.owner] || '#888';
+  const player = DATA.pod.players.find(p => p.id === deck.owner);
+
+  // Analysis
+  const analysis = analyzeBracket(deck, cardSrc);
+  const curve = buildManaCurve(cardSrc);
+  const typeDist = buildTypeDistribution(cardSrc);
+  const colorDist = buildColorDist(cardSrc);
+
+  // Games
+  const deckGames = DATA.games.games.filter(g => g.players.some(p => p.deckId === deck.id));
+  const wins = deckGames.filter(g => g.winningDeck === deck.id).length;
+
+  // Most expensive cards
+  const topCards = [...cards].sort((a,b) => (parseFloat(b.price)||0) - (parseFloat(a.price)||0)).slice(0, 5);
+
+  let html = `
+    <button class="dv-back" onclick="closeDeckViewer()">← Back to decks</button>
+    <div class="dv-header">
+      <div style="flex:1">
+        <h2 style="font-family:'Cinzel',serif;font-size:22px;margin-bottom:4px">${esc(deck.name)}</h2>
+        <div style="font-size:13px;color:var(--text-dim)">${esc(deck.commander)}${deck.commanderManaCost ? ` <span style="opacity:0.6">${deck.commanderManaCost}</span>` : ''}</div>
+        ${deck.strategy ? `<div style="font-size:12px;color:var(--text-dim);margin-top:4px;font-style:italic">${esc(deck.strategy)}</div>` : ''}
+        <div style="display:flex;gap:6px;margin-top:8px;align-items:center">
+          <span style="padding:2px 8px;border-radius:4px;background:${ownerColor}22;color:${ownerColor};font-size:11px">${player?esc(player.name):deck.owner}</span>
+          ${deck.bracket ? `<span class="bracket-badge b${deck.bracket}">${BRACKET_TIERS[deck.bracket]?.icon||''} ${BRACKET_TIERS[deck.bracket]?.name||'B'+deck.bracket}</span>` : ''}
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'Museo Slab',serif;font-size:22px;color:var(--green)">${totalValue ? '$'+totalValue.toFixed(0) : ''}</div>
+        <div style="font-size:11px;color:var(--text-dim)">${totalCards} cards</div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="dv-actions">
+      ${deck.archidektUrl ? `<a href="${deck.archidektUrl}" target="_blank" class="dv-action-btn primary">View on Archidekt →</a>` : ''}
+      <button class="dv-action-btn" onclick="copyDeckList('${deck.archidektId||deck.id}')">📋 Copy Decklist</button>
+      <button class="dv-action-btn" onclick="showDeckStats('${deck.archidektId||deck.id}')">📊 Full Stats</button>
+    </div>
+  `;
+
+  // Stats row
+  const avgCmc = analysis.stats ? analysis.stats.avgCmc : 0;
+  html += `<div class="dv-stats-row">
+    <div class="dv-stat"><div class="dv-stat-value" style="color:var(--orange)">${totalCards}</div><div class="dv-stat-label">Cards</div></div>
+    <div class="dv-stat"><div class="dv-stat-value">${avgCmc.toFixed(1)}</div><div class="dv-stat-label">Avg CMC</div></div>
+    <div class="dv-stat"><div class="dv-stat-value" style="color:var(--green)">$${totalValue.toFixed(0)}</div><div class="dv-stat-label">Value</div></div>
+    <div class="dv-stat"><div class="dv-stat-value">${deckGames.length}</div><div class="dv-stat-label">Games</div></div>
+    <div class="dv-stat"><div class="dv-stat-value" style="color:${wins > 0 ? 'var(--mtg-gold)' : 'var(--text-dim)'}">${deckGames.length ? Math.round(wins/deckGames.length*100)+'%' : '—'}</div><div class="dv-stat-label">Win Rate</div></div>
+  </div>`;
+
+  // Color distribution bar
+  html += renderColorDistBar(colorDist);
+
+  // Bracket analysis
+  if (deck.bracket) {
+    html += renderBracketDetail(analysis);
+  }
+
+  // Mana curve + type distribution side by side
+  html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div>${renderManaCurve(curve)}</div>
+    <div>${renderTypeDist(typeDist)}</div>
+  </div>`;
+
+  // Top cards by value
+  if (topCards.length > 0 && parseFloat(topCards[0].price) > 0) {
+    html += `<div style="margin:12px 0">
+      <div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">Most Valuable Cards</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        ${topCards.filter(c => parseFloat(c.price) > 1).map(c => `
+          <div style="padding:4px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--border);font-size:11px;display:flex;align-items:center;gap:6px">
+            <span style="width:6px;height:6px;border-radius:50%;background:${RARITY_COLORS[c.rarity]||'#888'}"></span>
+            <span>${esc(c.name)}</span>
+            <span style="color:var(--green)">$${parseFloat(c.price).toFixed(2)}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  }
+
+  // Game changer count for this deck
+  const gcCount = countGameChangers(cardSrc);
+  if (gcCount > 0) {
+    html += `<div style="margin:12px 0;padding:10px 14px;border-radius:var(--radius-sm);background:rgba(255,152,0,0.08);border:1px solid rgba(255,152,0,0.2);display:flex;align-items:center;gap:10px">
+      <span style="font-size:18px">⚠️</span>
+      <div>
+        <div style="font-size:13px;color:var(--bracket-3);font-weight:600">${gcCount} Game Changer${gcCount>1?'s':''}</div>
+        <div style="font-size:11px;color:var(--text-dim)">WotC-flagged cards that warp games. Brackets 1-2: none allowed. Bracket 3: up to 3.</div>
+      </div>
+    </div>`;
+  }
+
+  // Card list by category
+  html += `<div style="margin-top:16px;border-top:1px solid var(--border);padding-top:12px">
+    <div style="font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-family:'Cinzel',serif">Full Decklist</div>
+  </div>`;
+
+  const CAT_ICONS = { Creatures:'👹', Instants:'⚡', Sorceries:'🌀', Enchantments:'✨', Artifacts:'⚙️', Planeswalkers:'🔮', Lands:'🏔️', Other:'📦' };
+
+  catOrder.forEach(cat => {
+    if (!cats[cat] || cats[cat].length === 0) return;
+    const sorted = cats[cat].sort((a,b) => (a.name||'').localeCompare(b.name||''));
+    const count = sorted.reduce((s,c) => s + (c.quantity||1), 0);
+    const catValue = sorted.reduce((s,c) => s + (parseFloat(c.price)||0)*(c.quantity||1), 0);
+    html += `<div class="dv-category-group">
+      <div class="dv-category-header" onclick="toggleCatGroup(this)">
+        <span class="dv-cat-chevron">▼</span>
+        <span>${CAT_ICONS[cat]||''}</span>
+        <span style="font-weight:600">${cat}</span>
+        <span style="color:var(--text-dim);font-size:12px">(${count})</span>
+        <span style="margin-left:auto;color:var(--green);font-size:11px">$${catValue.toFixed(0)}</span>
+      </div>
+      <div class="dv-category-cards" style="max-height:4000px">
+        ${sorted.map(c => {
+          const gc = isGameChanger(c.name);
+          const sid = c.scryfallId || '';
+          return `<div class="dv-card-row" onmouseenter="showCardPreview(event,'${sid}','${esc(c.name).replace(/'/g,"\\'")}')" onmousemove="moveCardPreview(event)" onmouseleave="hideCardPreview()">
+          <span class="dv-card-rarity" style="background:${RARITY_COLORS[c.rarity]||'#888'}"></span>
+          <span class="dv-card-qty">${c.quantity||1}×</span>
+          <span class="dv-card-name">${esc(c.name)}</span>
+          ${gc ? '<span class="gc-badge" title="Game Changer">⚠️</span>' : ''}
+          <span class="dv-card-mana">${c.manaCost||''}</span>
+          <span class="dv-card-price">${c.price ? '$'+parseFloat(c.price).toFixed(2) : ''}</span>
+        </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  });
+
+  document.getElementById('deckViewerContent').innerHTML = html;
+  document.getElementById('deckViewer').style.display = 'block';
+}
+
+function closeDeckViewer() { document.getElementById('deckViewer').style.display = 'none'; }
+
+function toggleCatGroup(header) {
+  const group = header.parentElement;
+  const cards = group.querySelector('.dv-category-cards');
+  if (group.classList.contains('collapsed')) {
+    group.classList.remove('collapsed');
+    cards.style.maxHeight = cards.scrollHeight + 'px';
+  } else {
+    cards.style.maxHeight = cards.scrollHeight + 'px';
+    requestAnimationFrame(() => { group.classList.add('collapsed'); });
+  }
+}
+
+// ---- DECK ACTIONS ----
+function copyDeckList(deckIdOrArchId) {
+  const cardSrc = getCardSource(deckIdOrArchId);
+  if (!cardSrc || !cardSrc.cards) { toast('No card data available'); return; }
+  const lines = cardSrc.cards.map(c => `${c.quantity||1} ${c.name}`).join('\n');
+  navigator.clipboard.writeText(lines).then(() => toast('Decklist copied!')).catch(() => toast('Copy failed'));
+}
+
+function showDeckStats(deckIdOrArchId) {
+  const aid = String(deckIdOrArchId);
+  let d = DATA.decks.decks.find(x => String(x.archidektId) === aid || x.id === aid);
+  if (!d) return;
+  const cardSrc = getCardSource(aid);
+  if (!cardSrc || !cardSrc.cards) { toast('No card data for stats'); return; }
+
+  const cards = cardSrc.cards;
+  const total = cards.reduce((s,c) => s+(c.quantity||1), 0);
+
+  // Rarity breakdown
+  const rarities = { mythic:0, rare:0, uncommon:0, common:0 };
+  cards.forEach(c => { if (rarities[c.rarity] !== undefined) rarities[c.rarity] += (c.quantity||1); });
+
+  // Average price
+  const totalVal = cards.reduce((s,c) => s + (parseFloat(c.price)||0)*(c.quantity||1), 0);
+  const avgPrice = total > 0 ? totalVal / total : 0;
+
+  // Unique sets
+  const sets = new Set(cards.map(c => c.set).filter(Boolean));
+
+  let msg = `${d.name} — ${total} cards, $${totalVal.toFixed(0)} total ($${avgPrice.toFixed(2)} avg)\n`;
+  msg += `Mythic: ${rarities.mythic} | Rare: ${rarities.rare} | Uncommon: ${rarities.uncommon} | Common: ${rarities.common}\n`;
+  msg += `From ${sets.size} different sets`;
+  toast(msg);
+}
+
+// ---- COLLECTION STATS ----
+function renderCollection() {
+  const decks = DATA.decks.decks;
+  const totalDecks = decks.length;
+  const totalValue = decks.reduce((s,d) => s + (d.estimatedValue||0), 0);
+  const totalCards = decks.reduce((s,d) => s + (d.cardCount||0), 0);
+  const owners = [...new Set(decks.map(d => d.owner))];
+
+  // Bracket distribution
+  const bracketDist = {};
+  decks.forEach(d => { if (d.bracket) bracketDist[d.bracket] = (bracketDist[d.bracket]||0) + 1; });
+
+  document.getElementById('collectionStats').innerHTML = `
+    <div class="stat-card"><div class="stat-value">${totalDecks}</div><div class="stat-label">Total Decks</div></div>
+    <div class="stat-card"><div class="stat-value">$${Math.round(totalValue).toLocaleString()}</div><div class="stat-label">Total Value</div></div>
+    <div class="stat-card"><div class="stat-value">${totalCards.toLocaleString()}</div><div class="stat-label">Total Cards</div></div>
+    <div class="stat-card"><div class="stat-value">${owners.length}</div><div class="stat-label">Players</div></div>
+    ${[1,2,3,4].filter(b => bracketDist[b]).map(b => {
+      const t = BRACKET_TIERS[b];
+      return `<div class="stat-card" style="border-color:${t.color}33"><div class="stat-value" style="color:${t.color}">${bracketDist[b]}</div><div class="stat-label">${t.icon} ${t.name}</div></div>`;
+    }).join('')}
+  `;
+
+  // Per-player breakdown sorted by value
+  const playerStats = owners.map(o => {
+    const pDecks = decks.filter(d => d.owner === o);
+    const player = DATA.pod.players.find(p => p.id === o);
+    return { id: o, name: player?.name || o, decks: pDecks.length, value: pDecks.reduce((s,d) => s + (d.estimatedValue||0), 0) };
+  }).sort((a,b) => b.value - a.value);
+
+  document.getElementById('collectionGrid').innerHTML = playerStats.map(p => {
+    const color = OWNER_COLORS[p.id] || '#888';
+    return `<div class="deck-card" style="cursor:pointer" onclick="openPlayerProfile('${p.id}')">
+      <div style="height:8px;background:${color}"></div>
+      <div class="deck-info">
+        <div class="deck-name" style="color:${color}">${esc(p.name)}</div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:4px">${p.decks} decks</div>
+        <div style="font-family:'Museo Slab',serif;font-size:18px;color:var(--green);margin-top:4px">$${Math.round(p.value).toLocaleString()}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ---- PLAYER PROFILE ----
+function openPlayerProfile(playerId) {
+  const player = DATA.pod.players.find(p => p.id === playerId);
+  if (!player) return;
+  const color = OWNER_COLORS[playerId] || '#888';
+  const decks = DATA.decks.decks.filter(d => d.owner === playerId);
+  const games = DATA.games.games;
+  const playerGames = games.filter(g => g.players.some(p => p.playerId === playerId));
+  const wins = games.filter(g => g.players.some(p => p.playerId === playerId && p.deckId === g.winningDeck)).length;
+  const totalValue = decks.reduce((s, d) => s + (d.estimatedValue || 0), 0);
+
+  const deckWins = {};
+  games.forEach(g => {
+    const pp = g.players.find(p => p.playerId === playerId && p.deckId === g.winningDeck);
+    if (pp) deckWins[pp.deckId] = (deckWins[pp.deckId] || 0) + 1;
+  });
+  const topDeckId = Object.entries(deckWins).sort((a, b) => b[1] - a[1])[0]?.[0];
+  const topDeck = topDeckId ? DATA.decks.decks.find(d => d.id === topDeckId) : null;
+
+  const colorSpread = {};
+  decks.forEach(d => (d.colors || []).forEach(c => {
+    const l = COLOR_MAP[c] || c;
+    colorSpread[l] = (colorSpread[l] || 0) + 1;
+  }));
+
+  // Bracket spread
+  const bracketSpread = {};
+  decks.forEach(d => { if (d.bracket) bracketSpread[d.bracket] = (bracketSpread[d.bracket]||0) + 1; });
+
+  let html = `<div style="text-align:center;margin-bottom:16px">
+    <div style="width:48px;height:48px;border-radius:50%;background:${color};margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;font-weight:700">${player.name[0].toUpperCase()}</div>
+    <div style="font-family:Cinzel,serif;font-size:22px;color:${color};font-weight:700">${esc(player.name)}</div>
+  </div>`;
+
+  // Stats
+  const pct = playerGames.length ? Math.round(wins / playerGames.length * 100) : 0;
+  html += `<div style="display:flex;gap:12px;justify-content:center;margin-bottom:16px">
+    <div style="text-align:center;padding:8px 14px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border)">
+      <div style="font-family:'Museo Slab',serif;font-size:20px;color:${color}">${wins}</div><div style="font-size:10px;color:var(--text-dim)">Wins</div>
+    </div>
+    <div style="text-align:center;padding:8px 14px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border)">
+      <div style="font-family:'Museo Slab',serif;font-size:20px">${playerGames.length}</div><div style="font-size:10px;color:var(--text-dim)">Games</div>
+    </div>
+    <div style="text-align:center;padding:8px 14px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border)">
+      <div style="font-family:'Museo Slab',serif;font-size:20px">${pct}%</div><div style="font-size:10px;color:var(--text-dim)">Win Rate</div>
+    </div>
+    <div style="text-align:center;padding:8px 14px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border)">
+      <div style="font-family:'Museo Slab',serif;font-size:20px;color:var(--green)">$${Math.round(totalValue).toLocaleString()}</div><div style="font-size:10px;color:var(--text-dim)">Collection</div>
+    </div>
+  </div>`;
+
+  // Color spread + bracket spread
+  const colorOrder = ['W', 'U', 'B', 'R', 'G'];
+  html += `<div style="display:flex;gap:16px;justify-content:center;margin-bottom:16px;flex-wrap:wrap">`;
+  if (Object.keys(colorSpread).length > 0) {
+    html += `<div style="display:flex;gap:6px;align-items:center">
+      ${colorOrder.filter(c => colorSpread[c]).map(c =>
+        `<div style="display:flex;align-items:center;gap:3px;font-size:11px;color:var(--text-mid)"><div style="width:10px;height:10px;border-radius:50%;background:${COLOR_HEX[c]}"></div>${colorSpread[c]}</div>`
+      ).join('')}
+    </div>`;
+  }
+  if (Object.keys(bracketSpread).length > 0) {
+    html += `<div style="display:flex;gap:4px;align-items:center">
+      ${[1,2,3,4].filter(b => bracketSpread[b]).map(b => {
+        const t = BRACKET_TIERS[b];
+        return `<span class="bracket-badge b${b}" style="font-size:10px">${t.icon} ×${bracketSpread[b]}</span>`;
+      }).join('')}
+    </div>`;
+  }
+  html += `</div>`;
+
+  if (topDeck) {
+    html += `<div style="text-align:center;font-size:11px;color:var(--text-dim);margin-bottom:12px">Top Deck: <span style="color:var(--mtg-gold);font-family:Cinzel,serif">${esc(topDeck.name)}</span> (${deckWins[topDeckId]}W)</div>`;
+  }
+
+  // Deck list
+  html += `<div style="font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Decks (${decks.length})</div>`;
+  html += `<div style="display:flex;flex-direction:column;gap:4px;max-height:240px;overflow-y:auto">`;
+  decks.forEach(d => {
+    const dWins = deckWins[d.id] || 0;
+    const colorPips = (d.colors || []).map(c => {
+      const l = COLOR_MAP[c] || c;
+      return `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${COLOR_HEX[l]||'#888'}"></span>`;
+    }).join('');
+    const b = d.bracket;
+    const t = BRACKET_TIERS[b];
+    html += `<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);font-size:12px;cursor:pointer" onclick="closePlayerModal();openDeckDetail('${d.id}')">
+      <div style="display:flex;gap:2px">${colorPips}</div>
+      <div style="flex:1;color:var(--text)">${esc(d.name)}</div>
+      ${b && t ? `<span class="bracket-badge b${b}" style="font-size:9px;padding:1px 5px">${t.icon}</span>` : ''}
+      <div style="font-size:10px;color:var(--green)">$${Math.round(d.estimatedValue||0)}</div>
+      ${dWins > 0 ? `<div style="font-size:10px;color:var(--mtg-gold)">${dWins}W</div>` : ''}
+    </div>`;
+  });
+  html += `</div>`;
+
+  document.getElementById('playerModalContent').innerHTML = html;
+  document.getElementById('playerModal').classList.add('open');
+}
+
+function closePlayerModal() { document.getElementById('playerModal').classList.remove('open'); }
+
+// Load saved player customizations
+(function loadPlayerCustomizations() {
+  const names = load('playerNames', null);
+  const colors = load('playerColors', null);
+  if (names) DATA.pod.players.forEach(p => { if (names[p.id]) p.name = names[p.id]; });
+  if (colors) Object.assign(OWNER_COLORS, colors);
+})();
+
+// ---- KEYBOARD ----
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('playerModal').classList.contains('open')) { closePlayerModal(); return; }
+    if (document.getElementById('deckViewer').style.display !== 'none') { closeDeckViewer(); return; }
+    closeDeckDetail();
+  }
+});
+
+// ---- INIT ----
+renderFilters();
+renderDeckGrid();
+renderCollection();
+</script>
+</body>
+</html>

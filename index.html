@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTGCapsul — Commander Game Night HQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: 'Museo Slab'; src: url('../../assets/fonts/MuseoSlab-500.woff2') format('woff2'); font-weight: 500; }
+@font-face { font-family: 'Museo Sans'; src: url('../../assets/fonts/MuseoSans-500.woff2') format('woff2'); font-weight: 500; }
+
+:root {
+  --bg: #000;
+  --surface: rgba(255,255,255,0.04);
+  --surface-hover: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.08);
+  --border-bright: rgba(255,255,255,0.15);
+  --text: #f0f0f0;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-mid: rgba(255,255,255,0.7);
+  --orange: #E67201;
+  --blue: #007EFF;
+  --green: #1BBA01;
+  --mtg-gold: #C9A849;
+  --radius: 16px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Museo Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Animated background */
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-glow::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -10%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(201,168,73,0.06) 0%, transparent 70%);
+  animation: glowDrift 12s ease-in-out infinite alternate;
+}
+.bg-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 70%;
+  background: radial-gradient(ellipse, rgba(155,89,182,0.05) 0%, transparent 70%);
+  animation: glowDrift 15s ease-in-out infinite alternate-reverse;
+}
+@keyframes glowDrift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, -30px); }
+}
+
+.hub {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 900px;
+  width: 100%;
+  padding: 40px;
+}
+
+/* Title */
+.hub-icon { font-size: 56px; margin-bottom: -12px; }
+.hub-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 42px;
+  color: var(--mtg-gold);
+  text-shadow: 0 0 40px rgba(201,168,73,0.25);
+  letter-spacing: 3px;
+  text-align: center;
+}
+.hub-subtitle {
+  font-size: 15px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: -16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Stats row */
+.stats-row {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+.stat {
+  text-align: center;
+}
+.stat-val {
+  font-family: 'Museo Slab', serif;
+  font-size: 28px;
+  color: var(--text);
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* Entry cards */
+.entry-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+.entry-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+.entry-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.entry-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-bright);
+}
+.entry-card:hover::before { opacity: 1; }
+.entry-card:active { transform: translateY(-1px); }
+
+.entry-card.gamenight::before {
+  background: radial-gradient(ellipse at center, rgba(230,114,1,0.08) 0%, transparent 70%);
+}
+.entry-card.gamenight:hover {
+  border-color: rgba(230,114,1,0.35);
+  box-shadow: 0 8px 40px rgba(230,114,1,0.1);
+}
+
+.entry-card.arsenal::before {
+  background: radial-gradient(ellipse at center, rgba(0,126,255,0.08) 0%, transparent 70%);
+}
+.entry-card.arsenal:hover {
+  border-color: rgba(0,126,255,0.35);
+  box-shadow: 0 8px 40px rgba(0,126,255,0.1);
+}
+
+.entry-card.gamelog::before {
+  background: radial-gradient(ellipse at center, rgba(27,186,1,0.08) 0%, transparent 70%);
+}
+.entry-card.gamelog:hover {
+  border-color: rgba(27,186,1,0.35);
+  box-shadow: 0 8px 40px rgba(27,186,1,0.1);
+}
+
+.entry-icon { font-size: 48px; position: relative; z-index: 1; }
+.entry-name {
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+.entry-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.5;
+  max-width: 260px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Quick info row */
+.quick-info {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.qi-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.qi-chip .qi-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Back to MyCapsul */
+.back-link {
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+  z-index: 10;
+}
+.back-link:hover { color: var(--text); }
+
+/* Season badge */
+.season-badge {
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(201,168,73,0.1);
+  border: 1px solid rgba(201,168,73,0.2);
+  color: var(--mtg-gold);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+  .entry-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .entry-cards { grid-template-columns: 1fr; }
+  .hub-title { font-size: 28px; }
+  .hub { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<a href="../../dashboard.html" class="back-link">← MyCapsul</a>
+
+<div class="bg-glow"></div>
+
+<div class="hub">
+  <div class="hub-icon">🃏</div>
+  <div class="hub-title">MTGCapsul</div>
+  <div class="hub-subtitle">Commander Game Night HQ</div>
+
+  <div class="stats-row" id="hubStats"></div>
+
+  <div class="entry-cards">
+    <a href="gamenight.html" class="entry-card gamenight">
+      <div class="entry-icon">⚔</div>
+      <div class="entry-name">Game Night</div>
+      <div class="entry-desc">Matchup arena, game modes, Planechase, Archenemy, game log, standings — put this on the TV</div>
+    </a>
+    <a href="arsenal.html" class="entry-card arsenal">
+      <div class="entry-icon">📦</div>
+      <div class="entry-name">Arsenal</div>
+      <div class="entry-desc">Browse all 54 decks, view decklists, collection value, search cards</div>
+    </a>
+    <a href="gamelog.html" class="entry-card gamelog">
+      <div class="entry-icon">📊</div>
+      <div class="entry-name">Game Log</div>
+      <div class="entry-desc">Session recaps, leaderboard, ELO rankings, deck stats, head-to-head records</div>
+    </a>
+  </div>
+
+  <div class="quick-info" id="quickInfo"></div>
+
+  <div class="season-badge" id="seasonBadge"></div>
+</div>
+
+<!-- Minimal data load for stats -->
+<script src="data/pod.js"></script>
+<script src="data/decks.js"></script>
+<script src="data/games.js"></script>
+<script src="data/seasons.js"></script>
+
+<script>
+const DATA = {
+  pod: (typeof MTG_POD !== 'undefined') ? MTG_POD : { players: [] },
+  decks: (typeof MTG_DECKS !== 'undefined') ? MTG_DECKS : { decks: [] },
+  games: (typeof MTG_GAMES !== 'undefined') ? MTG_GAMES : { games: [] },
+  seasons: (typeof MTG_SEASONS !== 'undefined') ? MTG_SEASONS : { seasons: [] },
+};
+
+function load(k, def) { try { const v = localStorage.getItem('mtg_'+k); return v !== null ? JSON.parse(v) : def; } catch(e) { return def; } }
+
+// Merge localStorage games
+const storedGames = load('games', null);
+if (storedGames) DATA.games.games = storedGames;
+
+const OWNER_COLORS = {
+  adam:'#E67201', bryan:'#007EFF', shake:'#1BBA01', waid:'#C9A849',
+  jordan:'#D3202A', noah:'#9B59B6', rich:'#00CED1'
+};
+
+// Stats
+const totalDecks = DATA.decks.decks.length;
+const totalValue = DATA.decks.decks.reduce((s,d) => s + (d.estimatedValue||0), 0);
+const totalGames = DATA.games.games.length;
+const players = DATA.pod.players.length;
+
+document.getElementById('hubStats').innerHTML = `
+  <div class="stat"><div class="stat-val">${totalDecks}</div><div class="stat-label">Decks</div></div>
+  <div class="stat"><div class="stat-val">$${Math.round(totalValue).toLocaleString()}</div><div class="stat-label">Collection</div></div>
+  <div class="stat"><div class="stat-val">${totalGames}</div><div class="stat-label">Games</div></div>
+  <div class="stat"><div class="stat-val">${players}</div><div class="stat-label">Players</div></div>
+`;
+
+// Quick info: player chips
+document.getElementById('quickInfo').innerHTML = DATA.pod.players.map(p => {
+  const count = DATA.decks.decks.filter(d => d.owner === p.id).length;
+  const color = OWNER_COLORS[p.id] || '#888';
+  return `<div class="qi-chip"><div class="qi-dot" style="background:${color}"></div>${p.name} · ${count} decks</div>`;
+}).join('');
+
+// Season
+const currentSeason = DATA.seasons.seasons[DATA.seasons.seasons.length - 1];
+if (currentSeason) {
+  document.getElementById('seasonBadge').textContent = currentSeason.name + ' · ' + currentSeason.startDate;
+}
+
+// Keyboard shortcut hints
+document.addEventListener('keydown', e => {
+  if (e.key === '1') window.location.href = 'gamenight.html';
+  if (e.key === '2') window.location.href = 'arsenal.html';
+  if (e.key === '3') window.location.href = 'gamelog.html';
+});
+</script>
+</body>
+</html>

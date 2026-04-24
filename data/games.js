@@ -1,0 +1,378 @@
+var MTG_GAMES = {
+  "games": [
+    {
+      "id": "g1774661381776",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-ziatora--the-incinerator"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-szarel-genesis-shep"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-eriette-auras"
+        },
+        {
+          "playerId": "rich",
+          "deckId": "rich-the-scarab-god"
+        }
+      ],
+      "winningDeck": "bryan-commander:-szarel-genesis-shep",
+      "variant": "standard",
+      "salt": 2,
+      "duration": "58:24",
+      "notes": "ALWAYS EXILE FABLED PASSAGE IMMEDIATELY. kthxbai"
+    },
+    {
+      "id": "g1774667570489",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-trostani's-glory"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-betor-kin-to-all"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-braids-aristocrats"
+        },
+        {
+          "playerId": "rich",
+          "deckId": "rich-kiki-jiki"
+        }
+      ],
+      "winningDeck": "rich-kiki-jiki",
+      "variant": "standard",
+      "salt": 3,
+      "duration": "1:08:45",
+      "notes": "Rich wins via infinite combo w/ Kiki Jiki (But I asked permission!) \nTurn 4 Marit Lage did nothing. (adam)"
+    },
+    {
+      "id": "g1774672502130",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-jetmir-nexus-of-rev"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-atraxa-plus-counters"
+        },
+        {
+          "playerId": "rich",
+          "deckId": "rich-kaalia"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-leonardo--the-balance"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-squirrels"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-mighty-myrs"
+        }
+      ],
+      "winningDeck": null,
+      "variant": "2hg",
+      "salt": 0,
+      "duration": "10:42",
+      "notes": "3-team 2HG. Bryan+Adam (T1) vs Jordan+Rich (T2) vs Waid+Shake (T3). Team 1 wins.",
+      "teams": [
+        {
+          "name": "Team 1",
+          "players": [
+            "bryan",
+            "adam"
+          ]
+        },
+        {
+          "name": "Team 2",
+          "players": [
+            "jordan",
+            "rich"
+          ]
+        },
+        {
+          "name": "Team 3",
+          "players": [
+            "waid",
+            "shake"
+          ]
+        }
+      ],
+      "winningTeam": 0
+    },
+    {
+      "id": "g1774676688524",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-muldrotha-the-grave"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-marchesa-the-black-rose"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-tmnt-precon"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-krenko-mob-boss"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-kambal's-allocation"
+        }
+      ],
+      "winningDeck": "bryan-commander:-muldrotha-the-grave",
+      "variant": "star",
+      "salt": 0,
+      "duration": "42:30",
+      "notes": "Bryan's Hermit Druid failed to find, causing bryan to perform miracles to somehow avoid death by casting from the now whole deck graveyard. Jarad and lord of extinction. Doing 90+ damage to all of us at once. wtf. holy shit. *"
+    },
+    {
+      "id": "g1774680161108",
+      "date": "2026-03-28",
+      "players": [
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-kardur-doomscourge"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-xenagos-god-of-revels"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-tmnt-precon"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-the-wise-mothman"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-gilanra--caller-of-wirewood"
+        }
+      ],
+      "winningDeck": "adam-gilanra--caller-of-wirewood",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "40:17",
+      "notes": "Bryan fucked up. He played Kratos and superpowereed Adam into having a turn with where he got 4 combats and he was able to double damage."
+    },
+    {
+      "id": "g1775869234536",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-general-tazri"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-ishai-and-ikra"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-eriette-auras"
+        }
+      ],
+      "winningDeck": "adam-general-tazri",
+      "variant": "standard",
+      "salt": 0,
+      "duration": null,
+      "notes": "Tazri the ALLY Land nebie did nothing till it won."
+    },
+    {
+      "id": "g1775878146811",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "noah",
+          "deckId": "noah-ghyrson-starn--kelermorph"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-braids-aristocrats"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-szarel-genesis-shep"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-amy-rose"
+        }
+      ],
+      "winningDeck": "bryan-commander:-szarel-genesis-shep",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "1:53:44",
+      "notes": "Chaos warp ended the game."
+    },
+    {
+      "id": "g1775883984725",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "noah",
+          "deckId": "noah-ghyrson-starn--kelermorph"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-marchesa-the-black-rose"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-kardur-doomscourge"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-12th-doctor"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-avatar-aang----aang--master-of"
+        }
+      ],
+      "winningDeck": "bryan-commander:-kardur-doomscourge",
+      "variant": "standard",
+      "salt": 3,
+      "duration": "1:22:00",
+      "notes": "This game ended with Bryan casting Rakdos Charm, Adam copied it with Tempt with Mayhem with then we ended up killing everyone with the subsequent copies of Rakdos Charm made."
+    },
+    {
+      "id": "g1775890997405",
+      "date": "2026-04-11",
+      "players": [
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-rakdos-brings-the-beats"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-betor-kin-to-all"
+        },
+        {
+          "playerId": "adam",
+          "deckId": "adam-jodah--the-unifier"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-avatar-aang----aang--master-of"
+        }
+      ],
+      "winningDeck": "bryan-commander:-betor-kin-to-all",
+      "variant": "planechase",
+      "salt": 5,
+      "duration": "1:27:15",
+      "notes": null,
+      "travelLog": [
+        {
+          "plane": "Shiv",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 1,
+          "cause": "start",
+          "time": "12:34 AM"
+        },
+        {
+          "plane": "Cliffside Market",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 4,
+          "cause": "walk",
+          "time": "12:42 AM"
+        },
+        {
+          "plane": "Bloodhill Bastion",
+          "type": "Plane",
+          "walker": "Waid",
+          "turn": 4,
+          "cause": "walk",
+          "time": "12:43 AM"
+        },
+        {
+          "plane": "Asmoranomardicadaistinaculdacar's Kitchen",
+          "type": "Plane",
+          "walker": "McAtoms",
+          "turn": 5,
+          "cause": "walk",
+          "time": "12:52 AM"
+        },
+        {
+          "plane": "Bant",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 7,
+          "cause": "walk",
+          "time": "1:04 AM"
+        },
+        {
+          "plane": "Norn's Seedcore",
+          "type": "Plane",
+          "walker": "McAtoms",
+          "turn": 7,
+          "cause": "walk",
+          "time": "1:07 AM"
+        },
+        {
+          "plane": "The Great Aerie",
+          "type": "Plane",
+          "walker": "McAtoms",
+          "turn": 7,
+          "cause": "walk",
+          "time": "1:07 AM"
+        },
+        {
+          "plane": "Unleash the Flux",
+          "type": "Phenomenon",
+          "walker": "Jordan",
+          "turn": 9,
+          "cause": "walk",
+          "time": "1:20 AM"
+        },
+        {
+          "plane": "New Argive",
+          "type": "Plane",
+          "walker": "Jordan",
+          "turn": 9,
+          "cause": "walk",
+          "time": "1:22 AM"
+        },
+        {
+          "plane": "Bicycle Rack",
+          "type": "Plane",
+          "walker": "Bryan",
+          "turn": 9,
+          "cause": "walk",
+          "time": "1:26 AM"
+        },
+        {
+          "plane": "New New York",
+          "type": "Plane",
+          "walker": "Waid",
+          "turn": 10,
+          "cause": "walk",
+          "time": "1:40 AM"
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2026-04-11T17:43:00"
+};

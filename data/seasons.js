@@ -1,0 +1,13 @@
+var MTG_SEASONS = {
+  "seasons": [
+    {
+      "id": "s1-2026",
+      "name": "Season 1",
+      "startDate": "2026-03-27",
+      "endDate": "2026-06-30",
+      "champion": null,
+      "standings": {}
+    }
+  ],
+  "currentSeason": "s1-2026"
+};

@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Log — MTGCapsul</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: 'Museo Slab'; src: url('../../assets/fonts/MuseoSlab-500.woff2') format('woff2'); font-weight: 500; }
+@font-face { font-family: 'Museo Sans'; src: url('../../assets/fonts/MuseoSans-500.woff2') format('woff2'); font-weight: 500; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: rgba(10,10,14,0.85);
+  --surface-hover: rgba(20,20,28,0.9);
+  --border: rgba(255,255,255,0.12);
+  --border-bright: rgba(255,255,255,0.2);
+  --text: #f0f0f0;
+  --text-dim: rgba(255,255,255,0.5);
+  --text-mid: rgba(255,255,255,0.7);
+  --orange: #E67201;
+  --blue: #007EFF;
+  --green: #1BBA01;
+  --mtg-w: #F9FAF4; --mtg-u: #0E68AB; --mtg-b: #4A3728;
+  --mtg-r: #D3202A; --mtg-g: #00733E; --mtg-c: #CAC5C0;
+  --mtg-gold: #C9A849;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  min-height: 100vh;
+  font-family: 'Museo Sans', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 18px;
+}
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+/* ---- TOP BAR ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 28px;
+  background: rgba(10,10,14,0.95);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.topbar-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 25px;
+  color: var(--orange);
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+.topbar-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-bright);
+  flex-shrink: 0;
+}
+.topbar-nav {
+  display: flex;
+  gap: 5px;
+}
+.topbar-nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 15px;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+.topbar-nav a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.topbar-nav a.active { color: var(--orange); background: rgba(230,114,1,0.1); }
+.topbar-spacer { flex: 1; }
+.topbar-season {
+  font-size: 14px;
+  color: var(--text-dim);
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+/* ---- LAYOUT ---- */
+.page { max-width: 1500px; margin: 0 auto; padding: 28px 36px; }
+.section { margin-bottom: 40px; }
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  color: var(--text-mid);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.section-title .collapse-icon {
+  font-size: 14px;
+  color: var(--text-dim);
+  transition: transform 0.25s;
+  margin-left: 4px;
+}
+.section-title .collapse-icon.collapsed { transform: rotate(-90deg); }
+.section-body { overflow: hidden; transition: max-height 0.3s ease, opacity 0.25s ease; }
+.section-body.collapsed { max-height: 0 !important; opacity: 0; pointer-events: none; }
+
+/* ---- HERO: LATEST SESSION ---- */
+.session-hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.session-hero-header {
+  padding: 24px 28px 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+.session-hero-header .collapse-icon {
+  font-size: 14px;
+  color: var(--text-dim);
+  transition: transform 0.25s;
+}
+.session-hero-header .collapse-icon.collapsed { transform: rotate(-90deg); }
+.session-hero-date {
+  font-family: 'Cinzel', serif;
+  font-size: 27px;
+  color: var(--orange);
+}
+.session-hero-meta {
+  font-size: 16px;
+  color: var(--text-dim);
+}
+.session-games {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0 20px 20px;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+  overflow: hidden;
+}
+.session-games.collapsed { max-height: 0 !important; opacity: 0; padding-bottom: 0; }
+.game-entry { border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 4px; margin-bottom: 4px; }
+.game-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.game-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.02);
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.game-row:hover { background: rgba(255,255,255,0.05); }
+.game-num {
+  font-family: 'Museo Slab', serif;
+  font-size: 18px;
+  color: var(--text-dim);
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.game-variant {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 9px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  min-width: 58px;
+  text-align: center;
+}
+.variant-standard { background: rgba(255,255,255,0.06); color: var(--text-dim); }
+.variant-2hg { background: rgba(0,126,255,0.15); color: var(--blue); }
+.variant-star { background: rgba(201,168,73,0.15); color: var(--mtg-gold); }
+.variant-archenemy { background: rgba(211,32,42,0.15); color: var(--mtg-r); }
+.variant-planechase { background: rgba(155,89,182,0.15); color: #9B59B6; }
+.variant-horde { background: rgba(74,55,40,0.15); color: #8B7355; }
+.game-winner {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+.game-winner .crown { font-size: 20px; }
+.game-winner .winner-name { font-weight: 600; }
+.game-winner .winner-deck {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-style: italic;
+}
+/* ---- GAME DETAIL DRAWER (grid layout) ---- */
+.game-detail {
+  display: none;
+  padding: 12px 14px 16px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  margin-top: -2px;
+}
+.game-detail.open { display: block; }
+.game-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+  align-items: start;
+}
+/* Left: roster + notes */
+.game-roster {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.roster-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.roster-row:hover { background: rgba(255,255,255,0.04); border-color: var(--border); }
+.roster-row.is-winner { border-left: 3px solid var(--mtg-gold); }
+.roster-row.selected { background: rgba(255,255,255,0.06); border-color: var(--border-bright); }
+.roster-crown { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
+.roster-player-name { font-weight: 600; font-size: 16px; min-width: 80px; }
+.roster-cmdr { font-size: 13px; color: var(--text-dim); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.roster-status { font-size: 13px; color: var(--text-dim); font-family: 'Museo Slab', serif; flex-shrink: 0; }
+.roster-status.survived { color: var(--mtg-gold); }
+/* Right: static player card */
+.player-spotlight {
+  background: rgba(12,12,16,0.95);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.spotlight-art {
+  height: 130px;
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+}
+.spotlight-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(12,12,16,0.95) 100%);
+}
+.spotlight-art-split { display: flex; height: 130px; overflow: hidden; position: relative; }
+.spotlight-art-split > div { flex: 1; background-size: cover; background-position: center top; }
+.spotlight-art-split > div:first-child { border-right: 1px solid rgba(0,0,0,0.5); }
+.spotlight-art-split::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(12,12,16,0.95) 100%);
+}
+.spotlight-body { padding: 14px 16px; }
+.spotlight-player-name { font-family: 'Cinzel', serif; font-size: 17px; margin-bottom: 1px; }
+.spotlight-deck-name { font-size: 13px; color: var(--text-dim); margin-bottom: 2px; }
+.spotlight-cmdr { font-size: 12px; color: var(--text-dim); font-style: italic; margin-bottom: 10px; }
+.spotlight-stats { display: flex; gap: 14px; margin-bottom: 10px; justify-content: center; }
+.spotlight-stats .stat-block { text-align: center; }
+.spotlight-stats .val { font-family: 'Museo Slab', serif; font-size: 22px; color: var(--text); display: block; line-height: 1.1; }
+.spotlight-stats .stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); }
+.spotlight-divider { height: 1px; background: var(--border); margin: 8px 0; }
+.spotlight-history-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 6px; }
+.spotlight-history-row { font-size: 12px; color: var(--text-mid); padding: 2px 0; display: flex; gap: 8px; }
+.spotlight-history-row .hw { color: var(--mtg-gold); } .spotlight-history-row .hl { color: var(--text-dim); }
+/* ---- SESSION CARD (for All Games) ---- */
+.session-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+}
+.session-card:hover { border-color: var(--border-bright); }
+.session-card-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+.session-card-header .collapse-icon {
+  font-size: 14px;
+  color: var(--text-dim);
+  transition: transform 0.25s;
+}
+.session-card-header .collapse-icon.collapsed { transform: rotate(-90deg); }
+.session-card-date {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--orange);
+}
+.session-card-meta {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.session-card-body {
+  padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+  overflow: hidden;
+}
+.session-card-body.collapsed { max-height: 0 !important; opacity: 0; padding-bottom: 0; }
+/* ---- DECK CARD INTERACTIVE ---- */
+.deck-card { cursor: pointer; }
+.deck-card:hover { border-color: var(--orange); transform: translateY(-2px); transition: all 0.2s; }
+.game-duration {
+  font-family: 'Museo Slab', serif;
+  font-size: 15px;
+  color: var(--text-dim);
+  width: 64px;
+  text-align: right;
+  flex-shrink: 0;
+}
+.game-salt {
+  display: flex;
+  gap: 1px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: flex-end;
+}
+.salt-shaker {
+  font-size: 18px;
+  opacity: 0.2;
+  filter: grayscale(1);
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.salt-shaker:hover { transform: scale(1.2); }
+.salt-shaker.active {
+  opacity: 1;
+  filter: none;
+}
+.game-notes-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-mid);
+  font-family: 'Museo Sans', sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  padding: 8px 12px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 36px;
+  transition: border-color 0.2s;
+}
+.game-notes-input:focus { border-color: var(--orange); outline: none; }
+.game-notes-input::placeholder { color: rgba(255,255,255,0.2); }
+
+/* ---- LEADERBOARD ---- */
+.leaderboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.lb-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+.lb-card:hover { border-color: var(--border-bright); }
+.lb-rank {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: var(--text-dim);
+}
+.lb-rank.first { color: var(--mtg-gold); }
+.lb-rank.second { color: #C0C0C0; }
+.lb-rank.third { color: #CD7F32; }
+.lb-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: #111;
+}
+.lb-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+.lb-stats {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.lb-stats span { display: flex; flex-direction: column; align-items: center; }
+.lb-stats .num { font-family: 'Museo Slab', serif; font-size: 20px; font-weight: 600; color: var(--text); }
+.lb-elo {
+  font-family: 'Museo Slab', serif;
+  font-size: 14px;
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.lb-winbar {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.lb-winbar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ---- HEAD TO HEAD ---- */
+.h2h-grid {
+  display: grid;
+  gap: 2px;
+  background: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.h2h-cell {
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Museo Slab', serif;
+  font-size: 16px;
+  padding: 10px 6px;
+  min-height: 50px;
+}
+.h2h-cell.header {
+  background: var(--surface);
+  font-family: 'Museo Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+.h2h-cell.self { background: rgba(255,255,255,0.02); color: var(--text-dim); }
+.h2h-cell.positive { color: var(--green); }
+.h2h-cell.negative { color: var(--mtg-r); }
+.h2h-cell.neutral { color: var(--text-dim); }
+
+/* ---- DECK STATS ---- */
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 10px;
+}
+.deck-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.deck-card:hover { border-color: var(--border-bright); }
+.deck-card-art {
+  height: 100px;
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+  flex-shrink: 0;
+}
+.deck-card-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,0.85) 100%);
+}
+.deck-card-art .deck-card-owner {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 600;
+}
+.deck-card-body {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.deck-card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+.deck-card-commander { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
+.deck-card-bracket {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-mid);
+  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  align-self: flex-start;
+}
+.deck-card-spacer { flex: 1; }
+.deck-card-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+.deck-card-stats .stat-block { text-align: center; }
+.deck-card-stats .val {
+  display: block;
+  color: var(--text);
+  font-family: 'Museo Slab', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.deck-card-stats .stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+}
+
+/* ---- RECORDS ---- */
+.records-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+.record-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.record-icon { font-size: 28px; margin-bottom: 5px; }
+.record-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.record-value { font-family: 'Museo Slab', serif; font-size: 20px; }
+.record-detail { font-size: 12px; color: var(--text-dim); margin-top: 3px; }
+
+/* ---- TABS (for filtering) ---- */
+.filter-bar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.filter-btn:hover { border-color: var(--border-bright); color: var(--text); }
+.filter-btn.active { border-color: var(--orange); color: var(--orange); background: rgba(230,114,1,0.08); }
+
+/* ---- PLAYER DETAIL MODAL ---- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  max-width: 750px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 28px;
+}
+.modal-close {
+  float: right;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.animate-in { animation: fadeIn 0.3s ease forwards; }
+
+/* ---- ACHIEVEMENTS ---- */
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 10px;
+}
+.ach-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: border-color 0.2s;
+}
+.ach-item:hover { border-color: var(--border-bright); }
+.ach-item.locked { opacity: 0.35; }
+.ach-item.tier-bronze { border-left: 4px solid #CD7F32; }
+.ach-item.tier-silver { border-left: 4px solid #C0C0C0; }
+.ach-item.tier-gold { border-left: 4px solid var(--mtg-gold); }
+.ach-item-icon { font-size: 32px; flex-shrink: 0; }
+.ach-item-info { flex: 1; }
+.ach-item-name { font-family: 'Cinzel', serif; font-size: 17px; margin-bottom: 3px; }
+.ach-item.tier-bronze .ach-item-name { color: #CD7F32; }
+.ach-item.tier-silver .ach-item-name { color: #E0E0E0; }
+.ach-item.tier-gold .ach-item-name { color: var(--mtg-gold); }
+.ach-item.locked .ach-item-name { color: var(--text-dim); }
+.ach-item-desc { font-size: 13px; color: var(--text-dim); margin-bottom: 5px; }
+.ach-item-flavor { font-size: 12px; color: var(--text-dim); font-style: italic; line-height: 1.4; }
+.ach-item-earned { font-size: 12px; margin-top: 5px; }
+.ach-item-earned .earner {  font-weight: 600; }
+.ach-filter-bar { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.ach-filter-btn {
+  font-size: 13px; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border);
+  background: transparent; color: var(--text-dim); cursor: pointer; font-family: inherit; transition: all 0.2s;
+}
+.ach-filter-btn:hover { border-color: var(--border-bright); color: var(--text); }
+.ach-filter-btn.active { border-color: var(--orange); color: var(--orange); background: rgba(230,114,1,0.08); }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-title">MTGCapsul</div>
+  <div class="topbar-divider"></div>
+  <div class="topbar-nav">
+    <a href="gamenight.html">Game Night</a>
+    <a href="arsenal.html">Arsenal</a>
+    <a href="gamelog.html" class="active">Game Log</a>
+  </div>
+  <div class="topbar-spacer"></div>
+  <div class="topbar-season" id="seasonBadge">Season 1</div>
+</div>
+
+<div class="page">
+
+  <!-- LATEST SESSION HERO -->
+  <div class="session-hero animate-in" id="sessionHero"></div>
+
+  <!-- LEADERBOARD -->
+  <div class="section animate-in" style="animation-delay:0.05s">
+    <div class="section-title" onclick="toggleSection(this)">Leaderboard <span class="collapse-icon">▼</span></div>
+    <div class="section-body">
+      <div class="leaderboard" id="leaderboard"></div>
+    </div>
+  </div>
+
+  <!-- HEAD TO HEAD -->
+  <div class="section animate-in" style="animation-delay:0.1s">
+    <div class="section-title" onclick="toggleSection(this)">Head to Head <span class="collapse-icon">▼</span></div>
+    <div class="section-body">
+      <div id="h2hGrid"></div>
+    </div>
+  </div>
+
+  <!-- DECK STATS -->
+  <div class="section animate-in" style="animation-delay:0.15s">
+    <div class="section-title" onclick="toggleSection(this)">Deck Stats <span class="collapse-icon">▼</span></div>
+    <div class="section-body">
+      <div class="filter-bar" id="deckFilters"></div>
+      <div class="deck-grid" id="deckGrid"></div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="section animate-in" style="animation-delay:0.18s">
+    <div class="section-title" onclick="toggleSection(this)">Achievements <span class="collapse-icon">▼</span></div>
+    <div class="section-body">
+      <div id="achievementLog"></div>
+    </div>
+  </div>
+
+  <!-- RECORDS -->
+  <div class="section animate-in" style="animation-delay:0.2s">
+    <div class="section-title" onclick="toggleSection(this)">Records & Superlatives <span class="collapse-icon">▼</span></div>
+    <div class="section-body">
+      <div class="records-grid" id="recordsGrid"></div>
+    </div>
+  </div>
+
+  <!-- FULL GAME LOG -->
+  <div class="section animate-in" style="animation-delay:0.25s">
+    <div class="section-title" onclick="toggleSection(this)">All Games <span class="collapse-icon">▼</span></div>
+    <div class="section-body">
+      <div class="filter-bar" id="gameFilters"></div>
+      <div id="allGames"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PLAYER DETAIL MODAL -->
+<div class="modal-overlay" id="playerModal">
+  <div class="modal-card" id="playerModalContent"></div>
+</div>
+
+<!-- DATA FILES -->
+<script src="data/pod.js"></script>
+<script src="data/decks.js"></script>
+<script src="data/games.js"></script>
+<script src="data/achievements.js"></script>
+<script src="data/seasons.js"></script>
+<script>
+/* ============================================
+   Game Log — Stats, Recaps, History
+   ============================================ */
+
+// ---- DATA ----
+const DATA = {
+  pod: (typeof MTG_POD !== 'undefined') ? MTG_POD : { players: [] },
+  decks: (typeof MTG_DECKS !== 'undefined') ? MTG_DECKS : { decks: [] },
+  games: (typeof MTG_GAMES !== 'undefined') ? MTG_GAMES : { games: [] },
+  achievements: (typeof MTG_ACHIEVEMENTS !== 'undefined') ? MTG_ACHIEVEMENTS : { definitions: [], unlocked: {} },
+  seasons: (typeof MTG_SEASONS !== 'undefined') ? MTG_SEASONS : { seasons: [], currentSeason: null },
+};
+
+// Merge localStorage (same pattern as gamenight)
+function save(k, v) { try { localStorage.setItem('mtg_'+k, JSON.stringify(v)); } catch(e){} }
+function load(k, def) { try { const v = localStorage.getItem('mtg_'+k); return v !== null ? JSON.parse(v) : def; } catch(e) { return def; } }
+
+const storedGames = load('games', null);
+if (storedGames && storedGames.length > 0) DATA.games.games = storedGames;
+
+// S40 migration: merge 2HG games 3+4 into single team-based record
+if (!load('_2hgMerge40', false)) {
+  const gms = DATA.games.games;
+  const hasOldGame4 = gms.some(g => g.id === 'g1774672510834');
+  if (hasOldGame4) {
+    const filtered = gms.filter(g => g.id !== 'g1774672510834');
+    const game3 = filtered.find(g => g.id === 'g1774672502130');
+    if (game3) {
+      game3.teams = [
+        { name: 'Team 1', players: ['bryan', 'adam'] },
+        { name: 'Team 2', players: ['jordan', 'rich'] },
+        { name: 'Team 3', players: ['waid', 'shake'] }
+      ];
+      game3.winningTeam = 0;
+      game3.winningDeck = null;
+      game3.notes = '3-team 2HG. Bryan+Adam (T1) vs Jordan+Rich (T2) vs Waid+Shake (T3). Team 1 wins.';
+    }
+    DATA.games.games = filtered;
+    save('games', filtered);
+  }
+  save('_2hgMerge40', true);
+}
+
+// Restore player names/colors from localStorage
+const OWNER_COLORS = {
+  adam:'#E67201', bryan:'#007EFF', shake:'#1BBA01', waid:'#C9A849',
+  jordan:'#D3202A', noah:'#9B59B6', rich:'#00CED1'
+};
+const storedColors = load('playerColors', null);
+if (storedColors) Object.assign(OWNER_COLORS, storedColors);
+const storedNames = load('playerNames', null);
+if (storedNames) DATA.pod.players.forEach(p => { if (storedNames[p.id]) p.name = storedNames[p.id]; });
+
+const COLOR_MAP = { White:'W', Blue:'U', Black:'B', Red:'R', Green:'G', Colorless:'C' };
+const COLOR_HEX = { W:'#F9FAF4', U:'#0E68AB', B:'#4A3728', R:'#D3202A', G:'#00733E', C:'#CAC5C0' };
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+// ---- 2HG TEAM HELPERS ----
+// Returns true if a player won a game (works for both standard winningDeck and team-based winningTeam)
+function didPlayerWin(game, playerId) {
+  // Team-based win (2HG with teams array)
+  if (game.teams && game.winningTeam != null) {
+    const winTeam = game.teams[game.winningTeam];
+    return winTeam && winTeam.players.includes(playerId);
+  }
+  // Traditional win (winningDeck)
+  if (game.winningDeck) {
+    const pd = game.players.find(p => p.playerId === playerId);
+    return pd && pd.deckId === game.winningDeck;
+  }
+  return false;
+}
+
+// Returns true if a deck won a game
+function didDeckWin(game, deckId) {
+  // Team-based: check if the deck belongs to a player on the winning team
+  if (game.teams && game.winningTeam != null) {
+    const winTeam = game.teams[game.winningTeam];
+    if (!winTeam) return false;
+    const pd = game.players.find(p => p.deckId === deckId);
+    return pd && winTeam.players.includes(pd.playerId);
+  }
+  return game.winningDeck === deckId;
+}
+
+// Returns array of winning player IDs for a game
+function getWinnerIds(game) {
+  if (game.teams && game.winningTeam != null) {
+    const winTeam = game.teams[game.winningTeam];
+    return winTeam ? winTeam.players : [];
+  }
+  if (game.winningDeck) {
+    const w = game.players.find(p => p.deckId === game.winningDeck);
+    return w ? [w.playerId] : [];
+  }
+  return [];
+}
+
+// ---- COMPUTED STATS ----
+const games = DATA.games.games;
+const players = DATA.pod.players;
+const decks = DATA.decks.decks;
+
+function getPlayerStats(pid) {
+  const pg = games.filter(g => g.players.some(p => p.playerId === pid));
+  const wins = pg.filter(g => didPlayerWin(g, pid));
+  const uniqueWinDecks = new Set(wins.map(w => w.players.find(p => p.playerId === pid)?.deckId)).size;
+  const decksPlayed = new Set(pg.map(g => g.players.find(p => p.playerId === pid)?.deckId)).size;
+
+  // Salt stats
+  const saltGames = pg.filter(g => g.salt != null && g.salt > 0);
+  const avgSalt = saltGames.length ? saltGames.reduce((s,g) => s+g.salt, 0) / saltGames.length : 0;
+
+  // Win streak
+  let streak = 0, bestStreak = 0, currentStreak = 0;
+  pg.forEach(g => {
+    if (didPlayerWin(g, pid)) {
+      streak++;
+      if (streak > bestStreak) bestStreak = streak;
+    } else {
+      streak = 0;
+    }
+  });
+  // Current streak (from latest game backwards)
+  for (let i = pg.length - 1; i >= 0; i--) {
+    if (didPlayerWin(pg[i], pid)) currentStreak++;
+    else break;
+  }
+
+  // Average game duration
+  const durations = pg.filter(g => g.duration).map(g => parseDuration(g.duration));
+  const avgDuration = durations.length ? durations.reduce((s,d) => s+d, 0) / durations.length : 0;
+
+  return {
+    games: pg.length,
+    wins: wins.length,
+    winRate: pg.length ? Math.round(wins.length / pg.length * 100) : 0,
+    uniqueWinDecks,
+    decksPlayed,
+    avgSalt: Math.round(avgSalt * 10) / 10,
+    bestStreak,
+    currentStreak,
+    avgDuration,
+  };
+}
+
+function getDeckStats(deckId) {
+  const dg = games.filter(g => g.players.some(p => p.deckId === deckId));
+  const wins = dg.filter(g => didDeckWin(g, deckId));
+  const saltGames = dg.filter(g => g.salt != null);
+  const avgSalt = saltGames.length ? saltGames.reduce((s,g) => s+g.salt, 0) / saltGames.length : 0;
+  return {
+    games: dg.length,
+    wins: wins.length,
+    winRate: dg.length ? Math.round(wins.length / dg.length * 100) : 0,
+    avgSalt: Math.round(avgSalt * 10) / 10,
+  };
+}
+
+function getH2H(pid1, pid2) {
+  // Games where both played, count wins for each
+  // For 2HG: if both on same team and won, both get a win (they're teammates, not opponents)
+  const shared = games.filter(g =>
+    g.players.some(p => p.playerId === pid1) &&
+    g.players.some(p => p.playerId === pid2)
+  );
+  const p1wins = shared.filter(g => didPlayerWin(g, pid1)).length;
+  const p2wins = shared.filter(g => didPlayerWin(g, pid2)).length;
+  return { shared: shared.length, p1wins, p2wins };
+}
+
+function parseDuration(dur) {
+  if (!dur) return 0;
+  const parts = dur.split(':');
+  if (parts.length === 3) return +parts[0]*3600 + +parts[1]*60 + +parts[2];
+  if (parts.length === 2) return +parts[0]*60 + +parts[1];
+  return +parts[0];
+}
+
+function formatDuration(secs) {
+  if (!secs) return '—';
+  const m = Math.floor(secs / 60);
+  const s = Math.round(secs % 60);
+  return m + ':' + String(s).padStart(2, '0');
+}
+
+// ---- ELO CALCULATION ----
+function calculateElo() {
+  const elo = {};
+  players.forEach(p => elo[p.id] = 1200);
+  const K = 32;
+
+  games.forEach(g => {
+    const winnerIds = getWinnerIds(g);
+    if (!winnerIds.length) return;
+    const loserIds = g.players
+      .map(p => p.playerId)
+      .filter(pid => !winnerIds.includes(pid));
+    if (!loserIds.length) return;
+
+    // For team games, average the team ELO
+    const avgWinElo = winnerIds.reduce((s, id) => s + (elo[id] || 1200), 0) / winnerIds.length;
+
+    loserIds.forEach(lid => {
+      const loseElo = elo[lid] || 1200;
+      const expectedW = 1 / (1 + Math.pow(10, (loseElo - avgWinElo) / 400));
+      const expectedL = 1 - expectedW;
+      const kAdj = K / loserIds.length;
+      // Distribute ELO gain across winning team members
+      winnerIds.forEach(wid => {
+        elo[wid] = Math.round((elo[wid] || 1200) + (kAdj / winnerIds.length) * (1 - expectedW));
+      });
+      elo[lid] = Math.round((elo[lid] || 1200) + kAdj * (0 - expectedL));
+    });
+  });
+  return elo;
+}
+
+// ---- GROUP GAMES BY SESSION (date) ----
+function getSessionGroups() {
+  const groups = {};
+  games.forEach(g => {
+    const d = g.date || 'unknown';
+    if (!groups[d]) groups[d] = [];
+    groups[d].push(g);
+  });
+  return Object.entries(groups).sort((a,b) => b[0].localeCompare(a[0]));
+}
+
+// ---- COLLAPSE HELPERS ----
+function toggleSection(titleEl) {
+  const body = titleEl.nextElementSibling;
+  const icon = titleEl.querySelector('.collapse-icon');
+  if (!body) return;
+  body.classList.toggle('collapsed');
+  if (icon) icon.classList.toggle('collapsed');
+}
+function toggleHeroGames(headerEl) {
+  const games = headerEl.nextElementSibling;
+  const icon = headerEl.querySelector('.collapse-icon');
+  if (!games) return;
+  games.classList.toggle('collapsed');
+  if (icon) icon.classList.toggle('collapsed');
+}
+
+// ---- GAME DATA MUTATION (auto-sync to localStorage) ----
+function updateGameSalt(gameId, newSalt) {
+  const g = games.find(x => x.id === gameId);
+  if (!g) return;
+  // Toggle: if clicking current level, set to one below
+  g.salt = (g.salt === newSalt) ? newSalt - 1 : newSalt;
+  save('games', games);
+  // Re-render the salt display inline (no full re-render needed)
+  const row = document.querySelector(`[data-game-id="${gameId}"] .game-salt`);
+  if (row) {
+    row.innerHTML = [1,2,3,4,5].map(n =>
+      `<span class="salt-shaker ${(g.salt||0) >= n ? 'active' : ''}" onclick="event.stopPropagation();updateGameSalt('${gameId}',${n})">🧂</span>`
+    ).join('');
+  }
+}
+function updateGameNotes(gameId, newNotes) {
+  const g = games.find(x => x.id === gameId);
+  if (!g) return;
+  g.notes = newNotes || null;
+  save('games', games);
+}
+
+// ---- SHARED GAME ROW RENDERER ----
+function renderGameRow(g, i) {
+  // Determine winner display
+  const winnerIds = getWinnerIds(g);
+  let winnerLabel = '';
+  let winnerDeckLabel = '';
+  let winnerColor = 'var(--mtg-gold)';
+  let defaultSpotlightPid = winnerIds[0] || (g.players[0]?.playerId);
+  if (g.teams && g.winningTeam != null) {
+    const winTeam = g.teams[g.winningTeam];
+    winnerLabel = winTeam.players.map(pid => {
+      const pl = players.find(x => x.id === pid);
+      return esc(pl?.name || pid);
+    }).join(' + ');
+    winnerColor = OWNER_COLORS[winTeam.players[0]] || 'var(--mtg-gold)';
+    winnerDeckLabel = winTeam.name || 'Team';
+    defaultSpotlightPid = winTeam.players[0];
+  } else if (winnerIds.length) {
+    const wid = winnerIds[0];
+    const wPlayer = players.find(x => x.id === wid);
+    const wPd = g.players.find(p => p.playerId === wid);
+    const wDeck = wPd ? decks.find(d => d.id === wPd.deckId) : null;
+    winnerLabel = esc(wPlayer?.name || wid);
+    winnerDeckLabel = wDeck ? esc(wDeck.name) : '';
+    winnerColor = OWNER_COLORS[wid] || 'var(--mtg-gold)';
+  } else {
+    winnerLabel = 'No winner';
+  }
+
+  let html = `<div class="game-entry" data-game-id="${g.id}">`;
+  // Main row — winner only
+  html += `<div class="game-row" onclick="toggleGameDetail('${g.id}','${defaultSpotlightPid}')">
+    <div class="game-num">${i+1}</div>
+    <div class="game-variant variant-${g.variant || 'standard'}">${g.variant || 'std'}</div>
+    <div class="game-winner">
+      <span class="crown">👑</span>
+      <span class="winner-name" style="color:${winnerColor}">${winnerLabel}</span>
+      <span class="winner-deck">${winnerDeckLabel}</span>
+    </div>
+    <div class="game-duration">${g.duration || '—'}</div>
+    <div class="game-salt">${[1,2,3,4,5].map(n =>
+      `<span class="salt-shaker ${(g.salt||0) >= n ? 'active' : ''}" onclick="event.stopPropagation();updateGameSalt('${g.id}',${n})">🧂</span>`
+    ).join('')}</div>
+  </div>`;
+
+  // Expandable detail drawer — grid: roster left, spotlight card right
+  html += `<div class="game-detail" id="detail-${g.id}">`;
+  html += `<div class="game-detail-grid">`;
+
+  // LEFT: player roster + notes
+  html += `<div>`;
+  html += `<div class="game-roster">`;
+  const sortedPlayers = [...g.players].sort((a, b) => {
+    const aWin = didPlayerWin(g, a.playerId) ? 0 : 1;
+    const bWin = didPlayerWin(g, b.playerId) ? 0 : 1;
+    return aWin - bWin;
+  });
+  sortedPlayers.forEach((p, idx) => {
+    const pl = players.find(x => x.id === p.playerId);
+    const dk = decks.find(d => d.id === p.deckId);
+    const isWin = didPlayerWin(g, p.playerId);
+    const color = OWNER_COLORS[p.playerId] || '#888';
+    const cmdrName = dk ? esc(dk.commander || dk.name) : esc(p.deckId);
+    const cmdrPartner = dk?.commanderPartner ? ' + ' + esc(dk.commanderPartner) : '';
+    const isDefault = p.playerId === defaultSpotlightPid;
+    html += `<div class="roster-row ${isWin ? 'is-winner' : ''} ${isDefault ? 'selected' : ''}" data-pid="${p.playerId}" data-gid="${g.id}" onmouseenter="switchSpotlight(this,'${p.playerId}','${g.id}')" onclick="switchSpotlight(this,'${p.playerId}','${g.id}')">
+      <span class="roster-crown">${isWin ? '👑' : ''}</span>
+      <span class="roster-player-name" style="color:${color}">${esc(pl?.name || p.playerId)}</span>
+      <span class="roster-cmdr">${cmdrName}${cmdrPartner}</span>
+      <span class="roster-status ${isWin ? 'survived' : ''}">${isWin ? 'Winner' : '—'}</span>
+    </div>`;
+  });
+  html += `</div>`; // .game-roster
+  html += `<div style="margin-top:10px">
+    <textarea class="game-notes-input" placeholder="Add game notes..." onblur="updateGameNotes('${g.id}', this.value)" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'" style="width:100%">${esc(g.notes || '')}</textarea>
+  </div>`;
+  html += `</div>`; // left column
+
+  // RIGHT: spotlight card (renders for default/winner)
+  html += `<div class="player-spotlight" id="spotlight-${g.id}">`;
+  html += buildSpotlightHtml(defaultSpotlightPid, g.id);
+  html += `</div>`;
+
+  html += `</div>`; // .game-detail-grid
+  html += `</div>`; // .game-detail
+  html += `</div>`; // .game-entry
+  return html;
+}
+
+function buildSpotlightHtml(playerId, gameId) {
+  const pl = players.find(x => x.id === playerId);
+  const g = games.find(x => x.id === gameId);
+  const pd = g ? g.players.find(p => p.playerId === playerId) : null;
+  const dk = pd ? decks.find(d => d.id === pd.deckId) : null;
+  const color = OWNER_COLORS[playerId] || '#888';
+  const pStats = getPlayerStats(playerId);
+  const dStats = dk ? getDeckStats(dk.id) : null;
+  const isWin = g ? didPlayerWin(g, playerId) : false;
+
+  // Art
+  let artHtml = '';
+  if (dk && dk.commanderArt) {
+    if (dk.commanderPartnerArt) {
+      artHtml = `<div class="spotlight-art-split">
+        <div style="background-image:url('${dk.commanderArt}')"></div>
+        <div style="background-image:url('${dk.commanderPartnerArt}')"></div>
+      </div>`;
+    } else {
+      artHtml = `<div class="spotlight-art" style="background-image:url('${dk.commanderArt}')"></div>`;
+    }
+  } else {
+    artHtml = `<div class="spotlight-art" style="background:linear-gradient(135deg,${color}44,#111)"></div>`;
+  }
+
+  const deckRecord = dStats ? `${dStats.wins}W–${dStats.games - dStats.wins}L (${dStats.winRate}%)` : '—';
+
+  // Recent game history (last 5)
+  const playerGames = games.filter(gm => gm.players.some(p => p.playerId === playerId)).slice(-5).reverse();
+  const historyHtml = playerGames.map(gm => {
+    const won = didPlayerWin(gm, playerId);
+    const gpd = gm.players.find(p => p.playerId === playerId);
+    const gdk = gpd ? decks.find(d => d.id === gpd.deckId) : null;
+    return `<div class="spotlight-history-row">
+      <span class="${won ? 'hw' : 'hl'}">${won ? 'W' : 'L'}</span>
+      <span>${gdk ? esc(gdk.name) : '?'}</span>
+      <span style="margin-left:auto;color:var(--text-dim)">${gm.duration || ''}</span>
+    </div>`;
+  }).join('');
+
+  return `${artHtml}
+    <div class="spotlight-body">
+      <div class="spotlight-player-name" style="color:${color}">${isWin ? '👑 ' : ''}${esc(pl?.name || playerId)}</div>
+      <div class="spotlight-deck-name">${dk ? esc(dk.name) : '—'} &middot; ${deckRecord}</div>
+      <div class="spotlight-cmdr">${dk ? esc(dk.commander || '') : ''}${dk?.commanderPartner ? ' + ' + esc(dk.commanderPartner) : ''}</div>
+      <div class="spotlight-stats">
+        <div class="stat-block"><span class="val">${pStats.games}</span><span class="stat-label">Games</span></div>
+        <div class="stat-block"><span class="val">${pStats.wins}</span><span class="stat-label">Wins</span></div>
+        <div class="stat-block"><span class="val">${pStats.winRate}%</span><span class="stat-label">Win%</span></div>
+        <div class="stat-block"><span class="val">${pStats.currentStreak}</span><span class="stat-label">Streak</span></div>
+      </div>
+      <div class="spotlight-divider"></div>
+      <div class="spotlight-history-title">Recent Games</div>
+      ${historyHtml || '<div style="font-size:12px;color:var(--text-dim)">No history yet</div>'}
+    </div>`;
+}
+
+function switchSpotlight(rowEl, playerId, gameId) {
+  // Update selected state on roster rows
+  const roster = rowEl.closest('.game-roster');
+  if (roster) roster.querySelectorAll('.roster-row').forEach(r => r.classList.remove('selected'));
+  rowEl.classList.add('selected');
+  // Swap spotlight content
+  const spotlight = document.getElementById('spotlight-' + gameId);
+  if (spotlight) spotlight.innerHTML = buildSpotlightHtml(playerId, gameId);
+}
+
+function toggleGameDetail(gameId, defaultPid) {
+  const detail = document.getElementById('detail-' + gameId);
+  if (!detail) return;
+  const wasOpen = detail.classList.contains('open');
+  detail.classList.toggle('open');
+  if (!wasOpen) {
+    const ta = detail.querySelector('textarea');
+    if (ta) { ta.style.height = 'auto'; ta.style.height = ta.scrollHeight + 'px'; }
+    // Reset spotlight to winner
+    if (defaultPid) {
+      const spotlight = document.getElementById('spotlight-' + gameId);
+      if (spotlight) spotlight.innerHTML = buildSpotlightHtml(defaultPid, gameId);
+      const roster = detail.querySelector('.game-roster');
+      if (roster) {
+        roster.querySelectorAll('.roster-row').forEach(r => {
+          r.classList.toggle('selected', r.dataset.pid === defaultPid);
+        });
+      }
+    }
+  }
+}
+
+// ---- RENDER: SESSION HERO ----
+function renderSessionHero() {
+  const sessions = getSessionGroups();
+  if (!sessions.length) {
+    document.getElementById('sessionHero').innerHTML = '<div style="padding:40px;text-align:center;color:var(--text-dim)">No games logged yet. Go play some Commander!</div>';
+    return;
+  }
+
+  const [date, sessionGames] = sessions[0];
+  const d = new Date(date + 'T12:00:00');
+  const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+
+  // Session stats
+  const uniquePlayers = new Set();
+  sessionGames.forEach(g => g.players.forEach(p => uniquePlayers.add(p.playerId)));
+  const totalDuration = sessionGames.filter(g => g.duration).reduce((s,g) => s + parseDuration(g.duration), 0);
+  const variants = new Set(sessionGames.map(g => g.variant));
+
+  // Winner tally
+  const winTally = {};
+  sessionGames.forEach(g => {
+    const wids = getWinnerIds(g);
+    wids.forEach(wid => winTally[wid] = (winTally[wid] || 0) + 1);
+  });
+  const mvp = Object.entries(winTally).sort((a,b) => b[1]-a[1])[0];
+
+  let html = `<div class="session-hero-header" onclick="toggleHeroGames(this)">
+    <span class="collapse-icon">▼</span>
+    <div class="session-hero-date">${dateStr}</div>
+    <div class="session-hero-meta">${sessionGames.length} games &middot; ${uniquePlayers.size} players &middot; ${formatDuration(totalDuration)} total${mvp ? ` &middot; MVP: <span style="color:${OWNER_COLORS[mvp[0]]||'#888'};font-weight:600">${esc(players.find(p=>p.id===mvp[0])?.name||mvp[0])}</span> (${mvp[1]}W)` : ''}</div>
+  </div>`;
+  html += `<div class="session-games" id="heroGames">`;
+  sessionGames.forEach((g, i) => { html += renderGameRow(g, i); });
+  html += `</div>`;
+  document.getElementById('sessionHero').innerHTML = html;
+}
+
+// ---- RENDER: LEADERBOARD ----
+function renderLeaderboard() {
+  const elo = calculateElo();
+  const stats = players.map(p => ({ ...p, stats: getPlayerStats(p.id), elo: elo[p.id] || 1200 }));
+
+  // Only show players who have played
+  const active = stats.filter(s => s.stats.games > 0);
+  active.sort((a,b) => b.stats.winRate - a.stats.winRate || b.stats.wins - a.stats.wins || b.elo - a.elo);
+
+  const maxGames = Math.max(...active.map(s => s.stats.games), 1);
+
+  document.getElementById('leaderboard').innerHTML = active.map((p, i) => {
+    const color = OWNER_COLORS[p.id] || '#888';
+    const rankClass = i === 0 ? 'first' : i === 1 ? 'second' : i === 2 ? 'third' : '';
+    return `<div class="lb-card" onclick="openPlayerDetail('${p.id}')">
+      <div class="lb-rank ${rankClass}">${i+1}</div>
+      <div class="lb-avatar" style="background:${color}">${p.name[0]}</div>
+      <div class="lb-name" style="color:${color}">${esc(p.name)}</div>
+      <div class="lb-stats">
+        <span><span class="num">${p.stats.wins}</span>W</span>
+        <span><span class="num">${p.stats.games - p.stats.wins}</span>L</span>
+        <span><span class="num">${p.stats.winRate}%</span>rate</span>
+      </span></div>
+      <div class="lb-elo">ELO ${p.elo}</div>
+      <div class="lb-winbar"><div class="lb-winbar-fill" style="width:${p.stats.winRate}%;background:${color}"></div></div>
+    </div>`;
+  }).join('');
+}
+
+// ---- RENDER: HEAD TO HEAD ----
+function renderH2H() {
+  const active = players.filter(p => games.some(g => g.players.some(pp => pp.playerId === p.id)));
+  if (active.length < 2) { document.getElementById('h2hGrid').innerHTML = '<div style="color:var(--text-dim);font-size:15px">Need at least 2 players with games.</div>'; return; }
+
+  const n = active.length;
+  const el = document.getElementById('h2hGrid');
+  el.innerHTML = '';
+  el.className = 'h2h-grid';
+  el.style.gridTemplateColumns = `80px repeat(${n}, 1fr)`;
+
+  // Header row
+  el.innerHTML += `<div class="h2h-cell header"></div>`;
+  active.forEach(p => {
+    const c = OWNER_COLORS[p.id] || '#888';
+    el.innerHTML += `<div class="h2h-cell header" style="color:${c}">${esc(p.name)}</div>`;
+  });
+
+  // Data rows
+  active.forEach(p1 => {
+    const c1 = OWNER_COLORS[p1.id] || '#888';
+    el.innerHTML += `<div class="h2h-cell header" style="color:${c1}">${esc(p1.name)}</div>`;
+    active.forEach(p2 => {
+      if (p1.id === p2.id) {
+        el.innerHTML += `<div class="h2h-cell self">—</div>`;
+      } else {
+        const h = getH2H(p1.id, p2.id);
+        const cls = h.p1wins > h.p2wins ? 'positive' : h.p1wins < h.p2wins ? 'negative' : 'neutral';
+        el.innerHTML += `<div class="h2h-cell ${cls}">${h.p1wins}-${h.p2wins}</div>`;
+      }
+    });
+  });
+}
+
+// ---- RENDER: DECK STATS ----
+let deckFilter = 'all';
+function renderDeckStats() {
+  const played = decks.filter(d => games.some(g => g.players.some(p => p.deckId === d.id)));
+  let filtered = played;
+  if (deckFilter !== 'all') filtered = played.filter(d => d.owner === deckFilter);
+
+  // Filters
+  const owners = [...new Set(played.map(d => d.owner))];
+  document.getElementById('deckFilters').innerHTML = `
+    <button class="filter-btn ${deckFilter === 'all' ? 'active' : ''}" onclick="deckFilter='all';renderDeckStats()">All</button>
+    ${owners.map(o => {
+      const pl = players.find(p => p.id === o);
+      const c = OWNER_COLORS[o] || '#888';
+      return `<button class="filter-btn ${deckFilter === o ? 'active' : ''}" style="${deckFilter === o ? `border-color:${c};color:${c}` : ''}" onclick="deckFilter='${o}';renderDeckStats()">${esc(pl?.name||o)}</button>`;
+    }).join('')}
+  `;
+
+  // Sort by games played desc, then win rate
+  filtered.sort((a,b) => {
+    const sa = getDeckStats(a.id), sb = getDeckStats(b.id);
+    return sb.games - sa.games || sb.winRate - sa.winRate;
+  });
+
+  document.getElementById('deckGrid').innerHTML = filtered.map(d => {
+    const s = getDeckStats(d.id);
+    const owner = players.find(p => p.id === d.owner);
+    const color = OWNER_COLORS[d.owner] || '#888';
+    const hasPartner = d.commanderPartner && d.commanderPartnerArt;
+
+    let artHtml;
+    if (hasPartner) {
+      artHtml = `<div class="deck-card-art" style="display:flex;overflow:hidden;background:none">
+        <div style="flex:1;background:url('${d.commanderArt}') center/cover"></div>
+        <div style="width:1px;background:rgba(0,0,0,0.6)"></div>
+        <div style="flex:1;background:url('${d.commanderPartnerArt}') center/cover"></div>
+        <div class="deck-card-owner" style="color:${color}">${esc(owner?.name||d.owner)}</div>
+      </div>`;
+    } else {
+      const artStyle = d.commanderArt ? `background-image:url('${d.commanderArt}')` : `background:linear-gradient(135deg,${color}22,#111)`;
+      artHtml = `<div class="deck-card-art" style="${artStyle}">
+        <div class="deck-card-owner" style="color:${color}">${esc(owner?.name||d.owner)}</div>
+      </div>`;
+    }
+
+    const bracketLabel = d.bracket ? `<div class="deck-card-bracket">Bracket ${d.bracket}</div>` : '';
+
+    return `<div class="deck-card" onclick="openDeckDetail('${d.id}')">
+      ${artHtml}
+      <div class="deck-card-body">
+        <div class="deck-card-name">${esc(d.name)}</div>
+        <div class="deck-card-commander">${esc(d.commander)}${d.commanderPartner ? ' + ' + esc(d.commanderPartner) : ''}</div>
+        ${bracketLabel}
+        <div class="deck-card-spacer"></div>
+        <div class="deck-card-stats">
+          <div class="stat-block"><span class="val">${s.games}</span><span class="stat-label">Games</span></div>
+          <div class="stat-block"><span class="val">${s.wins}</span><span class="stat-label">Wins</span></div>
+          <div class="stat-block"><span class="val">${s.winRate}%</span><span class="stat-label">Rate</span></div>
+          ${s.avgSalt > 0 ? `<div class="stat-block"><span class="val">${s.avgSalt}</span><span class="stat-label">Salt</span></div>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ---- RENDER: RECORDS ----
+function renderRecords() {
+  const records = [];
+
+  function winnerLabel(g) {
+    if (g.teams && g.winningTeam != null) {
+      const team = g.teams[g.winningTeam];
+      return team ? team.players.map(pid => players.find(p => p.id === pid)?.name || pid).join(' + ') + ' won' : '?';
+    }
+    const deck = decks.find(d => d.id === g.winningDeck);
+    return deck ? deck.name + ' won' : '?';
+  }
+
+  // Longest game
+  const longest = [...games].filter(g => g.duration).sort((a,b) => parseDuration(b.duration) - parseDuration(a.duration))[0];
+  if (longest) {
+    records.push({ icon: '⏱', label: 'Longest Game', value: longest.duration, detail: `${winnerLabel(longest)} (${longest.variant})` });
+  }
+
+  // Shortest game
+  const shortest = [...games].filter(g => g.duration).sort((a,b) => parseDuration(a.duration) - parseDuration(b.duration))[0];
+  if (shortest) {
+    records.push({ icon: '⚡', label: 'Shortest Game', value: shortest.duration, detail: `${winnerLabel(shortest)} (${shortest.variant})` });
+  }
+
+  // Saltiest game
+  const saltiest = [...games].sort((a,b) => (b.salt||0) - (a.salt||0))[0];
+  if (saltiest && saltiest.salt > 0) {
+    records.push({ icon: '🧂', label: 'Saltiest Game', value: `${saltiest.salt}/5 salt`, detail: winnerLabel(saltiest) });
+  }
+
+  // Most games played (player)
+  const mostGames = players.map(p => ({ ...p, count: getPlayerStats(p.id).games })).sort((a,b) => b.count - a.count)[0];
+  if (mostGames && mostGames.count > 0) {
+    records.push({ icon: '🎮', label: 'Most Games', value: `${mostGames.count} games`, detail: mostGames.name });
+  }
+
+  // Most diverse player (unique decks played)
+  const mostDiverse = players.map(p => ({ ...p, count: getPlayerStats(p.id).decksPlayed })).sort((a,b) => b.count - a.count)[0];
+  if (mostDiverse && mostDiverse.count > 0) {
+    records.push({ icon: '🎭', label: 'Most Diverse', value: `${mostDiverse.count} decks`, detail: mostDiverse.name });
+  }
+
+  // Highest win rate deck (min 2 games)
+  const deckRates = decks.map(d => ({ ...d, stats: getDeckStats(d.id) })).filter(d => d.stats.games >= 2).sort((a,b) => b.stats.winRate - a.stats.winRate);
+  if (deckRates[0]) {
+    records.push({ icon: '🏆', label: 'Best Deck (2+ games)', value: `${deckRates[0].stats.winRate}% win rate`, detail: deckRates[0].name });
+  }
+
+  // Most variants played
+  const variantSet = new Set(games.map(g => g.variant));
+  records.push({ icon: '🌀', label: 'Variants Played', value: `${variantSet.size}`, detail: [...variantSet].join(', ') });
+
+  // Total games
+  records.push({ icon: '📊', label: 'Total Games', value: `${games.length}`, detail: `across ${getSessionGroups().length} session${getSessionGroups().length !== 1 ? 's' : ''}` });
+
+  document.getElementById('recordsGrid').innerHTML = records.map(r =>
+    `<div class="record-card">
+      <div class="record-icon">${r.icon}</div>
+      <div class="record-label">${r.label}</div>
+      <div class="record-value">${r.value}</div>
+      <div class="record-detail">${r.detail}</div>
+    </div>`
+  ).join('');
+}
+
+// ---- RENDER: ALL GAMES ----
+let gameFilter = 'all';
+function renderAllGames() {
+  const sessions = getSessionGroups();
+
+  // Filters
+  const variants = [...new Set(games.map(g => g.variant || 'standard'))];
+  document.getElementById('gameFilters').innerHTML = `
+    <button class="filter-btn ${gameFilter === 'all' ? 'active' : ''}" onclick="gameFilter='all';renderAllGames()">All</button>
+    ${variants.map(v => `<button class="filter-btn ${gameFilter === v ? 'active' : ''}" onclick="gameFilter='${v}';renderAllGames()">${v}</button>`).join('')}
+  `;
+
+  let html = '';
+  sessions.forEach(([date, sessionGames], si) => {
+    let filtered = sessionGames;
+    if (gameFilter !== 'all') filtered = sessionGames.filter(g => (g.variant || 'standard') === gameFilter);
+    if (!filtered.length) return;
+
+    const d = new Date(date + 'T12:00:00');
+    const dateStr = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    const uniquePlayers = new Set();
+    filtered.forEach(g => g.players.forEach(p => uniquePlayers.add(p.playerId)));
+    const totalDuration = filtered.filter(g => g.duration).reduce((s,g) => s + parseDuration(g.duration), 0);
+    const winTally = {};
+    filtered.forEach(g => { getWinnerIds(g).forEach(wid => winTally[wid] = (winTally[wid]||0)+1); });
+    const mvp = Object.entries(winTally).sort((a,b) => b[1]-a[1])[0];
+    const bodyId = 'sessionBody_' + si;
+
+    html += `<div class="session-card">
+      <div class="session-card-header" onclick="toggleSessionCard('${bodyId}',this)">
+        <span class="collapse-icon collapsed">▼</span>
+        <div class="session-card-date">${dateStr}</div>
+        <div class="session-card-meta">${filtered.length} game${filtered.length!==1?'s':''} &middot; ${uniquePlayers.size} players &middot; ${formatDuration(totalDuration)}${mvp ? ` &middot; MVP: <span style="color:${OWNER_COLORS[mvp[0]]||'#888'};font-weight:600">${esc(players.find(p=>p.id===mvp[0])?.name||mvp[0])}</span>` : ''}</div>
+      </div>
+      <div class="session-card-body collapsed" id="${bodyId}">`;
+    filtered.forEach((g, i) => { html += renderGameRow(g, i); });
+    html += `</div></div>`;
+  });
+
+  document.getElementById('allGames').innerHTML = html || '<div style="color:var(--text-dim);padding:20px">No games match this filter.</div>';
+}
+
+function toggleSessionCard(bodyId, headerEl) {
+  const body = document.getElementById(bodyId);
+  const icon = headerEl.querySelector('.collapse-icon');
+  if (!body) return;
+  body.classList.toggle('collapsed');
+  if (icon) icon.classList.toggle('collapsed');
+}
+
+// ---- PLAYER DETAIL MODAL ----
+function openPlayerDetail(pid) {
+  const player = players.find(p => p.id === pid);
+  if (!player) return;
+  const color = OWNER_COLORS[pid] || '#888';
+  const stats = getPlayerStats(pid);
+  const elo = calculateElo();
+  const playerDecks = decks.filter(d => d.owner === pid);
+  const playerGames = games.filter(g => g.players.some(p => p.playerId === pid));
+
+  // Deck breakdown
+  const deckBreakdown = playerDecks.map(d => {
+    const ds = getDeckStats(d.id);
+    return { ...d, ...ds };
+  }).filter(d => d.games > 0).sort((a,b) => b.games - a.games || b.winRate - a.winRate);
+
+  // H2H breakdown
+  const opponents = players.filter(p => p.id !== pid && games.some(g =>
+    g.players.some(pp => pp.playerId === pid) && g.players.some(pp => pp.playerId === p.id)
+  ));
+
+  let html = `<button class="modal-close" onclick="closePlayerDetail()">&times;</button>`;
+  html += `<div style="display:flex;align-items:center;gap:18px;margin-bottom:20px">
+    <div style="width:64px;height:64px;border-radius:50%;background:${color};display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-size:28px;font-weight:700;color:#111">${player.name[0]}</div>
+    <div>
+      <div style="font-family:Cinzel,serif;font-size:24px;color:${color}">${esc(player.name)}</div>
+      <div style="font-family:'Museo Slab',serif;font-size:14px;color:var(--text-dim)">ELO ${elo[pid] || 1200} &middot; ${player.nickname || ''}</div>
+    </div>
+  </div>`;
+
+  // Stats row
+  html += `<div style="display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap">
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${stats.wins}</div><div style="font-size:12px;color:var(--text-dim)">Wins</div></div>
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${stats.games}</div><div style="font-size:12px;color:var(--text-dim)">Games</div></div>
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${stats.winRate}%</div><div style="font-size:12px;color:var(--text-dim)">Win Rate</div></div>
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${stats.decksPlayed}</div><div style="font-size:12px;color:var(--text-dim)">Decks Used</div></div>
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${stats.bestStreak}</div><div style="font-size:12px;color:var(--text-dim)">Best Streak</div></div>
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${stats.avgSalt}</div><div style="font-size:12px;color:var(--text-dim)">Avg Salt</div></div>
+  </div>`;
+
+  // Deck breakdown
+  if (deckBreakdown.length) {
+    html += `<div style="font-size:16px;color:var(--text-mid);margin-bottom:8px;font-weight:600">Decks Played</div>`;
+    deckBreakdown.forEach(d => {
+      html += `<div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)">
+        ${d.commanderArt ? `<img src="${d.commanderArt}" style="width:40px;height:40px;border-radius:5px;object-fit:cover">` : ''}
+        <div style="flex:1">
+          <div style="font-size:15px">${esc(d.name)}</div>
+          <div style="font-family:'Museo Slab',serif;font-size:13px;color:var(--text-dim)">${d.games}G ${d.wins}W ${d.winRate}%</div>
+        </div>
+      </div>`;
+    });
+  }
+
+  // H2H
+  if (opponents.length) {
+    html += `<div style="font-size:16px;color:var(--text-mid);margin:18px 0 8px;font-weight:600">Head to Head</div>`;
+    opponents.forEach(opp => {
+      const h = getH2H(pid, opp.id);
+      const oc = OWNER_COLORS[opp.id] || '#888';
+      html += `<div style="display:flex;align-items:center;gap:10px;padding:5px 0">
+        <span style="color:${oc};font-size:15px;min-width:72px">${esc(opp.name)}</span>
+        <span style="font-family:'Museo Slab',serif;font-size:16px;font-weight:600;color:${h.p1wins > h.p2wins ? 'var(--green)' : h.p1wins < h.p2wins ? 'var(--mtg-r)' : 'var(--text-dim)'}">${h.p1wins}-${h.p2wins}</span>
+        <span style="font-size:12px;color:var(--text-dim)">(${h.shared} games)</span>
+      </div>`;
+    });
+  }
+
+  document.getElementById('playerModalContent').innerHTML = html;
+  document.getElementById('playerModal').classList.add('open');
+}
+
+function closePlayerDetail() {
+  document.getElementById('playerModal').classList.remove('open');
+}
+
+function openDeckDetail(deckId) {
+  const d = decks.find(x => x.id === deckId);
+  if (!d) return;
+  const owner = players.find(p => p.id === d.owner);
+  const color = OWNER_COLORS[d.owner] || '#888';
+  const s = getDeckStats(d.id);
+  const hasPartner = d.commanderPartner && d.commanderPartnerArt;
+
+  // Art header
+  let artHtml;
+  if (hasPartner) {
+    artHtml = `<div style="display:flex;height:140px;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0;position:relative">
+      <div style="flex:1;background:url('${d.commanderArt}') center/cover"></div>
+      <div style="width:1px;background:rgba(0,0,0,0.6)"></div>
+      <div style="flex:1;background:url('${d.commanderPartnerArt}') center/cover"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(10,10,14,1) 100%)"></div>
+    </div>`;
+  } else if (d.commanderArt) {
+    artHtml = `<div style="height:140px;background:url('${d.commanderArt}') center top/cover;border-radius:var(--radius) var(--radius) 0 0;position:relative">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(10,10,14,1) 100%)"></div>
+    </div>`;
+  } else {
+    artHtml = `<div style="height:80px;background:linear-gradient(135deg,${color}44,#111);border-radius:var(--radius) var(--radius) 0 0"></div>`;
+  }
+
+  let html = `<button class="modal-close" onclick="closePlayerDetail()">&times;</button>`;
+  html += artHtml;
+  html += `<div style="padding:0 8px">`;
+  html += `<div style="font-family:Cinzel,serif;font-size:24px;margin-bottom:2px">${esc(d.name)}</div>`;
+  html += `<div style="font-size:14px;color:var(--text-dim);margin-bottom:2px">${esc(d.commander)}${d.commanderPartner ? ' + ' + esc(d.commanderPartner) : ''}</div>`;
+  html += `<div style="font-size:13px;color:${color};margin-bottom:14px">${esc(owner?.name || d.owner)}${d.bracket ? ` &middot; Bracket ${d.bracket}` : ''}</div>`;
+
+  // Stats
+  html += `<div style="display:flex;gap:20px;margin-bottom:20px;flex-wrap:wrap">
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${s.games}</div><div style="font-size:12px;color:var(--text-dim)">Games</div></div>
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${s.wins}</div><div style="font-size:12px;color:var(--text-dim)">Wins</div></div>
+    <div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${s.winRate}%</div><div style="font-size:12px;color:var(--text-dim)">Win Rate</div></div>
+    ${s.avgSalt > 0 ? `<div style="text-align:center"><div style="font-family:'Museo Slab',serif;font-size:28px;font-weight:700">${s.avgSalt}</div><div style="font-size:12px;color:var(--text-dim)">Avg Salt</div></div>` : ''}
+  </div>`;
+
+  // Game history for this deck
+  const deckGames = games.filter(g => g.players.some(p => p.deckId === deckId));
+  if (deckGames.length) {
+    html += `<div style="font-size:16px;color:var(--text-mid);margin-bottom:8px;font-weight:600">Game History</div>`;
+    deckGames.forEach(g => {
+      const won = didDeckWin(g, deckId);
+      const dateStr = new Date(g.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const oppNames = g.players.filter(p => p.deckId !== deckId).map(p => {
+        const pl = players.find(x => x.id === p.playerId);
+        return esc(pl?.name || p.playerId);
+      }).join(', ');
+      html += `<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)">
+        <span style="font-family:'Museo Slab',serif;font-size:16px;font-weight:700;width:24px;color:${won ? 'var(--mtg-gold)' : 'var(--text-dim)'}">${won ? 'W' : 'L'}</span>
+        <span style="font-size:13px;color:var(--text-dim);width:60px">${dateStr}</span>
+        <span style="font-size:14px;flex:1">vs ${oppNames}</span>
+        <span style="font-size:13px;color:var(--text-dim)">${g.duration || ''}</span>
+      </div>`;
+    });
+  }
+
+  html += `</div>`;
+  document.getElementById('playerModalContent').innerHTML = html;
+  document.getElementById('playerModal').classList.add('open');
+}
+
+// Close modal on overlay click
+document.getElementById('playerModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('playerModal')) closePlayerDetail();
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePlayerDetail();
+});
+
+// ---- SEASON BADGE ----
+function renderSeasonBadge() {
+  const current = DATA.seasons.seasons.find(s => s.id === DATA.seasons.currentSeason);
+  if (current) {
+    document.getElementById('seasonBadge').textContent = current.name;
+  }
+}
+
+// ---- RENDER: ACHIEVEMENTS ----
+let achFilter = 'all'; // 'all', 'earned', 'locked', or a player id
+const unlockedAchievements = load('achievements', {});
+
+function renderAchievements() {
+  const defs = DATA.achievements?.definitions || [];
+  if (!defs.length) {
+    document.getElementById('achievementLog').innerHTML = '<div style="color:var(--text-dim);font-size:15px">No achievements defined.</div>';
+    return;
+  }
+
+  // Build earned lookup: { achievementId: [{ playerId, date, context }] }
+  const earnedByAch = {};
+  Object.entries(unlockedAchievements).forEach(([key, data]) => {
+    const [pid, achId] = key.split(':');
+    if (!earnedByAch[achId]) earnedByAch[achId] = [];
+    earnedByAch[achId].push({ playerId: pid, ...data });
+  });
+
+  // Filters
+  const earnedCount = Object.keys(unlockedAchievements).length;
+  const lockedCount = defs.length * players.length - earnedCount;
+  const filterHtml = `
+    <div class="ach-filter-bar">
+      <button class="ach-filter-btn ${achFilter==='all'?'active':''}" onclick="achFilter='all';renderAchievements()">All (${defs.length})</button>
+      <button class="ach-filter-btn ${achFilter==='earned'?'active':''}" onclick="achFilter='earned';renderAchievements()">Earned (${earnedCount})</button>
+      <button class="ach-filter-btn ${achFilter==='locked'?'active':''}" onclick="achFilter='locked';renderAchievements()">Locked</button>
+      ${players.map(p => {
+        const c = OWNER_COLORS[p.id]||'#888';
+        const count = Object.keys(unlockedAchievements).filter(k => k.startsWith(p.id+':')).length;
+        return `<button class="ach-filter-btn ${achFilter===p.id?'active':''}" style="${achFilter===p.id?`border-color:${c};color:${c}`:''}" onclick="achFilter='${p.id}';renderAchievements()">${esc(p.name)} (${count})</button>`;
+      }).join('')}
+    </div>
+  `;
+
+  let html = filterHtml + '<div class="ach-grid">';
+
+  defs.forEach(def => {
+    const earners = earnedByAch[def.id] || [];
+    const tier = def.tier || 'bronze';
+
+    // Apply filter
+    if (achFilter === 'earned' && earners.length === 0) return;
+    if (achFilter === 'locked' && earners.length > 0) return;
+    if (achFilter !== 'all' && achFilter !== 'earned' && achFilter !== 'locked') {
+      // Player filter — show if this player earned it or if locked
+      const playerEarned = earners.find(e => e.playerId === achFilter);
+      // Show all achievements but highlight if earned by this player
+    }
+
+    const isLocked = earners.length === 0;
+
+    html += `<div class="ach-item ${isLocked ? 'locked' : ''} tier-${tier}">
+      <div class="ach-item-icon">${def.icon}</div>
+      <div class="ach-item-info">
+        <div class="ach-item-name">${isLocked ? '???' : def.name}</div>
+        <div class="ach-item-desc">${def.description}</div>`;
+
+    if (!isLocked) {
+      html += `<div class="ach-item-flavor">"${def.flavorText || ''}"</div>`;
+      earners.sort((a,b) => a.date.localeCompare(b.date));
+      earners.forEach(e => {
+        const p = players.find(x => x.id === e.playerId);
+        const c = OWNER_COLORS[e.playerId] || '#888';
+        const d = new Date(e.date);
+        const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        html += `<div class="ach-item-earned"><span class="earner" style="color:${c}">${esc(p?.name || e.playerId)}</span> — ${dateStr} ${e.context ? `<span style="color:var(--text-dim)">(${e.context})</span>` : ''}</div>`;
+      });
+    }
+
+    html += `</div></div>`;
+  });
+
+  html += '</div>';
+  document.getElementById('achievementLog').innerHTML = html;
+}
+
+// ---- INIT ----
+function init() {
+  renderSeasonBadge();
+  renderSessionHero();
+  renderLeaderboard();
+  renderH2H();
+  renderDeckStats();
+  renderAchievements();
+  renderRecords();
+  renderAllGames();
+}
+
+init();
+</script>
+</body>
+</html>
