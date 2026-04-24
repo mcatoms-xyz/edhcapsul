@@ -3542,59 +3542,65 @@ async function _sgLoadHandle() {
   });
 }
 
-// Read the target file and parse out the existing games array. Returns []
-// if the file can't be read or parsed (first-time write, etc.) — caller
-// treats that as "no existing games to merge."
-async function _sgReadExistingGames() {
-  if (!SG.handle) return [];
+// Read the target file and parse out the entire MTG_GAMES object. Returns
+// {} if the file can't be read or parsed. Preserving the whole object lets
+// us keep top-level keys like `lastUpdated` instead of just the games array.
+async function _sgReadExisting() {
+  if (!SG.handle) return {};
   try {
     const file = await SG.handle.getFile();
     const text = await file.text();
-    if (!text || !text.trim()) return [];
-    // Match: var MTG_GAMES = { ... };  (with tolerance for whitespace/newlines)
+    if (!text || !text.trim()) return {};
     const match = text.match(/var\s+MTG_GAMES\s*=\s*(\{[\s\S]*\})\s*;?\s*$/);
     if (!match) {
       console.warn('[SG] existing file did not match MTG_GAMES pattern; treating as empty');
-      return [];
+      return {};
     }
     const parsed = JSON.parse(match[1]);
-    return (parsed && Array.isArray(parsed.games)) ? parsed.games : [];
+    return parsed && typeof parsed === 'object' ? parsed : {};
   } catch (e) {
     console.warn('[SG] could not read existing file:', e);
-    return [];
+    return {};
   }
 }
 
 // Safe merge: localStorage wins on duplicate IDs (it reflects the latest
 // in-browser state — any edits to notes/outcomes are there). File-only
 // games are preserved — they don't vanish because someone's localStorage
-// happened to be stale or empty.
+// happened to be stale or empty. Top-level non-`games` keys (lastUpdated,
+// etc.) are preserved on the way through.
 async function _sgBuildFileContent() {
   const localGames = JSON.parse(localStorage.getItem('mtg_games') || '[]');
-  const existingGames = await _sgReadExistingGames();
+  const existingObj = await _sgReadExisting();
+  const existingGames = Array.isArray(existingObj.games) ? existingObj.games : [];
 
   const byId = new Map();
-  // Seed with existing (file) games first
   for (const g of existingGames) {
     if (g && g.id) byId.set(g.id, g);
   }
-  // Overlay localStorage games — takes precedence on duplicate ID
   for (const g of localGames) {
     if (g && g.id) byId.set(g.id, g);
   }
   const merged = Array.from(byId.values());
-  // Sort by date (fallback to id, which is timestamp-based for auto-generated)
   merged.sort((a, b) => (a.date || a.id || '').localeCompare(b.date || b.id || ''));
+
+  // Preserve any other top-level keys the file had (lastUpdated, schemaVersion,
+  // whatever future metadata gets added) — only `games` and `lastUpdated` are
+  // actively managed by this code.
+  const out = Object.assign({}, existingObj, {
+    games: merged,
+    lastUpdated: new Date().toISOString()
+  });
 
   const stats = {
     existingCount: existingGames.length,
     localCount: localGames.length,
     mergedCount: merged.length,
-    addedFromLocal: merged.length - existingGames.length // games only in localStorage
+    addedFromLocal: merged.length - existingGames.length
   };
 
   return {
-    content: 'var MTG_GAMES = ' + JSON.stringify({ games: merged }, null, 2) + ';\n',
+    content: 'var MTG_GAMES = ' + JSON.stringify(out, null, 2) + ';\n',
     merged,
     stats
   };

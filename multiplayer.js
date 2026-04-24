@@ -302,7 +302,7 @@
     const s = document.createElement('style');
     s.id = 'edhmpStyles';
     s.textContent = [
-      '#edhmpOverlay{position:fixed;top:16px;right:16px;z-index:99999;font-family:system-ui,-apple-system,sans-serif;}',
+      '#edhmpOverlay{position:fixed;top:16px;left:16px;z-index:99999;font-family:system-ui,-apple-system,sans-serif;}',
       '#edhmpOverlay .edhmp-card{position:relative;background:rgba(0,0,0,0.92);border:2px solid #C9A849;color:#fff;padding:14px 16px 16px;border-radius:14px;min-width:240px;box-shadow:0 10px 40px rgba(0,0,0,0.7);}',
       '#edhmpOverlay .edhmp-toggle{position:absolute;top:8px;right:8px;background:transparent;border:1px solid #C9A849;color:#C9A849;width:26px;height:26px;border-radius:13px;cursor:pointer;font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0;}',
       '#edhmpOverlay .edhmp-title{font-size:11px;letter-spacing:2px;color:#C9A849;margin:0 0 10px;text-align:center;font-weight:800;padding-right:28px;}',
