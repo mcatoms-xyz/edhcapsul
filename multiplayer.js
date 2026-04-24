@@ -118,13 +118,23 @@
   // --------------------------------------------------------------------------
 
   function gatherState() {
+    // gamenight.html declares these as top-level const/let, so they're
+    // globals in the same script scope but NOT on window. typeof guards
+    // avoid ReferenceErrors if they aren't set yet.
+    var gs = (typeof gameState !== 'undefined') ? gameState : null;
+    var ap = (typeof activePod !== 'undefined') ? activePod : [];
+    var ms = (typeof matchupSelections !== 'undefined') ? matchupSelections : {};
+    var sa = (typeof slotAssignments !== 'undefined') ? slotAssignments : [];
+    var av = (typeof activeVariant !== 'undefined') ? activeVariant : 'standard';
+    // pod.js exposes MTG_POD as a var so it IS on window
+    var pod = (window.MTG_POD && window.MTG_POD.players) ? window.MTG_POD.players : [];
     return {
-      gameState: window.gameState || null,
-      activePod: window.activePod || [],
-      pod: (window.DATA && window.DATA.pod && window.DATA.pod.players) || [],
-      matchupSelections: window.matchupSelections || {},
-      slotAssignments: window.slotAssignments || [],
-      variant: window.activeVariant || 'standard',
+      gameState: gs,
+      activePod: ap,
+      pod: pod,
+      matchupSelections: ms,
+      slotAssignments: sa,
+      variant: av,
       ts: Date.now()
     };
   }
