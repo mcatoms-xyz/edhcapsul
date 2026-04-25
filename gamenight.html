@@ -8550,11 +8550,12 @@ function autoFillEmpty() {
 }
 
 // ---- VIDEO BACKGROUND SYSTEM ----
+// .mov originals (60-800MB each) are gitignored — too big for Netlify.
+// We ship the compressed .mp4 versions (2-8MB each) instead.
 const BG_VIDEOS = [
-  'assets/bg-1.mov',
-  'assets/bg-2.mov',
-  'assets/bg-3.mov',
-  'assets/bg-4.mp4'
+  'assets/bg-1312814298.mp4',
+  'assets/bg-513683106.mp4',
+  'assets/bg-581077835.mp4'
 ];
 let _lastBgIdx = -1;
 

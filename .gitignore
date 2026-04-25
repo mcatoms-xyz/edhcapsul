@@ -1,6 +1,6 @@
-# Large video backgrounds — ship via CDN next session
+# Large .mov originals are too big for Netlify (60-800MB each).
+# Compressed .mp4 versions DO get deployed.
 assets/*.mov
-assets/*.mp4
 
 # OS cruft
 .DS_Store
