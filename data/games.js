@@ -375,7 +375,7 @@ var MTG_GAMES = {
     },
     {
       "id": "g1777082236153",
-      "date": "2026-04-25",
+      "date": "2026-04-24",
       "players": [
         {
           "playerId": "adam",
@@ -402,7 +402,7 @@ var MTG_GAMES = {
     },
     {
       "id": "g1777086364652",
-      "date": "2026-04-25",
+      "date": "2026-04-24",
       "players": [
         {
           "playerId": "adam",
@@ -429,7 +429,7 @@ var MTG_GAMES = {
     },
     {
       "id": "g1777092971543",
-      "date": "2026-04-25",
+      "date": "2026-04-24",
       "players": [
         {
           "playerId": "adam",
@@ -460,7 +460,7 @@ var MTG_GAMES = {
     },
     {
       "id": "g1777096777623",
-      "date": "2026-04-25",
+      "date": "2026-04-24",
       "players": [
         {
           "playerId": "adam",

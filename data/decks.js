@@ -1690,6 +1690,35 @@ var MTG_DECKS = {
       "commanderManaCost": "{R}{G}{W}{U}"
     },
     {
+      "id": "waid-tegwyll--duke-of-splendor",
+      "archidektId": null,
+      "owner": "waid",
+      "name": "Tegwyll Faeries",
+      "commander": "Tegwyll, Duke of Splendor",
+      "commanderPartner": null,
+      "commanderArt": null,
+      "commanderScryfallId": null,
+      "colors": [
+        "Black",
+        "Blue"
+      ],
+      "bracket": null,
+      "cardCount": null,
+      "estimatedValue": null,
+      "tags": [],
+      "retired": false,
+      "photoPath": null,
+      "lastPlayed": "2026-04-24",
+      "archidektUrl": null,
+      "stats": {
+        "gamesPlayed": 0,
+        "wins": 0,
+        "winRate": 0
+      },
+      "commanderManaCost": "{1}{U}{B}",
+      "_note": "Built off Wilds of Eldraine U/B Faerie precon, modified. Waid not on Archidekt. Art URL needs Scryfall fill-in."
+    },
+    {
       "id": "rich-the-scarab-god",
       "archidektId": 21182748,
       "owner": "rich",
