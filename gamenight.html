@@ -4305,6 +4305,28 @@ function confirmDeath(pid, cause) {
   p.isDead = true;
   p.deathCause = cause;
   p.deathTurn = turnNumber;
+  // Stamp killer (for commander cause) + a flavor quote so phones can
+  // render the same epitaph as the TV without recomputing.
+  if (cause === 'commander') {
+    for (const [oid, dmg] of Object.entries(p.commanderDamage || {})) {
+      if (dmg >= 21) { p.killerPid = oid; break; }
+    }
+  }
+  if (!p.deathQuote) {
+    const _deathQuotes = [
+      "The battlefield claims another.",
+      "Their spark has faded.",
+      "Gone, but not forgotten... until next game.",
+      "The graveyard grows.",
+      "Another planeswalker falls.",
+      "To the command zone... permanently.",
+      "Shuffled into the great library.",
+      "Their mana pool has run dry.",
+      "Exiled from existence.",
+      "The stack has resolved... fatally."
+    ];
+    p.deathQuote = _deathQuotes[Math.floor(Math.random() * _deathQuotes.length)];
+  }
   logGameEvent('death', { playerId: pid, cause, turn: turnNumber });
   dismissDeathModal();
 

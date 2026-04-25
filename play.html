@@ -293,25 +293,80 @@
   /* Commander damage matrix — DEALT */
   .cmd-row {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); gap: 10px;
   }
   .cmd-row:last-child { border-bottom: none; }
+  .cmd-row.dead { opacity: 0.4; }
   .cmd-row .cmd-player {
-    display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;
+    display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;
+    padding: 6px 8px; margin: -6px -8px; border-radius: 8px;
   }
+  .cmd-row .cmd-player.tappable { cursor: pointer; }
+  .cmd-row .cmd-player.tappable:active { background: rgba(201,168,73,0.12); }
   .cmd-row .cmd-dot {
-    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    box-shadow: 0 0 6px currentColor;
   }
-  .cmd-row .cmd-name { font-size: 14px; text-transform: capitalize; font-weight: 600; }
-  .cmd-row .cmd-dmg { font-size: 12px; color: #888; margin-left: 8px; font-weight: 700; }
+  .cmd-row .cmd-info { flex: 1; min-width: 0; }
+  .cmd-row .cmd-line1 {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-bottom: 2px;
+  }
+  .cmd-row .cmd-name { font-size: 14px; text-transform: capitalize; font-weight: 700; }
+  .cmd-row .cmd-life {
+    font-size: 13px; font-weight: 800; color: #fff;
+    font-family: 'Cinzel', Georgia, serif;
+  }
+  .cmd-row .cmd-life.low { color: #ff9999; }
+  .cmd-row .cmd-life.crit { color: #ff5555; }
+  .cmd-row .cmd-line2 {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    font-size: 11px;
+  }
+  .cmd-row .cmd-dmg { font-size: 11px; color: #888; font-weight: 700; }
   .cmd-row .cmd-dmg.dying { color: #ff5555; }
   .cmd-row .cmd-dmg.lethal { color: #ff0000; font-weight: 900; }
-  .cmd-btns { display: flex; gap: 4px; }
+  .cmd-row .cmd-peek {
+    color: rgba(201,168,73,0.6); font-size: 10px; letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .cmd-btns { display: flex; gap: 4px; flex-shrink: 0; }
   .cmd-btn {
     width: 38px; height: 38px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
     background: rgba(255,255,255,0.06); color: #fff; font-size: 16px; font-weight: 800; cursor: pointer;
   }
   .cmd-btn:active { background: rgba(201,168,73,0.25); transform: scale(0.93); }
+
+  /* Commander peek modal */
+  .cmdr-modal {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+    z-index: 9000; padding: 20px;
+    display: flex; align-items: center; justify-content: center;
+    animation: cmdrFadeIn 0.2s ease-out;
+  }
+  @keyframes cmdrFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .cmdr-modal-card {
+    max-width: 100%; max-height: 100%;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .cmdr-modal-name {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 18px; font-weight: 800; color: #C9A849;
+    text-align: center; margin-bottom: 4px; line-height: 1.2;
+  }
+  .cmdr-modal-deck {
+    font-size: 12px; color: #888; text-transform: capitalize;
+    text-align: center; margin-bottom: 14px; letter-spacing: 0.5px;
+  }
+  .cmdr-modal-arts {
+    display: flex; gap: 6px; max-height: 60vh;
+  }
+  .cmdr-modal-arts img {
+    max-width: 100%; max-height: 60vh; border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    display: block;
+  }
+  .cmdr-modal-arts.partner img { max-width: 49%; }
 
   /* Damage totals mini */
   .totals-row {
@@ -360,14 +415,65 @@
   .status-bar.ok { color: #6c6; }
   .status-bar.err { color: #c66; }
 
-  /* Dead overlay */
+  /* Rich death overlay (epitaph) */
   .dead-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.92);
+    position: fixed; inset: 0; background: rgba(0,0,0,0.95);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    z-index: 10000; padding: 40px;
+    z-index: 10000; padding: 20px;
+    animation: deadFadeIn 0.4s ease-out;
   }
-  .dead-overlay h2 { font-family: 'Cinzel', Georgia, serif; font-size: 48px; color: #ff5555; margin-bottom: 12px; }
-  .dead-overlay p { color: #888; margin-bottom: 24px; text-align: center; }
+  @keyframes deadFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .epitaph-card {
+    max-width: 380px; width: 100%;
+    background: linear-gradient(180deg, rgba(40,10,10,0.6) 0%, rgba(0,0,0,0.95) 100%);
+    border: 2px solid rgba(255,85,85,0.3);
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 10px 60px rgba(255,0,0,0.15);
+  }
+  .epitaph-art {
+    width: 100%; height: 160px;
+    background-size: cover; background-position: center;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .epitaph-art::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%);
+  }
+  .epitaph-body { padding: 16px 18px 18px; text-align: center; }
+  .epitaph-icon { font-size: 38px; margin-bottom: 4px; line-height: 1; }
+  .epitaph-name {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 26px; font-weight: 800; line-height: 1.1;
+    text-transform: capitalize;
+  }
+  .epitaph-deck {
+    font-size: 12px; color: #888; margin-top: 2px; letter-spacing: 0.5px;
+  }
+  .epitaph-cause {
+    font-size: 13px; color: #ff9999; margin: 12px 0 14px;
+    text-transform: capitalize; line-height: 1.3;
+  }
+  .epitaph-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    padding: 10px 0; margin: 0 0 14px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .ep-stat { text-align: center; }
+  .ep-stat-val {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 22px; font-weight: 800; color: #C9A849;
+  }
+  .ep-stat-label {
+    font-size: 9px; color: #888; letter-spacing: 1px;
+    text-transform: uppercase; margin-top: 2px;
+  }
+  .epitaph-quote {
+    font-style: italic; font-size: 13px; color: rgba(255,255,255,0.7);
+    margin-bottom: 14px; line-height: 1.4;
+  }
+  .epitaph-card .btn { width: 100%; }
 </style>
 </head>
 <body>
@@ -407,6 +513,12 @@
       <button class="life-btn plus" onclick="emitLife(5)">+5</button>
       <button class="life-btn plus" onclick="emitLife(10)">+10</button>
     </div>
+  </div>
+
+  <div class="footer-controls">
+    <button class="action-btn primary" onclick="emitNextTurn()">End My Turn</button>
+    <button class="action-btn pause" id="pauseBtn" onclick="emitPauseResume()">⏸ Pause</button>
+    <button class="action-btn" onclick="emitConcede()" style="background:rgba(200,30,30,0.08);color:#ff9999;border-color:rgba(200,30,30,0.3)">Concede</button>
   </div>
 
   <button class="fc-toggle" id="fcToggle" onclick="toggleFullCard()">Show full card art ▾</button>
@@ -462,19 +574,35 @@
       <div class="total-val" id="totalTaken">0</div>
     </div>
   </div>
+</div>
 
-  <div class="footer-controls">
-    <button class="action-btn primary" onclick="emitNextTurn()">End My Turn</button>
-    <button class="action-btn pause" id="pauseBtn" onclick="emitPauseResume()">⏸ Pause</button>
-    <button class="action-btn" onclick="emitConcede()" style="background:rgba(200,30,30,0.08);color:#ff9999;border-color:rgba(200,30,30,0.3)">Concede</button>
+<!-- COMMANDER PEEK MODAL -->
+<div id="cmdrModal" class="cmdr-modal" style="display:none" onclick="closeCmdrModal()">
+  <div class="cmdr-modal-card" onclick="event.stopPropagation()">
+    <div class="cmdr-modal-name" id="cmdrModalName"></div>
+    <div class="cmdr-modal-deck" id="cmdrModalDeck"></div>
+    <div class="cmdr-modal-arts" id="cmdrModalArts"></div>
+    <button class="btn" onclick="closeCmdrModal()" style="margin-top:14px">Close</button>
   </div>
 </div>
 
-<!-- DEAD OVERLAY -->
+<!-- RICH DEATH OVERLAY -->
 <div id="deadOverlay" class="dead-overlay" style="display:none;">
-  <h2>☠ Eliminated</h2>
-  <p>You're out for this game. Enjoy the show.</p>
-  <button class="btn" onclick="document.getElementById('deadOverlay').style.display='none'">Dismiss</button>
+  <div class="epitaph-card">
+    <div class="epitaph-art" id="epitaphArt"></div>
+    <div class="epitaph-body">
+      <div class="epitaph-icon" id="epitaphIcon">💀</div>
+      <div class="epitaph-name" id="epitaphName">Eliminated</div>
+      <div class="epitaph-deck" id="epitaphDeck"></div>
+      <div class="epitaph-cause" id="epitaphCause"></div>
+      <div class="epitaph-stats">
+        <div class="ep-stat"><div class="ep-stat-val" id="epitaphTurn">0</div><div class="ep-stat-label">Turn</div></div>
+        <div class="ep-stat"><div class="ep-stat-val" id="epitaphCmdr">0</div><div class="ep-stat-label">Cmdr Dmg Taken</div></div>
+      </div>
+      <div class="epitaph-quote" id="epitaphQuote"></div>
+      <button class="btn" onclick="document.getElementById('deadOverlay').style.display='none'">Dismiss</button>
+    </div>
+  </div>
 </div>
 
 <div id="statusBar" class="status-bar">disconnected</div>
@@ -722,9 +850,10 @@ function renderCurrent() {
   const st = roomState.state;
   const gs = st.gameState;
 
-  // Dead check first — show overlay if eliminated
+  // Dead check — render rich epitaph if eliminated (deferred until after
+  // we have full state; renderEpitaph guards against re-flash on each poll).
   if (gs && gs.players && gs.players[mySeat] && gs.players[mySeat].isDead) {
-    document.getElementById('deadOverlay').style.display = 'flex';
+    renderEpitaph(gs, st);
   }
 
   // Deck lookup
@@ -973,11 +1102,22 @@ function renderCmdDealt(gs, st) {
     const name = (pod.find(x => x.id === oppId) || {}).name || oppId;
     const color = OWNER_COLORS[oppId] || '#888';
     const isDead = oppPlayer && oppPlayer.isDead;
-    return '<div class="cmd-row"' + (isDead ? ' style="opacity:0.5"' : '') + '>' +
-      '<div class="cmd-player">' +
-        '<div class="cmd-dot" style="background:' + color + '"></div>' +
-        '<span class="cmd-name">' + esc(name) + '</span>' +
-        '<span class="cmd-dmg ' + dmgClass + '">' + dmg + '/21</span>' +
+    const life = (oppPlayer && typeof oppPlayer.life === 'number') ? oppPlayer.life : '–';
+    const lifeClass = (typeof life === 'number' && life <= 5) ? 'crit'
+                      : (typeof life === 'number' && life <= 10) ? 'low' : '';
+    return '<div class="cmd-row' + (isDead ? ' dead' : '') + '">' +
+      '<div class="cmd-player tappable" onclick="showOpponentCmdr(\'' + oppId + '\')">' +
+        '<div class="cmd-dot" style="background:' + color + '; color:' + color + '"></div>' +
+        '<div class="cmd-info">' +
+          '<div class="cmd-line1">' +
+            '<span class="cmd-name">' + esc(name) + '</span>' +
+            '<span class="cmd-life ' + lifeClass + '">' + life + ' ❤</span>' +
+          '</div>' +
+          '<div class="cmd-line2">' +
+            '<span class="cmd-dmg ' + dmgClass + '">' + dmg + '/21 cmdr dmg' + (isDead ? ' · dead' : '') + '</span>' +
+            '<span class="cmd-peek">tap to peek 🃏</span>' +
+          '</div>' +
+        '</div>' +
       '</div>' +
       '<div class="cmd-btns">' +
         '<button class="cmd-btn" onclick="emitCmdDmgDealt(\'' + oppId + '\', -1)">−</button>' +
@@ -985,6 +1125,106 @@ function renderCmdDealt(gs, st) {
       '</div>' +
     '</div>';
   }).join('');
+}
+
+// ----- Commander peek modal -----
+function showOpponentCmdr(oppId) {
+  if (!roomState || !roomState.state) return;
+  const deckId = roomState.state.matchupSelections && roomState.state.matchupSelections[oppId];
+  const deck = getDeck(deckId);
+  const pod = roomState.state.pod || [];
+  const playerName = (pod.find(x => x.id === oppId) || {}).name || oppId;
+
+  const nameEl = document.getElementById('cmdrModalName');
+  const deckEl = document.getElementById('cmdrModalDeck');
+  const artsEl = document.getElementById('cmdrModalArts');
+
+  if (!deck) {
+    nameEl.textContent = playerName;
+    deckEl.textContent = 'no deck selected yet';
+    artsEl.innerHTML = '';
+    document.getElementById('cmdrModal').style.display = 'flex';
+    return;
+  }
+
+  const cmdrText = deck.commander + (deck.commanderPartner ? ' & ' + deck.commanderPartner : '');
+  nameEl.textContent = cmdrText;
+  deckEl.textContent = playerName + ' — ' + deck.name;
+
+  // Hi-res versions of the art
+  const hi = (url) => url ? url.replace('/art_crop/', '/normal/') : '';
+  if (deck.commanderPartner && deck.commanderPartnerArt) {
+    artsEl.className = 'cmdr-modal-arts partner';
+    artsEl.innerHTML =
+      '<img src="' + hi(deck.commanderArt) + '" alt="' + esc(deck.commander) + '">' +
+      '<img src="' + hi(deck.commanderPartnerArt) + '" alt="' + esc(deck.commanderPartner) + '">';
+  } else if (deck.commanderArt) {
+    artsEl.className = 'cmdr-modal-arts';
+    artsEl.innerHTML = '<img src="' + hi(deck.commanderArt) + '" alt="' + esc(deck.commander) + '">';
+  } else {
+    artsEl.className = 'cmdr-modal-arts';
+    artsEl.innerHTML = '<div style="padding:30px;color:#666;font-style:italic;text-align:center">No commander art available</div>';
+  }
+
+  document.getElementById('cmdrModal').style.display = 'flex';
+}
+
+function closeCmdrModal() {
+  document.getElementById('cmdrModal').style.display = 'none';
+}
+
+// ----- Death epitaph -----
+function renderEpitaph(gs, st) {
+  const overlay = document.getElementById('deadOverlay');
+  if (overlay.style.display === 'flex') return; // already shown — don't re-flash on every poll
+
+  const p = gs.players[mySeat];
+  const deckId = st.matchupSelections && st.matchupSelections[mySeat];
+  const deck = getDeck(deckId);
+  const myColor = OWNER_COLORS[mySeat] || '#888';
+  const pod = st.pod || [];
+  const myName = (pod.find(x => x.id === mySeat) || {}).name || mySeat;
+
+  // Cause text + icon (matches TV's causeMap)
+  const causeMap = {
+    life:      { icon: '💀', text: 'Life reached 0' },
+    poison:    { icon: '☠',  text: (p.poison || 10) + ' poison counters' },
+    commander: { icon: '⚔',  text: '21+ commander damage' },
+    concede:   { icon: '🏳️',  text: 'Conceded' }
+  };
+  const causeInfo = causeMap[p.deathCause] || { icon: '💀', text: 'Eliminated' };
+
+  // For commander cause, attribute to killer if known
+  let causeText = causeInfo.text;
+  if (p.deathCause === 'commander' && p.killerPid) {
+    const killerName = (pod.find(x => x.id === p.killerPid) || {}).name || p.killerPid;
+    causeText = 'Lethal commander damage from ' + killerName;
+  }
+
+  // Total commander damage taken
+  const totalCmdrDmg = Object.values(p.commanderDamage || {}).reduce((s, v) => s + (v || 0), 0);
+
+  // Populate
+  document.getElementById('epitaphIcon').textContent = causeInfo.icon;
+  const nameEl = document.getElementById('epitaphName');
+  nameEl.textContent = myName;
+  nameEl.style.color = myColor;
+  document.getElementById('epitaphDeck').textContent = deck ? deck.name : '';
+  document.getElementById('epitaphCause').textContent = causeText;
+  document.getElementById('epitaphTurn').textContent = p.deathTurn || 0;
+  document.getElementById('epitaphCmdr').textContent = totalCmdrDmg;
+  const quote = p.deathQuote || 'The battlefield claims another.';
+  document.getElementById('epitaphQuote').textContent = '"' + quote + '"';
+
+  const artEl = document.getElementById('epitaphArt');
+  if (deck && deck.commanderArt) {
+    artEl.style.backgroundImage = "url('" + deck.commanderArt + "')";
+    artEl.style.background = "url('" + deck.commanderArt + "') center/cover no-repeat";
+  } else {
+    artEl.style.background = 'linear-gradient(135deg, ' + myColor + '33, #111)';
+  }
+
+  overlay.style.display = 'flex';
 }
 
 function renderPauseResume(st) {
