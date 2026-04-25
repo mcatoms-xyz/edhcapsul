@@ -372,6 +372,123 @@ var MTG_GAMES = {
           "time": "1:40 AM"
         }
       ]
+    },
+    {
+      "id": "g1777082236153",
+      "date": "2026-04-25",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-jodah--the-unifier"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-ishai-and-ikra"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-braids-aristocrats"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-krenko-mob-boss"
+        }
+      ],
+      "winningDeck": "waid-krenko-mob-boss",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "21:41",
+      "notes": "Krenko Cranked Off. No notes. Perfect game. "
+    },
+    {
+      "id": "g1777086364652",
+      "date": "2026-04-25",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-gilanra--caller-of-wirewood"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-jetmir-nexus-of-rev"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-braids-aristocrats"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-krenko-mob-boss"
+        }
+      ],
+      "winningDeck": "jordan-braids-aristocrats",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "45:33",
+      "notes": "Krenko cranked, but died to 96damage, then Blood artist ruined the last combat."
+    },
+    {
+      "id": "g1777092971543",
+      "date": "2026-04-25",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-amy-rose"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-sengir-the-dark-bar"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-xenagos-god-of-revels"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-tegwyll--duke-of-splendor"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-niv-top"
+        }
+      ],
+      "winningDeck": "shake-niv-top",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "1:26:24",
+      "notes": "After casting Jeska's Will and Bryan having 25 cards in hand, Shake's Firespitter Whelp and Kessig Flamebreather did lethal damage to Jordan and Bryan by Shake casting 10 non-creature spells."
+    },
+    {
+      "id": "g1777096777623",
+      "date": "2026-04-25",
+      "players": [
+        {
+          "playerId": "adam",
+          "deckId": "adam-scabs"
+        },
+        {
+          "playerId": "bryan",
+          "deckId": "bryan-commander:-betor-kin-to-all"
+        },
+        {
+          "playerId": "jordan",
+          "deckId": "jordan-locust-god-wheels"
+        },
+        {
+          "playerId": "waid",
+          "deckId": "waid-the-wise-mothman"
+        },
+        {
+          "playerId": "shake",
+          "deckId": "shake-leonardo--the-balance"
+        }
+      ],
+      "winningDeck": "bryan-commander:-betor-kin-to-all",
+      "variant": "standard",
+      "salt": 0,
+      "duration": "48:40",
+      "notes": "There was no war in the Walls of Ba Sing Se"
     }
-  ]
+  ],
+  "lastUpdated": "2026-04-25T16:32:39.674Z"
 };
